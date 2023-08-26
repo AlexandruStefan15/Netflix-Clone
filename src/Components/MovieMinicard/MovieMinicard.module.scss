@@ -1,0 +1,73 @@
+@use "../../styles/breakpoints" as media;
+
+.container {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	gap: 1em;
+	padding: 0.6em;
+	position: absolute;
+	bottom: 8%;
+	background: black;
+	left: 50%;
+	border-radius: 10px;
+	transform: translateX(-50%);
+	width: 60%;
+	min-width: 293px;
+	box-shadow: 0 0 2em 0 #000;
+	border: 2px solid hsla(0, 0%, 100%, 0.25);
+
+	@include media.tablet_sm {
+		width: 60%;
+	}
+
+	@include media.mobile {
+		min-width: 252px;
+		bottom: 0;
+	}
+}
+
+.imageBox {
+	flex: 0 0 57px;
+
+	@include media.tablet {
+		flex: 0 0 52px;
+	}
+
+	@include media.tablet_lg {
+		flex: 0 0 47px;
+	}
+
+	@include media.mobile {
+		flex: 0 0 35px;
+	}
+}
+
+.textBox {
+	flex: 1 1 152px;
+
+	@include media.tablet_lg {
+		flex: 1 0 113px;
+	}
+}
+
+.title {
+	font-size: 1rem;
+
+	@include media.mobile {
+		font-size: 0.9rem;
+	}
+}
+
+.subtitle {
+	font-size: 0.9rem;
+	font-weight: 400;
+	color: #0071eb;
+	@include media.mobile {
+		font-size: 0.75rem;
+	}
+}
+
+.iconBox {
+	flex: 0 0 48px;
+}

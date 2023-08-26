@@ -1,0 +1,60 @@
+@use "../../../styles/breakpoints" as media;
+
+.section {
+	border-bottom: 8px solid #222;
+	padding-block: 5em;
+
+	@include media.mobile {
+		padding-block: 3.5em;
+	}
+
+	.container {
+		display: flex;
+		max-width: 1200px;
+		margin: 0 auto;
+		justify-content: space-between;
+		flex-direction: row-reverse;
+		align-items: center;
+		gap: 3em;
+		padding-inline: 3em;
+
+		@include media.tablet_lg {
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 0.75em;
+		}
+
+		@include media.mobile {
+			padding-inline: 1.5em;
+		}
+
+		.textBox {
+			flex: 0 550px;
+
+			@include media.tablet_lg {
+				flex-grow: 1;
+				text-align: center;
+			}
+		}
+
+		.imageBox {
+			flex-basis: 555px;
+			margin-left: -5%;
+			position: relative;
+			overflow: hidden;
+
+			@include media.tablet_lg {
+				flex-basis: 600px;
+				margin-left: 0;
+			}
+
+			@include media.mobile {
+				margin-bottom: 0.5em;
+			}
+
+			.image {
+				margin-top: -10%;
+			}
+		}
+	}
+}
