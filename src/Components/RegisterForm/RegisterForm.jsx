@@ -16,7 +16,7 @@ export default function RegisterForm({
 }) {
 	const { t, i18n } = useTranslation();
 
-	if (children)
+	if (React.Children.count(children) > 0)
 		return (
 			<form action="" className={styles.form + ` ${className}`} {...props}>
 				{children}
