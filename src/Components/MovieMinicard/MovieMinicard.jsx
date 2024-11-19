@@ -19,7 +19,7 @@ export default function MovieMinicard({
 }) {
 	const { t, i18n } = useTranslation();
 
-	if (children)
+	if (React.Children.count(children) > 0)
 		return (
 			<div className={styles.container + ` ${className}`} {...props}>
 				{children}
