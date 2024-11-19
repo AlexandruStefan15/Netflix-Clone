@@ -8,21 +8,20 @@ import Title from "../../Title/Title";
 import Subtitle from "../../Subtitle/Subtitle";
 
 export default function StoryPanel3(props) {
+	const { t, i18n } = useTranslation();
 
-  const { t, i18n } = useTranslation();
-
-  return (
-    <Section {...props}>
-      <Container>
-        <TextBox>
-          <Title>{t('StoryPanel3.title')}</Title>
-          <Subtitle>{t('StoryPanel3.subtitle')}</Subtitle>
-        </TextBox>
-        <ImageBox>
-          <Image src={images.tv2} alt="a desktop display" />
-          <Video src={videos.strangerThingsGuys} />
-        </ImageBox>
-      </Container>
-    </Section>
-  );
+	return (
+		<Section {...props}>
+			<Container>
+				<TextBox>
+					<Title>{t("StoryPanel3.title")}</Title>
+					<Subtitle>{t("StoryPanel3.subtitle")}</Subtitle>
+				</TextBox>
+				<ImageBox>
+					<Image src={images.tv2} alt="a desktop display" />
+					<Video src={videos.strangerThingsGuys} />
+				</ImageBox>
+			</Container>
+		</Section>
+	);
 }

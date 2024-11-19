@@ -6,13 +6,13 @@ import Footer from "../../Components/Footer/Footer";
 import Form from "../../Components/Form/Form";
 
 export default function Login() {
-  return (
-    <div className={styles.page}>
-      <Header />
-      <div className={styles.container}>
-        <Form />
-      </div>
-      <Footer />
-    </div>
-  );
+	return (
+		<div className={styles.page}>
+			<Header />
+			<div className={styles.container}>
+				<Form />
+			</div>
+			<Footer />
+		</div>
+	);
 }

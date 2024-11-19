@@ -11,16 +11,16 @@ import StoryPanel3 from "../../Components/Sections/StoryPanel3/StoryPanel3";
 import StoryPanel4 from "../../Components/Sections/StoryPanel4/StoryPanel4";
 
 export default function Home() {
-  return (
-    <>
-      <Header />
-      <HeroBanner />
-      <StoryPanel />
-      <StoryPanel2 />
-      <StoryPanel3 />
-      <StoryPanel4 />
-      <Faq />
-      <Footer />
-    </>
-  );
+	return (
+		<>
+			<Header />
+			<HeroBanner />
+			<StoryPanel />
+			<StoryPanel2 />
+			<StoryPanel3 />
+			<StoryPanel4 />
+			<Faq />
+			<Footer />
+		</>
+	);
 }
