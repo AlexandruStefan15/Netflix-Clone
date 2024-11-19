@@ -1,0 +1,11 @@
+.form {
+  margin: 0 auto;
+  padding-inline: 4em;
+  padding-block: 3.5em;
+  max-width: 450px;
+  background: rgb(0 0 0 / 77%);
+
+  .formInput {
+    min-height: 50px;
+  }
+}

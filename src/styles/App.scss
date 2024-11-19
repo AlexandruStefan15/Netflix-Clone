@@ -1,0 +1,66 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: "Open Sans", sans-serif;
+	color: white;
+	font-weight: 400;
+	line-height: 1.5;
+	font-size: 1rem;
+	background-color: black;
+}
+
+img,
+svg,
+video {
+	height: auto;
+	max-width: 100%;
+	display: block;
+}
+
+ul {
+	list-style: none;
+}
+
+button {
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+}
+
+a {
+	text-decoration: none;
+	display: inline-block;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+}
+
+h1 {
+	font-size: 2rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+}
+
+section {
+	padding: 2em 0;
+}
+
+.container {
+	margin: 0 auto;
+}
+
+@media all and (max-width: 500px) {
+	.container {
+		padding-inline: 1em !important;
+	}
+}
+
+/* boilerplate-end */

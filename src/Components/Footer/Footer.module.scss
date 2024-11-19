@@ -1,0 +1,71 @@
+@use "../../styles/breakpoints" as media;
+
+.section {
+  padding-top: 4em;
+  padding-bottom: 4em;
+  background: rgb(0 0 0 / 77%);
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-inline: 3em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    color: #737373;
+
+    @include media.mobile {
+      padding-inline: 2em;
+    }
+
+    .navigation {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 1.5em;
+
+      @include media.mobile {
+        grid-template-columns: repeat(2, minmax(130px, 1fr));
+      }
+
+      .navList {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75em;
+
+        .listItem {
+          .Link {
+            font-size: 0.82rem;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    .langSelection {
+      margin-block: 0.5em;
+
+      .SelectWrapper {
+        &::before,
+        &::after {
+          filter: brightness(0.5);
+        }
+        .Select {
+          border-color: #333;
+          color: #999;
+          font-size: 1rem;
+
+          option {
+            background-color: #000;
+          }
+        }
+      }
+    }
+
+    .country {
+      font-size: 0.84rem;
+    }
+  }
+}

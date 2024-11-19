@@ -1,0 +1,88 @@
+@use "../../styles/breakpoints" as media;
+
+.container {
+	max-width: 815px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+
+	.item {
+		background-color: #303030;
+
+		br:last-of-type {
+			display: none;
+		}
+
+		&:has(.details.active) {
+			.icon {
+				transform: rotate(-90deg);
+			}
+		}
+
+		.label {
+			font-size: 1.55rem;
+			background-color: transparent;
+			padding: 0.8em 1.2em;
+			border-bottom: 1px solid black;
+			cursor: pointer;
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1em;
+			transition: background-color 0.26s cubic-bezier(0.5, 0, 0.1, 1);
+
+			&:hover {
+				background-color: rgba(78, 78, 78, 1);
+			}
+
+			@include media.tablet_lg {
+				font-size: 1.25rem;
+			}
+
+			@include media.mobile {
+				font-size: 1.125rem;
+				padding-block: 1em;
+			}
+
+			.icon {
+				width: max(15.5px, 2.8%);
+				fill: white;
+				position: relative;
+				transform: rotate(-45deg);
+			}
+		}
+
+		.details {
+			background-color: transparent;
+			overflow: hidden;
+			max-height: 0;
+			transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+
+			&.active {
+				max-height: 1500px;
+				transition: max-height 1s linear;
+			}
+
+			.text {
+				padding-top: 1.2em;
+				padding-inline: 1.2em;
+				line-height: 1.36;
+				font-size: 1.475rem;
+
+				@include media.tablet_lg {
+					font-size: 1.25rem;
+				}
+
+				@include media.mobile {
+					font-size: 1.125rem;
+				}
+
+				&:last-of-type {
+					padding-bottom: 1.2em;
+				}
+			}
+		}
+	}
+}

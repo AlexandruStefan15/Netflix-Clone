@@ -1,0 +1,61 @@
+@use "../../styles/breakpoints" as media;
+
+.nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 90px;
+	padding-inline: 5em;
+	margin: 0 auto;
+	max-width: 1825px;
+	gap: 2em;
+
+	@include media.tablet_lg {
+		padding-inline: 2em;
+		min-height: 87px;
+	}
+
+	@include media.mobile {
+		padding-inline: 5%;
+		gap: 1em;
+	}
+
+	.logo {
+		padding-top: 1em;
+		line-height: normal;
+		width: 168px;
+		min-width: 89px;
+
+		@include media.tablet {
+			padding-top: 0.5em;
+			width: 140px;
+		}
+
+		@include media.tablet_sm {
+			padding-top: 0.3em;
+			width: 108px;
+		}
+
+		@include media.mobile {
+			padding-top: 0em;
+			width: 89px;
+		}
+	}
+
+	.wrapper {
+		display: flex;
+		gap: 1.5em;
+		align-items: center;
+
+		.select {
+			@include media.tablet_sm {
+				font-size: 0.78rem;
+				padding-block: 0.55em;
+			}
+		}
+
+		@include media.tablet_sm {
+			gap: 1em;
+		}
+	}
+}

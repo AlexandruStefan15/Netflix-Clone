@@ -1,0 +1,40 @@
+@use "../../../styles/breakpoints" as media;
+
+.section {
+	border-bottom: 8px solid #222;
+	padding-block: 5em;
+
+	@include media.mobile {
+		padding-block: 3.2em;
+	}
+
+	.container {
+		max-width: 1000px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: 3em;
+		padding-inline: 5em;
+
+		@include media.tablet_sm {
+			padding-inline: 3em;
+			gap: 1.5em;
+		}
+
+		@include media.mobile {
+			padding-inline: 1.5em;
+		}
+
+		.title {
+			max-width: 800px;
+			margin-bottom: 0;
+		}
+		.registerForm {
+			margin-top: 0.8em;
+
+			@include media.mobile {
+				margin-top: 0.4em;
+			}
+		}
+	}
+}
