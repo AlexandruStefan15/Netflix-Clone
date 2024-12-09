@@ -10,6 +10,7 @@ export default function FormInput({
 	label = "FormInput.label",
 	value = "",
 	children,
+	required = true,
 	sv = "", // style variant
 	...props
 }) {
@@ -17,7 +18,7 @@ export default function FormInput({
 	const [inputValue, setInputValue] = useState(value);
 	const [isActive, setIsActive] = useState(false);
 
-	if (children)
+	if (React.Children.count(children) > 0)
 		return (
 			<FormInputContext.Provider value={{ inputValue, isActive, setIsActive, setInputValue }}>
 				<div className={styles[`wrapper${sv}`] + ` ${className}`} {...props}>
@@ -31,7 +32,7 @@ export default function FormInput({
 			<div className={styles[`wrapper${sv}`] + ` ${className}`}>
 				<FormInput.Label htmlFor={props.id}>{t(label)}</FormInput.Label>
 				<FormInput.Input
-					required={props.required}
+					required={required}
 					type={props.type}
 					id={props.id}
 					name={props.name}

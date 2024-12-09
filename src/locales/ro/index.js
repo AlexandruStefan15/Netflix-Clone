@@ -27,6 +27,8 @@ export default {
 
 	FormInput: {
 		label: "Adresa de e-mail",
+		label_2: "Parola",
+		label_3: "Adresa de email sau numar de mobil",
 	},
 
 	StoryPanel: {
@@ -37,8 +39,7 @@ export default {
 
 	StoryPanel2: {
 		title: "Descarcă serialele preferate pentru a le viziona offline.",
-		subtitle:
-			"Salvează cu ușurință titlurile preferate și vei avea mereu ceva de vizionat.",
+		subtitle: "Salvează cu ușurință titlurile preferate și vei avea mereu ceva de vizionat.",
 	},
 
 	StoryPanel3: {

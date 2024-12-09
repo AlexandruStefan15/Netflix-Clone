@@ -26,6 +26,8 @@ export default {
 
 	FormInput: {
 		label: "Email address",
+		label_2: "Password",
+		label_3: "Email or phone number",
 	},
 
 	StoryPanel: {

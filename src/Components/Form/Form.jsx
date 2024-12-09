@@ -1,17 +1,33 @@
 import React from "react";
 import styles from "./Form.module.scss";
+import { useTranslation } from "react-i18next";
 
 import Link from "../Link/Link";
 import FormInput from "../FormInput/FormInput";
+import Button from "../Button/Button";
 
 export default function Form({ className = "", children, ...props }) {
+	const { t, i18n } = useTranslation();
+
 	return (
 		<form action="" className={styles.form + ` ${className}`} {...props}>
 			<Form.Title>Sign In</Form.Title>
-			<Form.FormInput>
-				<FormInput.Label>Email or phone number</FormInput.Label>
-				<FormInput.Input />
-			</Form.FormInput>
+			<Form.FormInput
+				type="text"
+				label="FormInput.label_3"
+				name="email-or-phone"
+				id="login-email-or-phone"
+				pattern="^([^\s@]+@[^\s@]+\.[^\s@]+|\+?[0-9]{7,15})$"
+			/>
+			<Form.FormInput
+				type="password"
+				label="FormInput.label_2"
+				name="password"
+				id="login-password"
+			/>
+			<Button className={styles.button} type="submit">
+				Contectare
+			</Button>
 		</form>
 	);
 }
@@ -61,5 +77,13 @@ Form.Link = function Form_Link({ className = "", children, ...props }) {
 		<Link className={styles.link + ` ${className}`} {...props}>
 			{children}
 		</Link>
+	);
+};
+
+Form.Button = function Form_Button({ className = "", children, ...props }) {
+	return (
+		<Button className={styles.ComponentName + ` className`} {...props}>
+			{children}
+		</Button>
 	);
 };
