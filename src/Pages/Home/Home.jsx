@@ -9,6 +9,7 @@ import StoryPanel from "../../Components/Sections/StoryPanel/StoryPanel";
 import StoryPanel2 from "../../Components/Sections/StoryPanel2/StoryPanel2";
 import StoryPanel3 from "../../Components/Sections/StoryPanel3/StoryPanel3";
 import StoryPanel4 from "../../Components/Sections/StoryPanel4/StoryPanel4";
+import List from "../../Components/List/List";
 
 export default function Home() {
 	return (
@@ -21,6 +22,7 @@ export default function Home() {
 			<StoryPanel4 />
 			<Faq />
 			<Footer />
+			<List></List>
 		</>
 	);
 }
