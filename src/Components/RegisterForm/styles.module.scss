@@ -28,7 +28,6 @@
 	.button {
 		@include media.tablet {
 			font-size: 1.6rem;
-			min-height: 60px;
 		}
 
 		@include media.tablet_sm {
@@ -36,7 +35,6 @@
 			margin: 0 auto !important;
 			font-size: 1.2rem;
 			gap: 2px;
-			min-height: 40px;
 		}
 
 		@include media.mobile {
@@ -60,7 +58,6 @@
 .title {
 	-webkit-text-size-adjust: 100%;
 	-webkit-font-smoothing: antialiased;
-	direction: ltr;
 	font-family: Ubuntu, sans-serif;
 	color: #fff;
 	text-align: center;

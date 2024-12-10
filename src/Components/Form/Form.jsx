@@ -48,9 +48,9 @@ Form.Group = function Form_Group({ className = "", children, ...props }) {
 	);
 };
 
-Form.FormInput = function Form_FormInput({ className = "", children, sv = "2", ...props }) {
+Form.FormInput = function Form_FormInput({ className = "", children, variant = "2", ...props }) {
 	return (
-		<FormInput sv={sv} className={styles.formInput + ` ${className}`} {...props}>
+		<FormInput variant={variant} className={styles.formInput + ` ${className}`} {...props}>
 			{children}
 		</FormInput>
 	);
@@ -82,7 +82,7 @@ Form.Link = function Form_Link({ className = "", children, ...props }) {
 
 Form.Button = function Form_Button({ className = "", children, ...props }) {
 	return (
-		<Button className={styles.ComponentName + ` className`} {...props}>
+		<Button className={styles.button + ` ${className}`} {...props}>
 			{children}
 		</Button>
 	);

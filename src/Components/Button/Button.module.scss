@@ -6,7 +6,6 @@
 	text-transform: none;
 	border: 0;
 	border-radius: 2.5px;
-	box-sizing: border-box;
 	cursor: pointer;
 	font-weight: 400;
 	text-align: center;
@@ -28,9 +27,8 @@
 	flex-direction: row;
 	line-height: normal;
 	width: auto;
-	padding: 0 1em;
+	padding: 0.6em 1em;
 	font-size: 1.875rem;
-	min-height: 70px;
 	border-bottom-left-radius: 0;
 	border-top-left-radius: 0;
 	border-left: 1px solid #333;

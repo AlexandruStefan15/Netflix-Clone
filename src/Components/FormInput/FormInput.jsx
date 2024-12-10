@@ -11,7 +11,7 @@ export default function FormInput({
 	value = "",
 	children,
 	required = true,
-	sv = "", // style variant
+	variant = "", // style variant
 	...props
 }) {
 	const { t, i18n } = useTranslation();
@@ -21,7 +21,7 @@ export default function FormInput({
 	if (React.Children.count(children) > 0)
 		return (
 			<FormInputContext.Provider value={{ inputValue, isActive, setIsActive, setInputValue }}>
-				<div className={styles[`wrapper${sv}`] + ` ${className}`} {...props}>
+				<div className={styles[`wrapper${variant}`] + ` ${className}`} {...props}>
 					{children}
 				</div>
 			</FormInputContext.Provider>
@@ -29,7 +29,7 @@ export default function FormInput({
 
 	return (
 		<FormInputContext.Provider value={{ inputValue, isActive, setIsActive, setInputValue }}>
-			<div className={styles[`wrapper${sv}`] + ` ${className}`}>
+			<div className={styles[`wrapper${variant}`] + ` ${className}`}>
 				<FormInput.Label htmlFor={props.id}>{t(label)}</FormInput.Label>
 				<FormInput.Input
 					required={required}
