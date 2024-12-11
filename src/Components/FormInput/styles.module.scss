@@ -7,7 +7,7 @@
 	.input {
 		width: 100%;
 		padding-left: 0.7em;
-		padding-top: 0.67em;
+		padding-top: 0.85em;
 		outline: none;
 		font-size: 1rem;
 		font-family: system-ui;
@@ -23,15 +23,21 @@
 
 	.label {
 		position: absolute;
+		left: 0;
 		color: #8c8c8c;
 		font-weight: 500;
 		top: 50%;
+		text-align: left;
 		transform: translateY(-50%);
-		left: 13px;
 		transition: font-size 0.12s ease, left 0.12s ease, top 0.12s ease, font-weight 0.12s ease,
 			letter-spacing 0.12s ease;
 		letter-spacing: normal;
 		pointer-events: none;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		width: 100%;
+		padding-inline: 1em;
 
 		@include media.mobile {
 			font-size: 0.9rem;
@@ -39,8 +45,8 @@
 
 		&.active {
 			font-size: 0.78rem;
-			top: 24.5%;
-			left: 13px;
+			top: 28%;
+			left: 0px;
 			font-weight: 600;
 			letter-spacing: 0.4px;
 

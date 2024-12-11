@@ -53,14 +53,4 @@ section {
 	padding: 2em 0;
 }
 
-.container {
-	margin: 0 auto;
-}
-
-@media all and (max-width: 500px) {
-	.container {
-		padding-inline: 1em !important;
-	}
-}
-
 /* boilerplate-end */
