@@ -18,7 +18,7 @@ export default function FormInput({
 	const [inputValue, setInputValue] = useState(value);
 	const [isActive, setIsActive] = useState(false);
 
-	if (React.Children.count(children) > 0)
+	if (children)
 		return (
 			<FormInputContext.Provider value={{ inputValue, isActive, setIsActive, setInputValue }}>
 				<div className={styles[`wrapper${variant}`] + ` ${className}`} {...props}>

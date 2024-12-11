@@ -34,7 +34,7 @@ export default function Accordion({ data = accordionData, className = "", childr
 
 	return (
 		<AccordionContext.Provider value={{ itemSelected, setItemSelected }}>
-			<ul className={styles.container + ` ${className}`} {...props}>
+			<ul className={styles.accordion + ` ${className}`} {...props}>
 				{items}
 			</ul>
 		</AccordionContext.Provider>
