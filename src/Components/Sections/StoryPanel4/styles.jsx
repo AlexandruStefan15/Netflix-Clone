@@ -32,3 +32,7 @@ export function ImageBox({ className = "", children, ...props }) {
 		</div>
 	);
 }
+
+export function Image({ className = "", children, ...props }) {
+	return <img className={styles.image + ` ${className}`} {...props} />;
+}

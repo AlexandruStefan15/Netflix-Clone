@@ -2,7 +2,7 @@ import React from "react";
 import images from "../../../Assets/images/images";
 import { useTranslation } from "react-i18next";
 
-import { Section, Container, ImageBox, TextBox } from "./styles";
+import { Section, Container, ImageBox, TextBox, Image } from "./styles";
 import Title from "../../Title/Title";
 import Subtitle from "../../Subtitle/Subtitle";
 
@@ -17,7 +17,7 @@ export default function StoryPanel4(props) {
 					<Subtitle>{t("StoryPanel4.subtitle")}</Subtitle>
 				</TextBox>
 				<ImageBox>
-					<img src={images.kids} alt="kids with a rabbit" />
+					<Image src={images.kids} alt="kids with a rabbit" />
 				</ImageBox>
 			</Container>
 		</Section>
