@@ -11,7 +11,7 @@ export default {
 	},
 
 	RegisterForm: {
-		v1: {
+		set1: {
 			title: "Ready to watch? Enter your email to create or restart your membership.",
 			buttonText: "Get Started",
 		},

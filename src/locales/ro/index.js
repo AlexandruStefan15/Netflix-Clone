@@ -11,7 +11,7 @@ export default {
 	},
 
 	RegisterForm: {
-		v1: {
+		set1: {
 			title:
 				"Ești gata de vizionare? Introdu adresa de e-mail pentru a te abona sau pentru a reactiva abonamentul.",
 			buttonText: "Începe",
