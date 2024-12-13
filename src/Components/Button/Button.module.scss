@@ -15,8 +15,7 @@
 	-ms-user-select: none;
 	user-select: none;
 	vertical-align: middle;
-	background-color: #e50914;
-	background-image: linear-gradient(180deg, #e50914, #db0510);
+	background-color: var(--primary);
 	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
 	color: #fff;
 	min-width: 74px;

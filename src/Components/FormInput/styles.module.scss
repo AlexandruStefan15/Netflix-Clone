@@ -7,7 +7,7 @@
 	.input {
 		width: 100%;
 		padding-left: 0.7em;
-		padding-top: 0.85em;
+		padding-top: 0.88em;
 		outline: none;
 		font-size: 1rem;
 		font-family: system-ui;
@@ -67,7 +67,7 @@
 
 	.input {
 		color: white;
-		background-color: #333;
+		background-color: var(--accent2);
 		border: none;
 		border-radius: 4px;
 	}

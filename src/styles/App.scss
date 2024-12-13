@@ -1,9 +1,18 @@
+@use "./colors";
+
 *,
 *::before,
 *::after {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
+}
+
+:root {
+	--primary: #{colors.$primary};
+	--secondary: #{colors.$secondary};
+	--accent: #{colors.$accent};
+	--accent2: #{colors.$accent2};
 }
 
 body {
