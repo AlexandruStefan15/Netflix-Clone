@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Form.module.scss";
 import { useTranslation } from "react-i18next";
 
-import Link from "../Link/Link";
+import { NavLink } from "react-router-dom";
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
 
@@ -11,7 +11,7 @@ export default function Form({ className = "", children, ...props }) {
 
 	return (
 		<form action="" className={styles.form + ` ${className}`} {...props}>
-			<Form.Title>Sign In</Form.Title>
+			<Form.Title>{t("Form.set1.title")}</Form.Title>
 			<Form.FormInput
 				type="text"
 				label="FormInput.label_3"
@@ -25,9 +25,11 @@ export default function Form({ className = "", children, ...props }) {
 				name="password"
 				id="login-password"
 			/>
-			<Button className={styles.button} type="submit">
-				Contectare
-			</Button>
+			<Form.Button type="submit">{t("Form.set1.buttonText")}</Form.Button>
+			<div className={styles.rememberMe_container}>
+				<Form.RememberMe />
+				<Form.NavLink>{t("Form.set1.need_help")}</Form.NavLink>
+			</div>
 		</form>
 	);
 }
@@ -72,11 +74,11 @@ Form.Text = function Form_Text({ className = "", children, ...props }) {
 	);
 };
 
-Form.Link = function Form_Link({ className = "", children, ...props }) {
+Form.NavLink = function Form_NavLink({ className = "", children, href = "#", ...props }) {
 	return (
-		<Link className={styles.link + ` ${className}`} {...props}>
+		<NavLink className={styles.navLink + ` ${className}`} to={href} {...props}>
 			{children}
-		</Link>
+		</NavLink>
 	);
 };
 
@@ -85,5 +87,20 @@ Form.Button = function Form_Button({ className = "", children, ...props }) {
 		<Button className={styles.button + ` ${className}`} {...props}>
 			{children}
 		</Button>
+	);
+};
+
+Form.RememberMe = function Form_RememberMe({ className = "", children, ...props }) {
+	const { t } = useTranslation();
+
+	return (
+		<div className={styles.rememberMe + ` ${className}`} {...props}>
+			{children || (
+				<>
+					<input name={props.name} id={props.id} type="checkbox" />
+					<label htmlFor={props.name}>{t("Form.set1.remember_me")}</label>
+				</>
+			)}
+		</div>
 	);
 };

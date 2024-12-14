@@ -24,6 +24,15 @@ export default {
 		},
 	},
 
+	Form: {
+		set1: {
+			title: "Sign In",
+			buttonText: "Sign In",
+			remember_me: "Remember me",
+			need_help: "Need help?",
+		},
+	},
+
 	FormInput: {
 		label: "Email address",
 		label_2: "Password",

@@ -16,10 +16,6 @@
 		@include media.tablet_sm {
 			min-height: 50px;
 		}
-
-		@include media.mobile {
-			min-height: 48px;
-		}
 	}
 
 	.label {
@@ -70,6 +66,10 @@
 		background-color: var(--accent2);
 		border: none;
 		border-radius: 4px;
+
+		@include media.tablet_sm {
+			min-height: 55px;
+		}
 	}
 
 	.label {

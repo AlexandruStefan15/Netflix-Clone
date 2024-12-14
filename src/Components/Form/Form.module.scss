@@ -1,3 +1,5 @@
+@use "../../styles/breakpoints" as media;
+
 .form {
 	margin: 0 auto;
 	padding-inline: 4em;
@@ -8,11 +10,36 @@
 	flex-direction: column;
 	gap: 1em;
 
+	@include media.mobile {
+		padding-inline: 2.5em;
+		padding-block: 2.5em;
+	}
+
 	.button {
 		border-radius: 4px;
 		margin-top: 1em;
 		font-size: 1rem;
 		font-weight: 600;
 		padding-block: 1em;
+	}
+
+	.rememberMe_container {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+
+		.rememberMe {
+			display: flex;
+			align-items: center;
+			font-size: 0.9rem;
+			gap: 7px;
+			accent-color: var(--accent);
+		}
+
+		.navLink {
+			color: #868686;
+			font-size: 0.9rem;
+		}
 	}
 }

@@ -15,5 +15,11 @@
 		margin-top: 3em;
 		margin-bottom: -25em;
 		margin-inline: auto;
+
+		@include media.mobile {
+			height: auto;
+			margin-bottom: 5rem;
+			padding-inline: 1.1em;
+		}
 	}
 }

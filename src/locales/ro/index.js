@@ -25,6 +25,15 @@ export default {
 		},
 	},
 
+	Form: {
+		set1: {
+			title: "Conectare",
+			buttonText: "Conectare",
+			remember_me: "Ține-mă minte",
+			need_help: "Ai nevoie de ajutor?",
+		},
+	},
+
 	FormInput: {
 		label: "Adresa de e-mail",
 		label_2: "Parola",
