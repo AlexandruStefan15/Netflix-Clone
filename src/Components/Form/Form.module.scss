@@ -3,7 +3,8 @@
 .form {
 	margin: 0 auto;
 	padding-inline: 4em;
-	padding-block: 3.5em;
+	padding-top: 3.5em;
+	padding-bottom: 4em;
 	max-width: 450px;
 	background: rgb(0 0 0 / 77%);
 	display: flex;
@@ -13,6 +14,10 @@
 	@include media.mobile {
 		padding-inline: 2.5em;
 		padding-block: 2.5em;
+	}
+
+	.title {
+		margin-bottom: 0.5rem;
 	}
 
 	.button {
@@ -38,8 +43,34 @@
 		}
 
 		.navLink {
-			color: #868686;
+			color: var(--accent-light);
 			font-size: 0.9rem;
+		}
+	}
+
+	.footer {
+		margin-top: 2rem;
+		.signUp_container {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+
+			.text {
+				white-space: nowrap;
+				color: var(--accent-light);
+			}
+		}
+
+		.recaptcha {
+			font-size: 0.8rem;
+			.text {
+				color: var(--accent-light);
+				margin-top: 1rem;
+
+				.navLink {
+					color: #0071eb;
+				}
+			}
 		}
 	}
 }

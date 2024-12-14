@@ -30,6 +30,18 @@ export default function Form({ className = "", children, ...props }) {
 				<Form.RememberMe />
 				<Form.NavLink>{t("Form.set1.need_help")}</Form.NavLink>
 			</div>
+			<Form.Footer>
+				<div className={styles.signUp_container}>
+					<Form.Text>New to Netflix?</Form.Text>
+					<Form.NavLink>Sign up now</Form.NavLink>
+				</div>
+				<div className={styles.recaptcha}>
+					<Form.Text>
+						This page is protected by Google reCAPTCHA to ensure you're not a bot.{" "}
+						<Form.NavLink>Learn more</Form.NavLink>
+					</Form.Text>
+				</div>
+			</Form.Footer>
 		</form>
 	);
 }

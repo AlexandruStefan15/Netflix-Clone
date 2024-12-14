@@ -10,16 +10,15 @@
 
 	.container {
 		max-width: 1000px;
-		height: 100vh;
-		padding-inline: 2em;
-		margin-top: 3em;
-		margin-bottom: -25em;
+		padding-inline: 2rem;
+		margin-top: 3rem;
+		margin-bottom: 10rem;
 		margin-inline: auto;
 
 		@include media.mobile {
 			height: auto;
-			margin-bottom: 5rem;
-			padding-inline: 1.1em;
+			margin-bottom: 5.5rem;
+			padding-inline: 1.1rem;
 		}
 	}
 }
