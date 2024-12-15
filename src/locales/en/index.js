@@ -30,6 +30,10 @@ export default {
 			buttonText: "Sign In",
 			remember_me: "Remember me",
 			need_help: "Need help?",
+			recaptcha: "This page is protected by Google reCAPTCHA to ensure you're not a bot.",
+			learn_more: "Learn more",
+			new_to_netflix: "New to Netflix?",
+			sign_up: "Sign up now",
 		},
 	},
 

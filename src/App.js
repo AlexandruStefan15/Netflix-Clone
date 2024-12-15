@@ -1,6 +1,5 @@
 import React from "react";
 import "./styles/App.scss";
-import { useTranslation } from "react-i18next";
 import {
 	Route,
 	RouterProvider,
@@ -25,7 +24,6 @@ const router = createBrowserRouter(
 );
 
 function App() {
-	const { t, i18n } = useTranslation();
 	return <RouterProvider router={router} />;
 }
 

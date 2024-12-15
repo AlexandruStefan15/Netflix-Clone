@@ -31,6 +31,11 @@ export default {
 			buttonText: "Conectare",
 			remember_me: "Ține-mă minte",
 			need_help: "Ai nevoie de ajutor?",
+			recaptcha:
+				"Această pagină este protejată prin Google reCAPTCHA pentru a ne asigura că nu ești un robot.",
+			learn_more: "Detalii",
+			new_to_netflix: "Esti nou pe Netflix?",
+			sign_up: "Înregistrează-te",
 		},
 	},
 
