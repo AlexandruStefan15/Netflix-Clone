@@ -7,9 +7,9 @@ import {
 	createRoutesFromElements,
 } from "react-router-dom";
 
-import Header from "./Components/Header/Header";
+//import Header from "./Components/Header/Header";
+//import Footer from "./Components/Footer/Footer";
 import Home from "./Pages/Home/Home";
-import Footer from "./Components/Footer/Footer";
 import Login from "./Pages/Login/Login";
 import Browse from "./Pages/Browse/Browse";
 
