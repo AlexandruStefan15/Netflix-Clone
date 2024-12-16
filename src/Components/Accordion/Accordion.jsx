@@ -5,8 +5,8 @@ import accordionData from "../../Data/faq-home";
 import { inline_svgs } from "../../Assets/svgs/svgs";
 import { useTranslation } from "react-i18next";
 
-const AccordionContext = createContext({});
-const ItemContext = createContext({});
+const AccordionContext = createContext();
+const ItemContext = createContext();
 
 export default function Accordion({ data = accordionData, className = "", children, ...props }) {
 	const { t, i18n } = useTranslation();

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { EmailContext } from "./Context/EmailContext";
 import "./styles/App.scss";
 import {
 	Route,
@@ -24,7 +25,13 @@ const router = createBrowserRouter(
 );
 
 function App() {
-	return <RouterProvider router={router} />;
+	const [emailValue, setEmailValue] = useState("");
+
+	return (
+		<EmailContext.Provider value={{ emailValue, setEmailValue }}>
+			<RouterProvider router={router} />
+		</EmailContext.Provider>
+	);
 }
 
 export default App;

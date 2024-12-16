@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { EmailContext } from "../../Context/EmailContext";
 import { useTranslation } from "react-i18next";
 import { inline_svgs } from "../../Assets/svgs/svgs";
 import styles from "./styles.module.scss";
@@ -54,7 +55,18 @@ RegisterForm.Group = function RegisterForm_Group({ className = "", children, ...
 };
 
 RegisterForm.FormInput = function RegisterForm_FormInput({ className = "", children, ...props }) {
-	return <FormInput className={styles.formInput + ` ${className}`} {...props} />;
+	const { emailValue, setEmailValue } = useContext(EmailContext);
+
+	return (
+		<FormInput
+			className={styles.formInput + ` ${className}`}
+			onChange={(e) => {
+				setEmailValue(e.target.value);
+			}}
+			value={emailValue}
+			{...props}
+		/>
+	);
 };
 
 RegisterForm.Button = function RegisterForm_Button({ className = "", children, ...props }) {
