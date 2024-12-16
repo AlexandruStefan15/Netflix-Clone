@@ -25,9 +25,9 @@ export default function Form({ className = "", data, children, ...props }) {
 				name="email-or-phone"
 				id="login-email-or-phone"
 				pattern="^([^\s@]+@[^\s@]+\.[^\s@]+|\+?[0-9]{7,15})$"
-				value={data.emailValue}
+				value={data.userEmail}
 				onChange={(e) => {
-					data.setEmailValue(e.target.value);
+					data.setUserEmail(e.target.value);
 				}}
 			/>
 			<Form.FormInput

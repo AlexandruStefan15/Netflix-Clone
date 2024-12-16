@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { EmailContext } from "../../Context/EmailContext";
+import { UserContext } from "../../Context/UserContext";
 import { useTranslation } from "react-i18next";
 import { inline_svgs } from "../../Assets/svgs/svgs";
 import styles from "./styles.module.scss";
@@ -20,11 +20,11 @@ export default function RegisterForm({
 	const { t, i18n } = useTranslation();
 
 	const [inputValue, setInputValue] = useState("");
-	const { setEmailValue } = useContext(EmailContext);
+	const { setUserEmail } = useContext(UserContext);
 
 	if (children)
 		return (
-			<FormContext.Provider value={{ inputValue, setInputValue, setEmailValue }}>
+			<FormContext.Provider value={{ inputValue, setInputValue, setUserEmail }}>
 				<form action="" className={styles.form + ` ${className}`} {...props}>
 					{children}
 				</form>
@@ -39,7 +39,7 @@ export default function RegisterForm({
 					value={inputValue}
 					onChange={(e) => {
 						setInputValue(e.target.value);
-						setEmailValue(e.target.value);
+						setUserEmail(e.target.value);
 					}}
 				/>
 				<RegisterForm.Button type="submit">
@@ -68,14 +68,14 @@ RegisterForm.Group = function RegisterForm_Group({ className = "", children, ...
 };
 
 RegisterForm.FormInput = function RegisterForm_FormInput({ className = "", children, ...props }) {
-	const { inputValue, setInputValue, setEmailValue } = useContext(FormContext);
+	const { inputValue, setInputValue, setUserEmail } = useContext(FormContext);
 
 	return (
 		<FormInput
 			value={inputValue}
 			onChange={(e) => {
 				setInputValue(e.target.value);
-				setEmailValue(e.target.value);
+				props.type == "email" && setUserEmail(e.target.value);
 			}}
 			className={styles.formInput + ` ${className}`}
 			{...props}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { EmailContext } from "./Context/EmailContext";
+import { UserContext } from "./Context/UserContext";
 import "./styles/App.scss";
 import {
 	Route,
@@ -25,12 +25,12 @@ const router = createBrowserRouter(
 );
 
 function App() {
-	const [emailValue, setEmailValue] = useState("");
+	const [userEmail, setUserEmail] = useState("");
 
 	return (
-		<EmailContext.Provider value={{ emailValue, setEmailValue }}>
+		<UserContext.Provider value={{ userEmail, setUserEmail }}>
 			<RouterProvider router={router} />
-		</EmailContext.Provider>
+		</UserContext.Provider>
 	);
 }
 
