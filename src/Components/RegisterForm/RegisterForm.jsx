@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { EmailContext } from "../../Context/EmailContext";
 import { useTranslation } from "react-i18next";
 import { inline_svgs } from "../../Assets/svgs/svgs";
@@ -6,6 +6,8 @@ import styles from "./styles.module.scss";
 
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
+
+const FormContext = createContext();
 
 export default function RegisterForm({
 	className = "",
@@ -17,18 +19,29 @@ export default function RegisterForm({
 }) {
 	const { t, i18n } = useTranslation();
 
-	if (React.Children.count(children) > 0)
+	const [inputValue, setInputValue] = useState("");
+	const { setEmailValue } = useContext(EmailContext);
+
+	if (children)
 		return (
-			<form action="" className={styles.form + ` ${className}`} {...props}>
-				{children}
-			</form>
+			<FormContext.Provider value={{ inputValue, setInputValue, setEmailValue }}>
+				<form action="" className={styles.form + ` ${className}`} {...props}>
+					{children}
+				</form>
+			</FormContext.Provider>
 		);
 
 	return (
 		<form action="" className={styles.form + ` ${className}`}>
 			<RegisterForm.Title>{t(title)}</RegisterForm.Title>
 			<RegisterForm.Group>
-				<RegisterForm.FormInput />
+				<RegisterForm.FormInput
+					value={inputValue}
+					onChange={(e) => {
+						setInputValue(e.target.value);
+						setEmailValue(e.target.value);
+					}}
+				/>
 				<RegisterForm.Button type="submit">
 					{t(buttonText)}
 					<RegisterForm.Icon>{inline_svgs.right_arrow}</RegisterForm.Icon>
@@ -55,15 +68,16 @@ RegisterForm.Group = function RegisterForm_Group({ className = "", children, ...
 };
 
 RegisterForm.FormInput = function RegisterForm_FormInput({ className = "", children, ...props }) {
-	const { emailValue, setEmailValue } = useContext(EmailContext);
+	const { inputValue, setInputValue, setEmailValue } = useContext(FormContext);
 
 	return (
 		<FormInput
-			className={styles.formInput + ` ${className}`}
+			value={inputValue}
 			onChange={(e) => {
+				setInputValue(e.target.value);
 				setEmailValue(e.target.value);
 			}}
-			value={emailValue}
+			className={styles.formInput + ` ${className}`}
 			{...props}
 		/>
 	);

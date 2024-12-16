@@ -6,8 +6,15 @@ import { NavLink } from "react-router-dom";
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
 
-export default function Form({ className = "", emailValue, setEmailValue, children, ...props }) {
+export default function Form({ className = "", data, children, ...props }) {
 	const { t, i18n } = useTranslation();
+
+	if (children)
+		return (
+			<form action="" className={styles.form + ` ${className}`} {...props}>
+				{children}
+			</form>
+		);
 
 	return (
 		<form action="" className={styles.form + ` ${className}`} {...props}>
@@ -18,9 +25,9 @@ export default function Form({ className = "", emailValue, setEmailValue, childr
 				name="email-or-phone"
 				id="login-email-or-phone"
 				pattern="^([^\s@]+@[^\s@]+\.[^\s@]+|\+?[0-9]{7,15})$"
-				value={emailValue}
+				value={data.emailValue}
 				onChange={(e) => {
-					setEmailValue(e.target.value);
+					data.setEmailValue(e.target.value);
 				}}
 			/>
 			<Form.FormInput

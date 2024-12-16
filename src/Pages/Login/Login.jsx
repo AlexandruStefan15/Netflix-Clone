@@ -13,7 +13,7 @@ export default function Login() {
 		<div className={styles.page}>
 			<Header />
 			<div className={styles.container}>
-				<Form emailValue={emailValue} />
+				<Form data={{ emailValue, setEmailValue }} />
 			</div>
 			<Footer />
 		</div>
