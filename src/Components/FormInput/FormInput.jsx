@@ -24,10 +24,10 @@ export default function FormInput({
 
 	useEffect(() => {
 		if (value) setInputIsActive(true);
-	}, [value]);
+	}, []);
 
 	function handleBlur(e) {
-		if (e.target.value == "") setInputIsActive((prev) => !prev);
+		if (e.target.value == "") setInputIsActive(false);
 	}
 
 	return (

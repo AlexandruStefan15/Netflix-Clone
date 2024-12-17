@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext";
 import { useTranslation } from "react-i18next";
 import { inline_svgs } from "../../Assets/svgs/svgs";
@@ -7,7 +8,11 @@ import styles from "./styles.module.scss";
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
 
-const FormContext = createContext();
+const FormContext = createContext({
+	inputValue: "",
+	setInputValue: () => {},
+	setUserEmail: () => {},
+});
 
 export default function RegisterForm({
 	className = "",
@@ -15,24 +20,42 @@ export default function RegisterForm({
 	title = "RegisterForm.v1.title",
 	buttonText = "RegisterForm.v1.buttonText",
 	inputProps,
+	onSubmit,
 	...props
 }) {
 	const { t, i18n } = useTranslation();
 
 	const [inputValue, setInputValue] = useState("");
 	const { setUserEmail } = useContext(UserContext);
+	const navigate = useNavigate();
+
+	function handleSubmit(event) {
+		event.preventDefault();
+		setUserEmail(inputValue);
+		navigate("./login");
+	}
 
 	if (children)
 		return (
 			<FormContext.Provider value={{ inputValue, setInputValue, setUserEmail }}>
-				<form action="" className={styles.form + ` ${className}`} {...props}>
+				<form
+					onSubmit={onSubmit ? onSubmit : handleSubmit}
+					action=""
+					className={styles.form + ` ${className}`}
+					{...props}
+				>
 					{children}
 				</form>
 			</FormContext.Provider>
 		);
 
 	return (
-		<form action="" className={styles.form + ` ${className}`}>
+		<form
+			onSubmit={onSubmit ? onSubmit : handleSubmit}
+			action=""
+			className={styles.form + ` ${className}`}
+			{...props}
+		>
 			<RegisterForm.Title>{t(title)}</RegisterForm.Title>
 			<RegisterForm.Group>
 				<RegisterForm.FormInput
@@ -50,6 +73,8 @@ export default function RegisterForm({
 		</form>
 	);
 }
+
+// subComponents:
 
 RegisterForm.Title = function RegisterForm_Title({ className = "", children, ...props }) {
 	return (
