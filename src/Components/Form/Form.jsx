@@ -126,3 +126,19 @@ Form.RememberMe = function Form_RememberMe({ className = "", children, ...props 
 		</div>
 	);
 };
+
+Form.Recaptcha = function Form_Recaptcha({ className = "", children, ...props }) {
+	const { t, i18n } = useTranslation();
+
+	return (
+		<div className={styles.recaptcha + ` ${className}`} {...props}>
+			{children || (
+				<>
+					<Form.Text>
+						{t("Form.set1.recaptcha")} <Form.NavLink>{t("Form.set1.learn_more")}</Form.NavLink>
+					</Form.Text>
+				</>
+			)}
+		</div>
+	);
+};
