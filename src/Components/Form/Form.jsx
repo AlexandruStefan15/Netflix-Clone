@@ -46,11 +46,7 @@ export default function Form({ className = "", data, children, ...props }) {
 					<Form.Text>{t("Form.set1.new_to_netflix")}</Form.Text>
 					<Form.NavLink>{t("Form.set1.sign_up")}</Form.NavLink>
 				</div>
-				<div className={styles.recaptcha}>
-					<Form.Text>
-						{t("Form.set1.recaptcha")} <Form.NavLink>{t("Form.set1.learn_more")}</Form.NavLink>
-					</Form.Text>
-				</div>
+				<Form.Recaptcha />
 			</Form.Footer>
 		</form>
 	);

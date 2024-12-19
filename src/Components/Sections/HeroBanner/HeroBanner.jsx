@@ -8,11 +8,18 @@ import RegisterForm from "../../RegisterForm/RegisterForm";
 import Subtitle from "../../Subtitle/Subtitle";
 import Title from "../../Title/Title";
 
-export default function HeroBanner({ className = "" }) {
+export default function HeroBanner({ className = "", children, ...props }) {
 	const { t, i18n } = useTranslation();
 
+	if (children)
+		return (
+			<section className={styles.section + ` ${className}`} {...props}>
+				{children}
+			</section>
+		);
+
 	return (
-		<section className={styles.section + ` ${className}`}>
+		<section className={styles.section + ` ${className}`} {...props}>
 			<div className={styles.container}>
 				<Title className={styles.title}>{t("HeroBanner.set1.title")}</Title>
 				<Subtitle className={styles.subtitle}>{t("HeroBanner.set1.subtitle")}</Subtitle>
@@ -31,9 +38,9 @@ export default function HeroBanner({ className = "" }) {
 						</RegisterForm.Button>
 					</RegisterForm.Group>
 				</RegisterForm>
-				<div className={styles.image}>
-					<img src={images.bannerPicture} alt="movies" />
-				</div>
+			</div>
+			<div className={styles.image}>
+				<img src={images.bannerPicture} alt="movies" />
 			</div>
 		</section>
 	);
