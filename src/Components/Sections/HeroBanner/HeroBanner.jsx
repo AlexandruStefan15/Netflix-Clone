@@ -8,13 +8,23 @@ import RegisterForm from "../../RegisterForm/RegisterForm";
 import Subtitle from "../../Subtitle/Subtitle";
 import Title from "../../Title/Title";
 
-export default function HeroBanner({ className = "", children, ...props }) {
+export default function HeroBanner({ className = "", children, image, video, ...props }) {
 	const { t, i18n } = useTranslation();
 
 	if (children)
 		return (
 			<section className={styles.section + ` ${className}`} {...props}>
 				{children}
+				{image && (
+					<div className={styles.image}>
+						<img src={image} alt="movies" />
+					</div>
+				)}
+				{video && (
+					<div className={styles.video}>
+						<video src={video} autoPlay muted={false} playsInline preload="auto"></video>
+					</div>
+				)}
 			</section>
 		);
 

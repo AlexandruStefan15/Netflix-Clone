@@ -1,0 +1,17 @@
+@use "../../styles/breakpoints" as media;
+
+.heroBanner {
+	height: calc(100vh - 90px);
+	border-bottom: 0;
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		border: 1px solid;
+		max-width: 1000px;
+		left: 4rem;
+		bottom: 50%;
+		padding-inline: 2rem;
+	}
+}
