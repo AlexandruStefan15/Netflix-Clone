@@ -23,14 +23,16 @@
 			position: absolute;
 			left: 60px;
 			bottom: 31%;
-			gap: 1.75rem;
+			gap: 0.75rem;
 
 			.moviePoster {
 				@include animations.shrink();
+				margin-bottom: 1rem;
 			}
 
 			.subtitle {
-				font-size: clamp(1rem, 1.2vw, 1.625rem);
+				font-size: clamp(1.1rem, 1.2vw, 1.625rem);
+				margin-bottom: 1rem;
 				@include animations.fade_down();
 			}
 
