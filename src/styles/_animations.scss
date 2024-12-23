@@ -1,0 +1,68 @@
+@mixin fade-down(
+	$duration: 1.2s,
+	$timing: ease,
+	$delay: 5s,
+	$iteration_count: 1,
+	$direction: normal,
+	$fillmode: forwards,
+	$play_state: running
+) {
+	@keyframes fade-down {
+		0% {
+			opacity: 1;
+			transform: translateY(0);
+			//display: initial;
+		}
+
+		50% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 0;
+			transform: translateY(90%);
+			visibility: hidden;
+			//display: none;
+		}
+	}
+
+	animation-name: fade-down;
+	animation-duration: $duration;
+	animation-timing-function: $timing;
+	animation-delay: $delay;
+	animation-iteration-count: $iteration_count;
+	animation-direction: $direction;
+	animation-fill-mode: $fillmode;
+	animation-play-state: $play_state;
+}
+
+@mixin shrink(
+	$duration: 1.2s,
+	$timing: ease,
+	$delay: 5s,
+	$iteration_count: 1,
+	$direction: normal,
+	$fillmode: forwards,
+	$play_state: running
+) {
+	@keyframes shrink {
+		0% {
+			transform: scale(1) translate3d(0px, 0px, 0px);
+			transform-origin: left bottom;
+		}
+
+		100% {
+			transform: scale(0.75) translate3d(0px, 147px, 0px);
+			transform-origin: left bottom;
+		}
+	}
+
+	animation-name: shrink;
+	animation-duration: $duration;
+	animation-timing-function: $timing;
+	animation-delay: $delay;
+	animation-iteration-count: $iteration_count;
+	animation-direction: $direction;
+	animation-fill-mode: $fillmode;
+	animation-play-state: $play_state;
+}

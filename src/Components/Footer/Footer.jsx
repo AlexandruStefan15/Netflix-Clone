@@ -5,12 +5,12 @@ import { Trans, useTranslation } from "react-i18next";
 import Select from "../Select/Select";
 import { Link } from "react-router-dom";
 
-export default function Footer({ className = "" }) {
+export default function Footer({ className = "", ...props }) {
 	const { i18n } = useTranslation();
 	const languageChange = (e) => i18n.changeLanguage(e.target.value);
 
 	return (
-		<footer className={styles.section + ` ${className}`}>
+		<footer className={styles.section + ` ${className}`} {...props}>
 			<div className={styles.container}>
 				<p className={styles.text}>Ai întrebări? Sună la 0800-672-120</p>
 				<div className={styles.navigation}>

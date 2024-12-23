@@ -37,9 +37,19 @@
 	@include media.tablet_sm {
 		border-bottom-left-radius: 3px;
 		border-top-left-radius: 3px;
+		background-color: blue;
 	}
 
 	&[data-variant="2"] {
-		background: green;
+		display: inline-flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 0.5em 1.5em;
+		font-size: clamp(1rem, 1.12vw, 1.625rem);
+		font-weight: 600;
+		font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
+		color: black;
+		background: white;
+		border-radius: 4px;
 	}
 }

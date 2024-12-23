@@ -22,3 +22,11 @@
 		text-align: center;
 	}
 }
+
+.subtitle2 {
+	@extend .subtitle;
+
+	margin: 0px;
+	font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+}
