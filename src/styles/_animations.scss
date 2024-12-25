@@ -19,7 +19,7 @@
 
 		100% {
 			opacity: 0;
-			transform: translateY(90%);
+			transform: translateY(95%);
 			visibility: hidden;
 		}
 	}
@@ -35,13 +35,14 @@
 }
 
 @mixin shrink(
-	$duration: 1.2s,
+	$duration: 1.3s,
 	$timing: ease,
 	$delay: 5s,
 	$iteration_count: 1,
 	$direction: normal,
 	$fillmode: forwards,
-	$play_state: running
+	$play_state: running,
+	$distance: 147px
 ) {
 	@keyframes shrink {
 		0% {
@@ -50,7 +51,7 @@
 		}
 
 		100% {
-			transform: scale(0.75) translate3d(0px, 147px, 0px);
+			transform: scale(0.7) translate3d(0px, $distance, 0px); // Use the updated variable
 			transform-origin: left bottom;
 		}
 	}

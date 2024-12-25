@@ -71,7 +71,7 @@ Accordion.Label = function Accordion_Label({ className = "", children, ...props 
 	);
 };
 
-Accordion.Details = function Accordion_Details({ children, className = "", ref, ...props }) {
+Accordion.Details = function Accordion_Details({ children, className = "", ...props }) {
 	const { itemSelected } = useContext(AccordionContext);
 	const { index } = useContext(ItemContext);
 	const el = useRef(null);

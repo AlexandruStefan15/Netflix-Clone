@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "./Subtitle.module.scss";
 
-export default function Subtitle({ className = "", children, variant = "", ...props }) {
+const Subtitle = React.forwardRef(({ className = "", children, variant = "", ...props }, ref) => {
 	return (
-		<h2 className={styles[`subtitle${variant}`] + ` ${className}`} {...props}>
+		<h2 className={styles[`subtitle${variant}`] + ` ${className}`} ref={ref} {...props}>
 			{children}
 		</h2>
 	);
-}
+});
+
+export default Subtitle;
