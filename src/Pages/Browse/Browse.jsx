@@ -20,8 +20,8 @@ export default function Browse() {
 		if (subtitleRef.current) {
 			const height = subtitleRef.current.offsetHeight;
 			setSubtitleHeight(height);
+			console.log("mounted");
 		}
-		console.log("mounted");
 	}, []);
 
 	useEffect(() => {
