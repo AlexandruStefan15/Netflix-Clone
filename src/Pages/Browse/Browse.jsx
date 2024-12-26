@@ -37,25 +37,11 @@ export default function Browse() {
 			<HeroBanner video={videos.inception} className={styles.heroBanner}>
 				<div className={styles.container}>
 					<div className={styles.moviePoster} ref={moviePosterRef}>
-						<img
-							src="https://occ-0-3467-3466.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABcTzDJAsCDtGT5vpg2kkM9k5ckuFB1yvb8uJjL4PNGvTySXitzUyeo9EhZAh0mfrMDUqf6a_yEbzqHF7sC1YTcUKpA8DkD04YHdxiBsxGrkhwYW5ebMtCkm8N4SYg4y47BXOQcKEMVt3mXymdWIvcSk_xyMtf_kWPqVVenp0bL607FFFVZ41yQ.webp?r=31d"
-							alt=""
-						/>
+						<img src="https://image.tmdb.org/t/p/original/ffFR99UQiEZv0KPcmyDhZacru9c.png" alt="" />
 					</div>
-					<Subtitle
-						className={styles.subtitle}
-						variant="2"
-						ref={subtitleRef}
-						onAnimationEnd={(e) => {
-							e.target.style.overflow = "hidden";
-							e.target.style.whiteSpace = "nowrap";
-							e.target.style.marginTop = "max(4.85vw, 80px)";
-						}}
-					>
-						Un hoț genial, echipa lui loială și o agentă Interpol pe urmele lor. Cu următorul jaf,
-						vor ajunge fie în cărțile de istorie, fie după gratii. Un hoț genial, echipa lui loială
-						și o agentă Interpol pe urmele lor. Cu următorul jaf, vor ajunge fie în cărțile de
-						istorie, fie după gratii.
+					<Subtitle className={styles.subtitle} variant="2" ref={subtitleRef}>
+						Pentru a salva clubul de noapte al părinților ei, o dansatoare de pe Broadway montează
+						un varieteu exclusiv masculin, cu tematică de Crăciun, apoi cunoaște un tip versat.
 					</Subtitle>
 					<div className={styles.links_container}>
 						<Button data-variant="2">

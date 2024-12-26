@@ -14,6 +14,7 @@
 		height: calc(100vh - 90px);
 		border-bottom: 0;
 		z-index: 9;
+		min-height: 700px;
 
 		.container {
 			width: 36%;
@@ -27,7 +28,7 @@
 
 			.moviePoster {
 				&.shrinkAnimation {
-					@include animations.shrink($distance: calc(46px + var(--subtitle-height)));
+					@include animations.shrink($distance: calc(1.55 * var(--subtitle-height)));
 				}
 			}
 
