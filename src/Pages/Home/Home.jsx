@@ -14,7 +14,11 @@ export default function Home() {
 	return (
 		<>
 			<Header />
-			<HeroBanner />
+			<HeroBanner
+				title="HeroBanner.set1.title"
+				subtitle="HeroBanner.set1.subtitle"
+				showRegisterForm={true}
+			/>
 			<StoryPanel />
 			<StoryPanel2 />
 			<StoryPanel3 />

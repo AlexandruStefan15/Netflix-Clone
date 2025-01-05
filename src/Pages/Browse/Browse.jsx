@@ -12,49 +12,19 @@ import Link from "../../Components/Link/Link";
 import Button from "../../Components/Button/Button";
 
 export default function Browse() {
-	const subtitleRef = useRef(null);
-	const moviePosterRef = useRef(null);
-	const [subtitleHeight, setSubtitleHeight] = useState(0);
-
-	useEffect(() => {
-		if (subtitleRef.current) {
-			const height = subtitleRef.current.offsetHeight;
-			setSubtitleHeight(height);
-			console.log("mounted");
-		}
-	}, []);
-
-	useEffect(() => {
-		if (subtitleHeight > 0 && moviePosterRef.current) {
-			moviePosterRef.current.style.setProperty("--subtitle-height", `${subtitleHeight}px`);
-			moviePosterRef.current.classList.add(styles.shrinkAnimation);
-		}
-	}, [subtitleHeight]);
-
 	return (
 		<div className={styles.page}>
-			<Header className={styles.header} />
-			<HeroBanner video={videos.inception} className={styles.heroBanner}>
-				<div className={styles.container}>
-					<div className={styles.moviePoster} ref={moviePosterRef}>
-						<img src="https://image.tmdb.org/t/p/original/ffFR99UQiEZv0KPcmyDhZacru9c.png" alt="" />
-					</div>
-					<Subtitle className={styles.subtitle} variant="2" ref={subtitleRef}>
-						Pentru a salva clubul de noapte al părinților ei, o dansatoare de pe Broadway montează
-						un varieteu exclusiv masculin, cu tematică de Crăciun, apoi cunoaște un tip versat.
-					</Subtitle>
-					<div className={styles.links_container}>
-						<Button data-variant="2">
-							<div className={styles.icon}>{inline_svgs.right_arrow_thick}</div>
-							<span className={styles.text}>Redare</span>
-						</Button>
-						<Link data-variant="2">
-							<div className={styles.icon}>{inline_svgs.exclamation_mark}</div>
-							<span className={styles.text}>Mai multe informatii</span>
-						</Link>
-					</div>
-				</div>
-			</HeroBanner>
+			<Header className={styles.header} navbarProps={{ className: styles.navbar }} />
+			<HeroBanner
+				image="https://image.tmdb.org/t/p/original/yNlCFXqMzzGegSJ9LGhx9JoJ9Ns.jpg"
+				video={videos.inception}
+				movieTitleImage="https://occ-0-3467-3466.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABQxQ3b7SkJJIxy_ffd_6iLgos9_XbVbGY-q9n3PtcntXJiNutOoqs9q8SfNGUUOCjFXItEzJfZuFo9bhTL1G0WgcBdhTefcyaixWeoQqZYUq.webp?r=c62"
+				subtitle="Pentru a salva clubul de noapte al părinților ei, o dansatoare de pe Broadway montează
+						un varieteu exclusiv masculin, cu tematică de Crăciun, apoi cunoaște un tip versat."
+				movieLinks={true}
+				className={styles.heroBanner}
+				variant="2"
+			/>
 			<Footer style={{ background: "inherit" }} />
 		</div>
 	);

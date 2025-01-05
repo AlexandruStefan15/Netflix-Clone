@@ -4,10 +4,10 @@ import styles from "./Header.module.scss";
 
 import Navbar from "../Navbar/Navbar";
 
-export default function Header({ className = "", language }) {
+export default function Header({ className = "", navbarClassName = "", navbarProps, ...props }) {
 	return (
-		<header className={styles.section + ` ${className}`}>
-			<Navbar logo_path={svgs.netflix_logo} />
+		<header className={styles.section + ` ${className}`} {...props}>
+			<Navbar logo_path={svgs.netflix_logo} {...navbarProps} />
 		</header>
 	);
 }

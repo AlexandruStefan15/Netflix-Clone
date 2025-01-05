@@ -8,65 +8,10 @@
 	.header {
 		position: relative;
 		z-index: 10;
-	}
 
-	.heroBanner {
-		height: calc(100vh - 90px);
-		border-bottom: 0;
-		z-index: 9;
-		min-height: 700px;
-
-		.container {
-			width: 36%;
-			max-width: 725px;
-			display: flex;
-			flex-direction: column;
-			position: absolute;
-			left: 62px;
-			bottom: 20%;
-			gap: 1.75rem;
-
-			.moviePoster {
-				&.shrinkAnimation {
-					@include animations.shrink($distance: calc(1.55 * var(--subtitle-height)));
-				}
-			}
-
-			.subtitle {
-				font-size: clamp(1.3rem, 1.2vw, 1.625rem);
-				@include animations.fade_down();
-			}
-
-			.links_container {
-				display: flex;
-				gap: 1rem;
-
-				button {
-					padding-block: 0.54em;
-					padding-inline: 1.45em;
-					flex-shrink: 0;
-
-					.icon {
-						width: 1.55vw;
-						min-width: 22px;
-					}
-
-					.text {
-						position: relative;
-						top: -1px;
-					}
-				}
-
-				a {
-					color: white;
-					background: rgba(109, 109, 110, 0.7);
-
-					.icon {
-						width: 1.55vw;
-						min-width: 22px;
-					}
-				}
-			}
+		.navbar {
+			max-width: none;
+			min-height: 70px;
 		}
 	}
 }

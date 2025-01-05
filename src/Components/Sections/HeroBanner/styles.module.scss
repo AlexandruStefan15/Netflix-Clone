@@ -1,4 +1,5 @@
 @use "../../../styles/breakpoints" as media;
+@use "../../../styles/animations";
 
 .section {
 	padding-block: 10em;
@@ -100,8 +101,71 @@
 			object-fit: cover;
 		}
 	}
+}
 
-	.video {
+/* Variants: */
+
+.section2 {
+	height: calc(100vh - 90px);
+	border-bottom: 0;
+	z-index: 9;
+	position: relative;
+	min-height: 700px;
+
+	.container {
+		width: 36%;
+		max-width: 725px;
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		left: 64px;
+		bottom: 16%;
+		gap: 1.75rem;
+
+		.movieTitleImage {
+			&.shrinkAnimation {
+				@include animations.shrink($distance: calc(1.55 * var(--subtitle-height)));
+			}
+		}
+
+		.subtitle {
+			font-size: clamp(1.3rem, 1.2vw, 1.625rem);
+			@include animations.fade_down();
+		}
+
+		.links_container {
+			display: flex;
+			gap: 1rem;
+
+			button {
+				padding-block: 0.54em;
+				padding-inline: 1.45em;
+				flex-shrink: 0;
+
+				.icon {
+					width: 1.55vw;
+					min-width: 22px;
+				}
+
+				.text {
+					position: relative;
+					top: -1px;
+				}
+			}
+
+			a {
+				color: white;
+				background: rgba(109, 109, 110, 0.7);
+
+				.icon {
+					width: 1.55vw;
+					min-width: 22px;
+				}
+			}
+		}
+	}
+
+	.image {
 		position: absolute;
 		width: 100%;
 		height: calc(100% + 90px);
@@ -116,28 +180,75 @@
 			height: 100%;
 			top: 0em;
 			left: 0;
-			background-image: linear-gradient(0deg, rgb(0 0 0 / 0%) 0, transparent 60%, rgb(0 0 0 / 75%));
-		}
-
-		&::after {
-			position: absolute;
-			content: "";
-			width: 100%;
-			height: 100%;
-			bottom: -1px;
-			left: 0;
+			background: rgba(0, 0, 0, 0.4);
 			background-image: linear-gradient(
 				0deg,
-				rgb(20 20 20) 0,
+				rgba(0, 0, 0, 0.8) 0,
 				transparent 60%,
-				rgb(20 20 20 / 50%)
+				rgba(0, 0, 0, 0.2)
 			);
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.video {
+		position: absolute;
+		width: 100%;
+		height: calc(100% + 90px);
+		left: 0;
+		top: -90px;
+		z-index: -1;
+
+		&:has(video) {
+			&::before {
+				position: absolute;
+				content: "";
+				width: 100%;
+				height: 100%;
+				top: 0em;
+				left: 0;
+				background-image: linear-gradient(
+					0deg,
+					rgb(0 0 0 / 0%) 0,
+					transparent 60%,
+					rgb(0 0 0 / 75%)
+				);
+			}
+
+			&::after {
+				position: absolute;
+				content: "";
+				width: 100%;
+				height: 100%;
+				bottom: -1px;
+				left: 0;
+				background-image: linear-gradient(
+					0deg,
+					rgb(20 20 20) 0,
+					transparent 60%,
+					rgb(20 20 20 / 50%)
+				);
+			}
+			video {
+				opacity: 0;
+				transition: opacity 0.5s ease;
+
+				&.active {
+					opacity: 1;
+				}
+			}
 		}
 
 		video {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
+			opacity: 0;
 		}
 	}
 }
