@@ -123,14 +123,43 @@
 		gap: 1.75rem;
 
 		.movieTitleImage {
-			&.shrinkAnimation {
-				@include animations.shrink($distance: calc(1.55 * var(--subtitle-height)));
+			transform-origin: left bottom;
+			transition: transform 1.3s ease;
+			transition-delay: 5s;
+			transform: scale(0.71) translate3d(0px, calc(1.55 * var(--subtitle-height)), 0px);
+
+			@starting-style {
+				transform: scale(1) translate3d(0px, 0px, 0px);
 			}
+
+			&.visible {
+				transform: scale(1) translate3d(0px, 0px, 0px);
+				transition-delay: 0s;
+			}
+
+			/* &.shrinkAnimation {
+				@include animations.shrink($distance: calc(1.55 * var(--subtitle-height)));
+			} */
 		}
 
 		.subtitle {
+			//@include animations.fade_down();
 			font-size: clamp(1.3rem, 1.2vw, 1.625rem);
-			@include animations.fade_down();
+			transition: opacity 1.2s ease, transform 1.2s ease;
+			opacity: 0;
+			transform: translate(0, 95%);
+			transition-delay: 5s;
+
+			@starting-style {
+				opacity: 1;
+				transform: translate(0, 0);
+			}
+
+			&.visible {
+				opacity: 1;
+				transform: translate(0, 0);
+				transition-delay: 0s;
+			}
 		}
 
 		.links_container {

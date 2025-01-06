@@ -1,5 +1,5 @@
-import videoStory1 from "./videoStory1.m4v";
-import strangerThingsGuys from "./strangerThingsGuys.m4v";
+import videoStory1 from "./videoStory1.mp4";
+import strangerThingsGuys from "./strangerThingsGuys.mp4";
 import batman from "./batman.mp4";
 import inception from "./inception.mp4";
 

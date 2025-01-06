@@ -34,7 +34,6 @@ export default function HeroBanner({
 			const height = subtitleRef.current.offsetHeight;
 			setSubtitleHeight(height);
 			movieTitleImageRef.current.style.setProperty("--subtitle-height", `${height}px`);
-			movieTitleImageRef.current.classList.add(styles.shrinkAnimation);
 		}
 
 		const timer = setTimeout(() => {
@@ -101,7 +100,8 @@ export default function HeroBanner({
 					<video
 						onEnded={(e) => {
 							e.target.classList.remove(styles.active);
-							movieTitleImageRef.current.classList.remove(styles.shrinkAnimation); // use transition
+							movieTitleImageRef.current.classList.add(styles.visible);
+							subtitleRef.current.classList.add(styles.visible);
 						}}
 						ref={videoRef}
 						src={video}
