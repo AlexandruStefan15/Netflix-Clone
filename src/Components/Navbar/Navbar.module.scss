@@ -59,3 +59,32 @@
 		}
 	}
 }
+
+.nav2 {
+	@extend .nav;
+	max-width: none;
+	min-height: 70px;
+
+	.logo {
+		width: 96px;
+		padding-top: 0.5rem;
+	}
+
+	.primaryNavigationContainer {
+		display: flex;
+		gap: 3em;
+
+		.primaryNavigationList {
+			display: flex;
+			gap: 1.5em;
+			align-items: center;
+
+			.listItem {
+				.link {
+					font-size: 1.138rem;
+					font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu, sans-serif;
+				}
+			}
+		}
+	}
+}

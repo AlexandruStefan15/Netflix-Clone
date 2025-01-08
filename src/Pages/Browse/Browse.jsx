@@ -9,9 +9,14 @@ import Footer from "../../Components/Footer/Footer";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
 
 export default function Browse() {
+	const categories = ["Pagina principala", "Filme", "Seriale", "Noi si Populare", "Lista mea"];
+
 	return (
 		<div className={styles.page}>
-			<Header className={styles.header} navbarProps={{ className: styles.navbar }} />
+			<Header
+				className={styles.header}
+				navbarProps={{ variant: "2", primaryNavigation: categories }}
+			/>
 			<HeroBanner
 				image="https://image.tmdb.org/t/p/original/yNlCFXqMzzGegSJ9LGhx9JoJ9Ns.jpg"
 				video={videos.inception}
