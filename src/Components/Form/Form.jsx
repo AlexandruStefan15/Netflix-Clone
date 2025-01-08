@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Form.module.scss";
 import { useTranslation } from "react-i18next";
 
@@ -6,8 +6,20 @@ import { NavLink } from "react-router-dom";
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
 
-export default function Form({ className = "", data, children, ...props }) {
+export default function Form({ className = "", data, setUserEmail, children, ...props }) {
 	const { t, i18n } = useTranslation();
+	const [formData, setFormData] = useState({
+		email_or_phone: data.userEmail,
+		password: "",
+	});
+
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setFormData({
+			...formData,
+			[name]: value,
+		});
+	};
 
 	if (children)
 		return (
@@ -22,12 +34,14 @@ export default function Form({ className = "", data, children, ...props }) {
 			<Form.FormInput
 				type="text"
 				label="FormInput.label_3"
-				name="email-or-phone"
+				name="email_or_phone"
 				id="login-email-or-phone"
 				pattern="^([^\s@]+@[^\s@]+\.[^\s@]+|\+?[0-9]{7,15})$"
-				value={data.userEmail}
+				value={formData.email_or_phone}
 				onChange={(e) => {
-					data.setUserEmail(e.target.value);
+					const value = e.target.value;
+					setFormData({ ...formData, email_or_phone: value });
+					setUserEmail(value);
 				}}
 			/>
 			<Form.FormInput
@@ -35,6 +49,8 @@ export default function Form({ className = "", data, children, ...props }) {
 				label="FormInput.label_2"
 				name="password"
 				id="login-password"
+				value={formData.password}
+				onChange={handleChange}
 			/>
 			<Form.Button type="submit">{t("Form.set1.buttonText")}</Form.Button>
 			<div className={styles.rememberMe_container}>

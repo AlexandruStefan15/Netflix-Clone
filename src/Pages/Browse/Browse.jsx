@@ -7,9 +7,6 @@ import { useRef, useState, useEffect } from "react";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
-import Subtitle from "../../Components/Subtitle/Subtitle";
-import Link from "../../Components/Link/Link";
-import Button from "../../Components/Button/Button";
 
 export default function Browse() {
 	return (

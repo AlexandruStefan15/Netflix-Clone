@@ -20,7 +20,7 @@ export default function Login() {
 		<div className={styles.wrapper}>
 			<Header />
 			<div className={styles.container}>
-				<Form data={{ userEmail, setUserEmail }} onSubmit={handleSubmit} />
+				<Form data={{ userEmail }} setUserEmail={setUserEmail} onSubmit={handleSubmit} />
 			</div>
 			<Footer />
 		</div>

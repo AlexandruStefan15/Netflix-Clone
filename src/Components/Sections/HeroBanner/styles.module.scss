@@ -123,6 +123,9 @@
 		gap: 1.75rem;
 
 		.movieTitleImage {
+			/* &.shrinkAnimation {
+				@include animations.shrink($distance: calc(1.55 * var(--subtitle-height)));
+			} */
 			transform-origin: left bottom;
 			transition: transform 1.3s ease;
 			transition-delay: 5s;
@@ -136,16 +139,12 @@
 				transform: scale(1) translate3d(0px, 0px, 0px);
 				transition-delay: 0s;
 			}
-
-			/* &.shrinkAnimation {
-				@include animations.shrink($distance: calc(1.55 * var(--subtitle-height)));
-			} */
 		}
 
 		.subtitle {
 			//@include animations.fade_down();
 			font-size: clamp(1.3rem, 1.2vw, 1.625rem);
-			transition: opacity 1.2s ease, transform 1.2s ease;
+			transition: opacity 0.7s cubic-bezier(0.31, 0.76, 0.01, 1), transform 1.2s ease;
 			opacity: 0;
 			transform: translate(0, 95%);
 			transition-delay: 5s;
@@ -185,7 +184,8 @@
 			a {
 				color: white;
 				background: rgba(109, 109, 110, 0.7);
-
+				position: relative;
+				z-index: 1;
 				.icon {
 					width: 1.55vw;
 					min-width: 22px;
