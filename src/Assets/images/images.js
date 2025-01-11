@@ -4,6 +4,7 @@ import tv from "./tv.png";
 import tv2 from "./tv2.png";
 import boxshot from "./boxshot.png";
 import kids from "./kids.png";
+import inception from "./inception.webp";
 
 const images = {
 	bannerPicture,
@@ -12,6 +13,7 @@ const images = {
 	tv2,
 	boxshot,
 	kids,
+	inception,
 };
 
 export default images;

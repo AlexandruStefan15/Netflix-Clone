@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Navbar.module.scss";
 import { Trans, useTranslation } from "react-i18next";
+import { inline_svgs } from "../../Assets/svgs/svgs";
 
 import Link from "../Link/Link";
 import { NavLink } from "react-router-dom";
@@ -15,6 +16,7 @@ export default function Navbar({
 	},
 	className = "",
 	variant = "",
+	selectLanguage = true,
 	...props
 }) {
 	const { t, i18n } = useTranslation();
@@ -39,20 +41,32 @@ export default function Navbar({
 				<Logo className={styles.logo} src={logo_path} />
 			)}
 
-			<div className={styles.wrapper}>
-				<Select
-					className={styles.select}
-					name="languages"
-					onChange={languageChange}
-					value={i18n.language}
-				>
-					<Option value="ro">Romana</Option>
-					<Option value="en">English</Option>
-				</Select>
-				<Link to="/login">
-					<Trans i18nKey={linkText.i18nKey}>{{ t: linkText.value }}</Trans>
-				</Link>
-			</div>
+			{props.secondaryNavigation && (
+				<ul className={styles.secondaryNavigationList}>
+					<li>search</li>
+					<li>Copii</li>
+					<li>
+						<NavLink>{inline_svgs.ring_bell}</NavLink>
+					</li>
+					<li>icon</li>
+				</ul>
+			)}
+			{selectLanguage && (
+				<div className={styles.selectLanguageWrapper}>
+					<Select
+						className={styles.select}
+						name="languages"
+						onChange={languageChange}
+						value={i18n.language}
+					>
+						<Option value="ro">Romana</Option>
+						<Option value="en">English</Option>
+					</Select>
+					<Link to="/login">
+						<Trans i18nKey={linkText.i18nKey}>{{ t: linkText.value }}</Trans>
+					</Link>
+				</div>
+			)}
 		</nav>
 	);
 }
