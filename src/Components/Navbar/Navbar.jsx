@@ -28,8 +28,8 @@ export default function Navbar({
 					<ul className={styles.primaryNavigationList}>
 						{props.primaryNavigation.map((item, index) => (
 							<li className={styles.listItem} key={index}>
-								<NavLink className={styles.link} to={"#"}>
-									{item}
+								<NavLink className={styles.link} to={item.path}>
+									{item.name}
 								</NavLink>
 							</li>
 						))}

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Browse.module.scss";
 import videos from "../../Assets/videos/videos";
+import { NavLink, useParams, useNavigate, Outlet } from "react-router-dom";
 import { inline_svgs } from "../../Assets/svgs/svgs";
 import { useRef, useState, useEffect } from "react";
 
@@ -9,7 +10,14 @@ import Footer from "../../Components/Footer/Footer";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
 
 export default function Browse() {
-	const categories = ["Pagina principala", "Filme", "Seriale", "Noi si Populare", "Lista mea"];
+	const categories = [
+		{ name: "Pagina Principala", path: "" },
+		{ name: "Filme", path: "movies" },
+		{ name: "Seriale", path: "tv-series" },
+		{ name: "Noi si populare", path: "popular" },
+		{ name: "Lista mea", path: "#" },
+	];
+	const { category } = useParams();
 
 	return (
 		<div className={styles.page}>
@@ -27,6 +35,7 @@ export default function Browse() {
 				className={styles.heroBanner}
 				variant="2"
 			/>
+			<Outlet />
 			<Footer style={{ background: "inherit" }} />
 		</div>
 	);
