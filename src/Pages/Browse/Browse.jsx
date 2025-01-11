@@ -17,7 +17,6 @@ export default function Browse() {
 		{ name: "Noi si populare", path: "popular" },
 		{ name: "Lista mea", path: "#" },
 	];
-	const { category } = useParams();
 
 	return (
 		<div className={styles.page}>
