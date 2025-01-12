@@ -34,8 +34,7 @@ export default function Browse() {
 				image={images.inception}
 				video={videos.inception}
 				movieTitleImage="https://image.tmdb.org/t/p/original/8ThUfwQKqcNk6fTOVaWOts3kvku.png"
-				subtitle="Pentru a salva clubul de noapte al părinților ei, o dansatoare de pe Broadway montează
-						un varieteu exclusiv masculin, cu tematică de Crăciun, apoi cunoaște un tip versat."
+				subtitle="Un hoț care fură secrete corporative prin utilizarea tehnologiei de partajare a viselor i se încredințează sarcina de a planta o idee în mintea unui C.E.O pentru a-și asigura libertatea."
 				movieLinks={true}
 				className={styles.heroBanner}
 				variant="2"

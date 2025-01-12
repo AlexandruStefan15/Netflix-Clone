@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Navbar.module.scss";
 import { Trans, useTranslation } from "react-i18next";
-import { inline_svgs } from "../../Assets/svgs/svgs";
+import svgs, { inline_svgs } from "../../Assets/svgs/svgs";
 
 import Link from "../Link/Link";
 import { NavLink } from "react-router-dom";
@@ -43,12 +43,18 @@ export default function Navbar({
 
 			{props.secondaryNavigation && (
 				<ul className={styles.secondaryNavigationList}>
-					<li>search</li>
-					<li>Copii</li>
 					<li>
-						<NavLink>{inline_svgs.ring_bell}</NavLink>
+						<NavLink to={"#"}>{inline_svgs.search}</NavLink>
 					</li>
-					<li>icon</li>
+					<li>
+						<NavLink to={"#"}>Copii</NavLink>
+					</li>
+					<li>
+						<NavLink to={"#"}>{inline_svgs.ring_bell}</NavLink>
+					</li>
+					<li>
+						<NavLink to={"#"}>{inline_svgs.account}</NavLink>
+					</li>
 				</ul>
 			)}
 			{selectLanguage && (
