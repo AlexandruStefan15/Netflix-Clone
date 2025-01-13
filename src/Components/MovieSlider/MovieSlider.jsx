@@ -36,7 +36,7 @@ export default function MovieSlider({ movies }) {
 		className: "movie-slider",
 		infinite: true,
 		centerMode: true,
-		centerPadding: "60px",
+		centerPadding: "70px",
 		slidesToShow: 6,
 		slidesToScroll: 1,
 		swipeToSlide: true,

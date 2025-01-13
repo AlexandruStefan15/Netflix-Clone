@@ -20,10 +20,14 @@ export default function Discover() {
 
 				setGenres(genreMap);
 
-				for (let page = 1; page <= 8; page++) {
-					const movieData = await fetchCategory("discover", page);
-					setMovies((prev) => [...prev, ...movieData]);
-				}
+				const totalPages = 9;
+				const requests = Array.from({ length: totalPages }, (_, i) =>
+					fetchCategory("discover", i + 1)
+				);
+
+				const allPages = await Promise.all(requests);
+				const movieData = allPages.flat();
+				setMovies(movieData);
 			} catch (err) {
 				setError(err.message);
 			}
