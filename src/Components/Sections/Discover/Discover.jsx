@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchCategory } from "../../../api/tmdb";
 import { movieGenres } from "../../../Data/movieGenres";
+import styles from "./Discover.module.scss";
 
 import MovieList from "../../MovieList/MovieList";
 
@@ -19,8 +20,8 @@ export default function Discover() {
 
 				setGenres(genreMap);
 
-				for (let i = 1; i <= 5; i++) {
-					const movieData = await fetchCategory("discover", i);
+				for (let page = 1; page <= 8; page++) {
+					const movieData = await fetchCategory("discover", page);
 					setMovies((prev) => [...prev, ...movieData]);
 				}
 			} catch (err) {
@@ -32,9 +33,10 @@ export default function Discover() {
 	}, []);
 
 	return (
-		<div>
-			<h1>...</h1>
-			{<MovieList movies={movies} genres={genres} /* onMovieClick={onMovieClick} */ />}
-		</div>
+		<section className={styles.section}>
+			<div className={styles.container}>
+				{<MovieList movies={movies} genres={genres} /* onMovieClick={onMovieClick} */ />}
+			</div>
+		</section>
 	);
 }
