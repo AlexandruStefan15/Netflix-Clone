@@ -1,13 +1,39 @@
 import React from "react";
 import Slider, { Component } from "react-slick";
 import "./MovieSlider.scss";
-import images from "../../Assets/images/images";
+import { inline_svgs } from "../../Assets/svgs/svgs";
 
 const imageURL = `https://image.tmdb.org/t/p/w500`;
 
+function SamplePrevArrow(props) {
+	const { className, style, onClick } = props;
+	return (
+		<div
+			className="movie-slider_left-arrow"
+			style={{ ...style, display: "block" }}
+			onClick={onClick}
+		>
+			{inline_svgs.left_arrow_v2}
+		</div>
+	);
+}
+
+function SampleNextArrow(props) {
+	const { className, style, onClick } = props;
+	return (
+		<div
+			className="movie-slider_right-arrow"
+			style={{ ...style, display: "block" }}
+			onClick={onClick}
+		>
+			{inline_svgs.right_arrow_v2}
+		</div>
+	);
+}
+
 export default function MovieSlider({ movies }) {
 	const settings = {
-		className: "slider",
+		className: "movie-slider",
 		infinite: true,
 		centerMode: true,
 		centerPadding: "60px",
@@ -16,12 +42,14 @@ export default function MovieSlider({ movies }) {
 		swipeToSlide: true,
 		dots: false,
 		arrows: true,
+		nextArrow: <SampleNextArrow />,
+		prevArrow: <SamplePrevArrow />,
 	};
 
 	return (
 		<Slider {...settings}>
 			{movies.map((movie, index) => (
-				<div key={index} className="movie">
+				<div key={index} className="movie-slider_movie">
 					<img src={imageURL + movie.poster_path} alt="" />
 				</div>
 			))}

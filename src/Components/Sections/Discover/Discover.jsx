@@ -32,6 +32,8 @@ export default function Discover() {
 		fetchData();
 	}, []);
 
+	if (error) console.log(error);
+
 	return (
 		<section className={styles.section}>
 			<div className={styles.container}>

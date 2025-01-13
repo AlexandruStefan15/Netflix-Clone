@@ -2,12 +2,14 @@ import netflix_logo from "../svgs/Netflix_logo.svg";
 import dropDown_arrow from "./dropDown_arrow.svg";
 import globe from "./globe.svg";
 import right_arrow from "./right_arrow.svg";
+import left_arrow_v2 from "./left_arrow_v2.svg";
 
 const svgs = {
 	netflix_logo,
 	dropDown_arrow,
 	globe,
 	right_arrow,
+	left_arrow_v2,
 };
 
 export default svgs;
@@ -22,6 +24,18 @@ export const inline_svgs = {
 	right_arrow: (
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 23" height="24" width="24">
 			<path d="M8.025 22 6.25 20.225 14.475 12 6.25 3.775 8.025 2l10 10Z" />
+		</svg>
+	),
+
+	left_arrow_v2: (
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+			<path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
+		</svg>
+	),
+
+	right_arrow_v2: (
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+			<path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" />
 		</svg>
 	),
 
