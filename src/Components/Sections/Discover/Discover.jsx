@@ -47,7 +47,7 @@ export default function Discover() {
 	);
 }
 
-/* genreMap = {
+/* genres = {
 	28: "Filme de actiune",
 	12: "Filme de aventura",
 	16: "Filme anime",

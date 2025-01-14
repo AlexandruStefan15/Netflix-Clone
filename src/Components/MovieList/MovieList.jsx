@@ -54,3 +54,11 @@ export default function MovieList({ movies, genres }) {
     { id: 4, title: "Movie D", genre_ids: [35] }
   ]
 }; */
+
+/* genres = {
+	28: "Filme de actiune",
+	12: "Filme de aventura",
+	16: "Filme anime",
+  ...
+};
+ */
