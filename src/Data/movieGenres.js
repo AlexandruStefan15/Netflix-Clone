@@ -1,78 +1,74 @@
 export const movieGenres = [
 	{
 		id: 28,
-		name: "Action",
+		name: "Filme de actiune",
 	},
 	{
 		id: 12,
-		name: "Adventure",
+		name: "Filme de aventura",
 	},
 	{
 		id: 16,
-		name: "Animation",
+		name: "Filme anime",
 	},
 	{
 		id: 35,
-		name: "Comedy",
+		name: "Filme de comedie",
 	},
 	{
 		id: 80,
-		name: "Crime",
+		name: "Filme criminale",
 	},
 	{
 		id: 99,
-		name: "Documentary",
+		name: "Filme documentare",
 	},
 	{
 		id: 18,
-		name: "Drama",
+		name: "Filme dramatice",
 	},
 	{
 		id: 10751,
-		name: "Family",
+		name: "Filme pentru copii si familie",
 	},
 	{
 		id: 14,
-		name: "Fantasy",
+		name: "Filme de fantezie",
 	},
 	{
 		id: 36,
-		name: "History",
+		name: "Filme istorice",
 	},
 	{
 		id: 27,
-		name: "Horror",
+		name: "Filme horror",
 	},
 	{
 		id: 10402,
-		name: "Music",
+		name: "Musical",
 	},
 	{
 		id: 9648,
-		name: "Mystery",
+		name: "Filme cu mister",
 	},
 	{
 		id: 10749,
-		name: "Romance",
+		name: "Filme romantice",
 	},
 	{
 		id: 878,
 		name: "Science Fiction",
 	},
 	{
-		id: 10770,
-		name: "TV Movie",
-	},
-	{
 		id: 53,
-		name: "Thriller",
+		name: "Thrillere",
 	},
 	{
 		id: 10752,
-		name: "War",
+		name: "Filme de razboi",
 	},
 	{
 		id: 37,
-		name: "Western",
+		name: "Filme din vestul salbatic",
 	},
 ];

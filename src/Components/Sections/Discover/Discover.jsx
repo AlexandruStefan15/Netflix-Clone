@@ -20,7 +20,7 @@ export default function Discover() {
 
 				setGenres(genreMap);
 
-				const totalPages = 9;
+				const totalPages = 10;
 				const requests = Array.from({ length: totalPages }, (_, i) =>
 					fetchCategory("discover", i + 1)
 				);
@@ -46,3 +46,11 @@ export default function Discover() {
 		</section>
 	);
 }
+
+/* genreMap = {
+	28: "Filme de actiune",
+	12: "Filme de aventura",
+	16: "Filme anime",
+  ...
+};
+ */
