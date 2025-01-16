@@ -23,9 +23,13 @@ export const tvGenres = [
 		id: 18,
 		name: "Drame TV",
 	},
-	{
+	/* {
 		id: 10751,
-		name: "Seriale pentru copii si familie",
+		name: "Seriale de familie",
+	}, */
+	{
+		id: 10762,
+		name: "Seriale pentru copii",
 	},
 	{
 		id: 9648,
@@ -33,7 +37,7 @@ export const tvGenres = [
 	},
 	{
 		id: 10763,
-		name: "News",
+		name: "Seriale de stiri",
 	},
 	{
 		id: 10764,
@@ -50,5 +54,9 @@ export const tvGenres = [
 	{
 		id: 37,
 		name: "Seriale Western",
+	},
+	{
+		id: 10766,
+		name: "Telenovele",
 	},
 ];

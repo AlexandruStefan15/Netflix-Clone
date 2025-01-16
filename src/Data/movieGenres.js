@@ -33,7 +33,7 @@ export const movieGenres = [
 	},
 	{
 		id: 14,
-		name: "Filme de fantezie",
+		name: "Filme fantastice",
 	},
 	{
 		id: 36,

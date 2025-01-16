@@ -23,11 +23,11 @@ export default function Discover() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const moviesMappedGenres = mapGenres(movieGenres);
-				const seriesMappedGenres = mapGenres(tvGenres);
+				const moviesGenresMapped = mapGenres(movieGenres);
+				const seriesGenresMapped = mapGenres(tvGenres);
 
-				setMoviesGenres(moviesMappedGenres);
-				setSeriesGenres(seriesMappedGenres);
+				setMoviesGenres(moviesGenresMapped);
+				setSeriesGenres(seriesGenresMapped);
 
 				const totalPages = 10;
 				const movieRequests = Array.from({ length: totalPages }, (_, i) =>
@@ -71,16 +71,43 @@ export default function Discover() {
 	);
 }
 
-/* moviesGenresMap = {
+/*
+
+movieGenres = [
+	{
+		id: 28,
+		name: "Filme de actiune",
+	},
+	{
+		id: 12,
+		name: "Filme de aventura",
+	},
+  ...
+]
+
+tvGenres = [
+	{
+		id: 10759,
+		name: "Seriale de actiune si aventura",
+	},
+	{
+		id: 16,
+		name: "Seriale anime",
+	},
+  ...
+];
+
+
+ moviesGenresMapped = {
 	28: "Filme de actiune",
 	12: "Filme de aventura",
 	16: "Filme anime",
   35: "Filme de comedie",
   ... 
 };
- */
+ 
 
-/* seriesGenresMap = {
+ seriesGenresMapped = {
 	28: "Seriale de actiune",
 	12: "Seriale de aventura",
 	16: "Seriale anime",

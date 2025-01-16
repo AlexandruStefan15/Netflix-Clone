@@ -17,38 +17,50 @@ const combineGroups = (groupedMovies, groupedSeries) => {
 	const genreIds = new Set([...Object.keys(groupedMovies), ...Object.keys(groupedSeries)]);
 
 	genreIds.forEach((genreId) => {
+		// Combine movies and series, then filter out duplicates
+		const combinedMovies = [...(groupedMovies[genreId] || [])];
+		const combinedSeries = [...(groupedSeries[genreId] || [])];
+
+		// Use a Set to ensure no duplicate entries in movies or series
 		combinedGroups[genreId] = {
-			movies: groupedMovies[genreId] || [],
-			series: groupedSeries[genreId] || [],
+			movies: Array.from(new Set(combinedMovies.map(JSON.stringify))).map(JSON.parse),
+			series: Array.from(new Set(combinedSeries.map(JSON.stringify))).map(JSON.parse),
 		};
 	});
 
 	return combinedGroups;
 };
 
-const renderGroupedItems = (groupedItems = {}, genres = [], types = []) =>
-	Object.keys(groupedItems).map((genreId) => {
-		const hasEnoughMovies = groupedItems[genreId].movies.length >= 7;
-		const hasEnoughSeries = groupedItems[genreId].series.length >= 7;
+const renderGroupedItems = (movies = {}, moviesGenres = {}, series = {}, seriesGenres = {}) => {
+	const combinedCategory = combineGroups(movies, series);
+
+	return Object.keys(combinedCategory).map((genreId) => {
+		const hasEnoughMovies = combinedCategory[genreId].movies.length >= 8;
+		const hasEnoughSeries = combinedCategory[genreId].series.length >= 8;
+		const movieTitle = moviesGenres[genreId];
+		const tvTitle = seriesGenres[genreId];
 
 		if (hasEnoughMovies || hasEnoughSeries)
 			return (
 				<React.Fragment key={genreId}>
-					{hasEnoughMovies && (
+					{hasEnoughMovies && movieTitle && (
 						<div className={styles.container}>
-							<h2 className={styles.title}>{genres[0][genreId]}</h2>
-							<MovieSlider movies={groupedItems[genreId][types[0]]} />
+							<h2 className={styles.title}>{movieTitle}</h2>
+							<MovieSlider movies={combinedCategory[genreId].movies} />
 						</div>
 					)}
-					{hasEnoughSeries && (
+					{hasEnoughSeries && tvTitle && (
 						<div className={styles.container}>
-							<h2 className={styles.title}>{genres[1][genreId]}</h2>
-							<MovieSlider movies={groupedItems[genreId][types[1]]} />
+							<h2 className={styles.title}>{tvTitle}</h2>
+							<MovieSlider movies={combinedCategory[genreId].series} />
 						</div>
 					)}
 				</React.Fragment>
 			);
+
+		return null;
 	});
+};
 
 export default function MovieList({
 	movies = [],
@@ -58,11 +70,8 @@ export default function MovieList({
 }) {
 	const groupedMovies = groupByGenre(movies);
 	const groupedSeries = groupByGenre(series);
-	const combinedGroups = combineGroups(groupedMovies, groupedSeries);
 
-	return (
-		<>{renderGroupedItems(combinedGroups, [moviesGenres, seriesGenres], ["movies", "series"])}</>
-	);
+	return <>{renderGroupedItems(groupedMovies, moviesGenres, groupedSeries, seriesGenres)}</>;
 }
 
 /* 
