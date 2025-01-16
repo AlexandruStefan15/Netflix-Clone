@@ -17,11 +17,11 @@ const combineGroups = (groupedMovies, groupedSeries) => {
 	const genreIds = new Set([...Object.keys(groupedMovies), ...Object.keys(groupedSeries)]);
 
 	genreIds.forEach((genreId) => {
-		// Combine movies and series, then filter out duplicates
+		// Combine movies and series
 		const combinedMovies = [...(groupedMovies[genreId] || [])];
 		const combinedSeries = [...(groupedSeries[genreId] || [])];
 
-		// Use a Set to ensure no duplicate entries in movies or series
+		// remove duplicates
 		combinedGroups[genreId] = {
 			movies: Array.from(new Set(combinedMovies.map(JSON.stringify))).map(JSON.parse),
 			series: Array.from(new Set(combinedSeries.map(JSON.stringify))).map(JSON.parse),
