@@ -36,7 +36,7 @@ export default function MovieSlider({ movies }) {
 		className: "movie-slider",
 		infinite: true,
 		centerMode: true,
-		centerPadding: "70px",
+		centerPadding: "75px",
 		slidesToShow: 6,
 		slidesToScroll: 1,
 		swipeToSlide: true,
@@ -48,11 +48,14 @@ export default function MovieSlider({ movies }) {
 
 	return (
 		<Slider {...settings}>
-			{movies.map((movie, index) => (
-				<div key={index} className="movie-slider_movie">
-					<img src={imageURL + movie.poster_path} alt="" />
-				</div>
-			))}
+			{movies.map(
+				(movie, index) =>
+					movie.poster_path && (
+						<div key={index} className="movie-slider_movie">
+							<img src={imageURL + movie.poster_path} alt="" />
+						</div>
+					)
+			)}
 		</Slider>
 	);
 }
