@@ -10,15 +10,18 @@ export default function Movies() {
 	const [genres, setGenres] = useState({});
 	const [error, setError] = useState(null);
 
+	function mapGenres(genres) {
+		return genres.reduce((acc, genre) => {
+			acc[genre.id] = genre.name;
+			return acc;
+		}, {});
+	}
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const genreMap = movieGenres.reduce((acc, genre) => {
-					acc[genre.id] = genre.name;
-					return acc;
-				}, {});
-
-				setGenres(genreMap);
+				const mappedGenres = mapGenres(movieGenres);
+				setGenres(mappedGenres);
 
 				const totalPages = 10;
 				const requests = Array.from({ length: totalPages }, (_, i) =>
@@ -36,7 +39,7 @@ export default function Movies() {
 		fetchData();
 	}, []);
 
-	if (error) console.log(error);
+	console.log(movies);
 
 	return (
 		<section className={styles.section}>

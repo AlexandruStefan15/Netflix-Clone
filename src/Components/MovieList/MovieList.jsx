@@ -27,23 +27,28 @@ const combineGroups = (groupedMovies, groupedSeries) => {
 };
 
 const renderGroupedItems = (groupedItems = {}, genres = [], types = []) =>
-	Object.keys(groupedItems)
-		.filter(
-			(genreId) =>
-				groupedItems[genreId].movies.length >= 7 && groupedItems[genreId].series.length >= 7
-		)
-		.map((genreId) => (
-			<React.Fragment key={genreId}>
-				<div className={styles.container}>
-					<h2 className={styles.title}>{genres[0][genreId]}</h2>
-					<MovieSlider movies={groupedItems[genreId][types[0]]} />
-				</div>
-				<div className={styles.container}>
-					<h2 className={styles.title}>{genres[1][genreId]}</h2>
-					<MovieSlider movies={groupedItems[genreId][types[1]]} />
-				</div>
-			</React.Fragment>
-		));
+	Object.keys(groupedItems).map((genreId) => {
+		const hasEnoughMovies = groupedItems[genreId].movies.length >= 7;
+		const hasEnoughSeries = groupedItems[genreId].series.length >= 7;
+
+		if (hasEnoughMovies || hasEnoughSeries)
+			return (
+				<React.Fragment key={genreId}>
+					{hasEnoughMovies && (
+						<div className={styles.container}>
+							<h2 className={styles.title}>{genres[0][genreId]}</h2>
+							<MovieSlider movies={groupedItems[genreId][types[0]]} />
+						</div>
+					)}
+					{hasEnoughSeries && (
+						<div className={styles.container}>
+							<h2 className={styles.title}>{genres[1][genreId]}</h2>
+							<MovieSlider movies={groupedItems[genreId][types[1]]} />
+						</div>
+					)}
+				</React.Fragment>
+			);
+	});
 
 export default function MovieList({
 	movies = [],
