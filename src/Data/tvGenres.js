@@ -23,10 +23,6 @@ export const tvGenres = [
 		id: 18,
 		name: "Drame TV",
 	},
-	/* {
-		id: 10751,
-		name: "Seriale de familie",
-	}, */
 	{
 		id: 10762,
 		name: "Seriale pentru copii",
