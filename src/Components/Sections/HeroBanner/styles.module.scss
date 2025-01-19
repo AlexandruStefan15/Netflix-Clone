@@ -265,14 +265,6 @@
 					rgb(20 20 20 / 50%)
 				);
 			}
-			video {
-				opacity: 0;
-				transition: opacity 0.5s ease;
-
-				&.active {
-					opacity: 1;
-				}
-			}
 		}
 
 		video {
@@ -280,6 +272,11 @@
 			height: 100%;
 			object-fit: cover;
 			opacity: 0;
+			transition: none;
+			&.active {
+				opacity: 1;
+				transition: opacity 0.5s ease;
+			}
 		}
 	}
 }

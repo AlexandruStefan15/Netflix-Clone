@@ -3,7 +3,7 @@ import images from "../../../Assets/images/images";
 import { useTranslation } from "react-i18next";
 import { inline_svgs } from "../../../Assets/svgs/svgs";
 import styles from "./styles.module.scss";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useLayoutEffect } from "react";
 
 import RegisterForm from "../../RegisterForm/RegisterForm";
 import Subtitle from "../../Subtitle/Subtitle";
@@ -30,6 +30,10 @@ export default function HeroBanner({
 	const movieTitleImageRef = useRef(null);
 
 	useEffect(() => {
+		if (videoRef.current) {
+			videoRef.current.classList.remove(styles.active);
+		}
+
 		if (movieTitleImageRef.current && subtitleRef.current) {
 			const height = subtitleRef.current.offsetHeight;
 			setSubtitleHeight(height);
@@ -38,13 +42,14 @@ export default function HeroBanner({
 
 		const timer = setTimeout(() => {
 			if (videoRef.current) {
+				videoRef.current.load();
 				videoRef.current.classList.add(styles.active);
 				videoRef.current.play();
 			}
 		}, 1500);
 
 		return () => clearTimeout(timer);
-	}, []);
+	}, [video]);
 
 	return (
 		<section className={styles[`section${variant}`] + ` ${className}`} {...props}>
