@@ -24,7 +24,7 @@ export default function Browse() {
 
 	function getVideoBanner(videos) {
 		if (location.pathname === "/browse/movies") {
-			return videos.batman;
+			return videos.queensGambit;
 		}
 		if (location.pathname === "/browse/tv-series") {
 			return videos.aliceInBorderland;
@@ -46,7 +46,7 @@ export default function Browse() {
 			<HeroBanner
 				image={images.inception}
 				video={getVideoBanner(videos)}
-				movieTitleImage="https://image.tmdb.org/t/p/original/8ThUfwQKqcNk6fTOVaWOts3kvku.png"
+				movieLogo="https://image.tmdb.org/t/p/original/8ThUfwQKqcNk6fTOVaWOts3kvku.png"
 				subtitle="Un hoț care fură secrete corporative prin utilizarea tehnologiei de partajare a viselor i se încredințează sarcina de a planta o idee în mintea unui C.E.O pentru a-și asigura libertatea."
 				movieLinks={true}
 				className={styles.heroBanner}

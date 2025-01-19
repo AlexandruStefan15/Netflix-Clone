@@ -3,7 +3,7 @@ import images from "../../../Assets/images/images";
 import { useTranslation } from "react-i18next";
 import { inline_svgs } from "../../../Assets/svgs/svgs";
 import styles from "./styles.module.scss";
-import { useEffect, useRef, useState, useLayoutEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import RegisterForm from "../../RegisterForm/RegisterForm";
 import Subtitle from "../../Subtitle/Subtitle";
@@ -18,7 +18,7 @@ export default function HeroBanner({
 	variant = "",
 	title,
 	subtitle,
-	movieTitleImage,
+	movieLogo,
 	movieLinks,
 	showRegisterForm,
 	...props
@@ -27,23 +27,23 @@ export default function HeroBanner({
 	const [subtitleHeight, setSubtitleHeight] = useState(0);
 	const videoRef = useRef(null);
 	const subtitleRef = useRef(null);
-	const movieTitleImageRef = useRef(null);
+	const movieLogoRef = useRef(null);
+	const imageRef = useRef(null);
 
 	useEffect(() => {
-		if (videoRef.current) {
-			videoRef.current.classList.remove(styles.active);
+		if (imageRef.current) {
+			imageRef.current.classList.remove(styles.hidden);
 		}
 
-		if (movieTitleImageRef.current && subtitleRef.current) {
+		if (movieLogoRef.current && subtitleRef.current) {
 			const height = subtitleRef.current.offsetHeight;
 			setSubtitleHeight(height);
-			movieTitleImageRef.current.style.setProperty("--subtitle-height", `${height}px`);
+			movieLogoRef.current.style.setProperty("--subtitle-height", `${height}px`);
 		}
 
 		const timer = setTimeout(() => {
-			if (videoRef.current) {
-				videoRef.current.load();
-				videoRef.current.classList.add(styles.active);
+			if (videoRef.current && imageRef.current) {
+				imageRef.current.classList.add(styles.hidden);
 				videoRef.current.play();
 			}
 		}, 1500);
@@ -55,9 +55,9 @@ export default function HeroBanner({
 		<section className={styles[`section${variant}`] + ` ${className}`} {...props}>
 			<div className={styles.container}>
 				{title && <Title className={styles.title}>{t(title)}</Title>}
-				{movieTitleImage && (
-					<div className={styles.movieTitleImage} ref={movieTitleImageRef}>
-						<img src={movieTitleImage} alt="" />
+				{movieLogo && (
+					<div className={styles.movieLogo} ref={movieLogoRef}>
+						<img src={movieLogo} alt="" />
 					</div>
 				)}
 				{subtitle && (
@@ -96,7 +96,7 @@ export default function HeroBanner({
 				)}
 			</div>
 			{image && (
-				<div className={styles.image}>
+				<div ref={imageRef} className={styles.image}>
 					<img src={image} alt="movies" />
 				</div>
 			)}
@@ -104,9 +104,9 @@ export default function HeroBanner({
 				<div className={styles.video}>
 					<video
 						onEnded={(e) => {
-							e.target.classList.remove(styles.active);
-							movieTitleImageRef.current.classList.add(styles.visible);
+							movieLogoRef.current.classList.add(styles.visible);
 							subtitleRef.current.classList.add(styles.visible);
+							imageRef.current.classList.remove(styles.hidden);
 						}}
 						ref={videoRef}
 						src={video}
