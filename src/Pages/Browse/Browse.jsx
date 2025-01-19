@@ -12,7 +12,7 @@ const BrowseContext = createContext();
 
 export default function Browse() {
 	const location = useLocation();
-	const [bannerVideo, setBannerVideo] = useState(null);
+	const [bannerData, setBannerData] = useState({ video: null, image: null });
 
 	const categories = [
 		{ name: "Pagina Principala", path: "" },
@@ -22,15 +22,27 @@ export default function Browse() {
 		{ name: "Lista mea", path: "#" },
 	];
 
-	function getVideoBanner(videos) {
-		if (location.pathname === "/browse/movies") {
-			return videos.queensGambit;
+	useEffect(() => {
+		function getBannerData(bannerVideos = videos, bannerImages = images) {
+			let data = {};
+
+			if (location.pathname === "/browse/movies") {
+				data.video = bannerVideos.queensGambit;
+				data.image = bannerImages.queensGambit;
+			}
+			if (location.pathname === "/browse/tv-series") {
+				data.video = bannerVideos.aliceInBorderland;
+				data.image = bannerImages.aliceInBorderland;
+			}
+			if (location.pathname === "/browse") {
+				data.video = bannerVideos.inception;
+				data.image = bannerImages.inception;
+			}
+			return data;
 		}
-		if (location.pathname === "/browse/tv-series") {
-			return videos.aliceInBorderland;
-		}
-		if (location.pathname === "/browse") return videos.inception;
-	}
+
+		setBannerData(getBannerData());
+	}, [location.pathname]);
 
 	return (
 		<div className={styles.page}>
@@ -44,8 +56,8 @@ export default function Browse() {
 				}}
 			/>
 			<HeroBanner
-				image={images.inception}
-				video={getVideoBanner(videos)}
+				image={bannerData.image}
+				video={bannerData.video}
 				movieLogo="https://image.tmdb.org/t/p/original/8ThUfwQKqcNk6fTOVaWOts3kvku.png"
 				subtitle="Un hoț care fură secrete corporative prin utilizarea tehnologiei de partajare a viselor i se încredințează sarcina de a planta o idee în mintea unui C.E.O pentru a-și asigura libertatea."
 				movieLinks={true}

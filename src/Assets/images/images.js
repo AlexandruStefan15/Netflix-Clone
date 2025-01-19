@@ -5,6 +5,8 @@ import tv2 from "./tv2.png";
 import boxshot from "./boxshot.png";
 import kids from "./kids.png";
 import inception from "./inception.webp";
+import queensGambit from "./queensGambit.jpg";
+import aliceInBorderland from "./aliceBorderland.jpg";
 
 const images = {
 	bannerPicture,
@@ -14,6 +16,8 @@ const images = {
 	boxshot,
 	kids,
 	inception,
+	queensGambit,
+	aliceInBorderland,
 };
 
 export default images;

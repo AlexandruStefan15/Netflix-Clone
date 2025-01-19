@@ -46,7 +46,7 @@ export default function HeroBanner({
 				imageRef.current.classList.add(styles.hidden);
 				videoRef.current.play();
 			}
-		}, 1500);
+		}, 1550);
 
 		return () => clearTimeout(timer);
 	}, [video]);
