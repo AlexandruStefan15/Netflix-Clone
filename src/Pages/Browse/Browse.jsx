@@ -56,8 +56,8 @@ export default function Browse() {
 				}}
 			/>
 			<HeroBanner
-				image={bannerData.image}
-				video={bannerData.video}
+				image={bannerData.image || ""}
+				video={bannerData.video || ""}
 				movieLogo="https://image.tmdb.org/t/p/original/8ThUfwQKqcNk6fTOVaWOts3kvku.png"
 				subtitle="Un hoț care fură secrete corporative prin utilizarea tehnologiei de partajare a viselor i se încredințează sarcina de a planta o idee în mintea unui C.E.O pentru a-și asigura libertatea."
 				movieLinks={true}

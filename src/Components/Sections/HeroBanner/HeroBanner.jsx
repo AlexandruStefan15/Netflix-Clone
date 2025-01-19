@@ -25,10 +25,17 @@ export default function HeroBanner({
 }) {
 	const { t, i18n } = useTranslation();
 	const [subtitleHeight, setSubtitleHeight] = useState(0);
+	const [isImageLoaded, setIsImageLoaded] = useState(false);
+	const [currentImage, setCurrentImage] = useState(image);
 	const videoRef = useRef(null);
 	const subtitleRef = useRef(null);
 	const movieLogoRef = useRef(null);
 	const imageRef = useRef(null);
+
+	useEffect(() => {
+		setIsImageLoaded(false); // Reset image load state
+		setCurrentImage(image); // Update the image
+	}, [image]); // Trigger on image change
 
 	useEffect(() => {
 		if (imageRef.current) {
@@ -95,9 +102,14 @@ export default function HeroBanner({
 					</div>
 				)}
 			</div>
-			{image && (
+			{currentImage && (
 				<div ref={imageRef} className={styles.image}>
-					<img src={image} alt="movies" />
+					<img
+						src={currentImage}
+						alt="movies"
+						onLoad={() => setIsImageLoaded(true)}
+						style={{ visibility: isImageLoaded ? "visible" : "hidden" }}
+					/>
 				</div>
 			)}
 			{video && (
@@ -118,47 +130,3 @@ export default function HeroBanner({
 		</section>
 	);
 }
-
-/* HeroBanner.Container = function HeroBanner_Container({
-	children,
-	className = "",
-	variant = "",
-	...props
-}) {
-	return (
-		<div className={styles[`container${variant}`] + ` ${className}`} {...props}>
-			{children}
-		</div>
-	);
-};
-
-HeroBanner.MovieTitle = function HeroBanner_MovieTitle({ children, className = "", ...props }) {
-	const movieTitleRef = useRef(null);
-
-	useEffect(() => {
-		movieTitleRef.current.style.setProperty("--subtitle-height", `${subtitleHeight}px`);
-		movieTitleRef.current.classList.add(styles.shrinkAnimation);
-	}, [subtitleHeight]);
-
-	return (
-		<div className={styles.movieTitle + ` ${className}`} ref={movieTitleRef} {...props}>
-			{props.image && <img src={props.image} alt={props.alt} />}
-			{children}
-		</div>
-	);
-};
-
-HeroBanner.Subtitle = function HeroBanner_Subtitle({ children, className = "", ...props }) {
-	const subtitleRef = useRef(null);
-
-	useEffect(() => {
-		const height = subtitleRef.current.offsetHeight;
-		setSubtitleHeight(height);
-	}, []);
-
-	return (
-		<Subtitle className={styles.subtitle} ref={subtitleRef} variant="2" {...props}>
-			{children}
-		</Subtitle>
-	);
-}; */
