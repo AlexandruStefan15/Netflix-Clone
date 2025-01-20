@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { inline_svgs } from "../../../Assets/svgs/svgs";
 import styles from "./styles.module.scss";
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import RegisterForm from "../../RegisterForm/RegisterForm";
 import Subtitle from "../../Subtitle/Subtitle";
@@ -23,10 +24,14 @@ export default function HeroBanner({
 	showRegisterForm,
 	...props
 }) {
+	const location = useLocation();
 	const { t, i18n } = useTranslation();
 	const [subtitleHeight, setSubtitleHeight] = useState(0);
+	const [transitionActive, setTransitionActive] = useState(false);
 	const [isImageLoaded, setIsImageLoaded] = useState(false);
 	const [currentImage, setCurrentImage] = useState(image);
+	const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+	const [currentVideo, setCurrentVideo] = useState(video);
 	const videoRef = useRef(null);
 	const subtitleRef = useRef(null);
 	const movieLogoRef = useRef(null);
@@ -38,6 +43,9 @@ export default function HeroBanner({
 	}, [image]); // Trigger on image change
 
 	useEffect(() => {
+		setIsVideoLoaded(false); // Reset video load state
+		setCurrentVideo(video); // Update the video
+
 		if (imageRef.current) {
 			imageRef.current.classList.remove(styles.hidden);
 		}
@@ -112,7 +120,7 @@ export default function HeroBanner({
 					/>
 				</div>
 			)}
-			{video && (
+			{currentVideo && (
 				<div className={styles.video}>
 					<video
 						onEnded={(e) => {
@@ -120,8 +128,10 @@ export default function HeroBanner({
 							subtitleRef.current.classList.add(styles.visible);
 							imageRef.current.classList.remove(styles.hidden);
 						}}
+						onPlay={() => setIsVideoLoaded(true)}
+						style={{ visibility: isVideoLoaded ? "visible" : "hidden" }}
 						ref={videoRef}
-						src={video}
+						src={currentVideo}
 						muted={false}
 						playsInline
 					></video>
