@@ -50,12 +50,6 @@ export default function HeroBanner({
 			imageRef.current.classList.remove(styles.hidden);
 		}
 
-		if (movieLogoRef.current && subtitleRef.current) {
-			const height = subtitleRef.current.offsetHeight;
-			setSubtitleHeight(height);
-			movieLogoRef.current.style.setProperty("--subtitle-height", `${height}px`);
-		}
-
 		const timer = setTimeout(() => {
 			if (videoRef.current && imageRef.current) {
 				imageRef.current.classList.add(styles.hidden);
@@ -65,6 +59,24 @@ export default function HeroBanner({
 
 		return () => clearTimeout(timer);
 	}, [video]);
+
+	useEffect(() => {
+		if (movieLogoRef.current && subtitleRef.current) {
+			const height = subtitleRef.current.offsetHeight;
+			setSubtitleHeight(height);
+			movieLogoRef.current.style.setProperty("--subtitle-height", `${height}px`);
+
+			movieLogoRef.current.classList.remove(styles.shrink);
+			subtitleRef.current.classList.remove(styles.fadeOut);
+
+			const timer = setTimeout(() => {
+				movieLogoRef.current.classList.add(styles.shrink);
+				subtitleRef.current.classList.add(styles.fadeOut);
+			}, 6000);
+
+			return () => clearTimeout(timer);
+		}
+	}, [location]);
 
 	return (
 		<section className={styles[`section${variant}`] + ` ${className}`} {...props}>
