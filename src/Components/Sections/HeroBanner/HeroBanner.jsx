@@ -78,12 +78,9 @@ export default function HeroBanner({
 	}, [video, image]);
 
 	useEffect(() => {
-		if (!transitionActive) {
-			movieLogoRef.current?.classList.add(styles.stopTransition);
-			subtitleRef.current?.classList.add(styles.stopTransition);
-		} else {
-			movieLogoRef.current?.classList.remove(styles.stopTransition);
-			subtitleRef.current?.classList.remove(styles.stopTransition);
+		if (transitionActive == 15) {
+			movieLogoRef.current?.classList.add(styles.visible);
+			subtitleRef.current?.classList.add(styles.visible);
 		}
 	}, [transitionActive]);
 
@@ -93,7 +90,9 @@ export default function HeroBanner({
 				{title && <Title className={styles.title}>{t(title)}</Title>}
 				{movieLogo && (
 					<div
-						className={styles.movieLogo + ` ${transitionActive ? styles.hidden : ""}`}
+						className={
+							styles.movieLogo + ` ${transitionActive ? styles.hidden : styles.stopTransition}`
+						}
 						ref={movieLogoRef}
 					>
 						<img src={movieLogo} alt="" />
@@ -101,7 +100,9 @@ export default function HeroBanner({
 				)}
 				{subtitle && (
 					<Subtitle
-						className={styles.subtitle + ` ${transitionActive ? styles.hidden : ""}`}
+						className={
+							styles.subtitle + ` ${transitionActive ? styles.hidden : styles.stopTransition}`
+						}
 						variant={variant}
 						ref={subtitleRef}
 					>
@@ -152,7 +153,7 @@ export default function HeroBanner({
 				<div className={styles.video}>
 					<video
 						onEnded={() => {
-							setTransitionActive(false);
+							setTransitionActive(15);
 							imageRef.current.classList.remove(styles.hidden);
 						}}
 						onPlay={() => setIsVideoLoaded(true)}
