@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { inline_svgs } from "../../../Assets/svgs/svgs";
 import styles from "./styles.module.scss";
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
 
 import RegisterForm from "../../RegisterForm/RegisterForm";
 import Subtitle from "../../Subtitle/Subtitle";
@@ -24,49 +23,37 @@ export default function HeroBanner({
 	showRegisterForm,
 	...props
 }) {
-	const location = useLocation();
 	const { t, i18n } = useTranslation();
 	const [subtitleHeight, setSubtitleHeight] = useState(0);
 	const [isImageLoaded, setIsImageLoaded] = useState(false);
-
+	const [currentImage, setCurrentImage] = useState(image);
 	const videoRef = useRef(null);
 	const subtitleRef = useRef(null);
 	const movieLogoRef = useRef(null);
 	const imageRef = useRef(null);
 
 	useEffect(() => {
+		setIsImageLoaded(false); // Reset image load state
+		setCurrentImage(image); // Update the image
+	}, [image]); // Trigger on image change
+
+	useEffect(() => {
+		if (imageRef.current) {
+			imageRef.current.classList.remove(styles.hidden);
+		}
+
 		if (movieLogoRef.current && subtitleRef.current) {
 			const height = subtitleRef.current.offsetHeight;
 			setSubtitleHeight(height);
 			movieLogoRef.current.style.setProperty("--subtitle-height", `${height}px`);
-
-			movieLogoRef.current.classList.remove(styles.shrink);
-			subtitleRef.current.classList.remove(styles.fadeOut);
-
-			const timer = setTimeout(() => {
-				movieLogoRef.current.classList.add(styles.shrink);
-				subtitleRef.current.classList.add(styles.fadeOut);
-			}, 6000);
-
-			return () => clearTimeout(timer);
 		}
-	}, [location]);
 
-	useEffect(() => {
-		setIsImageLoaded(false);
-
-		if (imageRef.current) {
-			imageRef.current.classList.remove(styles.hidden);
-		}
-	}, [image]);
-
-	useEffect(() => {
 		const timer = setTimeout(() => {
 			if (videoRef.current && imageRef.current) {
 				imageRef.current.classList.add(styles.hidden);
 				videoRef.current.play();
 			}
-		}, 1200);
+		}, 1550);
 
 		return () => clearTimeout(timer);
 	}, [video]);
@@ -115,10 +102,10 @@ export default function HeroBanner({
 					</div>
 				)}
 			</div>
-			{image && (
+			{currentImage && (
 				<div ref={imageRef} className={styles.image}>
 					<img
-						src={image}
+						src={currentImage}
 						alt="movies"
 						onLoad={() => setIsImageLoaded(true)}
 						style={{ visibility: isImageLoaded ? "visible" : "hidden" }}
@@ -129,11 +116,10 @@ export default function HeroBanner({
 				<div className={styles.video}>
 					<video
 						onEnded={(e) => {
-							movieLogoRef.current.classList.remove(styles.shrink);
-							subtitleRef.current.classList.remove(styles.fadeOut);
+							movieLogoRef.current.classList.add(styles.visible);
+							subtitleRef.current.classList.add(styles.visible);
 							imageRef.current.classList.remove(styles.hidden);
 						}}
-						style={{ visibility: isImageLoaded ? "visible" : "hidden" }}
 						ref={videoRef}
 						src={video}
 						muted={false}
