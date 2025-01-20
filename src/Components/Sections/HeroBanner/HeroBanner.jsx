@@ -66,29 +66,45 @@ export default function HeroBanner({
 			setSubtitleHeight(height);
 			movieLogoRef.current.style.setProperty("--subtitle-height", `${height}px`);
 
-			movieLogoRef.current.classList.remove(styles.shrink);
-			subtitleRef.current.classList.remove(styles.fadeOut);
-
 			const timer = setTimeout(() => {
-				movieLogoRef.current.classList.add(styles.shrink);
-				subtitleRef.current.classList.add(styles.fadeOut);
+				setTransitionActive(true);
 			}, 6000);
 
-			return () => clearTimeout(timer);
+			return () => {
+				clearTimeout(timer);
+				setTransitionActive(false);
+			};
 		}
-	}, [location]);
+	}, [video, image]);
+
+	useEffect(() => {
+		if (!transitionActive) {
+			movieLogoRef.current?.classList.add(styles.stopTransition);
+			subtitleRef.current?.classList.add(styles.stopTransition);
+		} else {
+			movieLogoRef.current?.classList.remove(styles.stopTransition);
+			subtitleRef.current?.classList.remove(styles.stopTransition);
+		}
+	}, [transitionActive]);
 
 	return (
 		<section className={styles[`section${variant}`] + ` ${className}`} {...props}>
 			<div className={styles.container}>
 				{title && <Title className={styles.title}>{t(title)}</Title>}
 				{movieLogo && (
-					<div className={styles.movieLogo} ref={movieLogoRef}>
+					<div
+						className={styles.movieLogo + ` ${transitionActive ? styles.hidden : ""}`}
+						ref={movieLogoRef}
+					>
 						<img src={movieLogo} alt="" />
 					</div>
 				)}
 				{subtitle && (
-					<Subtitle className={styles.subtitle} variant={variant} ref={subtitleRef}>
+					<Subtitle
+						className={styles.subtitle + ` ${transitionActive ? styles.hidden : ""}`}
+						variant={variant}
+						ref={subtitleRef}
+					>
 						{t(subtitle)}
 					</Subtitle>
 				)}
@@ -135,9 +151,8 @@ export default function HeroBanner({
 			{currentVideo && (
 				<div className={styles.video}>
 					<video
-						onEnded={(e) => {
-							movieLogoRef.current.classList.add(styles.visible);
-							subtitleRef.current.classList.add(styles.visible);
+						onEnded={() => {
+							setTransitionActive(false);
 							imageRef.current.classList.remove(styles.hidden);
 						}}
 						onPlay={() => setIsVideoLoaded(true)}
