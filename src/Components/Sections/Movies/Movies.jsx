@@ -23,7 +23,7 @@ export default function Movies() {
 				const mappedGenres = mapGenres(movieGenres);
 				setGenres(mappedGenres);
 
-				const totalPages = 10;
+				const totalPages = 12;
 				const requests = Array.from({ length: totalPages }, (_, i) =>
 					fetchCategory("movies", i + 1)
 				);

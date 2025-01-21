@@ -29,14 +29,23 @@ export default function Browse() {
 			if (location.pathname === "/browse/movies") {
 				data.video = bannerVideos.queensGambit;
 				data.image = bannerImages.queensGambit;
+				data.movieLogo = "https://image.tmdb.org/t/p/original/aNOWJOfaLlSZlQ93mCz4bsrjHm2.png";
+				data.subtitle =
+					"În anii șaizeci, o tânără orfană descoperă un talent neobișnuit pentru șah, schimbându-i viața și provocându-i mintea.";
 			}
 			if (location.pathname === "/browse/tv-series") {
 				data.video = bannerVideos.aliceInBorderland;
 				data.image = bannerImages.aliceInBorderland;
+				data.movieLogo = "https://image.tmdb.org/t/p/original/llCdgREXybsD9oeQ8dbWOxMmIR8.png";
+				data.subtitle =
+					"Un grup de prieteni se trezesc într-o lume străină, unde sunt forțați să participe la jocuri mortale pentru a supraviețui.";
 			}
 			if (location.pathname === "/browse") {
 				data.video = bannerVideos.inception;
 				data.image = bannerImages.inception;
+				data.movieLogo = "https://image.tmdb.org/t/p/original/8ThUfwQKqcNk6fTOVaWOts3kvku.png";
+				data.subtitle =
+					"Un hoț care fură secrete corporative prin utilizarea tehnologiei de partajare a viselor i se încredințează sarcina de a planta o idee în mintea unui C.E.O pentru a-și asigura libertatea.";
 			}
 			return data;
 		}
@@ -56,10 +65,10 @@ export default function Browse() {
 				}}
 			/>
 			<HeroBanner
-				image={bannerData.image || ""}
-				video={bannerData.video || ""}
-				movieLogo="https://image.tmdb.org/t/p/original/8ThUfwQKqcNk6fTOVaWOts3kvku.png"
-				subtitle="Un hoț care fură secrete corporative prin utilizarea tehnologiei de partajare a viselor i se încredințează sarcina de a planta o idee în mintea unui C.E.O pentru a-și asigura libertatea."
+				image={bannerData.image}
+				video={bannerData.video}
+				movieLogo={bannerData.movieLogo}
+				subtitle={bannerData.subtitle}
 				movieLinks={true}
 				className={styles.heroBanner}
 				variant="2"

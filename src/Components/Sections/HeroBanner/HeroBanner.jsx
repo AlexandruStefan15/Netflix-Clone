@@ -27,7 +27,7 @@ export default function HeroBanner({
 	const location = useLocation();
 	const { t, i18n } = useTranslation();
 	const [subtitleHeight, setSubtitleHeight] = useState(0);
-	const [transitionActive, setTransitionActive] = useState(false);
+	const [transitionIsActive, setTransitionIsActive] = useState(false);
 	const [isImageLoaded, setIsImageLoaded] = useState(false);
 	const [currentImage, setCurrentImage] = useState(image);
 	const [isVideoLoaded, setIsVideoLoaded] = useState(false);
@@ -67,22 +67,22 @@ export default function HeroBanner({
 			movieLogoRef.current.style.setProperty("--subtitle-height", `${height}px`);
 
 			const timer = setTimeout(() => {
-				setTransitionActive(true);
+				setTransitionIsActive(true);
 			}, 6000);
 
 			return () => {
 				clearTimeout(timer);
-				setTransitionActive(false);
+				setTransitionIsActive(false);
 			};
 		}
 	}, [video, image]);
 
 	useEffect(() => {
-		if (transitionActive == 15) {
+		if (transitionIsActive == "reset") {
 			movieLogoRef.current?.classList.add(styles.visible);
 			subtitleRef.current?.classList.add(styles.visible);
 		}
-	}, [transitionActive]);
+	}, [transitionIsActive]);
 
 	return (
 		<section className={styles[`section${variant}`] + ` ${className}`} {...props}>
@@ -91,7 +91,7 @@ export default function HeroBanner({
 				{movieLogo && (
 					<div
 						className={
-							styles.movieLogo + ` ${transitionActive ? styles.hidden : styles.stopTransition}`
+							styles.movieLogo + ` ${transitionIsActive ? styles.hidden : styles.stopTransition}`
 						}
 						ref={movieLogoRef}
 					>
@@ -101,7 +101,7 @@ export default function HeroBanner({
 				{subtitle && (
 					<Subtitle
 						className={
-							styles.subtitle + ` ${transitionActive ? styles.hidden : styles.stopTransition}`
+							styles.subtitle + ` ${transitionIsActive ? styles.hidden : styles.stopTransition}`
 						}
 						variant={variant}
 						ref={subtitleRef}
@@ -143,7 +143,7 @@ export default function HeroBanner({
 				<div ref={imageRef} className={styles.image}>
 					<img
 						src={currentImage}
-						alt="movies"
+						alt="hero-banner-image"
 						onLoad={() => setIsImageLoaded(true)}
 						style={{ visibility: isImageLoaded ? "visible" : "hidden" }}
 					/>
@@ -153,7 +153,7 @@ export default function HeroBanner({
 				<div className={styles.video}>
 					<video
 						onEnded={() => {
-							setTransitionActive(15);
+							setTransitionIsActive("reset");
 							imageRef.current.classList.remove(styles.hidden);
 						}}
 						onPlay={() => setIsVideoLoaded(true)}
