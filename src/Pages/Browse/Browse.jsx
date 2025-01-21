@@ -5,9 +5,7 @@ import { NavLink, useParams, useNavigate, Outlet, useLocation } from "react-rout
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
-import { getBannerData } from "../../Data/bannerData";
-
-const BrowseContext = createContext();
+import { getBannerData } from "../../Data/heroBannerData";
 
 const categories = [
 	{ name: "Pagina Principala", path: "" },
@@ -20,9 +18,16 @@ const categories = [
 export default function Browse() {
 	const location = useLocation();
 	const [bannerData, setBannerData] = useState({});
+	const [showBanner, setShowBanner] = useState(true);
 
 	useEffect(() => {
 		setBannerData(getBannerData("set1", location.pathname));
+		if (location.pathname === "/browse/popular") {
+			setShowBanner(false);
+		}
+		return () => {
+			setShowBanner(true);
+		};
 	}, [location.pathname]);
 
 	return (
@@ -36,15 +41,17 @@ export default function Browse() {
 					secondaryNavigation: true,
 				}}
 			/>
-			<HeroBanner
-				image={bannerData.image}
-				video={bannerData.video}
-				movieLogo={bannerData.movieLogo}
-				subtitle={bannerData.subtitle}
-				movieLinks={true}
-				className={styles.heroBanner}
-				variant="2"
-			/>
+			{showBanner && (
+				<HeroBanner
+					image={bannerData?.image}
+					video={bannerData?.video}
+					movieLogo={bannerData?.movieLogo}
+					subtitle={bannerData?.subtitle}
+					movieLinks={true}
+					className={styles.heroBanner}
+					variant="2"
+				/>
+			)}
 			<Outlet />
 			<Footer style={{ background: "inherit" }} />
 		</div>

@@ -1,10 +1,10 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import images from "../../../Assets/images/images";
 import { useTranslation } from "react-i18next";
 import { inline_svgs } from "../../../Assets/svgs/svgs";
 import styles from "./styles.module.scss";
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import usePauseOnTabChange from "../../../hooks/usePauseOnTabChange";
 
 import RegisterForm from "../../RegisterForm/RegisterForm";
 import Subtitle from "../../Subtitle/Subtitle";
@@ -24,7 +24,6 @@ export default function HeroBanner({
 	showRegisterForm,
 	...props
 }) {
-	const location = useLocation();
 	const { t, i18n } = useTranslation();
 	const [subtitleHeight, setSubtitleHeight] = useState(0);
 	const [transitionIsActive, setTransitionIsActive] = useState(false);
@@ -32,10 +31,13 @@ export default function HeroBanner({
 	const [currentImage, setCurrentImage] = useState(image);
 	const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 	const [currentVideo, setCurrentVideo] = useState(video);
+
 	const videoRef = useRef(null);
 	const subtitleRef = useRef(null);
 	const movieLogoRef = useRef(null);
 	const imageRef = useRef(null);
+
+	usePauseOnTabChange(videoRef);
 
 	useEffect(() => {
 		setIsImageLoaded(false);
