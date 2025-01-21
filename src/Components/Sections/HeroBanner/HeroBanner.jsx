@@ -38,13 +38,13 @@ export default function HeroBanner({
 	const imageRef = useRef(null);
 
 	useEffect(() => {
-		setIsImageLoaded(false); // Reset image load state
-		setCurrentImage(image); // Update the image
-	}, [image]); // Trigger on image change
+		setIsImageLoaded(false);
+		setCurrentImage(image);
+	}, [image]);
 
 	useEffect(() => {
-		setIsVideoLoaded(false); // Reset video load state
-		setCurrentVideo(video); // Update the video
+		setIsVideoLoaded(false);
+		setCurrentVideo(video);
 
 		if (imageRef.current) {
 			imageRef.current.classList.remove(styles.hidden);

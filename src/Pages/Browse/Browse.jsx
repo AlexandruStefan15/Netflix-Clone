@@ -1,56 +1,28 @@
-import React, { useRef, useState, useEffect, createContext, useContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import styles from "./Browse.module.scss";
-import videos from "../../Assets/videos/videos";
-import images from "../../Assets/images/images";
 import { NavLink, useParams, useNavigate, Outlet, useLocation } from "react-router-dom";
 
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
+import { getBannerData } from "../../Data/bannerData";
 
 const BrowseContext = createContext();
 
+const categories = [
+	{ name: "Pagina Principala", path: "" },
+	{ name: "Filme", path: "movies" },
+	{ name: "Seriale", path: "tv-series" },
+	{ name: "Noi si populare", path: "popular" },
+	{ name: "Lista mea", path: "#" },
+];
+
 export default function Browse() {
 	const location = useLocation();
-	const [bannerData, setBannerData] = useState({ video: null, image: null });
-
-	const categories = [
-		{ name: "Pagina Principala", path: "" },
-		{ name: "Filme", path: "movies" },
-		{ name: "Seriale", path: "tv-series" },
-		{ name: "Noi si populare", path: "popular" },
-		{ name: "Lista mea", path: "#" },
-	];
+	const [bannerData, setBannerData] = useState({});
 
 	useEffect(() => {
-		function getBannerData(bannerVideos = videos, bannerImages = images) {
-			let data = {};
-
-			if (location.pathname === "/browse/movies") {
-				data.video = bannerVideos.queensGambit;
-				data.image = bannerImages.queensGambit;
-				data.movieLogo = "https://image.tmdb.org/t/p/original/aNOWJOfaLlSZlQ93mCz4bsrjHm2.png";
-				data.subtitle =
-					"În anii șaizeci, o tânără orfană descoperă un talent neobișnuit pentru șah, schimbându-i viața și provocându-i mintea.";
-			}
-			if (location.pathname === "/browse/tv-series") {
-				data.video = bannerVideos.aliceInBorderland;
-				data.image = bannerImages.aliceInBorderland;
-				data.movieLogo = "https://image.tmdb.org/t/p/original/llCdgREXybsD9oeQ8dbWOxMmIR8.png";
-				data.subtitle =
-					"Un grup de prieteni se trezesc într-o lume străină, unde sunt forțați să participe la jocuri mortale pentru a supraviețui.";
-			}
-			if (location.pathname === "/browse") {
-				data.video = bannerVideos.inception;
-				data.image = bannerImages.inception;
-				data.movieLogo = "https://image.tmdb.org/t/p/original/8ThUfwQKqcNk6fTOVaWOts3kvku.png";
-				data.subtitle =
-					"Un hoț care fură secrete corporative prin utilizarea tehnologiei de partajare a viselor i se încredințează sarcina de a planta o idee în mintea unui C.E.O pentru a-și asigura libertatea.";
-			}
-			return data;
-		}
-
-		setBannerData(getBannerData());
+		setBannerData(getBannerData("set1", location.pathname));
 	}, [location.pathname]);
 
 	return (
