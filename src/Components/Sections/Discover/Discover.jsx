@@ -3,7 +3,6 @@ import { fetchCategory } from "../../../api/tmdb";
 import { movieGenres } from "../../../Data/movieGenres";
 import { tvGenres } from "../../../Data/tvGenres";
 import styles from "./Discover.module.scss";
-import { Outlet } from "react-router-dom";
 
 import MovieList from "../../MovieList/MovieList";
 
@@ -58,7 +57,6 @@ export default function Discover() {
 
 	return (
 		<section className={styles.section}>
-			<Outlet />
 			<div className={styles.container}>
 				{
 					<MovieList

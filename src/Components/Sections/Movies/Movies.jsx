@@ -4,7 +4,6 @@ import { movieGenres } from "../../../Data/movieGenres";
 import styles from "./Movies.module.scss";
 
 import MovieList from "../../MovieList/MovieList";
-import { Outlet } from "react-router-dom";
 
 export default function Movies() {
 	const [movies, setMovies] = useState([]);
@@ -42,7 +41,6 @@ export default function Movies() {
 
 	return (
 		<section className={styles.section}>
-			<Outlet />
 			<div className={styles.container}>
 				{<MovieList movies={movies} moviesGenres={genres} /* onMovieClick={onMovieClick} */ />}
 			</div>
