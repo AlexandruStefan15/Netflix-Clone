@@ -35,9 +35,9 @@ export default function Popular() {
 				const mappedGenres = mapGenres(movieGenres);
 				setGenres(mappedGenres);
 
-				const totalPages = 11;
+				const totalPages = 5;
 				const requests = Array.from({ length: totalPages }, (_, i) =>
-					fetchCategory("popular", i + 1)
+					fetchCategory("upcoming", i + 1)
 				);
 
 				const allPages = await Promise.all(requests);
@@ -58,6 +58,7 @@ export default function Popular() {
 					<MovieList
 						movies={movies}
 						moviesGenres={customGenres} /* onMovieClick={onMovieClick} */
+						simpleList={true}
 					/>
 				}
 			</div>

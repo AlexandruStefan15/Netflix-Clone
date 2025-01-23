@@ -8,3 +8,19 @@
 		margin-left: 1.45rem;
 	}
 }
+
+.simpleList {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 260px);
+	margin-inline: auto;
+	gap: 2rem;
+	width: 100%;
+	justify-content: center;
+
+	.listItem {
+		cursor: pointer;
+		img {
+			height: 100%;
+		}
+	}
+}

@@ -18,11 +18,11 @@ export default function Movies() {
 	}
 
 	useEffect(() => {
+		const mappedGenres = mapGenres(movieGenres);
+		setGenres(mappedGenres);
+
 		const fetchData = async () => {
 			try {
-				const mappedGenres = mapGenres(movieGenres);
-				setGenres(mappedGenres);
-
 				const totalPages = 11;
 				const requests = Array.from({ length: totalPages }, (_, i) =>
 					fetchCategory("movies", i + 1)
@@ -30,6 +30,7 @@ export default function Movies() {
 
 				const allPages = await Promise.all(requests);
 				const movieData = allPages.flat();
+				console.log(movieData);
 				setMovies(movieData);
 			} catch (err) {
 				setError(err.message);

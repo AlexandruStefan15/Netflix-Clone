@@ -67,9 +67,26 @@ export default function MovieList({
 	series = [],
 	moviesGenres = {},
 	seriesGenres = {},
+	simpleList = false,
 }) {
 	const groupedMovies = groupByGenre(movies);
 	const groupedSeries = groupByGenre(series);
+
+	if (simpleList) {
+		return (
+			<ul className={styles.simpleList}>
+				{movies.map((movie, index) => {
+					return (
+						movie.poster_path && (
+							<li key={index} className={styles.listItem}>
+								<img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" />
+							</li>
+						)
+					);
+				})}
+			</ul>
+		);
+	}
 
 	return <>{renderGroupedItems(groupedMovies, moviesGenres, groupedSeries, seriesGenres)}</>;
 }
