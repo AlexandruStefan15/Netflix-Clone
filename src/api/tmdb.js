@@ -5,7 +5,6 @@ export const fetchCategory = async (category, page) => {
 	const today = new Date().toISOString().split("T")[0];
 
 	const endpoints = {
-		discover: `/discover/movie`,
 		movies: `/discover/movie`,
 		"tv-series": `/discover/tv`,
 		popular: `/movie/popular`,

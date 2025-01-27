@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchCategory } from "../../../api/tmdb";
 import { movieGenres } from "../../../Data/movieGenres";
 import styles from "./Popular.module.scss";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import MovieList from "../../MovieList/MovieList";
 

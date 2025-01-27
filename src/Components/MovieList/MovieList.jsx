@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./MovieList.module.scss";
 import MovieSlider from "../MovieSlider/MovieSlider";
+import { useLocation, useNavigate } from "react-router-dom";
+
+import Modal from "../Modal/Modal";
 
 const groupByGenre = (items) =>
 	items.reduce((acc, item) => {
@@ -69,22 +72,29 @@ export default function MovieList({
 	seriesGenres = {},
 	simpleList = false,
 }) {
+	const [activeMovie, setActiveMovie] = useState(null);
 	const groupedMovies = groupByGenre(movies);
 	const groupedSeries = groupByGenre(series);
 
 	if (simpleList) {
 		return (
-			<ul className={styles.simpleList}>
-				{movies.map((movie, index) => {
-					return (
-						movie.poster_path && (
-							<li key={index} className={styles.listItem}>
-								<img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" />
-							</li>
-						)
-					);
-				})}
-			</ul>
+			<>
+				<ul className={styles.simpleList}>
+					{movies.map((movie, index) => {
+						return (
+							movie.poster_path && (
+								<li key={index} className={styles.listItem} onClick={() => setActiveMovie(movie)}>
+									<img
+										src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+										alt="movie-poster"
+									/>
+								</li>
+							)
+						);
+					})}
+				</ul>
+				{activeMovie && <Modal movie={activeMovie} onClose={() => setActiveMovie(null)} />}
+			</>
 		);
 	}
 

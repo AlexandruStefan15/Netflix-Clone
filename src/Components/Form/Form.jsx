@@ -126,13 +126,26 @@ Form.Button = function Form_Button({ className = "", children, ...props }) {
 
 Form.RememberMe = function Form_RememberMe({ className = "", children, ...props }) {
 	const { t } = useTranslation();
+	const [isChecked, setIsChecked] = useState(false);
+
+	function handleClick() {
+		setIsChecked(!isChecked);
+	}
 
 	return (
 		<div className={styles.rememberMe + ` ${className}`} {...props}>
 			{children || (
 				<>
-					<input name={props.name} id={props.id} type="checkbox" />
-					<label htmlFor={props.name}>{t("Form.set1.remember_me")}</label>
+					<input
+						onClick={handleClick}
+						name={props.name}
+						id={props.id}
+						type="checkbox"
+						checked={isChecked}
+					/>
+					<label onClick={handleClick} htmlFor={props.name}>
+						{t("Form.set1.remember_me")}
+					</label>
 				</>
 			)}
 		</div>

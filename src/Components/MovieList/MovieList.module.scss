@@ -11,16 +11,18 @@
 
 .simpleList {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, 260px);
+	grid-template-columns: repeat(auto-fit, 264px);
 	margin-inline: auto;
-	gap: 2rem;
+	gap: 1.75rem;
 	width: 100%;
 	justify-content: center;
 
 	.listItem {
+		aspect-ratio: 75 / 108;
 		cursor: pointer;
 		img {
 			height: 100%;
+			width: 100%;
 		}
 	}
 }

@@ -30,7 +30,7 @@ export default function Movies() {
 
 				const allPages = await Promise.all(requests);
 				const movieData = allPages.flat();
-				console.log(movieData);
+
 				setMovies(movieData);
 			} catch (err) {
 				setError(err.message);

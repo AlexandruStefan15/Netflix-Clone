@@ -15,7 +15,6 @@ import Discover from "./Components/Sections/Discover/Discover";
 import Movies from "./Components/Sections/Movies/Movies";
 import TvSeries from "./Components/Sections/TvSeries/TvSeries";
 import Popular from "./Components/Sections/Popular/Popular";
-import MovieDetails from "./Components/MovieDetails/MovieDetails";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(

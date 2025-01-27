@@ -6,6 +6,7 @@ import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
 import { getBannerData } from "../../Data/heroBannerData";
+import Modal from "../../Components/Modal/Modal";
 
 const categories = [
 	{ name: "Pagina Principala", path: "" },
@@ -15,10 +16,27 @@ const categories = [
 	{ name: "Lista mea", path: "#" },
 ];
 
+export const BrowseContext = createContext();
+
 export default function Browse() {
-	const location = useLocation();
 	const [bannerData, setBannerData] = useState({});
 	const [showBanner, setShowBanner] = useState(true);
+
+	const location = useLocation();
+	const navigate = useNavigate();
+	const queryParams = new URLSearchParams(location.search);
+	const movieId = queryParams.get("mid");
+
+	const openModal = (id) => {
+		const queryParams = new URLSearchParams(location.search);
+		queryParams.set("mid", id);
+		navigate({ search: queryParams.toString() });
+	};
+
+	const closeModal = () => {
+		queryParams.delete("mid");
+		navigate({ search: queryParams.toString() });
+	};
 
 	useEffect(() => {
 		setBannerData(getBannerData("set1", location.pathname));
@@ -53,6 +71,7 @@ export default function Browse() {
 				/>
 			)}
 			<Outlet />
+
 			<Footer style={{ background: "inherit" }} />
 		</div>
 	);

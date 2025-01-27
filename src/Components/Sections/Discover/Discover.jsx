@@ -31,7 +31,7 @@ export default function Discover() {
 
 				const totalPages = 11;
 				const movieRequests = Array.from({ length: totalPages }, (_, i) =>
-					fetchCategory("discover", i + 1)
+					fetchCategory("movies", i + 1)
 				);
 				const seriesRequests = Array.from({ length: totalPages }, (_, i) =>
 					fetchCategory("tv-series", i + 1)
