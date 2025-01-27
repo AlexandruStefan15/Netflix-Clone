@@ -34,7 +34,7 @@ export default function Modal({ movie, onClose }) {
 			</p>
 		);
 
-	console.log(movie);
+	/* console.log(movie); */
 
 	return (
 		<dialog ref={dialogRef} className={styles.dialog} onClose={onClose}>

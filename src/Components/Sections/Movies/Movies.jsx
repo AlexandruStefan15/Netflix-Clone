@@ -23,7 +23,7 @@ export default function Movies() {
 
 		const fetchData = async () => {
 			try {
-				const totalPages = 11;
+				const totalPages = 12;
 				const requests = Array.from({ length: totalPages }, (_, i) =>
 					fetchCategory("movies", i + 1)
 				);

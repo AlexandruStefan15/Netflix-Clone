@@ -29,7 +29,7 @@ export default function Discover() {
 				setMoviesGenres(moviesGenresMapped);
 				setSeriesGenres(seriesGenresMapped);
 
-				const totalPages = 11;
+				const totalPages = 12;
 				const movieRequests = Array.from({ length: totalPages }, (_, i) =>
 					fetchCategory("movies", i + 1)
 				);

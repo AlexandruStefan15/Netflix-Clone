@@ -46,7 +46,6 @@ export default function MovieList({
 
 	const groupedMovies = groupByGenre(movies);
 	const groupedSeries = groupByGenre(series);
-
 	const combinedCategory = combineGroups(groupedMovies, groupedSeries);
 
 	useEffect(() => {
@@ -94,25 +93,22 @@ export default function MovieList({
 		const movieTitle = moviesGenres[genreId];
 		const tvTitle = seriesGenres[genreId];
 
-		if (hasEnoughMovies || hasEnoughSeries)
-			return (
-				<React.Fragment key={genreId}>
-					{hasEnoughMovies && movieTitle && (
-						<div className={styles.container}>
-							<h2 className={styles.title}>{movieTitle}</h2>
-							<MovieSlider movies={combinedCategory[genreId].movies} />
-						</div>
-					)}
-					{hasEnoughSeries && tvTitle && (
-						<div className={styles.container}>
-							<h2 className={styles.title}>{tvTitle}</h2>
-							<MovieSlider movies={combinedCategory[genreId].series} />
-						</div>
-					)}
-				</React.Fragment>
-			);
-
-		return null;
+		return hasEnoughMovies || hasEnoughSeries ? (
+			<React.Fragment key={genreId}>
+				{hasEnoughMovies && movieTitle && (
+					<div className={styles.container}>
+						<h2 className={styles.title}>{movieTitle}</h2>
+						<MovieSlider movies={combinedCategory[genreId].movies} />
+					</div>
+				)}
+				{hasEnoughSeries && tvTitle && (
+					<div className={styles.container}>
+						<h2 className={styles.title}>{tvTitle}</h2>
+						<MovieSlider movies={combinedCategory[genreId].series} />
+					</div>
+				)}
+			</React.Fragment>
+		) : null;
 	});
 }
 
