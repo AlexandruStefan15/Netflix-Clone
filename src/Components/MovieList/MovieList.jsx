@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./MovieList.module.scss";
 import MovieSlider from "../MovieSlider/MovieSlider";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 import Modal from "../Modal/Modal";
 
@@ -72,28 +72,47 @@ export default function MovieList({
 	seriesGenres = {},
 	simpleList = false,
 }) {
+	const [searchParams, setSearchParams] = useSearchParams();
 	const [activeMovie, setActiveMovie] = useState(null);
+
 	const groupedMovies = groupByGenre(movies);
 	const groupedSeries = groupByGenre(series);
+
+	useEffect(() => {
+		const movieId = searchParams.get("movieId");
+		if (movieId) {
+			const selectedMovie = movies.find((movie) => movie.id.toString() === movieId);
+			setActiveMovie(selectedMovie || null);
+		}
+	}, [searchParams, movies]);
+
+	const handleMovieClick = (movie) => {
+		setActiveMovie(movie);
+		setSearchParams({ movieId: movie.id });
+	};
+
+	const handleCloseModal = () => {
+		setActiveMovie(null);
+		setSearchParams({});
+	};
 
 	if (simpleList) {
 		return (
 			<>
 				<ul className={styles.simpleList}>
-					{movies.map((movie, index) => {
-						return (
+					{movies.map(
+						(movie, index) =>
 							movie.poster_path && (
-								<li key={index} className={styles.listItem} onClick={() => setActiveMovie(movie)}>
+								<li key={index} className={styles.listItem} onClick={() => handleMovieClick(movie)}>
 									<img
 										src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
 										alt="movie-poster"
 									/>
 								</li>
 							)
-						);
-					})}
+					)}
 				</ul>
-				{activeMovie && <Modal movie={activeMovie} onClose={() => setActiveMovie(null)} />}
+				{activeMovie && <Modal movie={activeMovie} onClose={handleCloseModal} />}
 			</>
 		);
 	}

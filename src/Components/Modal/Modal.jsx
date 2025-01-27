@@ -17,7 +17,7 @@ export default function Modal({ movie, onClose }) {
 		return () => {
 			dialog?.removeEventListener("click", handleClickOutside);
 		};
-	}, [onClose]);
+	}, []);
 
 	useEffect(() => {
 		if (movie) {
@@ -26,6 +26,13 @@ export default function Modal({ movie, onClose }) {
 			dialogRef.current?.close();
 		}
 	}, [movie]);
+
+	if (!movie)
+		return (
+			<p style={{ color: "red" }}>
+				Error: the modal has no movie data to display, be sure to pass a movie.
+			</p>
+		);
 
 	return (
 		<dialog ref={dialogRef} className={styles.dialog} onClose={onClose}>
