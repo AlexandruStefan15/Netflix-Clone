@@ -52,9 +52,10 @@ export default function MovieList({
 		const movieId = searchParams.get("mid");
 		if (movieId) {
 			const selectedMovie = movies.find((movie) => movie.id.toString() === movieId);
+			console.log(selectedMovie);
 			setActiveMovie(selectedMovie || null);
 		}
-	}, [searchParams, movies]);
+	}, [searchParams, movies || series]);
 
 	const handleMovieClick = (movie) => {
 		setActiveMovie(movie);
