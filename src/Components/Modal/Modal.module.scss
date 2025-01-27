@@ -5,10 +5,8 @@
 	max-width: 1000px;
 	position: fixed;
 	left: 50%;
-	transform: translateX(-50%) scale(0);
 	top: 5%;
 	border: none;
-
 	max-height: 90%;
 
 	&::backdrop {
@@ -17,8 +15,14 @@
 	}
 
 	&[open] {
-		transition: transform 2s ease-in-out;
+		transition: transform 0.4s ease, opacity 0.5s ease;
 		transform: translateX(-50%) scale(1);
+		opacity: 1;
+
+		@starting-style {
+			transform: translateX(-50%) scale(0);
+			opacity: 0;
+		}
 	}
 
 	.content {
