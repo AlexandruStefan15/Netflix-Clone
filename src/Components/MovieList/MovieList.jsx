@@ -6,13 +6,13 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import Modal from "../Modal/Modal";
 
 const groupByGenre = (items) =>
-	items.reduce((acc, item) => {
-		if (!item.genre_ids) return acc;
+	items.reduce((groupedItems, item) => {
+		if (!item.genre_ids) return groupedItems;
 		item.genre_ids.forEach((genre) => {
-			acc[genre] = acc[genre] || [];
-			acc[genre].push(item);
+			groupedItems[genre] = groupedItems[genre] || [];
+			groupedItems[genre].push(item);
 		});
-		return acc;
+		return groupedItems;
 	}, {});
 
 const combineGroups = (groupedMovies, groupedSeries) => {
@@ -34,37 +34,6 @@ const combineGroups = (groupedMovies, groupedSeries) => {
 	return combinedGroups;
 };
 
-const renderGroupedItems = (movies = {}, moviesGenres = {}, series = {}, seriesGenres = {}) => {
-	const combinedCategory = combineGroups(movies, series);
-
-	return Object.keys(combinedCategory).map((genreId) => {
-		const hasEnoughMovies = combinedCategory[genreId].movies.length >= 8;
-		const hasEnoughSeries = combinedCategory[genreId].series.length >= 8;
-		const movieTitle = moviesGenres[genreId];
-		const tvTitle = seriesGenres[genreId];
-
-		if (hasEnoughMovies || hasEnoughSeries)
-			return (
-				<React.Fragment key={genreId}>
-					{hasEnoughMovies && movieTitle && (
-						<div className={styles.container}>
-							<h2 className={styles.title}>{movieTitle}</h2>
-							<MovieSlider movies={combinedCategory[genreId].movies} />
-						</div>
-					)}
-					{hasEnoughSeries && tvTitle && (
-						<div className={styles.container}>
-							<h2 className={styles.title}>{tvTitle}</h2>
-							<MovieSlider movies={combinedCategory[genreId].series} />
-						</div>
-					)}
-				</React.Fragment>
-			);
-
-		return null;
-	});
-};
-
 export default function MovieList({
 	movies = [],
 	series = [],
@@ -77,6 +46,8 @@ export default function MovieList({
 
 	const groupedMovies = groupByGenre(movies);
 	const groupedSeries = groupByGenre(series);
+
+	const combinedCategory = combineGroups(groupedMovies, groupedSeries);
 
 	useEffect(() => {
 		const movieId = searchParams.get("mid");
@@ -117,7 +88,32 @@ export default function MovieList({
 		);
 	}
 
-	return <>{renderGroupedItems(groupedMovies, moviesGenres, groupedSeries, seriesGenres)}</>;
+	return Object.keys(combinedCategory).map((genreId) => {
+		const hasEnoughMovies = combinedCategory[genreId].movies.length >= 8;
+		const hasEnoughSeries = combinedCategory[genreId].series.length >= 8;
+		const movieTitle = moviesGenres[genreId];
+		const tvTitle = seriesGenres[genreId];
+
+		if (hasEnoughMovies || hasEnoughSeries)
+			return (
+				<React.Fragment key={genreId}>
+					{hasEnoughMovies && movieTitle && (
+						<div className={styles.container}>
+							<h2 className={styles.title}>{movieTitle}</h2>
+							<MovieSlider movies={combinedCategory[genreId].movies} />
+						</div>
+					)}
+					{hasEnoughSeries && tvTitle && (
+						<div className={styles.container}>
+							<h2 className={styles.title}>{tvTitle}</h2>
+							<MovieSlider movies={combinedCategory[genreId].series} />
+						</div>
+					)}
+				</React.Fragment>
+			);
+
+		return null;
+	});
 }
 
 /* 

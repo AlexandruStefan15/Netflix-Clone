@@ -33,7 +33,7 @@ export const tvGenres = [
 	},
 	{
 		id: 10763,
-		name: "Seriale de stiri",
+		name: "Stiri TV",
 	},
 	{
 		id: 10764,
