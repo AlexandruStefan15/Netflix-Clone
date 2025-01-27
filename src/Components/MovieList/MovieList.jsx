@@ -79,7 +79,7 @@ export default function MovieList({
 	const groupedSeries = groupByGenre(series);
 
 	useEffect(() => {
-		const movieId = searchParams.get("movieId");
+		const movieId = searchParams.get("mid");
 		if (movieId) {
 			const selectedMovie = movies.find((movie) => movie.id.toString() === movieId);
 			setActiveMovie(selectedMovie || null);
@@ -88,7 +88,7 @@ export default function MovieList({
 
 	const handleMovieClick = (movie) => {
 		setActiveMovie(movie);
-		setSearchParams({ movieId: movie.id });
+		setSearchParams({ mid: movie.id });
 	};
 
 	const handleCloseModal = () => {

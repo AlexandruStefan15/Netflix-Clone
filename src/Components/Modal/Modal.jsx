@@ -34,6 +34,8 @@ export default function Modal({ movie, onClose }) {
 			</p>
 		);
 
+	console.log(movie);
+
 	return (
 		<dialog ref={dialogRef} className={styles.dialog} onClose={onClose}>
 			<div className={styles.content}>
@@ -46,10 +48,16 @@ export default function Modal({ movie, onClose }) {
 					X
 				</button>
 				{/* trailer */}
-				<img
-					src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-					alt={`${movie.title} backdrop`}
-				/>
+				<div className={styles.image}>
+					<img
+						src={
+							movie.backdrop_path
+								? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+								: `https://image.tmdb.org/t/p/original${movie.poster_path}`
+						}
+						alt={`${movie.title} backdrop`}
+					/>
+				</div>
 				<div className={styles.details}>
 					<h1>{movie.title}</h1>
 					<p>{movie.overview}</p>
