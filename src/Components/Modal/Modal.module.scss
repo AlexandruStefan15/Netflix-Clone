@@ -1,11 +1,10 @@
 .dialog {
 	background-color: #181818;
 	color: white;
-	width: 100%;
-	max-width: 1000px;
+	width: clamp(700px, 45%, 1300px);
 	position: fixed;
 	left: 50%;
-	top: 5%;
+	top: 10%;
 	border: none;
 	max-height: 90%;
 
@@ -27,16 +26,19 @@
 
 	.content {
 		.closeButton {
-			background: none;
+			opacity: 1;
+			background: rgb(28, 28, 28);
+			border-radius: 100%;
 			border: 0;
 			appearance: none;
 			position: absolute;
-			right: 0;
-			top: 0;
+			right: 5px;
+			top: 5px;
 			padding: 0.5rem;
+			padding-inline: 0.75rem;
 			cursor: pointer;
 			margin: 0.5rem;
-			font-size: 1.5rem;
+			font-size: 1.2rem;
 			outline: none;
 		}
 

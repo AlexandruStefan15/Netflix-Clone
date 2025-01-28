@@ -60,7 +60,7 @@ export default function Modal({ movie, onClose }) {
 				</div>
 				<div className={styles.details}>
 					<h1>{movie.title}</h1>
-					<p>{movie.overview}</p>
+					<p>{movie.overview ? movie.overview : "No description"}</p>
 					<p>{movie.release_date}</p>
 				</div>
 			</div>

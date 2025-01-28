@@ -147,7 +147,7 @@ export default function HeroBanner({
 						src={currentImage}
 						alt="hero-banner-image"
 						onLoad={() => setIsImageLoaded(true)}
-						style={{ visibility: isImageLoaded ? "visible" : "hidden" }}
+						style={video && { visibility: isImageLoaded ? "visible" : "hidden" }}
 					/>
 				</div>
 			)}

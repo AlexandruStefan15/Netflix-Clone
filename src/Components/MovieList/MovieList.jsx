@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./MovieList.module.scss";
 import MovieSlider from "../MovieSlider/MovieSlider";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import Modal from "../Modal/Modal";
 
@@ -52,10 +52,9 @@ export default function MovieList({
 		const movieId = searchParams.get("mid");
 		if (movieId) {
 			const selectedMovie = movies.find((movie) => movie.id.toString() === movieId);
-			console.log(selectedMovie);
 			setActiveMovie(selectedMovie || null);
 		}
-	}, [searchParams, movies || series]);
+	}, [searchParams, movies]);
 
 	const handleMovieClick = (movie) => {
 		setActiveMovie(movie);
