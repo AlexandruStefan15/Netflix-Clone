@@ -31,7 +31,7 @@ function SampleNextArrow(props) {
 	);
 }
 
-export default function MovieSlider({ movies }) {
+export default function MovieSlider({ movies, ...props }) {
 	const settings = {
 		className: "movie-slider",
 		infinite: true,
@@ -51,7 +51,11 @@ export default function MovieSlider({ movies }) {
 			{movies.map(
 				(movie, index) =>
 					movie.poster_path && (
-						<div key={index} className="movie-slider_movie">
+						<div
+							key={index}
+							className="movie-slider_movie"
+							onClick={() => props.handleMovieClick(movie)}
+						>
 							<img src={imageURL + movie.poster_path} alt="" />
 						</div>
 					)

@@ -87,29 +87,40 @@ export default function MovieList({
 		);
 	}
 
-	return Object.keys(combinedCategory).map((genreId) => {
-		const hasEnoughMovies = combinedCategory[genreId].movies.length >= 8;
-		const hasEnoughSeries = combinedCategory[genreId].series.length >= 8;
-		const movieTitle = moviesGenres[genreId];
-		const tvTitle = seriesGenres[genreId];
+	return (
+		<>
+			{Object.keys(combinedCategory).map((genreId) => {
+				const hasEnoughMovies = combinedCategory[genreId].movies.length >= 8;
+				const hasEnoughSeries = combinedCategory[genreId].series.length >= 8;
+				const movieTitle = moviesGenres[genreId];
+				const tvTitle = seriesGenres[genreId];
 
-		return hasEnoughMovies || hasEnoughSeries ? (
-			<React.Fragment key={genreId}>
-				{hasEnoughMovies && movieTitle && (
-					<div className={styles.container}>
-						<h2 className={styles.title}>{movieTitle}</h2>
-						<MovieSlider movies={combinedCategory[genreId].movies} />
-					</div>
-				)}
-				{hasEnoughSeries && tvTitle && (
-					<div className={styles.container}>
-						<h2 className={styles.title}>{tvTitle}</h2>
-						<MovieSlider movies={combinedCategory[genreId].series} />
-					</div>
-				)}
-			</React.Fragment>
-		) : null;
-	});
+				return hasEnoughMovies || hasEnoughSeries ? (
+					<React.Fragment key={genreId}>
+						{hasEnoughMovies && movieTitle && (
+							<div className={styles.container}>
+								<h2 className={styles.title}>{movieTitle}</h2>
+								<MovieSlider
+									handleMovieClick={handleMovieClick}
+									movies={combinedCategory[genreId].movies}
+								/>
+							</div>
+						)}
+						{hasEnoughSeries && tvTitle && (
+							<div className={styles.container}>
+								<h2 className={styles.title}>{tvTitle}</h2>
+								<MovieSlider
+									handleMovieClick={handleMovieClick}
+									movies={combinedCategory[genreId].series}
+								/>
+							</div>
+						)}
+					</React.Fragment>
+				) : null;
+			})}
+			{activeMovie && <Modal movie={activeMovie} onClose={handleCloseModal} />}
+		</>
+	);
 }
 
 /* 
