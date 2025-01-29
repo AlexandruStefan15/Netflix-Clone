@@ -52,7 +52,7 @@ export default function MovieSlider({ movies, ...props }) {
 				(movie, index) =>
 					movie.poster_path && (
 						<div
-							key={index}
+							key={movie.id}
 							className="movie-slider_movie"
 							onClick={() => props.handleMovieClick(movie)}
 						>
