@@ -5,26 +5,25 @@ export default function Modal({ movie, onClose }) {
 	const dialogRef = useRef(null);
 
 	useEffect(() => {
+		const dialog = dialogRef.current;
+
+		if (movie) {
+			dialog?.showModal();
+		} else {
+			dialog?.close();
+		}
+
 		const handleClickOutside = (e) => {
-			if (e.target === dialogRef.current) {
-				dialogRef.current?.close();
+			if (e.target === dialog) {
+				dialog?.close();
 			}
 		};
 
-		const dialog = dialogRef.current;
 		dialog?.addEventListener("click", handleClickOutside);
 
 		return () => {
 			dialog?.removeEventListener("click", handleClickOutside);
 		};
-	}, []);
-
-	useEffect(() => {
-		if (movie) {
-			dialogRef.current?.showModal();
-		} else {
-			dialogRef.current?.close();
-		}
 	}, [movie]);
 
 	if (!movie)
