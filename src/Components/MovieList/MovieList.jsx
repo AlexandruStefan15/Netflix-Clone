@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styles from "./MovieList.module.scss";
 import MovieSlider from "../MovieSlider/MovieSlider";
 import { useSearchParams } from "react-router-dom";
-
 import Modal from "../Modal/Modal";
 
 const groupByGenre = (items) =>
@@ -20,11 +19,9 @@ const combineGroups = (groupedMovies, groupedSeries) => {
 	const genreIds = new Set([...Object.keys(groupedMovies), ...Object.keys(groupedSeries)]);
 
 	genreIds.forEach((genreId) => {
-		// Combine movies and series
 		const combinedMovies = [...(groupedMovies[genreId] || [])];
 		const combinedSeries = [...(groupedSeries[genreId] || [])];
 
-		// remove duplicates
 		combinedGroups[genreId] = {
 			movies: Array.from(new Set(combinedMovies.map(JSON.stringify))).map(JSON.parse),
 			series: Array.from(new Set(combinedSeries.map(JSON.stringify))).map(JSON.parse),
@@ -51,10 +48,12 @@ export default function MovieList({
 	useEffect(() => {
 		const movieId = searchParams.get("mid");
 		if (movieId) {
-			const selectedMovie = movies.find((movie) => movie.id.toString() === movieId);
+			const selectedMovie =
+				movies.find((movie) => movie.id.toString() === movieId) ||
+				series.find((seriesItem) => seriesItem.id.toString() === movieId);
 			setActiveMovie(selectedMovie || null);
 		}
-	}, [searchParams, movies]);
+	}, [searchParams, movies.length, series.length]);
 
 	const handleMovieClick = (movie) => {
 		setActiveMovie(movie);
