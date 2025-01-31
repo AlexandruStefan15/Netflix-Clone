@@ -54,15 +54,7 @@ export default function Popular() {
 
 	return (
 		<section className={styles.section}>
-			<div className={styles.container}>
-				{
-					<MovieList
-						movies={movies}
-						moviesGenres={customGenres} /* onMovieClick={onMovieClick} */
-						simpleList={true}
-					/>
-				}
-			</div>
+			<div className={styles.container}>{<MovieList movies={movies} simpleList={true} />}</div>
 		</section>
 	);
 }

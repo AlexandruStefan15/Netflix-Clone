@@ -92,23 +92,23 @@ export default function MovieList({
 			{Object.keys(combinedCategory).map((genreId) => {
 				const hasEnoughMovies = combinedCategory[genreId].movies.length >= 8;
 				const hasEnoughSeries = combinedCategory[genreId].series.length >= 8;
-				const movieTitle = moviesGenres[genreId];
-				const tvTitle = seriesGenres[genreId];
+				const moviesGenre = moviesGenres[genreId];
+				const seriesGenre = seriesGenres[genreId];
 
 				return hasEnoughMovies || hasEnoughSeries ? (
 					<React.Fragment key={genreId}>
-						{hasEnoughMovies && movieTitle && (
+						{hasEnoughMovies && moviesGenre && (
 							<div className={styles.container}>
-								<h2 className={styles.title}>{movieTitle}</h2>
+								<h2 className={styles.title}>{moviesGenre}</h2>
 								<MovieSlider
 									handleMovieClick={handleMovieClick}
 									movies={combinedCategory[genreId].movies}
 								/>
 							</div>
 						)}
-						{hasEnoughSeries && tvTitle && (
+						{hasEnoughSeries && seriesGenre && (
 							<div className={styles.container}>
-								<h2 className={styles.title}>{tvTitle}</h2>
+								<h2 className={styles.title}>{seriesGenre}</h2>
 								<MovieSlider
 									handleMovieClick={handleMovieClick}
 									movies={combinedCategory[genreId].series}
