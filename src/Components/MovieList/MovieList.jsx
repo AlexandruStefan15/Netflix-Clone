@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./MovieList.module.scss";
 import MovieSlider from "../MovieSlider/MovieSlider";
 import { useSearchParams } from "react-router-dom";
+
 import Modal from "../Modal/Modal";
 
 const groupByGenre = (items) =>

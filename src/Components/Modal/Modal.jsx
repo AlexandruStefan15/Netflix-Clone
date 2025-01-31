@@ -26,15 +26,6 @@ export default function Modal({ movie, onClose }) {
 		};
 	}, [movie]);
 
-	if (!movie)
-		return (
-			<p style={{ color: "red" }}>
-				Error: the modal has no movie data to display, be sure to pass a movie.
-			</p>
-		);
-
-	/* console.log(movie); */
-
 	return (
 		<dialog ref={dialogRef} className={styles.dialog} onClose={onClose}>
 			<div className={styles.content}>

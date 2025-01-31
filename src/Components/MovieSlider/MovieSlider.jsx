@@ -1,7 +1,8 @@
-import React from "react";
-import Slider, { Component } from "react-slick";
+import React, { useRef, useEffect } from "react";
+import Slider from "react-slick";
 import "./MovieSlider.scss";
 import { inline_svgs } from "../../Assets/svgs/svgs";
+import { usePreventClickAfterDrag } from "../../hooks/usePreventClickAfterDrag";
 
 const imageURL = `https://image.tmdb.org/t/p/w500`;
 
@@ -46,20 +47,29 @@ export default function MovieSlider({ movies, ...props }) {
 		prevArrow: <SamplePrevArrow />,
 	};
 
+	const wrapperRef = useRef(null);
+	const isDragging = usePreventClickAfterDrag(wrapperRef);
+
 	return (
-		<Slider {...settings}>
-			{movies.map(
-				(movie, index) =>
-					movie.poster_path && (
-						<div
-							key={movie.id}
-							className="movie-slider_movie"
-							onClick={() => props.handleMovieClick(movie)}
-						>
-							<img src={imageURL + movie.poster_path} alt="" />
-						</div>
-					)
-			)}
-		</Slider>
+		<div ref={wrapperRef}>
+			<Slider {...settings}>
+				{movies.map(
+					(movie) =>
+						movie.poster_path && (
+							<div
+								key={movie.id}
+								className="movie-slider_movie"
+								onClick={() => {
+									if (!isDragging) {
+										props.handleMovieClick(movie);
+									}
+								}}
+							>
+								<img src={imageURL + movie.poster_path} alt="" />
+							</div>
+						)
+				)}
+			</Slider>
+		</div>
 	);
 }
