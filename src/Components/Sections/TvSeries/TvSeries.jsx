@@ -39,6 +39,8 @@ export default function Movies() {
 		fetchData();
 	}, []);
 
+	console.log(series);
+
 	return (
 		<section className={styles.section}>
 			<div className={styles.container}>

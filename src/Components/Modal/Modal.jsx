@@ -49,9 +49,9 @@ export default function Modal({ movie, onClose }) {
 					/>
 				</div>
 				<div className={styles.details}>
-					<h1>{movie.title}</h1>
+					<h1>{movie.title || movie.name}</h1>
 					<p>{movie.overview ? movie.overview : "No description"}</p>
-					<p>{movie.release_date}</p>
+					<p>{movie.release_date || movie.first_air_date}</p>
 				</div>
 			</div>
 		</dialog>
