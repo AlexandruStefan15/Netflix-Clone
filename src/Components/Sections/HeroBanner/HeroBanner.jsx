@@ -37,7 +37,7 @@ export default function HeroBanner({
 	const movieLogoRef = useRef(null);
 	const imageRef = useRef(null);
 
-	usePauseOnTabChange(videoRef);
+	usePauseOnTabChange(videoRef, video);
 
 	useEffect(() => {
 		setIsImageLoaded(false);

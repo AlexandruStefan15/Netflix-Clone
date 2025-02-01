@@ -24,8 +24,9 @@ export default function Movies() {
 		const fetchData = async () => {
 			try {
 				const totalPages = 12;
+				const startPage = 15;
 				const requests = Array.from({ length: totalPages }, (_, i) =>
-					fetchCategory("movies", i + 1)
+					fetchCategory("movies", startPage + i)
 				);
 
 				const allPages = await Promise.all(requests);
@@ -42,9 +43,7 @@ export default function Movies() {
 
 	return (
 		<section className={styles.section}>
-			<div className={styles.container}>
-				{<MovieList movies={movies} moviesGenres={genres} /* onMovieClick={onMovieClick} */ />}
-			</div>
+			<div className={styles.container}>{<MovieList movies={movies} moviesGenres={genres} />}</div>
 		</section>
 	);
 }

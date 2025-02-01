@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { fetchCategory } from "../../../api/tmdb";
 import { tvGenres } from "../../../Data/tvGenres";
+import { useFetchCategory } from "../../../hooks/useFetchCategory";
 import styles from "./TvSeries.module.scss";
 
 import MovieList from "../../MovieList/MovieList";
 
-export default function Movies() {
+export default function TvSeries() {
 	const [series, setSeries] = useState([]);
 	const [genres, setGenres] = useState({});
-	const [error, setError] = useState(null);
+	const startPage = 10;
+	const totalPages = 12;
+	const { data, error } = useFetchCategory("tv-series", startPage, totalPages);
 
 	function mapGenres(genres) {
 		return genres.reduce((acc, genre) => {
@@ -18,32 +20,16 @@ export default function Movies() {
 	}
 
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const mappedGenres = mapGenres(tvGenres);
-				setGenres(mappedGenres);
+		const mappedGenres = mapGenres(tvGenres);
+		setGenres(mappedGenres);
+		setSeries(data);
+	}, [data]);
 
-				const totalPages = 12;
-				const requests = Array.from({ length: totalPages }, (_, i) =>
-					fetchCategory("tv-series", i + 1)
-				);
-
-				const allPages = await Promise.all(requests);
-				const seriesData = allPages.flat();
-				setSeries(seriesData);
-			} catch (err) {
-				setError(err.message);
-			}
-		};
-
-		fetchData();
-	}, []);
+	if (error) return <p style={{ color: "red" }}>{error}</p>;
 
 	return (
 		<section className={styles.section}>
-			<div className={styles.container}>
-				{<MovieList series={series} seriesGenres={genres} /* onMovieClick={onMovieClick} */ />}
-			</div>
+			<div className={styles.container}>{<MovieList series={series} seriesGenres={genres} />}</div>
 		</section>
 	);
 }
