@@ -4,7 +4,7 @@ export default function usePauseOnTabChange(videoRef, videoSrc) {
 	const [videoEnded, setVideoEnded] = useState(false);
 
 	useEffect(() => {
-		const video = videoRef.current; // Store reference inside effect
+		const video = videoRef.current;
 		if (!video) return;
 
 		const handleVisibilityChange = () => {
