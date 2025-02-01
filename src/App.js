@@ -26,6 +26,7 @@ const router = createBrowserRouter(
 				<Route path="movies" element={<Movies />} />
 				<Route path="tv-series" element={<TvSeries />} />
 				<Route path="popular" element={<Popular />} />
+				<Route path="search" element={""} />
 			</Route>
 		</>
 	)

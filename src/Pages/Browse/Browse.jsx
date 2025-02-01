@@ -25,12 +25,11 @@ export default function Browse() {
 
 	useEffect(() => {
 		setBannerData(getBannerData("set1", location.pathname));
-		if (location.pathname === "/browse/popular") {
+		if (
+			["/browse/popular", "/browse/search", "/browse/movies?genreId"].includes(location.pathname)
+		) {
 			setShowBanner(false);
-		}
-		return () => {
-			setShowBanner(true);
-		};
+		} else setShowBanner(true);
 	}, [location.pathname]);
 
 	return (
