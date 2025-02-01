@@ -1,41 +1,33 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function usePauseOnTabChange(videoRef, videoSrc) {
 	const [videoEnded, setVideoEnded] = useState(false);
-	const hasTabChanged = useRef(false);
 
 	useEffect(() => {
+		const video = videoRef.current; // Store reference inside effect
+		if (!video) return;
+
 		const handleVisibilityChange = () => {
 			if (document.hidden) {
-				videoRef.current?.pause();
-				hasTabChanged.current = true;
+				video.pause();
 			} else {
-				if (!videoEnded && hasTabChanged.current) {
-					videoRef.current?.play();
+				if (!videoEnded) {
+					video.play();
 				}
-				hasTabChanged.current = false;
 			}
 		};
 
 		const handleVideoEnded = () => {
 			setVideoEnded(true);
+			console.log("Video has ended");
 		};
 
-		const handleVideoPlay = () => {
-			setVideoEnded(false);
-		};
-
-		if (videoRef.current) {
-			videoRef.current.addEventListener("ended", handleVideoEnded);
-			videoRef.current.addEventListener("play", handleVideoPlay);
-		}
-
+		video.addEventListener("ended", handleVideoEnded);
 		document.addEventListener("visibilitychange", handleVisibilityChange);
 
 		return () => {
+			video.removeEventListener("ended", handleVideoEnded);
 			document.removeEventListener("visibilitychange", handleVisibilityChange);
-			videoRef.current?.removeEventListener("ended", handleVideoEnded);
-			videoRef.current?.removeEventListener("play", handleVideoPlay);
 		};
 	}, [videoRef.current, videoEnded]);
 
