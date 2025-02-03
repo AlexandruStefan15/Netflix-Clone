@@ -56,6 +56,7 @@ export default function HeroBanner({
 			if (videoRef.current && imageRef.current) {
 				imageRef.current.classList.add(styles.hidden);
 				videoRef.current.play();
+				videoRef.current.muted = false;
 			}
 		}, 1550);
 
@@ -162,7 +163,7 @@ export default function HeroBanner({
 						style={{ visibility: isVideoLoaded ? "visible" : "hidden" }}
 						ref={videoRef}
 						src={currentVideo}
-						muted={false}
+						muted={true}
 						playsInline
 					></video>
 				</div>

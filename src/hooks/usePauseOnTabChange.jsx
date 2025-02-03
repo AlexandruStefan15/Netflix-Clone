@@ -19,7 +19,6 @@ export default function usePauseOnTabChange(videoRef, videoSrc) {
 
 		const handleVideoEnded = () => {
 			setVideoEnded(true);
-			console.log("Video has ended");
 		};
 
 		video.addEventListener("ended", handleVideoEnded);
