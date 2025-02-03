@@ -87,8 +87,13 @@
 		}
 	}
 
-	.secondaryNavigationList {
+	.secondaryNavigation {
 		display: flex;
-		gap: 1.5rem;
+		align-items: center;
+		gap: 1rem;
+		.secondaryNavigationList {
+			display: flex;
+			gap: 1.5rem;
+		}
 	}
 }

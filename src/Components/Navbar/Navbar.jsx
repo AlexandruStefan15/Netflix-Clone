@@ -7,6 +7,7 @@ import Link from "../Link/Link";
 import { NavLink } from "react-router-dom";
 import Select, { Option } from "../Select/Select";
 import Logo from "../Logo/Logo";
+import SearchBar from "../SearchBar/SearchBar";
 
 export default function Navbar({
 	logo_path,
@@ -42,20 +43,20 @@ export default function Navbar({
 			)}
 
 			{props.secondaryNavigation && (
-				<ul className={styles.secondaryNavigationList}>
-					<li>
-						<NavLink to={"#"}>{inline_svgs.search}</NavLink>
-					</li>
-					<li>
-						<NavLink to={"#"}>Copii</NavLink>
-					</li>
-					<li>
-						<NavLink to={"#"}>{inline_svgs.ring_bell}</NavLink>
-					</li>
-					<li>
-						<NavLink to={"#"}>{inline_svgs.account}</NavLink>
-					</li>
-				</ul>
+				<div className={styles.secondaryNavigation}>
+					<SearchBar />
+					<ul className={styles.secondaryNavigationList}>
+						<li>
+							<NavLink to={"#"}>Copii</NavLink>
+						</li>
+						<li>
+							<NavLink to={"#"}>{inline_svgs.ring_bell}</NavLink>
+						</li>
+						<li>
+							<NavLink to={"#"}>{inline_svgs.account}</NavLink>
+						</li>
+					</ul>
+				</div>
 			)}
 			{selectLanguage && (
 				<div className={styles.selectLanguageWrapper}>
