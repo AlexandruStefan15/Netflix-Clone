@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Navbar.module.scss";
 import { Trans, useTranslation } from "react-i18next";
-import svgs, { inline_svgs } from "../../Assets/svgs/svgs";
+import { inline_svgs } from "../../Assets/svgs/svgs";
 
 import Link from "../Link/Link";
 import { NavLink } from "react-router-dom";

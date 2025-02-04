@@ -1,17 +1,32 @@
 import React, { useState } from "react";
 import styles from "./Form.module.scss";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import { NavLink } from "react-router-dom";
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
 
-export default function Form({ className = "", data, setUserEmail, children, ...props }) {
+export default function Form({
+	className = "",
+	data,
+	setUserEmail,
+	children,
+	handleSubmit,
+	...props
+}) {
 	const { t, i18n } = useTranslation();
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		email_or_phone: data.userEmail,
 		password: "",
 	});
+
+	function handleSubmit(event) {
+		event.preventDefault();
+		if (handleSubmit) handleSubmit(formData);
+		alert("yay");
+	}
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -29,7 +44,7 @@ export default function Form({ className = "", data, setUserEmail, children, ...
 		);
 
 	return (
-		<form action="" className={styles.form + ` ${className}`} {...props}>
+		<form action="" className={styles.form + ` ${className}`} onSubmit={handleSubmit} {...props}>
 			<Form.Title>{t("Form.set1.title")}</Form.Title>
 			<Form.FormInput
 				type="text"

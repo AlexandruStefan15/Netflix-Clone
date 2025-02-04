@@ -7,7 +7,7 @@ import Footer from "../../Components/Footer/Footer";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
 import { getBannerData } from "../../Data/heroBannerData";
 
-const categories = [
+const primaryNavigation = [
 	{ name: "Pagina Principala", path: "" },
 	{ name: "Filme", path: "movies" },
 	{ name: "Seriale", path: "tv-series" },
@@ -36,7 +36,7 @@ export default function Browse() {
 				className={styles.header}
 				navbarProps={{
 					variant: "2",
-					primaryNavigation: categories,
+					primaryNavigation: primaryNavigation,
 					selectLanguage: false,
 					secondaryNavigation: true,
 				}}
