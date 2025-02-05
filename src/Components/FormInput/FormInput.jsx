@@ -1,18 +1,21 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import { useState, useRef, forwardRef, useEffect, createContext, useContext } from "react";
+import { useState, useRef, forwardRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-export default function FormInput({
-	className = "",
-	label = "FormInput.label",
-	children,
-	required = true,
-	variant = "", // style variant,
-	value,
-	onChange,
-	...props
-}) {
+function FormInput(
+	{
+		className = "",
+		label = "FormInput.label",
+		children,
+		required = true,
+		variant = "", // style variant,
+		value,
+		onChange,
+		...props
+	},
+	ref
+) {
 	const { t, i18n } = useTranslation();
 	const labelEl = useRef();
 	const [inputIsActive, setInputIsActive] = useState(false);
@@ -36,6 +39,7 @@ export default function FormInput({
 				{t(label)}
 			</label>
 			<input
+				ref={ref}
 				value={value}
 				onChange={onChange}
 				onFocus={() => setInputIsActive(true)}
@@ -47,3 +51,5 @@ export default function FormInput({
 		</div>
 	);
 }
+
+export default forwardRef(FormInput);
