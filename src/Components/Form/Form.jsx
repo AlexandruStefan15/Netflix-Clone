@@ -98,8 +98,6 @@ Form.FormInput = function Form_FormInput({ className = "", children, variant = "
 	useEffect(() => {
 		const input = inputRef.current;
 		if (!input) return;
-
-		console.log(input);
 	}, []);
 
 	return (
