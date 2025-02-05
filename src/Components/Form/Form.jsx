@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./Form.module.scss";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -6,15 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
+import { use } from "react";
 
-export default function Form({
-	className = "",
-	data,
-	setUserEmail,
-	children,
-	handleSubmit,
-	...props
-}) {
+export default function Form({ className = "", data, setUserEmail, children, onSubmit, ...props }) {
 	const { t, i18n } = useTranslation();
 	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
@@ -24,8 +18,7 @@ export default function Form({
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		if (handleSubmit) handleSubmit(formData);
-		alert("yay");
+		if (onSubmit) onSubmit(event, formData);
 	}
 
 	const handleChange = (e) => {
@@ -100,8 +93,19 @@ Form.Group = function Form_Group({ className = "", children, ...props }) {
 };
 
 Form.FormInput = function Form_FormInput({ className = "", children, variant = "2", ...props }) {
+	const inputRef = useRef(null);
+
+	useEffect(() => {
+		console.log(inputRef.current);
+	}, []);
+
 	return (
-		<FormInput variant={variant} className={styles.formInput + ` ${className}`} {...props}>
+		<FormInput
+			ref={inputRef}
+			variant={variant}
+			className={styles.formInput + ` ${className}`}
+			{...props}
+		>
 			{children}
 		</FormInput>
 	);
