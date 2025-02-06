@@ -20,22 +20,11 @@ const customGenres = {
 
 export default function Popular() {
 	const [movies, setMovies] = useState([]);
-	const [genres, setGenres] = useState({});
 	const [error, setError] = useState(null);
-
-	function mapGenres(genres) {
-		return genres.reduce((acc, genre) => {
-			acc[genre.id] = genre.name;
-			return acc;
-		}, {});
-	}
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const mappedGenres = mapGenres(movieGenres);
-				setGenres(mappedGenres);
-
 				const totalPages = 5;
 				const requests = Array.from({ length: totalPages }, (_, i) =>
 					fetchCategory("upcoming", i + 1)
@@ -43,7 +32,7 @@ export default function Popular() {
 
 				const allPages = await Promise.all(requests);
 				const movieData = allPages.flat();
-				setMovies(movieData);
+				setMovies([...movieData]);
 			} catch (err) {
 				setError(err.message);
 			}

@@ -13,10 +13,11 @@ export default function Movies() {
 	const isSearchParamEmpty = useOutletContext();
 
 	function mapGenres(genres) {
-		return genres.reduce((acc, genre) => {
-			acc[genre.id] = genre.name;
-			return acc;
-		}, {});
+		const groupedGenres = Object.groupBy(genres, (genre) => genre.id);
+		const mappedGenres = Object.fromEntries(
+			Object.entries(groupedGenres).map(([id, genres]) => [id, genres[0].name])
+		);
+		return mappedGenres;
 	}
 
 	useEffect(() => {
@@ -50,10 +51,11 @@ export default function Movies() {
 	);
 }
 
-/* mappedGenres = {
+/* 
+mappedGenres = {
 	28: "Filme de actiune",
 	12: "Filme de aventura",
 	16: "Filme anime",
   ...
-};
+};  
  */

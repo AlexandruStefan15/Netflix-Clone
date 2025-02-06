@@ -51,6 +51,12 @@ export default function MovieList({
 	const groupedSeries = groupByGenre(series);
 	const combinedCategory = combineGroups(groupedMovies, groupedSeries);
 
+	const shallowEqual = (arr1, arr2) => {
+		if (arr1 === arr2) return true;
+		if (arr1.length !== arr2.length) return false;
+		return arr1.every((item, index) => item === arr2[index]);
+	};
+
 	useEffect(() => {
 		const movieId = searchParams.get("mid");
 		if (movieId) {
@@ -62,9 +68,13 @@ export default function MovieList({
 	}, [searchParams, movies.length, series.length]);
 
 	useEffect(() => {
-		setMoviesData(movies);
-		setSeriesData(series);
-	}, [movies.length, series.length]);
+		if (!shallowEqual(moviesData, movies)) {
+			setMoviesData(movies);
+		}
+		if (!shallowEqual(seriesData, series)) {
+			setSeriesData(series);
+		}
+	}, [movies, series]);
 
 	useEffect(() => {
 		const query = searchParams.get("search");
