@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { tvGenres } from "../../../Data/tvGenres";
 import { useFetchCategory } from "../../../hooks/useFetchCategory";
+import { useOutletContext } from "react-router-dom";
 import styles from "./TvSeries.module.scss";
 
 import MovieList from "../../MovieList/MovieList";
@@ -11,6 +12,7 @@ export default function TvSeries() {
 	const startPage = 10;
 	const totalPages = 12;
 	const { data, error } = useFetchCategory("tv-series", startPage, totalPages);
+	const isSearchParamEmpty = useOutletContext();
 
 	function mapGenres(genres) {
 		return genres.reduce((acc, genre) => {
@@ -25,10 +27,10 @@ export default function TvSeries() {
 		setSeries(data);
 	}, [data]);
 
-	if (error) return <p style={{ color: "red" }}>{error}</p>;
+	if (error) console.error(error);
 
 	return (
-		<section className={styles.section}>
+		<section style={!isSearchParamEmpty ? { marginTop: "0" } : {}} className={styles.section}>
 			<div className={styles.container}>{<MovieList series={series} seriesGenres={genres} />}</div>
 		</section>
 	);

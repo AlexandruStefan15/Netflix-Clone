@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 import { fetchCategory } from "../../../api/tmdb";
 import { movieGenres } from "../../../Data/movieGenres";
 import { tvGenres } from "../../../Data/tvGenres";
@@ -12,6 +13,7 @@ export default function Discover() {
 	const [moviesGenres, setMoviesGenres] = useState({});
 	const [seriesGenres, setSeriesGenres] = useState({});
 	const [error, setError] = useState(null);
+	const isSearchParamEmpty = useOutletContext();
 
 	function mapGenres(genres) {
 		return genres.reduce((acc, genre) => {
@@ -56,7 +58,7 @@ export default function Discover() {
 	if (error) return <p style={{ color: "red" }}>{error}</p>;
 
 	return (
-		<section className={styles.section}>
+		<section style={!isSearchParamEmpty ? { marginTop: "0" } : {}} className={styles.section}>
 			<div className={styles.container}>
 				{
 					<MovieList

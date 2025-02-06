@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createContext } from "react";
 import styles from "./Browse.module.scss";
 import { Outlet, useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
@@ -20,6 +21,7 @@ export const BrowseContext = createContext();
 export default function Browse() {
 	const [bannerData, setBannerData] = useState({});
 	const [showBanner, setShowBanner] = useState(true);
+	const [searchParams, setSearchParams] = useSearchParams();
 
 	const location = useLocation();
 
@@ -29,6 +31,10 @@ export default function Browse() {
 			setShowBanner(false);
 		} else setShowBanner(true);
 	}, [location.pathname]);
+
+	const isSearchParamEmpty = () => {
+		return !searchParams.get("search");
+	};
 
 	return (
 		<div className={styles.page}>
@@ -41,7 +47,7 @@ export default function Browse() {
 					secondaryNavigation: true,
 				}}
 			/>
-			{showBanner && (
+			{showBanner && isSearchParamEmpty() && (
 				<HeroBanner
 					image={bannerData?.image}
 					video={bannerData?.video}
@@ -52,7 +58,7 @@ export default function Browse() {
 					variant="2"
 				/>
 			)}
-			<Outlet />
+			<Outlet context={isSearchParamEmpty()} />
 			<Footer style={{ background: "inherit" }} />
 		</div>
 	);

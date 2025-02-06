@@ -1,21 +1,29 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./SearchBar.module.scss";
 import { inline_svgs } from "../../Assets/svgs/svgs";
+import { useSearchParams } from "react-router-dom";
 
 const SearchBar = ({ placeholder = "Cauta...", onSearch, className = "", ...props }) => {
 	const [query, setQuery] = useState("");
+	const [searchParams, setSearchParams] = useSearchParams();
 	const [isFocused, setIsFocused] = useState(false);
 	const inputRef = useRef(null);
 
 	const handleChange = (e) => {
 		const value = e.target.value;
 		setQuery(value);
-		if (onSearch) onSearch(value); // Call parent function if provided
+		if (onSearch) onSearch(value);
+		else {
+			if (e.target.value === "") setSearchParams({});
+		}
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (onSearch) onSearch(query); // Trigger search on submit
+		if (onSearch) onSearch(query);
+		else {
+			setSearchParams({ search: query });
+		}
 	};
 
 	return (

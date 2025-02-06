@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchCategory } from "../../../api/tmdb";
 import { movieGenres } from "../../../Data/movieGenres";
+import { useOutletContext } from "react-router-dom";
 import styles from "./Movies.module.scss";
 
 import MovieList from "../../MovieList/MovieList";
@@ -9,6 +10,7 @@ export default function Movies() {
 	const [movies, setMovies] = useState([]);
 	const [genres, setGenres] = useState({});
 	const [error, setError] = useState(null);
+	const isSearchParamEmpty = useOutletContext();
 
 	function mapGenres(genres) {
 		return genres.reduce((acc, genre) => {
@@ -42,7 +44,7 @@ export default function Movies() {
 	}, []);
 
 	return (
-		<section className={styles.section}>
+		<section style={!isSearchParamEmpty ? { marginTop: "0" } : {}} className={styles.section}>
 			<div className={styles.container}>{<MovieList movies={movies} moviesGenres={genres} />}</div>
 		</section>
 	);

@@ -46,10 +46,9 @@ export default function Form({ className = "", data, setUserEmail, children, onS
 				id="login-email-or-phone"
 				pattern="^([^\s@]+@[^\s@]+\.[^\s@]+|\+?[0-9]{7,15})$"
 				value={formData.email_or_phone}
-				onChange={(e) => {
-					const value = e.target.value;
-					setFormData({ ...formData, email_or_phone: value });
-					setUserEmail(value);
+				onChange={(event) => {
+					handleChange(event);
+					setUserEmail(event.target.value);
 				}}
 			/>
 			<Form.FormInput

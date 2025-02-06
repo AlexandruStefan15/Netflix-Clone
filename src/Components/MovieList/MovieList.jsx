@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./MovieList.module.scss";
 import MovieSlider from "../MovieSlider/MovieSlider";
 import { useSearchParams } from "react-router-dom";
+import { useMovieSearch } from "../../hooks/useMovieSearch";
 
 import Modal from "../Modal/Modal";
 
@@ -41,6 +42,10 @@ export default function MovieList({
 }) {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [activeMovie, setActiveMovie] = useState(null);
+	const [moviesData, setMoviesData] = useState(movies);
+	const [seriesData, setSeriesData] = useState(series);
+	const [showSimpleList, setShowSimpleList] = useState(simpleList);
+	const { searchMovies, results } = useMovieSearch();
 
 	const groupedMovies = groupByGenre(movies);
 	const groupedSeries = groupByGenre(series);
@@ -50,27 +55,49 @@ export default function MovieList({
 		const movieId = searchParams.get("mid");
 		if (movieId) {
 			const selectedMovie =
-				movies.find((movie) => movie.id.toString() === movieId) ||
-				series.find((seriesItem) => seriesItem.id.toString() === movieId);
+				moviesData.find((movie) => movie.id.toString() === movieId) ||
+				seriesData.find((seriesItem) => seriesItem.id.toString() === movieId);
 			setActiveMovie(selectedMovie || null);
 		}
 	}, [searchParams, movies.length, series.length]);
 
+	useEffect(() => {
+		setMoviesData(movies);
+		setSeriesData(series);
+	}, [movies.length, series.length]);
+
+	useEffect(() => {
+		const query = searchParams.get("search");
+		if (query) {
+			searchMovies(query);
+			setMoviesData(results);
+			setShowSimpleList(true);
+		} else {
+			setMoviesData(movies);
+			setSeriesData(series);
+			setShowSimpleList(simpleList);
+		}
+	}, [searchParams, results, showSimpleList]);
+
 	const handleMovieClick = (movie) => {
 		setActiveMovie(movie);
-		setSearchParams({ mid: movie.id });
+		const params = new URLSearchParams(searchParams);
+		params.set("mid", movie.id);
+		setSearchParams(params);
 	};
 
 	const handleCloseModal = () => {
 		setActiveMovie(null);
-		setSearchParams({});
+		const params = new URLSearchParams(searchParams);
+		params.delete("mid");
+		setSearchParams(params);
 	};
 
-	if (simpleList) {
+	if (showSimpleList) {
 		return (
 			<>
 				<ul className={styles.simpleList}>
-					{movies.map(
+					{moviesData.map(
 						(movie, index) =>
 							movie.poster_path && (
 								<li key={index} className={styles.listItem} onClick={() => handleMovieClick(movie)}>
