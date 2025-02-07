@@ -15,18 +15,29 @@ const useMovieSearch = () => {
 		setError("");
 
 		try {
-			const response = await fetch(
-				`https://api.themoviedb.org/3/search/movie?api_key=318dc067de589bc7b276ad2334cac8d8&query=${encodeURIComponent(
-					query
-				)}&page=1`
-			);
+			const [page1Response, page2Response] = await Promise.all([
+				fetch(
+					`https://api.themoviedb.org/3/search/movie?api_key=318dc067de589bc7b276ad2334cac8d8&query=${encodeURIComponent(
+						query
+					)}&page=1`
+				),
+				fetch(
+					`https://api.themoviedb.org/3/search/movie?api_key=318dc067de589bc7b276ad2334cac8d8&query=${encodeURIComponent(
+						query
+					)}&page=2`
+				),
+			]);
 
-			if (!response.ok) {
+			if (!page1Response.ok || !page2Response.ok) {
 				throw new Error("Failed to fetch search results");
 			}
 
-			const data = await response.json();
-			setResults(data.results || []);
+			const page1Data = await page1Response.json();
+			const page2Data = await page2Response.json();
+
+			const combinedResults = [...(page1Data.results || []), ...(page2Data.results || [])];
+
+			setResults(combinedResults);
 		} catch (err) {
 			console.error(err);
 			setError("Something went wrong. Please try again.");
