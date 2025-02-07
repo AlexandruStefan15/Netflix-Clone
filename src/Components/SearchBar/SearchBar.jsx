@@ -2,12 +2,14 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./SearchBar.module.scss";
 import { inline_svgs } from "../../Assets/svgs/svgs";
 import { useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const SearchBar = ({ placeholder = "Cauta...", onSearch, className = "", ...props }) => {
 	const [query, setQuery] = useState("");
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [isFocused, setIsFocused] = useState(false);
 	const inputRef = useRef(null);
+	const location = useLocation();
 
 	const handleChange = (e) => {
 		const value = e.target.value;
@@ -25,6 +27,13 @@ const SearchBar = ({ placeholder = "Cauta...", onSearch, className = "", ...prop
 			setSearchParams({ search: query });
 		}
 	};
+
+	useEffect(() => {
+		if (!searchParams.get("search")) {
+			setQuery("");
+			setIsFocused(false);
+		}
+	}, [location]);
 
 	return (
 		<form onSubmit={handleSubmit} className={styles.form}>
