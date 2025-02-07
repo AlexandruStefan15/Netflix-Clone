@@ -39,18 +39,16 @@ export default function MovieList({
 }) {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [activeMovie, setActiveMovie] = useState(null);
-	const { searchMovies, results } = useMovieSearch();
+	const { searchMovies, results, loading } = useMovieSearch();
 
-	// Instead of storing the props in state, we derive the “effective” data:
-	// When there is a search query, we use the search results for movies.
 	const query = searchParams.get("search");
 	const effectiveMovies = query ? results : movies;
-	// In this example, series remain unchanged by the search
 	const effectiveSeries = series;
-	// Decide whether to display a simple list or grouped sliders
 	const showSimpleList = query ? true : simpleList;
+	const groupedMovies = groupByGenre(effectiveMovies);
+	const groupedSeries = groupByGenre(effectiveSeries);
+	const combinedCategory = combineGroups(groupedMovies, groupedSeries);
 
-	// Update the active movie if "mid" (movie id) is present in the URL parameters.
 	useEffect(() => {
 		const movieId = searchParams.get("mid");
 
@@ -70,11 +68,6 @@ export default function MovieList({
 		}
 	}, [searchParams]);
 
-	// Group the movies/series by genre from the derived data
-	const groupedMovies = groupByGenre(effectiveMovies);
-	const groupedSeries = groupByGenre(effectiveSeries);
-	const combinedCategory = combineGroups(groupedMovies, groupedSeries);
-
 	const handleMovieClick = (movie) => {
 		setActiveMovie(movie);
 		const params = new URLSearchParams(searchParams);
@@ -88,6 +81,18 @@ export default function MovieList({
 		params.delete("mid");
 		setSearchParams(params);
 	};
+
+	if (loading) {
+		return <div className={styles.loader}></div>;
+	}
+
+	/* if (!results.length) {
+		return (
+			<div className={styles.noResultsMessage}>
+				<h2>Nu am gasit niciun rezultat care sa corespunda criteriilor tale de cautare...</h2>
+			</div>
+		);
+	} */
 
 	if (showSimpleList) {
 		return (
