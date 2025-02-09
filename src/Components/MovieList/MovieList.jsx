@@ -82,17 +82,17 @@ export default function MovieList({
 		setSearchParams(params);
 	};
 
-	if (loading) {
+	if (loading && !searchParams.get("mid")) {
 		return <div className={styles.loader}></div>;
 	}
 
-	/* if (!results.length) {
+	if (!results.length && searchParams.get("search")) {
 		return (
 			<div className={styles.noResultsMessage}>
 				<h2>Nu am gasit niciun rezultat care sa corespunda criteriilor tale de cautare...</h2>
 			</div>
 		);
-	} */
+	}
 
 	if (showSimpleList) {
 		return (

@@ -33,7 +33,9 @@ export default function Movies() {
 				);
 
 				const allPages = await Promise.all(requests);
-				const movieData = allPages.flat();
+				const movieData = allPages
+					.flat()
+					.filter((movie, index, self) => index === self.findIndex((m) => m.id === movie.id));
 
 				setMovies(movieData);
 			} catch (err) {
