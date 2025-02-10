@@ -1,49 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { fetchCategory } from "../../../api/tmdb";
+import { useFetchCategory } from "../../../hooks/useFetchCategory";
 import { movieGenres } from "../../../Data/movieGenres";
 import styles from "./Popular.module.scss";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import MovieList from "../../MovieList/MovieList";
 
-const customGenres = {
-	9648: "Filme cu mister",
-	53: "Thrillere",
-	12: "Filme de aventura",
-	18: "Filme dramatice",
-	/* 	14: "Filme fantastice",
-	16: "Filme anime",
-	10749: "Filme romantice",
-	28: "Filme de actiune",
-	35: "Filme de comedie", */
-};
-
 export default function Popular() {
-	const [movies, setMovies] = useState([]);
-	const [error, setError] = useState(null);
+	const startPage = 1;
+	const totalPages = 5;
+	const { data, error } = useFetchCategory("upcoming", startPage, totalPages);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const totalPages = 5;
-				const requests = Array.from({ length: totalPages }, (_, i) =>
-					fetchCategory("upcoming", i + 1)
-				);
-
-				const allPages = await Promise.all(requests);
-				const movieData = allPages.flat();
-				setMovies([...movieData]);
-			} catch (err) {
-				setError(err.message);
-			}
-		};
-
-		fetchData();
-	}, []);
+	if (error) console.error(error);
 
 	return (
 		<section className={styles.section}>
-			<div className={styles.container}>{<MovieList movies={movies} simpleList={true} />}</div>
+			<div className={styles.container}>
+				<MovieList movies={data} simpleList={true} />
+			</div>
 		</section>
 	);
 }

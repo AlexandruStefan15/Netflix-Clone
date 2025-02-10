@@ -7,12 +7,11 @@ import styles from "./TvSeries.module.scss";
 import MovieList from "../../MovieList/MovieList";
 
 export default function TvSeries() {
-	const [series, setSeries] = useState([]);
-	const [genres, setGenres] = useState({});
+	const isSearchParamEmpty = useOutletContext();
+	const genres = mapGenres(tvGenres);
 	const startPage = 10;
 	const totalPages = 12;
 	const { data, error } = useFetchCategory("tv-series", startPage, totalPages);
-	const isSearchParamEmpty = useOutletContext();
 
 	function mapGenres(genres) {
 		const groupedGenres = Object.groupBy(genres, (genre) => genre.id);
@@ -22,17 +21,13 @@ export default function TvSeries() {
 		return mappedGenres;
 	}
 
-	useEffect(() => {
-		const mappedGenres = mapGenres(tvGenres);
-		setGenres(mappedGenres);
-		setSeries(data);
-	}, [data]);
-
 	if (error) console.error(error);
 
 	return (
 		<section style={!isSearchParamEmpty ? { marginTop: "0" } : {}} className={styles.section}>
-			<div className={styles.container}>{<MovieList series={series} seriesGenres={genres} />}</div>
+			<div className={styles.container}>
+				<MovieList series={data} seriesGenres={genres} />
+			</div>
 		</section>
 	);
 }

@@ -10,10 +10,11 @@ import MovieList from "../../MovieList/MovieList";
 export default function Discover() {
 	const [movies, setMovies] = useState([]);
 	const [series, setSeries] = useState([]);
-	const [moviesGenres, setMoviesGenres] = useState({});
-	const [seriesGenres, setSeriesGenres] = useState({});
 	const [error, setError] = useState(null);
 	const isSearchParamEmpty = useOutletContext();
+
+	const moviesGenres = mapGenres(movieGenres);
+	const seriesGenres = mapGenres(tvGenres);
 
 	function mapGenres(genres) {
 		const groupedGenres = Object.groupBy(genres, (genre) => genre.id);
@@ -26,12 +27,6 @@ export default function Discover() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const moviesGenresMapped = mapGenres(movieGenres);
-				const seriesGenresMapped = mapGenres(tvGenres);
-
-				setMoviesGenres(moviesGenresMapped);
-				setSeriesGenres(seriesGenresMapped);
-
 				const totalPages = 12;
 				const movieRequests = Array.from({ length: totalPages }, (_, i) =>
 					fetchCategory("movies", i + 1)
@@ -43,8 +38,12 @@ export default function Discover() {
 				const moviesPages = await Promise.all(movieRequests);
 				const seriesPages = await Promise.all(seriesRequests);
 
-				const movieData = moviesPages.flat();
-				const seriesData = seriesPages.flat();
+				const movieData = moviesPages
+					.flat()
+					.filter((movie, index, self) => index === self.findIndex((m) => m.id === movie.id));
+				const seriesData = seriesPages
+					.flat()
+					.filter((movie, index, self) => index === self.findIndex((m) => m.id === movie.id));
 
 				setMovies(movieData);
 				setSeries(seriesData);
@@ -56,7 +55,7 @@ export default function Discover() {
 		fetchData();
 	}, []);
 
-	if (error) return <p style={{ color: "red" }}>{error}</p>;
+	if (error) console.error(error);
 
 	return (
 		<section style={!isSearchParamEmpty ? { marginTop: "0" } : {}} className={styles.section}>

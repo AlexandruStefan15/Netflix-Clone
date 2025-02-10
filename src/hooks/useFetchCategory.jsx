@@ -13,7 +13,9 @@ export const useFetchCategory = (category, startPage, totalPages) => {
 				);
 
 				const allPages = await Promise.all(requests);
-				const movieData = allPages.flat();
+				const movieData = allPages
+					.flat()
+					.filter((movie, index, self) => index === self.findIndex((m) => m.id === movie.id));
 
 				setData(movieData);
 			} catch (err) {

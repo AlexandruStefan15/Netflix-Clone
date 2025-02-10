@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchCategory } from "../../../api/tmdb";
+import { useFetchCategory } from "../../../hooks/useFetchCategory";
 import { movieGenres } from "../../../Data/movieGenres";
 import { useOutletContext } from "react-router-dom";
 import styles from "./Movies.module.scss";
@@ -7,10 +7,11 @@ import styles from "./Movies.module.scss";
 import MovieList from "../../MovieList/MovieList";
 
 export default function Movies() {
-	const [movies, setMovies] = useState([]);
-	const [genres, setGenres] = useState({});
-	const [error, setError] = useState(null);
 	const isSearchParamEmpty = useOutletContext();
+	const genres = mapGenres(movieGenres);
+	const startPage = 15;
+	const totalPages = 12;
+	const { data, error } = useFetchCategory("movies", startPage, totalPages);
 
 	function mapGenres(genres) {
 		const groupedGenres = Object.groupBy(genres, (genre) => genre.id);
@@ -20,35 +21,13 @@ export default function Movies() {
 		return mappedGenres;
 	}
 
-	useEffect(() => {
-		const mappedGenres = mapGenres(movieGenres);
-		setGenres(mappedGenres);
-
-		const fetchData = async () => {
-			try {
-				const totalPages = 12;
-				const startPage = 15;
-				const requests = Array.from({ length: totalPages }, (_, i) =>
-					fetchCategory("movies", startPage + i)
-				);
-
-				const allPages = await Promise.all(requests);
-				const movieData = allPages
-					.flat()
-					.filter((movie, index, self) => index === self.findIndex((m) => m.id === movie.id));
-
-				setMovies(movieData);
-			} catch (err) {
-				setError(err.message);
-			}
-		};
-
-		fetchData();
-	}, []);
+	if (error) console.error(error);
 
 	return (
 		<section style={!isSearchParamEmpty ? { marginTop: "0" } : {}} className={styles.section}>
-			<div className={styles.container}>{<MovieList movies={movies} moviesGenres={genres} />}</div>
+			<div className={styles.container}>
+				<MovieList movies={data} moviesGenres={genres} />
+			</div>
 		</section>
 	);
 }
