@@ -26,11 +26,13 @@ export default function Browse() {
 	const [showBanner, setShowBanner] = useState(true);
 	const [showSubeader, setShowSubheader] = useState(false);
 	const [isTop, setIsTop] = useState(false);
-	const [searchParams, setSearchParams] = useSearchParams();
+
 	const headerRef = useRef(null);
 	const subheaderRef = useRef(null);
+	const isFirstRender = useRef(true);
 
 	const location = useLocation();
+	const [searchParams, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
 		setBannerData(getBannerData("set1", location.pathname));
@@ -41,7 +43,19 @@ export default function Browse() {
 		if (["/browse/movies", "/browse/tv-series"].includes(location.pathname)) setShowSubheader(true);
 		else setShowSubheader(false);
 
-		/* if (headerRef.current) headerRef.current.style.background = "transparent"; */
+		if (location.pathname === "/browse/popular" && headerRef.current)
+			document.body.style.backgroundColor = "#141414";
+
+		setIsTop(true);
+	}, [location.pathname]);
+
+	useEffect(() => {
+		// Scroll to top on route change but not on the first render/mount.
+		if (isFirstRender.current) {
+			isFirstRender.current = false;
+			return;
+		}
+		window.scrollTo(0, 0);
 	}, [location.pathname]);
 
 	useEffect(() => {
