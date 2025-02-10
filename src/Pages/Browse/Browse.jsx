@@ -1,8 +1,9 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, useRef, createContext } from "react";
 import styles from "./Browse.module.scss";
 import { Outlet, useLocation } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { getBannerData } from "../../Data/heroBannerData";
+import { movieGenres } from "../../Data/movieGenres";
 
 import Header from "../../Components/Header/Header";
 import { Subheader } from "../../Components/Header/Header";
@@ -23,7 +24,10 @@ export const BrowseContext = createContext();
 export default function Browse() {
 	const [bannerData, setBannerData] = useState({});
 	const [showBanner, setShowBanner] = useState(true);
+	const [isTop, setIsTop] = useState(false);
 	const [searchParams, setSearchParams] = useSearchParams();
+	const headerRef = useRef(null);
+	const subheaderRef = useRef(null);
 
 	const location = useLocation();
 
@@ -34,6 +38,25 @@ export default function Browse() {
 		} else setShowBanner(true);
 	}, [location.pathname]);
 
+	useEffect(() => {
+		const handleScroll = () => {
+			// If the page is scrolled, remove the transparent background
+			if (window.scrollY === 0) {
+				setIsTop(true);
+			} else {
+				setIsTop(false);
+			}
+		};
+
+		// Add the scroll event listener
+		window.addEventListener("scroll", handleScroll);
+
+		// Cleanup on unmount
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
+
 	const isSearchParamEmpty = () => {
 		return !searchParams.get("search");
 	};
@@ -41,7 +64,8 @@ export default function Browse() {
 	return (
 		<div className={styles.page}>
 			<Header
-				className={styles.header}
+				className={styles.header + (isTop ? ` ${styles.isTop}` : "")}
+				ref={headerRef}
 				navbarProps={{
 					variant: "2",
 					primaryNavigation: primaryNavigation,
@@ -49,19 +73,25 @@ export default function Browse() {
 					secondaryNavigation: true,
 				}}
 			/>
-			<Subheader className={styles.subheader}>
-				<h1>Filme</h1>
-				<Select className={styles.select} className_wrapper={styles.select_wrapper}>
-					<Option value="1">Genuri</Option>
-					<Option value="2">Option 2</Option>
-					<Option value="3">Option 3</Option>
-					<Option value="3">Option 3</Option>
-					<Option value="3">Option 3</Option>
-					<Option value="3">Option 3</Option>
-					<Option value="3">Option 3</Option>
-					<Option value="3">Option 3</Option>
-					<Option value="3">Option 3</Option>
-					<Option value="3">Option 3</Option>
+			<Subheader
+				className={styles.subheader + (isTop ? ` ${styles.isTop}` : "")}
+				ref={subheaderRef}
+			>
+				<h1 className={styles.title}>Filme</h1>
+				<Select
+					defaultValue=""
+					className={styles.select}
+					className_wrapper={styles.select_wrapper}
+					key={location.pathname}
+				>
+					<Option value="" disabled hidden>
+						Genuri
+					</Option>
+					{movieGenres.map((genre) => (
+						<Option key={genre.id} value={genre.id}>
+							{genre.shortName}
+						</Option>
+					))}
 				</Select>
 			</Subheader>
 			{showBanner && isSearchParamEmpty() && (

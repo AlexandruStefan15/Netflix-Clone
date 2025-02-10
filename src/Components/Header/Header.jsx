@@ -1,21 +1,24 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import svgs from "../../Assets/svgs/svgs";
 import styles from "./Header.module.scss";
 
 import Navbar from "../Navbar/Navbar";
 
-export default function Header({ className = "", navbarClassName = "", navbarProps, ...props }) {
+function Header({ className = "", navbarClassName = "", navbarProps, ...props }, ref) {
 	return (
-		<header className={styles.section + ` ${className}`} {...props}>
+		<header ref={ref} className={styles.section + ` ${className}`} {...props}>
 			<Navbar logo_path={svgs.netflix_logo} {...navbarProps} />
 		</header>
 	);
 }
 
-export const Subheader = ({ className = "", children, ...props }) => {
+const Subheader = forwardRef(({ className = "", children, ...props }, ref) => {
 	return (
-		<div className={styles.subheader + ` ${className}`} {...props}>
+		<div ref={ref} className={styles.subheader + ` ${className}`} {...props}>
 			{children}
 		</div>
 	);
-};
+});
+
+export default forwardRef(Header);
+export { Subheader };

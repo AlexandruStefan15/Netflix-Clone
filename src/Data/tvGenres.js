@@ -48,10 +48,6 @@ export const tvGenres = [
 		name: "Talk-show-uri",
 	},
 	{
-		id: 37,
-		name: "Seriale Western",
-	},
-	{
 		id: 10766,
 		name: "Telenovele",
 	},
