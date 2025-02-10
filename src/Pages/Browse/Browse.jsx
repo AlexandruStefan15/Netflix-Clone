@@ -24,6 +24,7 @@ export const BrowseContext = createContext();
 export default function Browse() {
 	const [bannerData, setBannerData] = useState({});
 	const [showBanner, setShowBanner] = useState(true);
+	const [showSubeader, setShowSubheader] = useState(false);
 	const [isTop, setIsTop] = useState(false);
 	const [searchParams, setSearchParams] = useSearchParams();
 	const headerRef = useRef(null);
@@ -36,11 +37,15 @@ export default function Browse() {
 		if (["/browse/popular", "/browse/search"].includes(location.pathname)) {
 			setShowBanner(false);
 		} else setShowBanner(true);
+
+		if (["/browse/movies", "/browse/tv-series"].includes(location.pathname)) setShowSubheader(true);
+		else setShowSubheader(false);
+
+		/* if (headerRef.current) headerRef.current.style.background = "transparent"; */
 	}, [location.pathname]);
 
 	useEffect(() => {
 		const handleScroll = () => {
-			// If the page is scrolled, remove the transparent background
 			if (window.scrollY === 0) {
 				setIsTop(true);
 			} else {
@@ -48,10 +53,8 @@ export default function Browse() {
 			}
 		};
 
-		// Add the scroll event listener
 		window.addEventListener("scroll", handleScroll);
 
-		// Cleanup on unmount
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
@@ -73,27 +76,29 @@ export default function Browse() {
 					secondaryNavigation: true,
 				}}
 			/>
-			<Subheader
-				className={styles.subheader + (isTop ? ` ${styles.isTop}` : "")}
-				ref={subheaderRef}
-			>
-				<h1 className={styles.title}>Filme</h1>
-				<Select
-					defaultValue=""
-					className={styles.select}
-					className_wrapper={styles.select_wrapper}
-					key={location.pathname}
+			{showSubeader && (
+				<Subheader
+					className={styles.subheader + (isTop ? ` ${styles.isTop}` : "")}
+					ref={subheaderRef}
 				>
-					<Option value="" disabled hidden>
-						Genuri
-					</Option>
-					{movieGenres.map((genre) => (
-						<Option key={genre.id} value={genre.id}>
-							{genre.shortName}
+					<h1 className={styles.title}>Filme</h1>
+					<Select
+						defaultValue=""
+						className={styles.select}
+						className_wrapper={styles.select_wrapper}
+						key={location.pathname}
+					>
+						<Option value="" disabled hidden>
+							Genuri
 						</Option>
-					))}
-				</Select>
-			</Subheader>
+						{movieGenres.map((genre) => (
+							<Option key={genre.id} value={genre.id}>
+								{genre.shortName}
+							</Option>
+						))}
+					</Select>
+				</Subheader>
+			)}
 			{showBanner && isSearchParamEmpty() && (
 				<HeroBanner
 					image={bannerData?.image}
