@@ -6,11 +6,11 @@
 	background-color: var(--secondary-light);
 
 	.header {
-		position: relative;
 		z-index: 9999;
 		background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, transparent);
 		background-color: #141414;
 		position: fixed;
+		top: 0;
 		width: 100%;
 	}
 
@@ -18,7 +18,7 @@
 		position: fixed;
 		z-index: 9999;
 		min-height: 65px;
-		background-color: #141414;
+		background-color: transparent;
 		width: 100%;
 		display: flex;
 		align-items: center;
@@ -40,5 +40,9 @@
 				border-radius: 0px;
 			}
 		}
+	}
+
+	.heroBanner {
+		margin-top: 4rem;
 	}
 }

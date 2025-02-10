@@ -55,6 +55,13 @@ export default function Browse() {
 					<Option value="1">Genuri</Option>
 					<Option value="2">Option 2</Option>
 					<Option value="3">Option 3</Option>
+					<Option value="3">Option 3</Option>
+					<Option value="3">Option 3</Option>
+					<Option value="3">Option 3</Option>
+					<Option value="3">Option 3</Option>
+					<Option value="3">Option 3</Option>
+					<Option value="3">Option 3</Option>
+					<Option value="3">Option 3</Option>
 				</Select>
 			</Subheader>
 			{showBanner && isSearchParamEmpty() && (
