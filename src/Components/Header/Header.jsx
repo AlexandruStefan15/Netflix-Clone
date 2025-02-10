@@ -11,3 +11,11 @@ export default function Header({ className = "", navbarClassName = "", navbarPro
 		</header>
 	);
 }
+
+export const Subheader = ({ className = "", children, ...props }) => {
+	return (
+		<div className={styles.subheader + ` ${className}`} {...props}>
+			{children}
+		</div>
+	);
+};

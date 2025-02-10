@@ -2,11 +2,13 @@ import React, { useState, useEffect, createContext } from "react";
 import styles from "./Browse.module.scss";
 import { Outlet, useLocation } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
+import { getBannerData } from "../../Data/heroBannerData";
 
 import Header from "../../Components/Header/Header";
+import { Subheader } from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
-import { getBannerData } from "../../Data/heroBannerData";
+import Select, { Option } from "../../Components/Select/Select";
 
 const primaryNavigation = [
 	{ name: "Pagina Principala", path: "" },
@@ -47,6 +49,14 @@ export default function Browse() {
 					secondaryNavigation: true,
 				}}
 			/>
+			<Subheader className={styles.subheader}>
+				<h1>Filme</h1>
+				<Select className={styles.select} className_wrapper={styles.select_wrapper}>
+					<Option value="1">Genuri</Option>
+					<Option value="2">Option 2</Option>
+					<Option value="3">Option 3</Option>
+				</Select>
+			</Subheader>
 			{showBanner && isSearchParamEmpty() && (
 				<HeroBanner
 					image={bannerData?.image}
