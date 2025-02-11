@@ -36,8 +36,9 @@ const useMovieSearch = () => {
 			const page2Data = await page2Response.json();
 
 			const combinedResults = [...(page1Data.results || []), ...(page2Data.results || [])];
+			const sortedResults = combinedResults.sort((a, b) => b.popularity - a.popularity);
 
-			setResults(combinedResults);
+			setResults(sortedResults);
 		} catch (err) {
 			console.error(err);
 			setError("Something went wrong. Please try again.");

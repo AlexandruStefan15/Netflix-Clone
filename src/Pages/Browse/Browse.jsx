@@ -78,6 +78,12 @@ export default function Browse() {
 		return !searchParams.get("search");
 	};
 
+	useEffect(() => {
+		if (!isSearchParamEmpty()) {
+			setShowSubheader(false);
+		} else setShowSubheader(true);
+	}, [searchParams]);
+
 	return (
 		<div className={styles.page}>
 			<Header

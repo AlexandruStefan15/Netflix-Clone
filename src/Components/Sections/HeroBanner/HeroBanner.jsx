@@ -145,7 +145,7 @@ export default function HeroBanner({
 			{currentImage && (
 				<div ref={imageRef} className={styles.image}>
 					<img
-						src={currentImage}
+						src={`${currentImage}?t=${new Date().getTime()}`} // This is a hack to force the image to reload
 						alt="hero-banner-image"
 						onLoad={() => setIsImageLoaded(true)}
 						style={video && { visibility: isImageLoaded ? "visible" : "hidden" }}
