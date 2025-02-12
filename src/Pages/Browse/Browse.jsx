@@ -32,7 +32,7 @@ export default function Browse() {
 	const isFirstRender = useRef(true);
 
 	const location = useLocation();
-	const [searchParams, setSearchParams] = useSearchParams();
+	const [searchParams] = useSearchParams();
 
 	useEffect(() => {
 		setBannerData(getBannerData("set1", location.pathname));
@@ -45,8 +45,6 @@ export default function Browse() {
 
 		if (location.pathname === "/browse/popular" && headerRef.current)
 			document.body.style.backgroundColor = "#141414";
-
-		setIsTop(true);
 	}, [location.pathname]);
 
 	useEffect(() => {
@@ -67,6 +65,7 @@ export default function Browse() {
 			}
 		};
 
+		handleScroll();
 		window.addEventListener("scroll", handleScroll);
 
 		return () => {
