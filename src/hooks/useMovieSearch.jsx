@@ -1,9 +1,11 @@
 import { useState } from "react";
 
+const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+
 const useMovieSearch = () => {
 	const [results, setResults] = useState([]);
 	const [error, setError] = useState("");
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 
 	const searchMovies = async (query) => {
 		setLoading(true);
@@ -12,12 +14,12 @@ const useMovieSearch = () => {
 		try {
 			const [page1Response, page2Response] = await Promise.all([
 				fetch(
-					`https://api.themoviedb.org/3/search/movie?api_key=318dc067de589bc7b276ad2334cac8d8&query=${encodeURIComponent(
+					`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
 						query
 					)}&page=1`
 				),
 				fetch(
-					`https://api.themoviedb.org/3/search/movie?api_key=318dc067de589bc7b276ad2334cac8d8&query=${encodeURIComponent(
+					`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
 						query
 					)}&page=2`
 				),

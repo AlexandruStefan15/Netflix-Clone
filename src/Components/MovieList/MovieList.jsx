@@ -78,11 +78,11 @@ export default function MovieList({
 		setSearchParams(params);
 	};
 
-	if (loading && !searchParams.get("mid")) {
+	if (loading && !searchParams.get("mid") && searchParams.get("q")) {
 		return <div className={styles.loader}></div>;
 	}
 
-	if (results.length == 0 && !loading && searchParams.get("q")) {
+	if (!results.length && !loading && searchParams.get("q")) {
 		return (
 			<div className={styles.noResultsMessage}>
 				<h2>Nu am gasit niciun rezultat care sa corespunda criteriilor tale de cautare...</h2>
