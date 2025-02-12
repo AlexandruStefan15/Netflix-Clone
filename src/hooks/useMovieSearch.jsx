@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+const API_KEY = "318dc067de589bc7b276ad2334cac8d8";
 
 const useMovieSearch = () => {
 	const [results, setResults] = useState([]);
@@ -12,29 +12,30 @@ const useMovieSearch = () => {
 		setError("");
 
 		try {
-			const [page1Response, page2Response] = await Promise.all([
-				fetch(
-					`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
-						query
-					)}&page=1`
-				),
-				fetch(
+			const page1Response = await fetch(
+				`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
+					query
+				)}&page=1`
+			);
+
+			if (!page1Response.ok) throw new Error("Failed to fetch search results");
+
+			const page1Data = await page1Response.json();
+			let combinedResults;
+
+			if (page1Data.total_pages > 1) {
+				const page2Response = await fetch(
 					`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
 						query
 					)}&page=2`
-				),
-			]);
-
-			if (!page1Response.ok || !page2Response.ok) {
-				throw new Error("Failed to fetch search results");
+				);
+				if (page2Response.ok) {
+					const page2Data = await page2Response.json();
+					combinedResults = [...(page1Data.results || []), ...(page2Data.results || [])];
+				}
 			}
 
-			const page1Data = await page1Response.json();
-			const page2Data = await page2Response.json();
-
-			const combinedResults = [...(page1Data.results || []), ...(page2Data.results || [])];
 			const sortedResults = combinedResults.sort((a, b) => b.popularity - a.popularity);
-
 			setResults(sortedResults);
 		} catch (err) {
 			console.error(err);
