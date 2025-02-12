@@ -15,7 +15,7 @@ export default function SearchResults() {
 		if (!query) {
 			navigate("/browse");
 		}
-	}, [searchParams, navigate]);
+	}, [searchParams]);
 
 	return (
 		<section className={styles.section}>
