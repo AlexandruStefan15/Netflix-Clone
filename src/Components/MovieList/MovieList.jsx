@@ -38,15 +38,13 @@ export default function MovieList({
 	simpleList = false,
 }) {
 	const [searchParams, setSearchParams] = useSearchParams();
+	const { loading, results, searchMovies } = useMovieSearch();
 	const [activeMovie, setActiveMovie] = useState(null);
-	const { searchMovies, results, loading } = useMovieSearch();
-
-	const query = searchParams.get("search");
+	const query = searchParams.get("q");
 	const effectiveMovies = query ? results : movies;
-	const effectiveSeries = series;
-	const showSimpleList = query ? true : simpleList;
+
 	const groupedMovies = groupByGenre(effectiveMovies);
-	const groupedSeries = groupByGenre(effectiveSeries);
+	const groupedSeries = groupByGenre(series);
 	const combinedCategory = combineGroups(groupedMovies, groupedSeries);
 
 	useEffect(() => {
@@ -55,18 +53,16 @@ export default function MovieList({
 		if (movieId) {
 			const selectedMovie =
 				effectiveMovies.find((movie) => movie.id.toString() === movieId) ||
-				effectiveSeries.find((item) => item.id.toString() === movieId);
+				series.find((item) => item.id.toString() === movieId);
 			setActiveMovie(selectedMovie || null);
 		} else {
 			setActiveMovie(null);
 		}
-	}, [searchParams, effectiveMovies, effectiveSeries]);
+	}, [searchParams, effectiveMovies, series]);
 
 	useEffect(() => {
-		if (query) {
-			searchMovies(query);
-		}
-	}, [searchParams]);
+		searchMovies(query);
+	}, [query]);
 
 	const handleMovieClick = (movie) => {
 		setActiveMovie(movie);
@@ -86,7 +82,7 @@ export default function MovieList({
 		return <div className={styles.loader}></div>;
 	}
 
-	if (!results.length && searchParams.get("search")) {
+	if (results.length == 0 && searchParams.get("q")) {
 		return (
 			<div className={styles.noResultsMessage}>
 				<h2>Nu am gasit niciun rezultat care sa corespunda criteriilor tale de cautare...</h2>
@@ -94,7 +90,7 @@ export default function MovieList({
 		);
 	}
 
-	if (showSimpleList) {
+	if (simpleList) {
 		return (
 			<>
 				<ul className={styles.simpleList}>

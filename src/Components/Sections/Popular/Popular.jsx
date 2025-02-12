@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useFetchCategory } from "../../../hooks/useFetchCategory";
-import { movieGenres } from "../../../Data/movieGenres";
 import styles from "./Popular.module.scss";
-import { useLocation, useNavigate } from "react-router-dom";
 
 import MovieList from "../../MovieList/MovieList";
 
@@ -22,7 +20,7 @@ export default function Popular() {
 	);
 }
 
-/* mappedGenres = {
+/* mappedGenres = {     
 	28: "Filme de actiune",
 	12: "Filme de aventura",
 	16: "Filme anime",

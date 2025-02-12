@@ -6,11 +6,6 @@ const useMovieSearch = () => {
 	const [loading, setLoading] = useState(false);
 
 	const searchMovies = async (query) => {
-		if (!query.trim()) {
-			setError("Please enter a valid search term.");
-			return;
-		}
-
 		setLoading(true);
 		setError("");
 

@@ -11,7 +11,6 @@ export default function Discover() {
 	const [movies, setMovies] = useState([]);
 	const [series, setSeries] = useState([]);
 	const [error, setError] = useState(null);
-	const isSearchParamEmpty = useOutletContext();
 
 	const moviesGenres = mapGenres(movieGenres);
 	const seriesGenres = mapGenres(tvGenres);
@@ -58,7 +57,7 @@ export default function Discover() {
 	if (error) console.error(error);
 
 	return (
-		<section style={!isSearchParamEmpty ? { marginTop: "0" } : {}} className={styles.section}>
+		<section className={styles.section}>
 			<div className={styles.container}>
 				{
 					<MovieList

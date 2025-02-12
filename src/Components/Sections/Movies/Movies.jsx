@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import styles from "./Movies.module.scss";
 import { useFetchCategory } from "../../../hooks/useFetchCategory";
 import { movieGenres } from "../../../Data/movieGenres";
-import { useOutletContext } from "react-router-dom";
-import styles from "./Movies.module.scss";
 
 import MovieList from "../../MovieList/MovieList";
 
 export default function Movies() {
-	const isSearchParamEmpty = useOutletContext();
 	const genres = mapGenres(movieGenres);
 	const startPage = 15;
 	const totalPages = 12;
@@ -24,7 +22,7 @@ export default function Movies() {
 	if (error) console.error(error);
 
 	return (
-		<section style={!isSearchParamEmpty ? { marginTop: "0" } : {}} className={styles.section}>
+		<section className={styles.section}>
 			<div className={styles.container}>
 				<MovieList movies={data} moviesGenres={genres} />
 			</div>

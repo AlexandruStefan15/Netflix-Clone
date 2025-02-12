@@ -15,6 +15,7 @@ import Discover from "./Components/Sections/Discover/Discover";
 import Movies from "./Components/Sections/Movies/Movies";
 import TvSeries from "./Components/Sections/TvSeries/TvSeries";
 import Popular from "./Components/Sections/Popular/Popular";
+import SearchResults from "./Components/Sections/SearchResults/SearchResults";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -26,7 +27,7 @@ const router = createBrowserRouter(
 				<Route path="movies" element={<Movies />} />
 				<Route path="tv-series" element={<TvSeries />} />
 				<Route path="popular" element={<Popular />} />
-				<Route path="search" element={""} />
+				<Route path="search" element={<SearchResults />} />
 			</Route>
 		</>
 	)

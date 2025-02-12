@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./SearchBar.module.scss";
 import { inline_svgs } from "../../Assets/svgs/svgs";
-import { useSearchParams } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useSearchParams, useLocation, useNavigate } from "react-router-dom";
 
 const SearchBar = ({ placeholder = "Cauta...", onSearch, className = "", ...props }) => {
 	const [query, setQuery] = useState("");
@@ -10,26 +9,29 @@ const SearchBar = ({ placeholder = "Cauta...", onSearch, className = "", ...prop
 	const [isFocused, setIsFocused] = useState(false);
 	const inputRef = useRef(null);
 	const location = useLocation();
+	const navigate = useNavigate();
 
 	const handleChange = (e) => {
 		const value = e.target.value;
 		setQuery(value);
-		if (onSearch) onSearch(value);
-		else {
-			if (e.target.value === "") setSearchParams({});
+		if (e.target.value === "" && location.pathname !== "/browse/search") {
+			setSearchParams({});
 		}
+		if (onSearch) onSearch(value);
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
 		if (onSearch) onSearch(query);
 		else {
-			setSearchParams({ search: query });
+			navigate("/browse/search");
+			setSearchParams({ q: query });
 		}
 	};
 
 	useEffect(() => {
-		if (!searchParams.get("search")) {
+		if (!searchParams.get("q")) {
 			setQuery("");
 			setIsFocused(false);
 		}

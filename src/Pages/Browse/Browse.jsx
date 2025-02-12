@@ -74,12 +74,8 @@ export default function Browse() {
 		};
 	}, []);
 
-	const isSearchParamEmpty = () => {
-		return !searchParams.get("search");
-	};
-
 	useEffect(() => {
-		if (!isSearchParamEmpty()) {
+		if (!searchParams.get("q")) {
 			setShowSubheader(false);
 		} else setShowSubheader(true);
 	}, [searchParams]);
@@ -119,7 +115,7 @@ export default function Browse() {
 					</Select>
 				</Subheader>
 			)}
-			{showBanner && isSearchParamEmpty() && (
+			{showBanner && !searchParams.get("q") && (
 				<HeroBanner
 					image={bannerData?.image}
 					video={bannerData?.video}
@@ -130,7 +126,7 @@ export default function Browse() {
 					variant="2"
 				/>
 			)}
-			<Outlet context={isSearchParamEmpty()} />
+			<Outlet />
 			<Footer style={{ background: "inherit" }} />
 		</div>
 	);
