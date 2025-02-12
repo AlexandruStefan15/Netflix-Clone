@@ -82,7 +82,7 @@ export default function MovieList({
 		return <div className={styles.loader}></div>;
 	}
 
-	if (results.length == 0 && searchParams.get("q")) {
+	if (results.length == 0 && !loading && searchParams.get("q")) {
 		return (
 			<div className={styles.noResultsMessage}>
 				<h2>Nu am gasit niciun rezultat care sa corespunda criteriilor tale de cautare...</h2>

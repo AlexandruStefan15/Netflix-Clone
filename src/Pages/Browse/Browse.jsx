@@ -74,12 +74,6 @@ export default function Browse() {
 		};
 	}, []);
 
-	useEffect(() => {
-		if (!searchParams.get("q")) {
-			setShowSubheader(false);
-		} else setShowSubheader(true);
-	}, [searchParams]);
-
 	return (
 		<div className={styles.page}>
 			<Header
