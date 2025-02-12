@@ -58,7 +58,7 @@ export default function MovieList({
 		} else {
 			setActiveMovie(null);
 		}
-	}, [searchParams, effectiveMovies, series]);
+	}, [searchParams]);
 
 	useEffect(() => {
 		searchMovies(query);
