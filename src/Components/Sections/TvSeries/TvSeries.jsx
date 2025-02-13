@@ -7,7 +7,7 @@ import MovieList from "../../MovieList/MovieList";
 
 export default function TvSeries() {
 	const genres = mapGenres(tvGenres);
-	const startPage = 10;
+	const startPage = 15;
 	const totalPages = 12;
 	const { data, error } = useFetchCategory("tv-series", startPage, totalPages);
 

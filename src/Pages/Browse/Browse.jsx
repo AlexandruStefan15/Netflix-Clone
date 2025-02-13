@@ -70,6 +70,18 @@ export default function Browse() {
 		};
 	}, []);
 
+	function getTitle() {
+		const segments = location.pathname.split("/").filter(Boolean);
+		const lastSegment = segments.length > 0 ? segments[segments.length - 1] : null;
+
+		switch (lastSegment) {
+			case "movies":
+				return "Filme";
+			case "tv-series":
+				return "Seriale";
+		}
+	}
+
 	return (
 		<div className={styles.page}>
 			<Header
@@ -87,7 +99,7 @@ export default function Browse() {
 					className={styles.subheader + (isTop ? ` ${styles.isTop}` : "")}
 					ref={subheaderRef}
 				>
-					<h1 className={styles.title}>Filme</h1>
+					<h1 className={styles.title}>{getTitle()}</h1>
 					<Select
 						defaultValue=""
 						className={styles.select}
