@@ -45,13 +45,13 @@ export default function Browse() {
 	}, [location.pathname]);
 
 	useEffect(() => {
-		// Scroll to top on route change but not on the first render/mount.
+		// Scroll to top on route change but not on the first render (mount).
 		if (isFirstRender.current) {
 			isFirstRender.current = false;
 			return;
 		}
 		window.scrollTo(0, 0);
-	}, [location.pathname]);
+	}, [location.pathname, searchParams.get("q")]);
 
 	useEffect(() => {
 		const handleScroll = () => {
