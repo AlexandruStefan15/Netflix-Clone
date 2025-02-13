@@ -13,7 +13,7 @@ export default function SearchResults() {
 	useEffect(() => {
 		const query = searchParams.get("q");
 		if (!query) {
-			navigate("/browse");
+			navigate(-1, { replace: true });
 		}
 	}, [searchParams]);
 

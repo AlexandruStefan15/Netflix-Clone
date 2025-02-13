@@ -42,9 +42,6 @@ export default function Browse() {
 
 		if (["/browse/movies", "/browse/tv-series"].includes(location.pathname)) setShowSubheader(true);
 		else setShowSubheader(false);
-
-		if (location.pathname === "/browse/popular" && headerRef.current)
-			document.body.style.backgroundColor = "#141414";
 	}, [location.pathname]);
 
 	useEffect(() => {

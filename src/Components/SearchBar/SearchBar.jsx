@@ -24,10 +24,7 @@ const SearchBar = ({ placeholder = "Cauta...", onSearch, className = "", ...prop
 		e.preventDefault();
 
 		if (onSearch) onSearch(query);
-		else {
-			navigate("/browse/search");
-			setSearchParams({ q: query });
-		}
+		else navigate(`/browse/search?q=${encodeURIComponent(query)}`);
 	};
 
 	useEffect(() => {

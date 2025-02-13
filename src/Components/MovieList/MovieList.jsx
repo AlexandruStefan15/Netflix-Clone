@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import styles from "./MovieList.module.scss";
 import MovieSlider from "../MovieSlider/MovieSlider";
 import { useSearchParams } from "react-router-dom";
 import { useMovieSearch } from "../../hooks/useMovieSearch";
 import Modal from "../Modal/Modal";
-import { use } from "react";
 
 const groupByGenre = (items) =>
 	items.reduce((groupedItems, item) => {
@@ -49,30 +48,27 @@ export default function MovieList({
 
 	useEffect(() => {
 		const movieId = searchParams.get("mid");
-
 		if (movieId) {
 			const selectedMovie =
 				effectiveMovies.find((movie) => movie.id.toString() === movieId) ||
 				series.find((item) => item.id.toString() === movieId);
-			setActiveMovie(selectedMovie || null);
+			setActiveMovie(selectedMovie);
 		} else {
 			setActiveMovie(null);
 		}
-	}, [searchParams]);
+	}, [searchParams, effectiveMovies, series]);
 
 	useEffect(() => {
 		searchMovies(query);
 	}, [query]);
 
 	const handleMovieClick = (movie) => {
-		setActiveMovie(movie);
 		const params = new URLSearchParams(searchParams);
 		params.set("mid", movie.id);
 		setSearchParams(params);
 	};
 
 	const handleCloseModal = () => {
-		setActiveMovie(null);
 		const params = new URLSearchParams(searchParams);
 		params.delete("mid");
 		setSearchParams(params);

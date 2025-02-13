@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Header from "../../Components/Header/Header";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
@@ -11,6 +11,14 @@ import Footer from "../../Components/Footer/Footer";
 import Input from "../../Components/FormInput/FormInput";
 
 export default function Home() {
+	useEffect(() => {
+		document.body.style.backgroundColor = "black";
+
+		return () => {
+			document.body.style.backgroundColor = "";
+		};
+	}, []);
+
 	return (
 		<>
 			<Header />
