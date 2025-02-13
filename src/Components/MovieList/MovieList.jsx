@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
+import videos from "../../Assets/videos/videos";
 import styles from "./MovieList.module.scss";
 import MovieSlider from "../MovieSlider/MovieSlider";
 import { useSearchParams } from "react-router-dom";
@@ -81,7 +82,10 @@ export default function MovieList({
 	if (!results.length && !loading && searchParams.get("q")) {
 		return (
 			<div className={styles.noResultsMessage}>
-				<h2>Nu am gasit niciun rezultat care sa corespunda criteriilor tale de cautare...</h2>
+				<h2>Nu am gasit niciun rezultat care sa corespunda criteriilor tale de cautare.</h2>
+				<div className={styles.video}>
+					<video src={videos.sadGirl} muted autoPlay loop></video>
+				</div>
 			</div>
 		);
 	}

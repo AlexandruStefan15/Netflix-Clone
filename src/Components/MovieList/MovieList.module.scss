@@ -85,9 +85,18 @@
 }
 
 .noResultsMessage {
+	display: flex;
+	flex-direction: column-reverse;
+	gap: 3rem;
 	position: relative;
 	margin-inline: auto;
-	margin-top: 30vh;
+	margin-top: 15vh;
 	text-align: center;
 	padding-inline: 2rem;
+
+	.video {
+		max-width: 300px;
+		margin: 0 auto;
+		mask: url(../../Assets/svgs/mask.svg);
+	}
 }

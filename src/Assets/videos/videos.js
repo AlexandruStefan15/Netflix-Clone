@@ -3,6 +3,7 @@ import strangerThingsGuys from "./strangerThingsGuys.mp4";
 import queensGambit from "./queensGambit.mp4";
 import inception from "./inception.mp4";
 import aliceInBorderland from "./aliceInBorderland.mp4";
+import sadGirl from "./sadGirl.mp4";
 
 export default {
 	videoStory1,
@@ -10,4 +11,5 @@ export default {
 	queensGambit,
 	inception,
 	aliceInBorderland,
+	sadGirl,
 };
