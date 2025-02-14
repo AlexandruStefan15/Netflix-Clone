@@ -41,6 +41,8 @@
 		}
 
 		.select_wrapper {
+			background-color: var(--secondary);
+
 			&::before {
 				content: none;
 			}

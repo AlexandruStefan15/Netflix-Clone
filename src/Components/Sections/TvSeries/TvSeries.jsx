@@ -9,7 +9,7 @@ export default function TvSeries() {
 	const genres = mapGenres(tvGenres);
 	const startPage = 15;
 	const totalPages = 12;
-	const { data, error } = useFetchCategory("tv-series", startPage, totalPages);
+	const { data: seriesByCategory, error } = useFetchCategory("tv-series", startPage, totalPages);
 
 	function mapGenres(genres) {
 		const groupedGenres = Object.groupBy(genres, (genre) => genre.id);
@@ -24,7 +24,7 @@ export default function TvSeries() {
 	return (
 		<section className={styles.section}>
 			<div className={styles.container}>
-				<MovieList series={data} seriesGenres={genres} />
+				<MovieList series={seriesByCategory} seriesGenres={genres} />
 			</div>
 		</section>
 	);

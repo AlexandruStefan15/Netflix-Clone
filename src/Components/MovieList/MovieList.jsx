@@ -63,6 +63,10 @@ export default function MovieList({
 		searchMovies(query);
 	}, [query]);
 
+	/* useEffect(() => {
+		
+	}, [genreId]); */
+
 	const handleMovieClick = (movie) => {
 		const params = new URLSearchParams(searchParams);
 		params.set("mid", movie.id);

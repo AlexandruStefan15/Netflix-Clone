@@ -32,7 +32,7 @@ export default function Browse() {
 	const isFirstRender = useRef(true);
 
 	const location = useLocation();
-	const [searchParams] = useSearchParams();
+	const [searchParams, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
 		setBannerData(getBannerData("set1", location.pathname));
@@ -101,6 +101,9 @@ export default function Browse() {
 				>
 					<h1 className={styles.title}>{getTitle()}</h1>
 					<Select
+						onChange={(e) => {
+							setSearchParams((prev) => ({ ...Object.fromEntries(prev), gid: e.target.value }));
+						}}
 						defaultValue=""
 						className={styles.select}
 						className_wrapper={styles.select_wrapper}

@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Movies.module.scss";
 import { useFetchCategory } from "../../../hooks/useFetchCategory";
+import { useFetchGenre } from "../../../hooks/useFetchGenre";
 import { movieGenres } from "../../../Data/movieGenres";
+import { useSearchParams } from "react-router-dom";
 
 import MovieList from "../../MovieList/MovieList";
 
 export default function Movies() {
+	const [searchParams] = useSearchParams();
 	const genres = mapGenres(movieGenres);
 	const startPage = 15;
 	const totalPages = 12;
-	const { data, error } = useFetchCategory("movies", startPage, totalPages);
+	const { data: moviesByCategory, error: categoryError } = useFetchCategory(
+		"movies",
+		startPage,
+		totalPages
+	);
+	const { data: moviesByGenre, error: genreError, loading, fetchByGenre } = useFetchGenre();
+	const genreId = searchParams.get("gid");
 
 	function mapGenres(genres) {
 		const groupedGenres = Object.groupBy(genres, (genre) => genre.id);
@@ -19,12 +28,22 @@ export default function Movies() {
 		return mappedGenres;
 	}
 
-	if (error) console.error(error);
+	if (categoryError || genreError) console.error(categoryError || genreError);
+
+	useEffect(() => {
+		if (genreId) {
+			fetchByGenre(genreId, 4, "movie");
+		}
+	}, [genreId]);
 
 	return (
 		<section className={styles.section}>
 			<div className={styles.container}>
-				<MovieList movies={data} moviesGenres={genres} />
+				{genreId ? (
+					<MovieList movies={moviesByGenre} simpleList />
+				) : (
+					<MovieList movies={moviesByCategory} moviesGenres={genres} />
+				)}
 			</div>
 		</section>
 	);
