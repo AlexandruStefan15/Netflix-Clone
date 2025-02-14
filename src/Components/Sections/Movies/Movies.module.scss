@@ -8,5 +8,10 @@
 		flex-direction: column;
 		gap: 4rem;
 		min-height: 100vh;
+
+		.movieList {
+			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+			padding-inline: 4rem;
+		}
 	}
 }

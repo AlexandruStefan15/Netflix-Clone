@@ -36,6 +36,7 @@ export default function MovieList({
 	moviesGenres = {},
 	seriesGenres = {},
 	simpleList = false,
+	className = "",
 }) {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const { loading, results, searchMovies } = useMovieSearch();
@@ -97,7 +98,7 @@ export default function MovieList({
 	if (simpleList) {
 		return (
 			<>
-				<ul className={styles.simpleList}>
+				<ul className={styles.simpleList + ` ${className}`}>
 					{effectiveMovies.map(
 						(movie, index) =>
 							movie.poster_path && (
