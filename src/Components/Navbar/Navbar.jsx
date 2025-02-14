@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Navbar.module.scss";
 import { Trans, useTranslation } from "react-i18next";
 import { inline_svgs } from "../../Assets/svgs/svgs";
+import { useLocation } from "react-router-dom";
 
 import Link from "../Link/Link";
 import { NavLink } from "react-router-dom";
@@ -22,6 +23,7 @@ export default function Navbar({
 }) {
 	const { t, i18n } = useTranslation();
 	const languageChange = (e) => i18n.changeLanguage(e.target.value);
+	const location = useLocation();
 
 	return (
 		<nav className={styles[`nav${variant}`] + ` ${className}`}>
@@ -69,7 +71,7 @@ export default function Navbar({
 						<Option value="ro">Romana</Option>
 						<Option value="en">English</Option>
 					</Select>
-					<Link to="/login">
+					<Link to={location.pathname === "/login" ? "/browse" : "/login"}>
 						<Trans i18nKey={linkText.i18nKey}>{{ t: linkText.value }}</Trans>
 					</Link>
 				</div>

@@ -1,16 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./Form.module.scss";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 
 import { NavLink } from "react-router-dom";
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
-import { use } from "react";
 
 export default function Form({ className = "", data, setUserEmail, children, onSubmit, ...props }) {
 	const { t, i18n } = useTranslation();
-	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		email_or_phone: data.userEmail,
 		password: "",
