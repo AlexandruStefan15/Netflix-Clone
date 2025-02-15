@@ -8,13 +8,17 @@ import Button from "../Button/Button";
 
 export default function Form({ className = "", data, setUserEmail, children, onSubmit, ...props }) {
 	const { t, i18n } = useTranslation();
+	const [isValid, setIsValid] = useState(null);
 	const [formData, setFormData] = useState({
 		email_or_phone: data.userEmail,
 		password: "",
 	});
 
+	const formRef = useRef(null);
+
 	function handleSubmit(event) {
 		event.preventDefault();
+
 		if (onSubmit) onSubmit(event, formData);
 	}
 
@@ -28,15 +32,22 @@ export default function Form({ className = "", data, setUserEmail, children, onS
 
 	if (children)
 		return (
-			<form action="" className={styles.form + ` ${className}`} {...props}>
+			<form ref={formRef} action="" className={styles.form + ` ${className}`} {...props}>
 				{children}
 			</form>
 		);
 
 	return (
-		<form action="" className={styles.form + ` ${className}`} onSubmit={handleSubmit} {...props}>
+		<form
+			ref={formRef}
+			action=""
+			className={styles.form + ` ${className}`}
+			onSubmit={handleSubmit}
+			{...props}
+		>
 			<Form.Title>{t("Form.set1.title")}</Form.Title>
 			<Form.FormInput
+				className={styles.formInput}
 				type="text"
 				label="FormInput.label_3"
 				name="email_or_phone"
@@ -49,6 +60,7 @@ export default function Form({ className = "", data, setUserEmail, children, onS
 				}}
 			/>
 			<Form.FormInput
+				className={styles.formInput}
 				type="password"
 				label="FormInput.label_2"
 				name="password"

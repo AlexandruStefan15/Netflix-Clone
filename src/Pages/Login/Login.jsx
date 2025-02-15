@@ -18,7 +18,7 @@ export default function Login() {
 
 	return (
 		<div className={styles.wrapper}>
-			<Header navbarProps={{}} />
+			<Header />
 			<div className={styles.container}>
 				<Form data={{ userEmail }} setUserEmail={setUserEmail} onSubmit={handleSubmit} />
 			</div>

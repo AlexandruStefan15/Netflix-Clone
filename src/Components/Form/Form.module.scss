@@ -20,8 +20,10 @@
 		margin-bottom: 0.5rem;
 	}
 
-	.formInput:invalid {
-		border: 1px solid red;
+	.formInput {
+		input.invalid {
+			border-color: red;
+		}
 	}
 
 	.button {

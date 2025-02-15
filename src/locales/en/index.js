@@ -1,6 +1,6 @@
 export default {
 	Navbar: {
-		linkText: "Sign In",
+		login: "Sign In",
 	},
 
 	HeroBanner: {

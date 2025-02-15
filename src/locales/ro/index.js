@@ -1,6 +1,6 @@
 export default {
 	Navbar: {
-		linkText: "{{t}}",
+		login: "Conectare",
 	},
 
 	HeroBanner: {
