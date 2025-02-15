@@ -20,9 +20,9 @@
 		margin-bottom: 0.5rem;
 	}
 
-	.formInput {
-		input.invalid {
-			border-color: red;
+	.formInput.invalid {
+		input {
+			border: 1px solid red;
 		}
 	}
 

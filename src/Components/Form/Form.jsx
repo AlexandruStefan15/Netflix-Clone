@@ -8,7 +8,7 @@ import Button from "../Button/Button";
 
 export default function Form({ className = "", data, setUserEmail, children, onSubmit, ...props }) {
 	const { t, i18n } = useTranslation();
-	const [isValid, setIsValid] = useState(null);
+	const [invalidInputs, setInvalidInputs] = useState({});
 	const [formData, setFormData] = useState({
 		email_or_phone: data.userEmail,
 		password: "",
@@ -28,6 +28,11 @@ export default function Form({ className = "", data, setUserEmail, children, onS
 			...formData,
 			[name]: value,
 		});
+
+		setInvalidInputs((prev) => ({
+			...prev,
+			[name]: "",
+		}));
 	};
 
 	if (children)
@@ -47,7 +52,7 @@ export default function Form({ className = "", data, setUserEmail, children, onS
 		>
 			<Form.Title>{t("Form.set1.title")}</Form.Title>
 			<Form.FormInput
-				className={styles.formInput}
+				className={`${styles.formInput} ${invalidInputs["email_or_phone"] ? styles.invalid : ""}`}
 				type="text"
 				label="FormInput.label_3"
 				name="email_or_phone"
@@ -60,7 +65,7 @@ export default function Form({ className = "", data, setUserEmail, children, onS
 				}}
 			/>
 			<Form.FormInput
-				className={styles.formInput}
+				className={`${styles.formInput} ${invalidInputs.password ? styles.invalid : ""}`}
 				type="password"
 				label="FormInput.label_2"
 				name="password"
@@ -68,7 +73,22 @@ export default function Form({ className = "", data, setUserEmail, children, onS
 				value={formData.password}
 				onChange={handleChange}
 			/>
-			<Form.Button type="submit">{t("Form.set1.buttonText")}</Form.Button>
+			<Form.Button
+				onClick={(e) => {
+					const newInvalidInputs = {};
+					const inputs = formRef.current.querySelectorAll("input");
+
+					inputs.forEach((input) => {
+						if (!input.checkValidity()) {
+							newInvalidInputs[input.name] = true; // Mark invalid inputs
+						}
+					});
+					setInvalidInputs(newInvalidInputs);
+				}}
+				type="submit"
+			>
+				{t("Form.set1.buttonText")}
+			</Form.Button>
 			<div className={styles.rememberMe_container}>
 				<Form.RememberMe />
 				<Form.NavLink>{t("Form.set1.need_help")}</Form.NavLink>
