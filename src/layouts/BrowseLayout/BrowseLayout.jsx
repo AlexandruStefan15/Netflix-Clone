@@ -28,11 +28,6 @@ export function BrowseLayout() {
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
-		if (["/browse/movies", "/browse/tv-series"].includes(location.pathname)) setShowSubheader(true);
-		else setShowSubheader(false);
-	}, [location.pathname]);
-
-	useEffect(() => {
 		// Scroll to top on route change but not on the first render (mount).
 		if (isFirstRender.current) {
 			isFirstRender.current = false;
@@ -58,18 +53,6 @@ export function BrowseLayout() {
 		};
 	}, []);
 
-	function getTitle() {
-		const segments = location.pathname.split("/").filter(Boolean);
-		const lastSegment = segments.length > 0 ? segments[segments.length - 1] : null;
-
-		switch (lastSegment) {
-			case "movies":
-				return "Filme";
-			case "tv-series":
-				return "Seriale";
-		}
-	}
-
 	return (
 		<div className={styles.layout}>
 			<Header
@@ -82,33 +65,6 @@ export function BrowseLayout() {
 					secondaryNavigation: true,
 				}}
 			/>
-			{showSubeader && (
-				<Subheader
-					className={styles.subheader + (isTop ? ` ${styles.isTop}` : "")}
-					ref={subheaderRef}
-				>
-					<h1 className={styles.title}>{getTitle()}</h1>
-					<Select
-						value={searchParams.get("gid") || ""}
-						onChange={(e) => {
-							setSearchParams((prev) => ({ ...Object.fromEntries(prev), gid: e.target.value }));
-						}}
-						className={styles.select}
-						className_wrapper={styles.select_wrapper}
-						key={location.pathname}
-					>
-						<Option value="" disabled hidden>
-							Genuri
-						</Option>
-						{movieGenres.map((genre) => (
-							<Option key={genre.id} value={genre.id}>
-								{genre.shortName}
-							</Option>
-						))}
-					</Select>
-				</Subheader>
-			)}
-
 			<Outlet />
 			<Footer style={{ background: "inherit" }} />
 		</div>

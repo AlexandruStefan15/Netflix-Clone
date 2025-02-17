@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useEffect } from "react";
+import React, { forwardRef, useState, useEffect, useLayoutEffect } from "react";
 import { useSearchParams, useLocation } from "react-router-dom";
 import svgs from "../../Assets/svgs/svgs";
 import styles from "./Header.module.scss";
@@ -14,7 +14,7 @@ function Header({ className = "", navbarClassName = "", navbarProps, ...props },
 }
 
 const Subheader = forwardRef(({ className = "", children, ...props }, ref) => {
-	const [isTop, setIsTop] = useState(false);
+	const [isTop, setIsTop] = useState(true);
 
 	useEffect(() => {
 		const handleScroll = () => {

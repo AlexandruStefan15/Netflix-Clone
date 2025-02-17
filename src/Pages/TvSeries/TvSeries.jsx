@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
+import styles from "./TvSeries.module.scss";
 import { tvGenres } from "../../Data/tvGenres";
 import { useFetchCategory } from "../../hooks/useFetchCategory";
-import styles from "./TvSeries.module.scss";
 import { getBannerData } from "../../Data/heroBannerData";
 import { useFetchGenre } from "../../hooks/useFetchGenre";
 import { useSearchParams } from "react-router-dom";
@@ -9,10 +9,11 @@ import { useSearchParams } from "react-router-dom";
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
 import Loader from "../../Components/Loader/Loader";
+import { Subheader } from "../../Components/Header/Header";
+import Select, { Option } from "../../Components/Select/Select";
 
 export default function TvSeries() {
-	const [searchParams] = useSearchParams();
-
+	const [searchParams, setSearchParams] = useSearchParams();
 	const genres = mapGenres(tvGenres);
 	const startPage = 15;
 	const totalPages = 12;
@@ -44,6 +45,26 @@ export default function TvSeries() {
 
 	return (
 		<>
+			<Subheader className={styles.subheader}>
+				<h1 className={styles.title}>Seriale</h1>
+				<Select
+					value={searchParams.get("gid") || ""}
+					onChange={(e) => {
+						setSearchParams((prev) => ({ ...Object.fromEntries(prev), gid: e.target.value }));
+					}}
+					className={styles.select}
+					className_wrapper={styles.select_wrapper}
+				>
+					<Option value="" disabled hidden>
+						Genuri
+					</Option>
+					{tvGenres.map((genre) => (
+						<Option key={genre.id} value={genre.id}>
+							{genre.shortName}
+						</Option>
+					))}
+				</Select>
+			</Subheader>
 			<HeroBanner
 				image={bannerData?.image}
 				video={bannerData?.video}
