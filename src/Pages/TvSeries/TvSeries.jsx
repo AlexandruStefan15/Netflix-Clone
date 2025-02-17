@@ -8,6 +8,7 @@ import { useSearchParams } from "react-router-dom";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
+import Loader from "../../Components/Loader/Loader";
 
 export default function TvSeries() {
 	const [searchParams] = useSearchParams();
@@ -33,6 +34,13 @@ export default function TvSeries() {
 	}, [genreId]);
 
 	if (error) console.error(error);
+
+	if (loading)
+		return (
+			<div className={styles.loaderWrapper}>
+				<Loader />
+			</div>
+		);
 
 	return (
 		<>

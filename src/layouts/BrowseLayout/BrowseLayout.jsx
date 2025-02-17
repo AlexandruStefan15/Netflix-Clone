@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, createContext } from "react";
-import styles from "./Browse.module.scss";
+import styles from "./BrowseLayout.module.scss";
 import { Outlet, useLocation } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { movieGenres } from "../../Data/movieGenres";
@@ -17,9 +17,7 @@ const primaryNavigation = [
 	{ name: "Lista mea", path: "#" },
 ];
 
-export const BrowseContext = createContext();
-
-export default function Browse() {
+export function BrowseLayout() {
 	const [showSubeader, setShowSubheader] = useState(false);
 	const [isTop, setIsTop] = useState(false);
 

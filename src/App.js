@@ -10,7 +10,7 @@ import {
 
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
-import Browse from "./Pages/Browse/Browse";
+import { BrowseLayout } from "./layouts/BrowseLayout/BrowseLayout";
 import Discover from "./Pages/Discover/Discover";
 import Movies from "./Pages/Movies/Movies";
 import TvSeries from "./Pages/TvSeries/TvSeries";
@@ -22,10 +22,10 @@ const router = createBrowserRouter(
 		<>
 			<Route path="/" element={<Home />} />
 			<Route path="/login" element={<Login />} />
-			<Route path="/browse" element={<Browse />}>
+			<Route path="/browse" element={<BrowseLayout />}>
 				<Route index element={<Discover />} />
-				<Route path="movies/:genreId?" element={<Movies />} />
-				<Route path="tv-series/:genreId?" element={<TvSeries />} />
+				<Route path="movies" element={<Movies />} />
+				<Route path="tv-series" element={<TvSeries />} />
 				<Route path="popular" element={<Popular />} />
 				<Route path="search" element={<SearchResults />} />
 			</Route>
