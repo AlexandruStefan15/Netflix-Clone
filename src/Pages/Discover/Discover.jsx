@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
 import { fetchCategory } from "../../api/tmdb";
 import { movieGenres } from "../../Data/movieGenres";
 import { tvGenres } from "../../Data/tvGenres";
