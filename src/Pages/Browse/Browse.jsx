@@ -92,6 +92,7 @@ export default function Browse() {
 				>
 					<h1 className={styles.title}>{getTitle()}</h1>
 					<Select
+						value={searchParams.get("gid")}
 						onChange={(e) => {
 							setSearchParams((prev) => ({ ...Object.fromEntries(prev), gid: e.target.value }));
 						}}
