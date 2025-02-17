@@ -2,13 +2,11 @@ import React, { useState, useEffect, useRef, createContext } from "react";
 import styles from "./Browse.module.scss";
 import { Outlet, useLocation } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
-import { getBannerData } from "../../Data/heroBannerData";
 import { movieGenres } from "../../Data/movieGenres";
 
 import Header from "../../Components/Header/Header";
 import { Subheader } from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
-import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
 import Select, { Option } from "../../Components/Select/Select";
 
 const primaryNavigation = [
@@ -22,8 +20,6 @@ const primaryNavigation = [
 export const BrowseContext = createContext();
 
 export default function Browse() {
-	const [bannerData, setBannerData] = useState({});
-	const [showBanner, setShowBanner] = useState(true);
 	const [showSubeader, setShowSubheader] = useState(false);
 	const [isTop, setIsTop] = useState(false);
 
@@ -35,11 +31,6 @@ export default function Browse() {
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
-		setBannerData(getBannerData("set1", location.pathname));
-		if (["/browse/popular", "/browse/search"].includes(location.pathname)) {
-			setShowBanner(false);
-		} else setShowBanner(true);
-
 		if (["/browse/movies", "/browse/tv-series"].includes(location.pathname)) setShowSubheader(true);
 		else setShowSubheader(false);
 	}, [location.pathname]);
@@ -120,17 +111,7 @@ export default function Browse() {
 					</Select>
 				</Subheader>
 			)}
-			{showBanner && !searchParams.get("q") && (
-				<HeroBanner
-					image={bannerData?.image}
-					video={bannerData?.video}
-					movieLogo={bannerData?.movieLogo}
-					subtitle={bannerData?.subtitle}
-					movieLinks={true}
-					className={styles.heroBanner}
-					variant="2"
-				/>
-			)}
+
 			<Outlet />
 			<Footer style={{ background: "inherit" }} />
 		</div>

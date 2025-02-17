@@ -1,17 +1,21 @@
-.section {
+/* .section {
 	margin-top: -10rem;
 	padding-top: 5.5rem;
 	position: relative;
 	z-index: 999;
-	.container {
+	.movies {
 		display: flex;
 		flex-direction: column;
-		gap: 4rem;
+		gap: 3.5rem;
 		min-height: 100vh;
+	}
+}
+ */
 
-		.movieList {
-			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-			padding-inline: 4rem;
-		}
+.discover {
+	.moviesAndSeries {
+		margin-top: -8rem;
+		position: relative;
+		z-index: 999;
 	}
 }

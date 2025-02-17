@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import styles from "./SearchResults.module.scss";
 import { useSearchParams } from "react-router-dom";
-import { useMovieSearch } from "../../../hooks/useMovieSearch";
+import { useMovieSearch } from "../../hooks/useMovieSearch";
 import { useNavigate } from "react-router-dom";
 
-import MovieList from "../../MovieList/MovieList";
+import MovieList from "../../Components/MovieList/MovieList";
 
 export default function SearchResults() {
 	const [searchParams] = useSearchParams();
@@ -18,10 +18,12 @@ export default function SearchResults() {
 	}, [searchParams]);
 
 	return (
-		<section className={styles.section}>
-			<div className={styles.container}>
-				<MovieList simpleList={true} />
-			</div>
-		</section>
+		<main className={styles.subpage}>
+			<section className={styles.section}>
+				<div className={styles.container}>
+					<MovieList simpleList={true} />
+				</div>
+			</section>
+		</main>
 	);
 }

@@ -1,0 +1,25 @@
+.section {
+	margin-top: -8rem;
+	position: relative;
+	z-index: 999;
+
+	&:has(.movieList) {
+		margin-top: -4.1rem;
+	}
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		gap: 4rem;
+		min-height: 100vh;
+
+		.movieList {
+			grid-template-columns: repeat(6, minmax(100px, 1fr));
+			padding-inline: 4rem;
+
+			img {
+				border-radius: 5px;
+			}
+		}
+	}
+}

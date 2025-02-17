@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Footer.module.scss";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 import Select from "../Select/Select";
 import { Link } from "react-router-dom";
@@ -16,58 +16,90 @@ export default function Footer({ className = "", ...props }) {
 				<div className={styles.navigation}>
 					<ul className={styles.navList}>
 						<li className={styles.listItem}>
-							<Link className={styles.Link}>Întrebări frecvente</Link>
+							<Link to={0} className={styles.Link}>
+								Întrebări frecvente
+							</Link>
 						</li>
 						<li className={styles.listItem}>
-							<Link className={styles.Link}>Relații cu investitorii</Link>
+							<Link to={0} className={styles.Link}>
+								Relații cu investitorii
+							</Link>
 						</li>
 						<li className={styles.listItem}>
-							<Link className={styles.Link}>Declarația de confidențialitate</Link>
+							<Link to={0} className={styles.Link}>
+								Declarația de confidențialitate
+							</Link>
 						</li>
 						<li className={styles.listItem}>
-							<Link className={styles.Link}>Test de viteză</Link>
-						</li>
-					</ul>
-					<ul className={styles.navList}>
-						<li className={styles.listItem}>
-							<Link className={styles.Link}>Asistență</Link>
-						</li>
-						<li className={styles.listItem}>
-							<Link className={styles.Link}>Cariere</Link>
-						</li>
-						<li className={styles.listItem}>
-							<Link className={styles.Link}>Preferințe de cookie</Link>
-						</li>
-						<li className={styles.listItem}>
-							<Link className={styles.Link}>Garanție legală</Link>
+							<Link to={0} className={styles.Link}>
+								Test de viteză
+							</Link>
 						</li>
 					</ul>
 					<ul className={styles.navList}>
 						<li className={styles.listItem}>
-							<Link className={styles.Link}>Cont</Link>
+							<Link to={0} className={styles.Link}>
+								Asistență
+							</Link>
 						</li>
 						<li className={styles.listItem}>
-							<Link className={styles.Link}>Modalități de vizionare</Link>
+							<Link to={0} className={styles.Link}>
+								Cariere
+							</Link>
 						</li>
 						<li className={styles.listItem}>
-							<Link className={styles.Link}>Informații legate de companie</Link>
+							<Link to={0} className={styles.Link}>
+								Preferințe de cookie
+							</Link>
 						</li>
 						<li className={styles.listItem}>
-							<Link className={styles.Link}>Mențiuni legale</Link>
+							<Link to={0} className={styles.Link}>
+								Garanție legală
+							</Link>
 						</li>
 					</ul>
 					<ul className={styles.navList}>
 						<li className={styles.listItem}>
-							<Link className={styles.Link}>Centru media</Link>
+							<Link to={0} className={styles.Link}>
+								Cont
+							</Link>
 						</li>
 						<li className={styles.listItem}>
-							<Link className={styles.Link}>Condiții de utilizare</Link>
+							<Link to={0} className={styles.Link}>
+								Modalități de vizionare
+							</Link>
 						</li>
 						<li className={styles.listItem}>
-							<Link className={styles.Link}>Contactează-ne</Link>
+							<Link to={0} className={styles.Link}>
+								Informații legate de companie
+							</Link>
 						</li>
 						<li className={styles.listItem}>
-							<Link className={styles.Link}>Doar pe Netflix</Link>
+							<Link to={0} className={styles.Link}>
+								Mențiuni legale
+							</Link>
+						</li>
+					</ul>
+					<ul className={styles.navList}>
+						<li className={styles.listItem}>
+							<Link to={0} className={styles.Link}>
+								Centru media
+							</Link>
+						</li>
+						<li className={styles.listItem}>
+							<Link to={0} className={styles.Link}>
+								Condiții de utilizare
+							</Link>
+						</li>
+						<li className={styles.listItem}>
+							<Link to={0} className={styles.Link}>
+								Contactează-ne
+							</Link>
+						</li>
+						<li className={styles.listItem}>
+							<Link to={0} className={styles.Link}>
+								Doar pe Netflix
+							</Link>
 						</li>
 					</ul>
 				</div>

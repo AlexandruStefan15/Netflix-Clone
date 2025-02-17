@@ -11,11 +11,11 @@ import {
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Browse from "./Pages/Browse/Browse";
-import Discover from "./Components/Sections/Discover/Discover";
-import Movies from "./Components/Sections/Movies/Movies";
-import TvSeries from "./Components/Sections/TvSeries/TvSeries";
-import Popular from "./Components/Sections/Popular/Popular";
-import SearchResults from "./Components/Sections/SearchResults/SearchResults";
+import Discover from "./Pages/Discover/Discover";
+import Movies from "./Pages/Movies/Movies";
+import TvSeries from "./Pages/TvSeries/TvSeries";
+import Popular from "./Pages/Popular/Popular";
+import SearchResults from "./Pages/SearchResults/SearchResults";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -24,8 +24,8 @@ const router = createBrowserRouter(
 			<Route path="/login" element={<Login />} />
 			<Route path="/browse" element={<Browse />}>
 				<Route index element={<Discover />} />
-				<Route path="movies" element={<Movies />} />
-				<Route path="tv-series" element={<TvSeries />} />
+				<Route path="movies/:genreId?" element={<Movies />} />
+				<Route path="tv-series/:genreId?" element={<TvSeries />} />
 				<Route path="popular" element={<Popular />} />
 				<Route path="search" element={<SearchResults />} />
 			</Route>

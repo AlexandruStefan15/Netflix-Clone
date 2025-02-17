@@ -87,7 +87,7 @@ export default function MovieList({
 	if (!results.length && !loading && searchParams.get("q")) {
 		return (
 			<div className={styles.noResultsMessage}>
-				<h2>Nu am gasit niciun rezultat care sa corespunda criteriilor tale de cautare.</h2>
+				<h2>Nu am gasit niciun rezultat pentru aceasta cautare.</h2>
 				<div className={styles.video}>
 					<video src={videos.sadGirl} muted autoPlay loop></video>
 				</div>
@@ -118,31 +118,33 @@ export default function MovieList({
 
 	return (
 		<>
-			{Object.keys(combinedCategory).map((genreId) => {
-				const group = combinedCategory[genreId];
-				const hasEnoughMovies = group.movies.length >= 8;
-				const hasEnoughSeries = group.series.length >= 8;
-				const moviesGenre = moviesGenres[genreId];
-				const seriesGenre = seriesGenres[genreId];
+			<ul className={styles.container}>
+				{Object.keys(combinedCategory).map((genreId) => {
+					const group = combinedCategory[genreId];
+					const hasEnoughMovies = group.movies.length >= 8;
+					const hasEnoughSeries = group.series.length >= 8;
+					const moviesGenre = moviesGenres[genreId];
+					const seriesGenre = seriesGenres[genreId];
 
-				return hasEnoughMovies || hasEnoughSeries ? (
-					<React.Fragment key={genreId}>
-						{hasEnoughMovies && moviesGenre && (
-							<div className={styles.container}>
-								<h2 className={styles.title}>{moviesGenre}</h2>
-								<MovieSlider handleMovieClick={handleMovieClick} movies={group.movies} />
-							</div>
-						)}
-						{hasEnoughSeries && seriesGenre && (
-							<div className={styles.container}>
-								<h2 className={styles.title}>{seriesGenre}</h2>
-								<MovieSlider handleMovieClick={handleMovieClick} movies={group.series} />
-							</div>
-						)}
-					</React.Fragment>
-				) : null;
-			})}
-			{activeMovie && <Modal movie={activeMovie} onClose={handleCloseModal} />}
+					return hasEnoughMovies || hasEnoughSeries ? (
+						<React.Fragment key={genreId}>
+							{hasEnoughMovies && moviesGenre && (
+								<div className={styles.item}>
+									<h2 className={styles.title}>{moviesGenre}</h2>
+									<MovieSlider handleMovieClick={handleMovieClick} movies={group.movies} />
+								</div>
+							)}
+							{hasEnoughSeries && seriesGenre && (
+								<div className={styles.item}>
+									<h2 className={styles.title}>{seriesGenre}</h2>
+									<MovieSlider handleMovieClick={handleMovieClick} movies={group.series} />
+								</div>
+							)}
+						</React.Fragment>
+					) : null;
+				})}
+				{activeMovie && <Modal movie={activeMovie} onClose={handleCloseModal} />}
+			</ul>
 		</>
 	);
 }

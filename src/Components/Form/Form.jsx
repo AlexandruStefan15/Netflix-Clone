@@ -80,7 +80,7 @@ export default function Form({ className = "", data, setUserEmail, children, onS
 
 					inputs.forEach((input) => {
 						if (!input.checkValidity()) {
-							newInvalidInputs[input.name] = true; // Mark invalid inputs
+							newInvalidInputs[input.name] = true;
 						}
 					});
 					setInvalidInputs(newInvalidInputs);

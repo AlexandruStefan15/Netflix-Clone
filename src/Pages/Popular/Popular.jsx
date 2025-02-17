@@ -1,8 +1,8 @@
 import React from "react";
-import { useFetchCategory } from "../../../hooks/useFetchCategory";
+import { useFetchCategory } from "../../hooks/useFetchCategory";
 import styles from "./Popular.module.scss";
 
-import MovieList from "../../MovieList/MovieList";
+import MovieList from "../../Components/MovieList/MovieList";
 
 export default function Popular() {
 	const startPage = 1;
@@ -12,11 +12,13 @@ export default function Popular() {
 	if (error) console.error(error);
 
 	return (
-		<section className={styles.section}>
-			<div className={styles.container}>
-				<MovieList movies={data} simpleList={true} />
-			</div>
-		</section>
+		<main className={styles.subpage}>
+			<section className={styles.section}>
+				<div className={styles.container}>
+					<MovieList movies={data} simpleList={true} />
+				</div>
+			</section>
+		</main>
 	);
 }
 
