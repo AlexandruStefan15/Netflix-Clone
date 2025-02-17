@@ -4,6 +4,7 @@ import styles from "./MovieList.module.scss";
 import MovieSlider from "../MovieSlider/MovieSlider";
 import { useSearchParams } from "react-router-dom";
 import { useMovieSearch } from "../../hooks/useMovieSearch";
+
 import Modal from "../Modal/Modal";
 
 const groupByGenre = (items) =>

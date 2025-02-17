@@ -8,6 +8,7 @@ import { getBannerData } from "../../Data/heroBannerData";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
+import Loader from "../../Components/Loader/Loader";
 
 export default function Movies() {
 	const [searchParams] = useSearchParams();
@@ -38,6 +39,13 @@ export default function Movies() {
 			fetchByGenre(genreId, 4, "movie"); // fetch 4 pages
 		}
 	}, [genreId]);
+
+	if (loading)
+		return (
+			<div className={styles.loaderWrapper}>
+				<Loader />
+			</div>
+		);
 
 	return (
 		<>

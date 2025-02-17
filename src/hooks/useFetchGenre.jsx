@@ -24,7 +24,7 @@ export const useFetchGenre = () => {
 		} catch (err) {
 			setError(err.message);
 		} finally {
-			setLoading(false);
+			setTimeout(() => setLoading(false), 800);
 		}
 	};
 
