@@ -1,3 +1,21 @@
-.section {
+.header {
 	background: linear-gradient(#0000003d, transparent);
+}
+
+.subheader {
+	position: fixed;
+	background-color: #141414;
+	z-index: 9999;
+	min-height: 65px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 3.5rem;
+	padding-left: 5rem;
+	top: 70px;
+
+	&.isTop {
+		background-color: transparent;
+		transition: background-color 0.3s ease-in-out;
+	}
 }

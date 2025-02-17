@@ -5,6 +5,7 @@ import { useFetchGenre } from "../../hooks/useFetchGenre";
 import { movieGenres } from "../../Data/movieGenres";
 import { useSearchParams } from "react-router-dom";
 import { getBannerData } from "../../Data/heroBannerData";
+import { Subheader } from "../../Components/Header/Header";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";

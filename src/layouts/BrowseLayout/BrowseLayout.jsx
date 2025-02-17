@@ -71,7 +71,7 @@ export function BrowseLayout() {
 	}
 
 	return (
-		<div className={styles.page}>
+		<div className={styles.layout}>
 			<Header
 				className={styles.header + (isTop ? ` ${styles.isTop}` : "")}
 				ref={headerRef}
