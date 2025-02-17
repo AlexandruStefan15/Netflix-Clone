@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, createContext } from "react";
 import styles from "./BrowseLayout.module.scss";
-import { Outlet, useLocation } from "react-router-dom";
-import { useSearchParams } from "react-router-dom";
+import { Outlet, useLocation, useSearchParams } from "react-router-dom";
 import { movieGenres } from "../../Data/movieGenres";
 
 import Header from "../../Components/Header/Header";
