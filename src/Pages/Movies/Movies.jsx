@@ -49,8 +49,6 @@ export default function Movies() {
 			</div>
 		);
 
-	console.log(moviesByGenre);
-
 	return (
 		<>
 			<Subheader className={styles.subheader}>

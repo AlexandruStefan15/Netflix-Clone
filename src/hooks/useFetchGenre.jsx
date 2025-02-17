@@ -28,5 +28,5 @@ export const useFetchGenre = () => {
 		}
 	};
 
-	return { data, error, loading, fetchByGenre };
+	return { data, error, loading, fetchByGenre, topTitleId: data[0]?.id };
 };
