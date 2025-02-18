@@ -76,7 +76,7 @@ export const movieGenres = [
 		id: 878,
 		name: "Science Fiction",
 		shortName: "SF",
-		topTitleId: 157336,
+		topTitleId: 696506,
 	},
 	{
 		id: 53,

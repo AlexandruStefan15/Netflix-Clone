@@ -15,7 +15,7 @@ const SearchBar = ({ placeholder = "Cauta...", onSearch, className = "", ...prop
 		const value = e.target.value;
 		setQuery(value);
 		if (e.target.value === "" && location.pathname !== "/browse/search") {
-			setSearchParams({});
+			setIsFocused(false);
 		}
 		if (onSearch) onSearch(value);
 	};

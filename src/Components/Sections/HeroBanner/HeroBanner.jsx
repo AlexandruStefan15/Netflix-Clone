@@ -98,7 +98,17 @@ export default function HeroBanner({
 						}
 						ref={movieLogoRef}
 					>
-						<img src={movieLogo} alt="" />
+						<img
+							onLoad={(e) => {
+								const img = e.target;
+								const zoom = window.devicePixelRatio; // 1 for 100%, 1.25 for 125%, etc.
+
+								if (zoom > 1 && img.offsetHeight > 350) img.style.width = `500px`;
+								else img.style.width = `${img.naturalWidth}px`;
+							}}
+							src={movieLogo}
+							alt=""
+						/>
 					</div>
 				)}
 				{subtitle && (
