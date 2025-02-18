@@ -75,15 +75,7 @@ export default function Movies() {
 					))}
 				</Select>
 			</Subheader>
-			<HeroBanner
-				image={bannerData?.image}
-				video={bannerData?.video}
-				movieLogo={bannerData?.movieLogo}
-				subtitle={bannerData?.subtitle}
-				movieLinks={true}
-				className={styles.heroBanner}
-				variant="2"
-			/>
+			<HeroBanner {...bannerData} movieLinks={true} className={styles.heroBanner} variant="2" />
 			<section className={styles.section}>
 				<div className={styles.container}>
 					{genreId ? (
