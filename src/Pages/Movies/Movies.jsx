@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Movies.module.scss";
 import { useFetchCategory } from "../../hooks/useFetchCategory";
 import { useFetchGenre } from "../../hooks/useFetchGenre";
+import { useMovieImages } from "../../hooks/useMovieImages";
 import { movieGenres } from "../../Data/movieGenres";
 import { useSearchParams } from "react-router-dom";
 import { getBannerData } from "../../Data/heroBannerData";
 import { Subheader } from "../../Components/Header/Header";
+import { mapGenres, getFirstSentence } from "../../utils/helpers";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
@@ -14,7 +16,9 @@ import Select, { Option } from "../../Components/Select/Select";
 
 export default function Movies() {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const bannerData = getBannerData("set1", "/browse/movies");
+	const genreId = searchParams.get("gid");
+	const genres = mapGenres(movieGenres);
+	const genresTopTitles = mapGenres(movieGenres, "topTitleId");
 	const startPage = 15;
 	const totalPages = 12;
 	const { data: moviesByCategory, error: categoryError } = useFetchCategory(
@@ -23,16 +27,16 @@ export default function Movies() {
 		totalPages
 	);
 	const { data: moviesByGenre, error: genreError, loading, fetchByGenre } = useFetchGenre();
-	const genreId = searchParams.get("gid");
-	const genres = mapGenres(movieGenres);
+	const { logo, backdrop, description } = useMovieImages(genresTopTitles[genreId]);
 
-	function mapGenres(genres) {
-		const groupedGenres = Object.groupBy(genres, (genre) => genre.id);
-		const mappedGenres = Object.fromEntries(
-			Object.entries(groupedGenres).map(([id, genres]) => [id, genres[0].name])
-		);
-		return mappedGenres;
-	}
+	const bannerData = genreId
+		? {
+				image: `https://image.tmdb.org/t/p/original/${backdrop}`,
+				video: null,
+				movieLogo: `https://image.tmdb.org/t/p/original/${logo}`,
+				subtitle: getFirstSentence(description),
+		  }
+		: getBannerData("set1", "/browse/movies");
 
 	if (categoryError || genreError) console.error(categoryError || genreError);
 
@@ -72,12 +76,8 @@ export default function Movies() {
 				</Select>
 			</Subheader>
 			<HeroBanner
-				image={
-					genreId
-						? `https://image.tmdb.org/t/p/original/${moviesByGenre[0]?.backdrop_path}`
-						: bannerData?.image
-				}
-				video={genreId ? null : bannerData?.video}
+				image={bannerData?.image}
+				video={bannerData?.video}
 				movieLogo={bannerData?.movieLogo}
 				subtitle={bannerData?.subtitle}
 				movieLinks={true}

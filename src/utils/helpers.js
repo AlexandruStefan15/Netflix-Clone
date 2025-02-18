@@ -8,3 +8,17 @@ export function isSmartTV() {
 		)
 	);
 }
+
+export function mapGenres(genres, type = "name") {
+	const groupedGenres = Object.groupBy(genres, (genre) => genre.id);
+	const mappedGenres = Object.fromEntries(
+		Object.entries(groupedGenres).map(([id, genres]) => [id, genres[0][type]])
+	);
+	return mappedGenres;
+}
+
+export function getFirstSentence(text) {
+	if (!text) return "";
+	const match = text.match(/[^.!?]+[.!?]/);
+	return match ? match[0].trim() : text;
+}

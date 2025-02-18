@@ -6,6 +6,8 @@ const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
 
 const useMovieImages = (movieId) => {
 	const [logo, setLogo] = useState(null);
+	const [backdrop, setBackdrop] = useState(null);
+	const [description, setDescription] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
@@ -15,16 +17,29 @@ const useMovieImages = (movieId) => {
 		const fetchMovieImages = async () => {
 			setLoading(true);
 			try {
-				const response = await fetch(
+				const detailsResponse = await fetch(
+					`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`
+				);
+
+				if (!detailsResponse.ok) throw new Error("Failed to fetch movie details");
+
+				const detailsData = await detailsResponse.json();
+
+				const imagesResponse = await fetch(
 					`${BASE_URL}/movie/${movieId}/images?api_key=${API_KEY}&include_image_language=en,null`
 				);
 
-				if (!response.ok) throw new Error("Failed to fetch images");
+				if (!imagesResponse.ok) throw new Error("Failed to fetch images");
 
-				const data = await response.json();
+				const data = await imagesResponse.json();
+
+				const description = detailsData.overview;
 				const logoPath = data.logos[0].file_path;
+				const backdropPath = data.backdrops[0].file_path;
 
+				setDescription(description);
 				setLogo(logoPath);
+				setBackdrop(backdropPath);
 			} catch (err) {
 				setError(err.message);
 			} finally {
@@ -35,7 +50,7 @@ const useMovieImages = (movieId) => {
 		fetchMovieImages();
 	}, [movieId]);
 
-	return { logo, loading, error };
+	return { description, logo, backdrop, loading, error };
 };
 
-export default useMovieImages;
+export { useMovieImages };
