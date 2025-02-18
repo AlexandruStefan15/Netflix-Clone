@@ -60,7 +60,7 @@ export default function Movies() {
 				<Select
 					value={searchParams.get("gid") || ""}
 					onChange={(e) => {
-						setSearchParams((prev) => ({ ...Object.fromEntries(prev), gid: e.target.value }));
+						setSearchParams({ gid: e.target.value });
 					}}
 					className={styles.select}
 					className_wrapper={styles.select_wrapper}

@@ -185,7 +185,7 @@ Form.RememberMe = function Form_RememberMe({ className = "", children, ...props 
 			{children || (
 				<>
 					<input
-						onClick={handleClick}
+						onChange={handleClick}
 						name={props.name}
 						id={props.id}
 						type="checkbox"
