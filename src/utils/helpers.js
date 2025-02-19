@@ -10,11 +10,10 @@ export function isSmartTV() {
 }
 
 export function mapGenres(genres, type = "name") {
-	const groupedGenres = Object.groupBy(genres, (genre) => genre.id);
-	const mappedGenres = Object.fromEntries(
-		Object.entries(groupedGenres).map(([id, genres]) => [id, genres[0][type]])
-	);
-	return mappedGenres;
+	return genres.reduce((acc, genre) => {
+		acc[genre.id] = genre[type];
+		return acc;
+	}, {});
 }
 
 export function getFirstSentence(text) {
