@@ -88,7 +88,7 @@ const TMDbVideoPlayer = ({ id, type = "movie", image }) => {
 		);
 
 	return (
-		<div id="player-container" style={{ position: "relative", width: "100%", height: "600px" }}>
+		<div className={styles.playerContainer} id="player-container">
 			<div
 				id={playerContainerId}
 				style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}

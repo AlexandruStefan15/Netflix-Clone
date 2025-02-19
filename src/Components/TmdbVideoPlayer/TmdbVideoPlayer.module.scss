@@ -1,5 +1,11 @@
+.playerContainer {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 200 / 115;
+}
+
 .image {
-	aspect-ratio: 200 / 140;
+	aspect-ratio: 200 / 110;
 
 	img {
 		width: 100%;
