@@ -4,7 +4,7 @@ const API_KEY = "318dc067de589bc7b276ad2334cac8d8";
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
 
-const useMovieImages = (movieId) => {
+const useMovieImages = (movieId, type = "movie") => {
 	const [logo, setLogo] = useState(null);
 	const [backdrop, setBackdrop] = useState(null);
 	const [description, setDescription] = useState(null);
@@ -18,7 +18,7 @@ const useMovieImages = (movieId) => {
 			setLoading(true);
 			try {
 				const detailsResponse = await fetch(
-					`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`
+					`${BASE_URL}/${type}/${movieId}?api_key=${API_KEY}&language=en-US`
 				);
 
 				if (!detailsResponse.ok) throw new Error("Failed to fetch movie details");
@@ -26,7 +26,7 @@ const useMovieImages = (movieId) => {
 				const detailsData = await detailsResponse.json();
 
 				const imagesResponse = await fetch(
-					`${BASE_URL}/movie/${movieId}/images?api_key=${API_KEY}&include_image_language=en,null`
+					`${BASE_URL}/${type}/${movieId}/images?api_key=${API_KEY}&include_image_language=en,null`
 				);
 
 				if (!imagesResponse.ok) throw new Error("Failed to fetch images");

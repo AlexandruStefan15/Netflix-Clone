@@ -28,7 +28,6 @@ export default function Movies() {
 	);
 	const { data: moviesByGenre, error: genreError, loading, fetchByGenre } = useFetchGenre();
 	const { logo, backdrop, description } = useMovieImages(genresTopTitles[genreId]);
-
 	const bannerData = genreId
 		? {
 				image: `https://image.tmdb.org/t/p/original/${backdrop}`,
@@ -38,13 +37,13 @@ export default function Movies() {
 		  }
 		: getBannerData("set1", "/browse/movies");
 
-	if (categoryError || genreError) console.error(categoryError || genreError);
-
 	useEffect(() => {
 		if (genreId) {
 			fetchByGenre(genreId, 4, "movie"); // fetch 4 pages
 		}
 	}, [genreId]);
+
+	if (categoryError || genreError) console.error(categoryError || genreError);
 
 	if (loading)
 		return (
