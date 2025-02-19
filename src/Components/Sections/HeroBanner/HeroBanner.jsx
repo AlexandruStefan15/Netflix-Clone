@@ -174,6 +174,7 @@ export default function HeroBanner({
 						src={currentVideo}
 						muted={true}
 						playsInline
+						preload="metadata"
 					></video>
 				</div>
 			)}
