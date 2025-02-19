@@ -39,6 +39,7 @@ export const tvGenres = [
 		id: 10762,
 		name: "Seriale pentru copii",
 		shortName: "Familie",
+		topTitleId: 103540,
 	},
 	{
 		id: 9648,
@@ -71,5 +72,6 @@ export const tvGenres = [
 		id: 10766,
 		name: "Telenovele",
 		shortName: "Telenovela",
+		topTitleId: 1416,
 	},
 ];

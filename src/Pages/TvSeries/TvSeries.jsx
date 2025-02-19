@@ -61,11 +61,14 @@ export default function TvSeries() {
 					<Option value="" disabled hidden>
 						Genuri
 					</Option>
-					{tvGenres.map((genre) => (
-						<Option key={genre.id} value={genre.id}>
-							{genre.shortName}
-						</Option>
-					))}
+					{tvGenres.map(
+						(genre) =>
+							genre.topTitleId && (
+								<Option key={genre.id} value={genre.id}>
+									{genre.shortName}
+								</Option>
+							)
+					)}
 				</Select>
 			</Subheader>
 			<HeroBanner {...bannerData} movieLinks={true} className={styles.heroBanner} variant="2" />
