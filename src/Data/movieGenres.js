@@ -3,7 +3,7 @@ export const movieGenres = [
 		id: 28,
 		name: "Filme de actiune",
 		shortName: "Actiune",
-		topTitleId: 545609,
+		topTitleId: 615457,
 	},
 	{
 		id: 12,
