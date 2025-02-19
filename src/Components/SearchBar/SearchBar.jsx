@@ -56,6 +56,8 @@ const SearchBar = ({ placeholder = "Cauta...", onSearch, className = "", ...prop
 					setTimeout(() => {
 						inputRef.current.focus();
 					}, 0);
+					if (inputRef.current.value !== "")
+						navigate(`/browse/search?q=${encodeURIComponent(query)}`);
 				}}
 			>
 				<div className={styles.icon}>{inline_svgs.search}</div>

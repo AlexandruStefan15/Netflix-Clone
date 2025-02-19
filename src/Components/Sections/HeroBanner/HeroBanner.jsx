@@ -22,6 +22,7 @@ export default function HeroBanner({
 	movieLogo,
 	movieLinks,
 	showRegisterForm,
+	shouldTranslate = true,
 	...props
 }) {
 	const { t, i18n } = useTranslation();
@@ -117,7 +118,7 @@ export default function HeroBanner({
 						variant={variant}
 						ref={subtitleRef}
 					>
-						{t(subtitle)}
+						{shouldTranslate ? t(subtitle) : subtitle}
 					</Subtitle>
 				)}
 				{showRegisterForm && (

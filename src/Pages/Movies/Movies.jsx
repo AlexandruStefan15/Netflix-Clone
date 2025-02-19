@@ -77,7 +77,13 @@ export default function Movies() {
 					)}
 				</Select>
 			</Subheader>
-			<HeroBanner {...bannerData} movieLinks={true} className={styles.heroBanner} variant="2" />
+			<HeroBanner
+				{...bannerData}
+				movieLinks={true}
+				className={styles.heroBanner}
+				variant="2"
+				shouldTranslate={false}
+			/>
 			<section className={styles.section}>
 				<div className={styles.container}>
 					{genreId ? (

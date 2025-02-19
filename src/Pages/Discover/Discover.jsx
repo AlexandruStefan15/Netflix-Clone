@@ -4,6 +4,7 @@ import { movieGenres } from "../../Data/movieGenres";
 import { tvGenres } from "../../Data/tvGenres";
 import styles from "./Discover.module.scss";
 import { getBannerData } from "../../Data/heroBannerData";
+import { mapGenres } from "../../utils/helpers";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
@@ -16,14 +17,6 @@ export default function Discover() {
 	const moviesGenres = mapGenres(movieGenres);
 	const seriesGenres = mapGenres(tvGenres);
 	const bannerData = getBannerData("set1", "/browse");
-
-	function mapGenres(genres) {
-		const groupedGenres = Object.groupBy(genres, (genre) => genre.id);
-		const mappedGenres = Object.fromEntries(
-			Object.entries(groupedGenres).map(([id, genres]) => [id, genres[0].name])
-		);
-		return mappedGenres;
-	}
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -68,6 +61,7 @@ export default function Discover() {
 				movieLinks={true}
 				className={styles.heroBanner}
 				variant="2"
+				shouldTranslate={false}
 			/>
 			<section className={styles.moviesAndSeries}>
 				<MovieList
