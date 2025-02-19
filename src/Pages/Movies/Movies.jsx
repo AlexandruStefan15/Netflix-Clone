@@ -8,6 +8,7 @@ import { useSearchParams } from "react-router-dom";
 import { getBannerData } from "../../Data/heroBannerData";
 import { Subheader } from "../../Components/Header/Header";
 import { mapGenres, getFirstSentence } from "../../utils/helpers";
+import { movieTrailers } from "../../Assets/videos/videos";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
@@ -31,7 +32,7 @@ export default function Movies() {
 	const bannerData = genreId
 		? {
 				image: `https://image.tmdb.org/t/p/original/${backdrop}`,
-				video: null,
+				video: movieTrailers[genreId] || null,
 				movieLogo: `https://image.tmdb.org/t/p/original/${logo}`,
 				subtitle: getFirstSentence(description),
 		  }
