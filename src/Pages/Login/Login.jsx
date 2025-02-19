@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import Form from "../../Components/Form/Form";
+import TmdbVideoPlayer from "../../Components/TmdbVideoPlayer/TmdbVideoPlayer";
 
 export default function Login() {
 	const { userEmail, setUserEmail } = useContext(UserContext);

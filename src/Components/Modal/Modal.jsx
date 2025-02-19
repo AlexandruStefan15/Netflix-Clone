@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./Modal.module.scss";
 
+import TMDbVideoPlayer from "../TmdbVideoPlayer/TmdbVideoPlayer";
+
 export default function Modal({ movie, onClose }) {
 	const dialogRef = useRef(null);
 
@@ -37,8 +39,16 @@ export default function Modal({ movie, onClose }) {
 				>
 					X
 				</button>
-				{/* trailer */}
-				<div className={styles.image}>
+				<TMDbVideoPlayer
+					id={movie.id}
+					type={movie.title ? "movie" : "tv"}
+					image={
+						movie.backdrop_path
+							? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+							: `https://image.tmdb.org/t/p/original${movie.poster_path}`
+					}
+				/>
+				{/* <div className={styles.image}>
 					<img
 						src={
 							movie.backdrop_path
@@ -47,7 +57,7 @@ export default function Modal({ movie, onClose }) {
 						}
 						alt={`${movie.title} backdrop`}
 					/>
-				</div>
+				</div> */}
 				<div className={styles.details}>
 					<h1>{movie.title || movie.name}</h1>
 					<p>{movie.overview ? movie.overview : "No description"}</p>
