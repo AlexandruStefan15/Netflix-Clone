@@ -25,7 +25,6 @@ export default function HeroBanner({
 	...props
 }) {
 	const { t, i18n } = useTranslation();
-	const [subtitleHeight, setSubtitleHeight] = useState(0);
 	const [transitionIsActive, setTransitionIsActive] = useState(false);
 	const [isImageLoaded, setIsImageLoaded] = useState(false);
 	const [currentImage, setCurrentImage] = useState(image);
@@ -66,7 +65,6 @@ export default function HeroBanner({
 	useEffect(() => {
 		if (movieLogoRef.current && subtitleRef.current) {
 			const height = subtitleRef.current.offsetHeight;
-			setSubtitleHeight(height);
 			movieLogoRef.current.style.setProperty("--subtitle-height", `${height}px`);
 
 			const timer = setTimeout(() => {
