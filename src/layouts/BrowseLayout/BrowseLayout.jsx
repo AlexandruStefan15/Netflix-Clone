@@ -17,11 +17,9 @@ const primaryNavigation = [
 ];
 
 export function BrowseLayout() {
-	const [showSubeader, setShowSubheader] = useState(false);
 	const [isTop, setIsTop] = useState(false);
 
 	const headerRef = useRef(null);
-	const subheaderRef = useRef(null);
 	const isFirstRender = useRef(true);
 
 	const location = useLocation();
