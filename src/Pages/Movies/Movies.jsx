@@ -9,6 +9,7 @@ import { getBannerData } from "../../Data/heroBannerData";
 import { Subheader } from "../../Components/Header/Header";
 import { mapGenres, getFirstSentence } from "../../utils/helpers";
 import { movieTrailers } from "../../Assets/videos/videos";
+import { isSmartTV } from "../../utils/helpers";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
@@ -55,7 +56,7 @@ export default function Movies() {
 
 	return (
 		<>
-			<Subheader className={styles.subheader}>
+			<Subheader className={styles.subheader + (isSmartTV() ? ` ${styles.isTV}` : "")}>
 				<h1 className={styles.title}>Filme</h1>
 				<Select
 					value={searchParams.get("gid") || ""}

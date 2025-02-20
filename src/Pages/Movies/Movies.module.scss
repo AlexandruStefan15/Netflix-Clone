@@ -1,4 +1,8 @@
 .subheader {
+	&.isTV {
+		padding-block: 0.3rem;
+	}
+
 	.title {
 		font-size: 2.5rem;
 	}

@@ -112,6 +112,21 @@
 	position: relative;
 	min-height: 720px;
 
+	&.isTV {
+		.video {
+			&:has(video) {
+				&::before {
+					background-image: linear-gradient(
+						0deg,
+						rgb(0 0 0 / 0%) 0,
+						transparent 80%,
+						rgb(0 0 0 / 90%)
+					);
+				}
+			}
+		}
+	}
+
 	.container {
 		width: 35.5%;
 		max-width: 725px;
@@ -273,7 +288,7 @@
 					0deg,
 					rgb(0 0 0 / 0%) 0,
 					transparent 80%,
-					rgb(0 0 0 / 50%)
+					rgb(0 0 0 / 60%)
 				);
 				z-index: 9;
 			}

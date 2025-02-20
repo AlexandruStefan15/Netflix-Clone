@@ -5,6 +5,7 @@ import { inline_svgs } from "../../../Assets/svgs/svgs";
 import styles from "./styles.module.scss";
 import { useEffect, useRef, useState } from "react";
 import usePauseOnTabChange from "../../../hooks/usePauseOnTabChange";
+import { isSmartTV } from "../../../utils/helpers";
 
 import RegisterForm from "../../RegisterForm/RegisterForm";
 import Subtitle from "../../Subtitle/Subtitle";
@@ -87,7 +88,12 @@ export default function HeroBanner({
 	}, [transitionIsActive]);
 
 	return (
-		<section className={styles[`section${variant}`] + ` ${className}`} {...props}>
+		<section
+			className={
+				styles[`section${variant}`] + (isSmartTV() ? ` ${styles.isTV}` : "") + ` ${className}`
+			}
+			{...props}
+		>
 			<div className={styles.container}>
 				{title && <Title className={styles.title}>{t(title)}</Title>}
 				{movieLogo && (
@@ -100,7 +106,7 @@ export default function HeroBanner({
 						<img
 							onLoad={(e) => {
 								const img = e.target;
-								const zoom = window.devicePixelRatio; // 1 for 100%, 1.25 for 125%, etc.
+								const zoom = window.devicePixelRatio;
 
 								if (zoom > 1 && img.offsetHeight > 350) img.style.width = `500px`;
 								else img.style.width = `${img.naturalWidth}px`;
