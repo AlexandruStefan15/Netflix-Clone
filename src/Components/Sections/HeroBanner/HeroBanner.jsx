@@ -5,7 +5,7 @@ import { inline_svgs } from "../../../Assets/svgs/svgs";
 import styles from "./styles.module.scss";
 import { useEffect, useRef, useState } from "react";
 import usePauseOnTabChange from "../../../hooks/usePauseOnTabChange";
-import { isSmartTV } from "../../../utils/helpers";
+import { useOutletContext } from "react-router-dom";
 
 import RegisterForm from "../../RegisterForm/RegisterForm";
 import Subtitle from "../../Subtitle/Subtitle";
@@ -27,6 +27,7 @@ export default function HeroBanner({
 	...props
 }) {
 	const { t, i18n } = useTranslation();
+	const isTV = useOutletContext();
 	const [transitionIsActive, setTransitionIsActive] = useState(false);
 	const [isImageLoaded, setIsImageLoaded] = useState(false);
 	const [currentImage, setCurrentImage] = useState(image);
@@ -89,9 +90,7 @@ export default function HeroBanner({
 
 	return (
 		<section
-			className={
-				styles[`section${variant}`] + (isSmartTV() ? ` ${styles.isTV}` : "") + ` ${className}`
-			}
+			className={styles[`section${variant}`] + (isTV ? ` ${styles.isTV}` : "") + ` ${className}`}
 			{...props}
 		>
 			<div className={styles.container}>

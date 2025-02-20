@@ -9,7 +9,7 @@ import { getBannerData } from "../../Data/heroBannerData";
 import { Subheader } from "../../Components/Header/Header";
 import { mapGenres, getFirstSentence } from "../../utils/helpers";
 import { movieTrailers } from "../../Assets/videos/videos";
-import { isSmartTV } from "../../utils/helpers";
+import { useOutletContext } from "react-router-dom";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
@@ -18,6 +18,7 @@ import Select, { Option } from "../../Components/Select/Select";
 
 export default function Movies() {
 	const [searchParams, setSearchParams] = useSearchParams();
+	const isTV = useOutletContext();
 	const genreId = searchParams.get("gid");
 	const genres = mapGenres(movieGenres);
 	const genresTopTitles = mapGenres(movieGenres, "topTitleId");
@@ -56,7 +57,7 @@ export default function Movies() {
 
 	return (
 		<>
-			<Subheader className={styles.subheader + (isSmartTV() ? ` ${styles.isTV}` : "")}>
+			<Subheader className={styles.subheader + (isTV ? ` ${styles.isTV}` : "")}>
 				<h1 className={styles.title}>Filme</h1>
 				<Select
 					value={searchParams.get("gid") || ""}
