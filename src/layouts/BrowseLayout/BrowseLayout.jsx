@@ -18,7 +18,7 @@ export function BrowseLayout() {
 	const [isTop, setIsTop] = useState(false);
 	const headerRef = useRef(null);
 	const topRef = useRef(null);
-
+	const isTV = isSmartTV();
 	const location = useLocation();
 	const [searchParams, setSearchParams] = useSearchParams();
 
@@ -46,7 +46,7 @@ export function BrowseLayout() {
 	}, []);
 
 	return (
-		<div className={styles.layout}>
+		<div className={styles.layout + (isTV ? ` ${styles.isTV}` : "")}>
 			<div ref={topRef} style={{ position: "absolute", top: 0, height: 1, width: "100%" }} />
 			<Header
 				className={styles.header + (isTop ? ` ${styles.isTop}` : "")}
@@ -56,6 +56,7 @@ export function BrowseLayout() {
 					primaryNavigation: primaryNavigation,
 					selectLanguage: false,
 					secondaryNavigation: true,
+					classNameLogo: styles.logo,
 				}}
 			/>
 			<Outlet />

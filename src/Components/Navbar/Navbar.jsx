@@ -30,7 +30,7 @@ export default function Navbar({
 		<nav className={styles[`nav${variant}`] + ` ${className}`}>
 			{props.primaryNavigation ? (
 				<div className={styles.primaryNavigationContainer}>
-					<Logo className={styles.logo} src={logo_path} />
+					<Logo className={styles.logo + ` ${props.classNameLogo}`} src={logo_path} />
 					<ul className={styles.primaryNavigationList}>
 						{props.primaryNavigation.map((item, index) => (
 							<li className={styles.listItem} key={index}>

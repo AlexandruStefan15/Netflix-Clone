@@ -1,5 +1,4 @@
-import React, { forwardRef, useState, useEffect, useLayoutEffect } from "react";
-import { useSearchParams, useLocation } from "react-router-dom";
+import React, { forwardRef, useState, useEffect } from "react";
 import svgs from "../../Assets/svgs/svgs";
 import styles from "./Header.module.scss";
 
