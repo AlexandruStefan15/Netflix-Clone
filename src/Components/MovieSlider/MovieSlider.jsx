@@ -65,7 +65,7 @@ export default function MovieSlider({ movies, ...props }) {
 									}
 								}}
 							>
-								<img src={imageURL + movie.poster_path} alt="movie poster" />
+								<img src={imageURL + movie.poster_path} alt="movie poster" loading="lazy" />
 							</div>
 						)
 				)}
