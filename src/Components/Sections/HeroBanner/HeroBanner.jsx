@@ -53,7 +53,7 @@ export default function HeroBanner({
 		}
 
 		const timer = setTimeout(() => {
-			if (videoRef.current && imageRef.current) {
+			if (videoRef.current && imageRef.current && isImageLoaded) {
 				imageRef.current.classList.add(styles.hidden);
 				videoRef.current.play();
 				videoRef.current.muted = false;
@@ -61,10 +61,10 @@ export default function HeroBanner({
 		}, 1550);
 
 		return () => clearTimeout(timer);
-	}, [video]);
+	}, [video, isImageLoaded]);
 
 	useEffect(() => {
-		if (movieLogoRef.current && subtitleRef.current) {
+		if (movieLogoRef.current && subtitleRef.current && isImageLoaded) {
 			const height = subtitleRef.current.offsetHeight;
 			movieLogoRef.current.style.setProperty("--subtitle-height", `${height}px`);
 
@@ -77,7 +77,7 @@ export default function HeroBanner({
 				setTransitionIsActive(false);
 			};
 		}
-	}, [video, image]);
+	}, [video, image, isImageLoaded]);
 
 	useEffect(() => {
 		if (transitionIsActive == "reset") {
