@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./BrowseLayout.module.scss";
 import { Outlet, useLocation, useSearchParams } from "react-router-dom";
+import { isSmartTV } from "../../utils/helpers";
 
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
