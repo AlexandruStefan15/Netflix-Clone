@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useRef, createContext } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./BrowseLayout.module.scss";
 import { Outlet, useLocation, useSearchParams } from "react-router-dom";
-import { movieGenres } from "../../Data/movieGenres";
 
 import Header from "../../Components/Header/Header";
-import { Subheader } from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
-import Select, { Option } from "../../Components/Select/Select";
 
 const primaryNavigation = [
 	{ name: "Pagina Principala", path: "" },
@@ -18,16 +15,14 @@ const primaryNavigation = [
 
 export function BrowseLayout() {
 	const [isTop, setIsTop] = useState(false);
-
 	const headerRef = useRef(null);
+	const topRef = useRef(null);
 	/* const isFirstRender = useRef(true); */
-
 	const location = useLocation();
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
-		// Scroll to top on route change but not on the first render (mount).
-		/* if (isFirstRender.current) {
+		/* if (isFirstRender.current) { // Scroll to top on route change but not on the first render (mount).
 			isFirstRender.current = false;
 			return;
 		} */
@@ -35,24 +30,27 @@ export function BrowseLayout() {
 	}, [location.pathname, searchParams.get("q"), searchParams.get("gid")]);
 
 	useEffect(() => {
-		const handleScroll = () => {
-			if (window.scrollY === 0) {
-				setIsTop(true);
-			} else {
-				setIsTop(false);
-			}
-		};
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				setIsTop(entry.isIntersecting);
+			},
+			{ root: null, threshold: 1.0 }
+		);
 
-		handleScroll();
-		window.addEventListener("scroll", handleScroll);
+		if (topRef.current) {
+			observer.observe(topRef.current);
+		}
 
 		return () => {
-			window.removeEventListener("scroll", handleScroll);
+			if (topRef.current) {
+				observer.unobserve(topRef.current);
+			}
 		};
 	}, []);
 
 	return (
 		<div className={styles.layout}>
+			<div ref={topRef} style={{ position: "absolute", top: 0, height: 1, width: "100%" }} />
 			<Header
 				className={styles.header + (isTop ? ` ${styles.isTop}` : "")}
 				ref={headerRef}

@@ -35,7 +35,10 @@ const SearchBar = ({ placeholder = "Cauta...", onSearch, className = "", ...prop
 	}, [location]);
 
 	return (
-		<form onSubmit={handleSubmit} className={styles.form}>
+		<form
+			onSubmit={handleSubmit}
+			className={`${styles.form} ${isFocused ? styles.active : ""} ${className}`}
+		>
 			<input
 				type="text"
 				value={query}
