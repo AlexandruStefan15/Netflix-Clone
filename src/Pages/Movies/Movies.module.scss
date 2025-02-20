@@ -26,9 +26,9 @@
 	position: relative;
 	z-index: 999;
 
-	&:has(.movieList) {
+	/* &:has(.movieList) {
 		margin-top: -4.1rem;
-	}
+	} */
 
 	.container {
 		display: flex;
@@ -36,9 +36,10 @@
 		gap: 4rem;
 		min-height: 100vh;
 
-		.movieList {
+		.simpleMovieList {
 			grid-template-columns: repeat(6, minmax(100px, 1fr));
 			padding-inline: 4rem;
+			margin-top: 3.5rem;
 
 			img {
 				border-radius: 5px;

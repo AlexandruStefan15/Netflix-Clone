@@ -88,7 +88,7 @@ export default function Movies() {
 			<section className={styles.section}>
 				<div className={styles.container}>
 					{genreId ? (
-						<MovieList className={styles.movieList} movies={moviesByGenre} simpleList />
+						<MovieList className={styles.simpleMovieList} movies={moviesByGenre} simpleList />
 					) : (
 						<MovieList movies={moviesByCategory} moviesGenres={genres} />
 					)}
