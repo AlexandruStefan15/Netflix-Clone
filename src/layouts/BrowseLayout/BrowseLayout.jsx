@@ -20,19 +20,19 @@ export function BrowseLayout() {
 	const [isTop, setIsTop] = useState(false);
 
 	const headerRef = useRef(null);
-	const isFirstRender = useRef(true);
+	/* const isFirstRender = useRef(true); */
 
 	const location = useLocation();
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
 		// Scroll to top on route change but not on the first render (mount).
-		if (isFirstRender.current) {
+		/* if (isFirstRender.current) {
 			isFirstRender.current = false;
 			return;
-		}
+		} */
 		window.scrollTo(0, 0);
-	}, [location.pathname, searchParams.get("q")]);
+	}, [location.pathname, searchParams.get("q"), searchParams.get("gid")]);
 
 	useEffect(() => {
 		const handleScroll = () => {
