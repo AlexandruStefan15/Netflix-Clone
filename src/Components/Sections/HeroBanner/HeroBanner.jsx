@@ -40,7 +40,7 @@ export default function HeroBanner({
 	usePauseOnTabChange(videoRef, video);
 
 	useEffect(() => {
-		setIsImageLoaded(false);
+		/* setIsImageLoaded(false); */
 		setCurrentImage(image);
 	}, [image]);
 
