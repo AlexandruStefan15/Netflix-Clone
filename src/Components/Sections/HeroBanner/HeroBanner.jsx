@@ -42,13 +42,17 @@ export default function HeroBanner({
 	usePauseOnTabChange(videoRef, video);
 
 	useEffect(() => {
+		if (currentImage !== image) {
+			setIsImageLoaded(false);
+		}
 		setCurrentImage(image);
-		return () => setIsImageLoaded(false);
 	}, [image]);
 
 	useEffect(() => {
+		if (currentVideo !== video) {
+			setIsVideoLoaded(false);
+		}
 		setCurrentVideo(video);
-		return () => setIsVideoLoaded(false);
 	}, [video]);
 
 	useEffect(() => {
@@ -163,11 +167,11 @@ export default function HeroBanner({
 						src={currentImage} // This is a hack to force the image to reload
 						alt="hero-banner-image"
 						onLoad={() => setIsImageLoaded(true)}
-						/* style={video && { visibility: isImageLoaded ? "visible" : "hidden" }} */
+						style={video && { visibility: isImageLoaded ? "visible" : "hidden" }}
 					/>
 				</div>
 			)}
-			{currentVideo && (
+			{currentVideo && isImageLoaded && (
 				<div className={styles.video}>
 					<video
 						onEnded={() => {
@@ -175,7 +179,7 @@ export default function HeroBanner({
 							imageRef.current.classList.remove(styles.hidden);
 						}}
 						onLoadedData={() => setIsVideoLoaded(true)}
-						style={{ visibility: isVideoLoaded ? "visible" : "hidden" }}
+						/* style={{ visibility: isVideoLoaded ? "visible" : "hidden" }} */
 						ref={videoRef}
 						src={currentVideo}
 						muted={true}
