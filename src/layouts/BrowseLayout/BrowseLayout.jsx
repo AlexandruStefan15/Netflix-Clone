@@ -6,6 +6,8 @@ import { isSmartTV } from "../../utils/helpers";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 
+import { useIsElementAtTop } from "../../hooks/useIsElementAtTop";
+
 const primaryNavigation = [
 	{ name: "Pagina Principala", path: "" },
 	{ name: "Filme", path: "movies" },
@@ -15,9 +17,9 @@ const primaryNavigation = [
 ];
 
 export function BrowseLayout() {
-	const [isTop, setIsTop] = useState(false);
 	const headerRef = useRef(null);
 	const topRef = useRef(null);
+	const isTop = useIsElementAtTop(topRef);
 	const isTV = isSmartTV();
 	const location = useLocation();
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -25,25 +27,6 @@ export function BrowseLayout() {
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, [location.pathname, searchParams.get("q"), searchParams.get("gid")]);
-
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				setIsTop(entry.isIntersecting);
-			},
-			{ root: null, threshold: 1.0 }
-		);
-
-		if (topRef.current) {
-			observer.observe(topRef.current);
-		}
-
-		return () => {
-			if (topRef.current) {
-				observer.unobserve(topRef.current);
-			}
-		};
-	}, []);
 
 	return (
 		<div className={styles.layout + (isTV ? ` ${styles.isTV}` : "")}>
