@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "./Modal.module.scss";
 
 import TMDbVideoPlayer from "../TmdbVideoPlayer/TmdbVideoPlayer";
+import StarRating from "../StarRating/StarRating";
 
 export default function Modal({ movie, onClose }) {
 	const dialogRef = useRef(null);
@@ -51,7 +52,10 @@ export default function Modal({ movie, onClose }) {
 				<div className={styles.details}>
 					<h1>{movie.title || movie.name}</h1>
 					<p>{movie.overview ? movie.overview : "No description"}</p>
-					<p>{movie.release_date || movie.first_air_date}</p>
+					<footer className={styles.footer}>
+						<StarRating rating={movie.vote_average} />
+						<p> {movie.release_date || movie.first_air_date}</p>
+					</footer>
 				</div>
 			</div>
 		</dialog>
