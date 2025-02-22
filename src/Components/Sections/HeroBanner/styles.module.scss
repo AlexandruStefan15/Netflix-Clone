@@ -114,8 +114,12 @@
 
 	&.isTV {
 		.container {
-			width: 38.5%;
+			width: 40%;
 			max-width: none;
+
+			.subtitle {
+				font-size: clamp(1.3rem, 1.2vw, 1.625rem);
+			}
 		}
 
 		.video {

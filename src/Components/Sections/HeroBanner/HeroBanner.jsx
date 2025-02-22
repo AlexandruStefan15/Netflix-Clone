@@ -42,20 +42,19 @@ export default function HeroBanner({
 	usePauseOnTabChange(videoRef, video);
 
 	useEffect(() => {
-		/* setIsImageLoaded(false); */
 		setCurrentImage(image);
+		return () => setIsImageLoaded(false);
 	}, [image]);
 
 	useEffect(() => {
-		/* setIsImageLoaded(false); */
 		setCurrentVideo(video);
+		return () => setIsVideoLoaded(false);
 	}, [video]);
 
 	useEffect(() => {
-		if (imageRef.current) {
+		/* if (imageRef.current) {
 			imageRef.current.classList.remove(styles.hidden);
-		}
-
+		} */
 		const timer = setTimeout(() => {
 			if (videoRef.current && imageRef.current && isImageLoaded && isVideoLoaded) {
 				imageRef.current.classList.add(styles.hidden);
@@ -65,7 +64,7 @@ export default function HeroBanner({
 		}, 1550);
 
 		return () => clearTimeout(timer);
-	}, [video, isImageLoaded, isVideoLoaded]);
+	}, [isImageLoaded, isVideoLoaded]);
 
 	useEffect(() => {
 		if (movieLogoRef.current && subtitleRef.current && isImageLoaded && isVideoLoaded) {
@@ -81,7 +80,7 @@ export default function HeroBanner({
 				setTransitionIsActive(false);
 			};
 		}
-	}, [video, image, isImageLoaded, isVideoLoaded]);
+	}, [isImageLoaded, isVideoLoaded]);
 
 	useEffect(() => {
 		if (transitionIsActive == "reset") {
