@@ -15,7 +15,7 @@ export const useIsElementAtTop = (ref, threshold = 1.0) => {
 		observer.observe(element);
 
 		return () => observer.unobserve(element);
-	}, [ref, threshold]);
+	}, [threshold]);
 
 	return isAtTop;
 };
