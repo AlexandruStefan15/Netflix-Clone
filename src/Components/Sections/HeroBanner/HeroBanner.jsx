@@ -47,15 +47,17 @@ export default function HeroBanner({
 	}, [image]);
 
 	useEffect(() => {
-		setIsVideoLoaded(false);
+		/* setIsImageLoaded(false); */
 		setCurrentVideo(video);
+	}, [video]);
 
+	useEffect(() => {
 		if (imageRef.current) {
 			imageRef.current.classList.remove(styles.hidden);
 		}
 
 		const timer = setTimeout(() => {
-			if (videoRef.current && imageRef.current && isImageLoaded) {
+			if (videoRef.current && imageRef.current && isImageLoaded && isVideoLoaded) {
 				imageRef.current.classList.add(styles.hidden);
 				videoRef.current.play();
 				videoRef.current.muted = false;
@@ -63,10 +65,10 @@ export default function HeroBanner({
 		}, 1550);
 
 		return () => clearTimeout(timer);
-	}, [video, isImageLoaded]);
+	}, [video, isImageLoaded, isVideoLoaded]);
 
 	useEffect(() => {
-		if (movieLogoRef.current && subtitleRef.current && isImageLoaded) {
+		if (movieLogoRef.current && subtitleRef.current && isImageLoaded && isVideoLoaded) {
 			const height = subtitleRef.current.offsetHeight;
 			movieLogoRef.current.style.setProperty("--subtitle-height", `${height}px`);
 
@@ -79,7 +81,7 @@ export default function HeroBanner({
 				setTransitionIsActive(false);
 			};
 		}
-	}, [video, image, isImageLoaded]);
+	}, [video, image, isImageLoaded, isVideoLoaded]);
 
 	useEffect(() => {
 		if (transitionIsActive == "reset") {
@@ -159,10 +161,10 @@ export default function HeroBanner({
 			{currentImage && (
 				<div ref={imageRef} className={styles.image}>
 					<img
-						src={`${currentImage}?t=${new Date().getTime()}`} // This is a hack to force the image to reload
+						src={currentImage} // This is a hack to force the image to reload
 						alt="hero-banner-image"
 						onLoad={() => setIsImageLoaded(true)}
-						style={video && { visibility: isImageLoaded ? "visible" : "hidden" }}
+						/* style={video && { visibility: isImageLoaded ? "visible" : "hidden" }} */
 					/>
 				</div>
 			)}
@@ -173,8 +175,8 @@ export default function HeroBanner({
 							setTransitionIsActive("reset");
 							imageRef.current.classList.remove(styles.hidden);
 						}}
-						onPlay={() => setIsVideoLoaded(true)}
-						style={{ visibility: isVideoLoaded ? "visible" : "hidden" }}
+						onLoadedData={() => setIsVideoLoaded(true)}
+						/* style={{ visibility: isVideoLoaded ? "visible" : "hidden" }} */
 						ref={videoRef}
 						src={currentVideo}
 						muted={true}
