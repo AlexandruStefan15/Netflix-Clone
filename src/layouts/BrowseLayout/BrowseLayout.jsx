@@ -42,7 +42,7 @@ export function BrowseLayout() {
 					classNameLogo: styles.logo,
 				}}
 			/>
-			<Outlet context={topRef} />
+			<Outlet context={{ topRef, isTop }} />
 			<Footer style={{ background: "inherit" }} />
 		</div>
 	);
