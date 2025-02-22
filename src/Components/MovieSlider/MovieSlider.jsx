@@ -36,7 +36,7 @@ function SampleNextArrow(props) {
 export default function MovieSlider({ movies, ...props }) {
 	const isTV = isSmartTV();
 	const settings = {
-		className: "movie-slider",
+		className: "movie-slider" + (isTV ? " isTV" : ""),
 		infinite: true,
 		centerMode: isTV ? false : true,
 		centerPadding: "75px",

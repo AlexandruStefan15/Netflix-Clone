@@ -176,7 +176,7 @@ export default function HeroBanner({
 							imageRef.current.classList.remove(styles.hidden);
 						}}
 						onLoadedData={() => setIsVideoLoaded(true)}
-						/* style={{ visibility: isVideoLoaded ? "visible" : "hidden" }} */
+						style={{ visibility: isVideoLoaded ? "visible" : "hidden" }}
 						ref={videoRef}
 						src={currentVideo}
 						muted={true}

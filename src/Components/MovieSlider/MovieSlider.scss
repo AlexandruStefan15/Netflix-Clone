@@ -1,4 +1,24 @@
 .movie-slider {
+	&.isTV {
+		.movie-slider_left-arrow,
+		.movie-slider_right-arrow {
+			width: 80px;
+			background: #000000aa;
+		}
+
+		.movie-slider_left-arrow {
+			svg {
+				left: 25px;
+			}
+		}
+
+		.movie-slider_right-arrow {
+			svg {
+				right: 25px;
+			}
+		}
+	}
+
 	.movie-slider_left-arrow {
 		position: absolute;
 		width: 70px;
