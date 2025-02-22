@@ -56,7 +56,11 @@
 		color: white;
 
 		.option {
-			background-color: black;
+			appearance: none; /* Removes default styles */
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			background-color: black !important;
+			color: white !important;
 		}
 	}
 }

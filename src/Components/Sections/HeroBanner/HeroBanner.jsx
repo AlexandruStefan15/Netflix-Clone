@@ -56,9 +56,6 @@ export default function HeroBanner({
 	}, [video]);
 
 	useEffect(() => {
-		/* if (imageRef.current) {
-			imageRef.current.classList.remove(styles.hidden);
-		} */
 		const timer = setTimeout(() => {
 			if (videoRef.current && imageRef.current && isImageLoaded && isVideoLoaded) {
 				imageRef.current.classList.add(styles.hidden);
@@ -164,7 +161,7 @@ export default function HeroBanner({
 			{currentImage && (
 				<div ref={imageRef} className={styles.image}>
 					<img
-						src={currentImage} // This is a hack to force the image to reload
+						src={currentImage}
 						alt="hero-banner-image"
 						onLoad={() => setIsImageLoaded(true)}
 						style={video && { visibility: isImageLoaded ? "visible" : "hidden" }}
