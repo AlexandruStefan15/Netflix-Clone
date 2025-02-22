@@ -120,6 +120,16 @@
 			.subtitle {
 				font-size: clamp(1.3rem, 1.5vw, 1.625rem);
 			}
+
+			.links_container {
+				button {
+					font-size: clamp(1.3rem, 1.5vw, 1.625rem);
+				}
+
+				a {
+					font-size: clamp(1.3rem, 1.5vw, 1.625rem);
+				}
+			}
 		}
 
 		.video {
