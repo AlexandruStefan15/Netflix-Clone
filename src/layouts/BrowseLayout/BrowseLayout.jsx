@@ -42,7 +42,7 @@ export function BrowseLayout() {
 					classNameLogo: styles.logo,
 				}}
 			/>
-			<Outlet context={isTV} />
+			<Outlet context={topRef} />
 			<Footer style={{ background: "inherit" }} />
 		</div>
 	);

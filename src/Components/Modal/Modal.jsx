@@ -48,16 +48,6 @@ export default function Modal({ movie, onClose }) {
 							: `https://image.tmdb.org/t/p/original${movie.poster_path}`
 					}
 				/>
-				{/* <div className={styles.image}>
-					<img
-						src={
-							movie.backdrop_path
-								? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
-								: `https://image.tmdb.org/t/p/original${movie.poster_path}`
-						}
-						alt={`${movie.title} backdrop`}
-					/>
-				</div> */}
 				<div className={styles.details}>
 					<h1>{movie.title || movie.name}</h1>
 					<p>{movie.overview ? movie.overview : "No description"}</p>

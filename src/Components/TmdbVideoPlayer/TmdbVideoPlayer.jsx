@@ -5,6 +5,7 @@ const TMDbVideoPlayer = ({ id, type = "movie", image }) => {
 	const [videoId, setVideoId] = useState(null);
 	const [player, setPlayer] = useState(null);
 	const [error, setError] = useState(null);
+	const [loading, setLoading] = useState(false);
 	const playerContainerId = "player";
 	const API_KEY = "318dc067de589bc7b276ad2334cac8d8";
 	const API_URL = `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${API_KEY}`;
@@ -20,6 +21,7 @@ const TMDbVideoPlayer = ({ id, type = "movie", image }) => {
 		}
 
 		const fetchVideo = () => {
+			setLoading(true);
 			fetch(API_URL)
 				.then((response) => response.json())
 				.then((data) => {
@@ -33,7 +35,8 @@ const TMDbVideoPlayer = ({ id, type = "movie", image }) => {
 				.catch((error) => {
 					console.error("Error fetching video data:", error);
 					setError(error);
-				});
+				})
+				.finally(() => setLoading(false));
 		};
 
 		if (window.YT && window.YT.Player) {
@@ -66,7 +69,7 @@ const TMDbVideoPlayer = ({ id, type = "movie", image }) => {
 					events: {
 						onStateChange: (event) => {
 							if (event.data === window.YT.PlayerState.ENDED) {
-								console.log("Video has ended");
+								/* console.log("Video has ended"); */
 							}
 						},
 						onReady: (event) => {

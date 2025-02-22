@@ -1,6 +1,8 @@
 import React, { forwardRef, useState, useEffect } from "react";
 import svgs from "../../Assets/svgs/svgs";
 import styles from "./Header.module.scss";
+import { useOutletContext } from "react-router-dom";
+import { useIsElementAtTop } from "../../hooks/useIsElementAtTop";
 
 import Navbar from "../Navbar/Navbar";
 
@@ -13,20 +15,8 @@ function Header({ className = "", navbarClassName = "", navbarProps, ...props },
 }
 
 const Subheader = forwardRef(({ className = "", children, ...props }, ref) => {
-	const [isTop, setIsTop] = useState(true);
-
-	useEffect(() => {
-		const handleScroll = () => {
-			setIsTop(window.scrollY === 0);
-		};
-
-		handleScroll();
-		window.addEventListener("scroll", handleScroll);
-
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
+	const topRef = useOutletContext();
+	const isTop = useIsElementAtTop(topRef);
 
 	return (
 		<div

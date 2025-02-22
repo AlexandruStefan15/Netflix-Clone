@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./Movies.module.scss";
+import { movieTrailers } from "../../Assets/videos/videos";
 import { useFetchCategory } from "../../hooks/useFetchCategory";
 import { useFetchGenre } from "../../hooks/useFetchGenre";
 import { useMovieImages } from "../../hooks/useMovieImages";
 import { movieGenres } from "../../Data/movieGenres";
-import { useSearchParams } from "react-router-dom";
 import { getBannerData } from "../../Data/heroBannerData";
 import { Subheader } from "../../Components/Header/Header";
-import { mapGenres, getFirstSentence } from "../../utils/helpers";
-import { movieTrailers } from "../../Assets/videos/videos";
-import { useOutletContext } from "react-router-dom";
+import { mapGenres, getFirstSentence, isSmartTV } from "../../utils/helpers";
+import { useOutletContext, useSearchParams } from "react-router-dom";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
@@ -18,7 +17,7 @@ import Select, { Option } from "../../Components/Select/Select";
 
 export default function Movies() {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const isTV = useOutletContext();
+	const isTV = isSmartTV();
 	const genreId = searchParams.get("gid");
 	const genres = mapGenres(movieGenres);
 	const genresTopTitles = mapGenres(movieGenres, "topTitleId");
