@@ -4,6 +4,7 @@ import styles from "./MovieList.module.scss";
 import MovieSlider from "../MovieSlider/MovieSlider";
 import { useSearchParams } from "react-router-dom";
 import { useMovieSearch } from "../../hooks/useMovieSearch";
+import { isSmartTV } from "../../utils/helpers";
 
 import Modal from "../Modal/Modal";
 
@@ -44,7 +45,7 @@ export default function MovieList({
 	const [activeMovie, setActiveMovie] = useState(null);
 	const query = searchParams.get("q");
 	const effectiveMovies = query ? results : movies;
-
+	const isTV = isSmartTV();
 	const groupedMovies = groupByGenre(effectiveMovies);
 	const groupedSeries = groupByGenre(series);
 	const combinedCategory = combineGroups(groupedMovies, groupedSeries);
@@ -120,7 +121,7 @@ export default function MovieList({
 
 	return (
 		<>
-			<ul className={styles.container}>
+			<ul className={styles.container + (isTV ? ` ${styles.isTV}` : "")}>
 				{Object.keys(combinedCategory).map((genreId) => {
 					const group = combinedCategory[genreId];
 					const hasEnoughMovies = group.movies.length >= 8;

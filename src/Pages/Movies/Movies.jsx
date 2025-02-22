@@ -8,7 +8,7 @@ import { movieGenres } from "../../Data/movieGenres";
 import { getBannerData } from "../../Data/heroBannerData";
 import { Subheader } from "../../Components/Header/Header";
 import { mapGenres, getFirstSentence, isSmartTV } from "../../utils/helpers";
-import { useOutletContext, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";

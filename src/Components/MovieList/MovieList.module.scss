@@ -3,14 +3,22 @@
 	flex-direction: column;
 	gap: 3.5rem;
 
+	&.isTV {
+		.item {
+			.title {
+				font-size: 2vw;
+			}
+		}
+	}
+
 	.item {
 		overflow: hidden;
 
 		.title {
-			font-size: 1.4vw;
+			font-size: 1.44vw;
 			font-weight: 600;
 			margin-bottom: 1.1rem;
-			margin-left: 1.45rem;
+			margin-left: 1.5rem;
 		}
 	}
 }

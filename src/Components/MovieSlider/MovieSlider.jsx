@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "./MovieSlider.scss";
 import { inline_svgs } from "../../Assets/svgs/svgs";
 import { usePreventClickAfterDrag } from "../../hooks/usePreventClickAfterDrag";
+import { isSmartTV } from "../../utils/helpers";
 
 const imageURL = `https://image.tmdb.org/t/p/w500`;
 
@@ -33,20 +34,20 @@ function SampleNextArrow(props) {
 }
 
 export default function MovieSlider({ movies, ...props }) {
+	const isTV = isSmartTV();
 	const settings = {
 		className: "movie-slider",
 		infinite: true,
-		centerMode: true,
+		centerMode: isTV ? false : true,
 		centerPadding: "75px",
 		slidesToShow: 6,
-		slidesToScroll: 1,
+		slidesToScroll: isTV ? 6 : 1,
 		swipeToSlide: true,
 		dots: false,
 		arrows: true,
 		nextArrow: <SampleNextArrow />,
 		prevArrow: <SamplePrevArrow />,
 	};
-
 	const wrapperRef = useRef(null);
 	const isDragging = usePreventClickAfterDrag(wrapperRef);
 
