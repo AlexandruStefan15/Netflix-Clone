@@ -8,6 +8,7 @@ import nosferatu from "./nosferatu.mp4";
 import moana from "./moana.mp4";
 import nobody from "./nobody.mp4";
 import lionKing from "./lionKing.mp4";
+import hangover3 from "./hangover3.mp4";
 
 export default {
 	videoStory1,
@@ -20,6 +21,7 @@ export default {
 	nosferatu,
 	moana,
 	lionKing,
+	hangover3,
 };
 
 export const movieTrailers = {
@@ -27,4 +29,5 @@ export const movieTrailers = {
 	27: nosferatu,
 	12: moana,
 	16: lionKing,
+	35: hangover3,
 };

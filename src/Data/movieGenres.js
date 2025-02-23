@@ -21,7 +21,7 @@ export const movieGenres = [
 		id: 35,
 		name: "Filme de comedie",
 		shortName: "Comedie",
-		topTitleId: 107,
+		topTitleId: 109439,
 	},
 	{
 		id: 80,
