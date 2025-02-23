@@ -45,13 +45,13 @@ export const movieGenres = [
 		id: 14,
 		name: "Filme fantastice",
 		shortName: "Fantezie",
-		topTitleId: 845781,
+		topTitleId: 259316,
 	},
 	{
 		id: 36,
 		name: "Filme istorice",
 		shortName: "Istoric",
-		topTitleId: 1222248,
+		topTitleId: 424,
 	},
 	{
 		id: 27,

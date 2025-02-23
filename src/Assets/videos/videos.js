@@ -12,6 +12,8 @@ import piecesOfWoman from "./piecesOfWoman.mp4";
 import wildRobot from "./wildRobot.mp4";
 import despicableMe from "./despicableMe.mp4";
 import theDrop from "./theDrop.mp4";
+import fantasticBeasts from "./fantasticBeasts.mp4";
+import schindlersList from "./schindlersList.mp4";
 
 export default {
 	videoStory1,
@@ -31,4 +33,6 @@ export const movieTrailers = {
 	80: theDrop,
 	18: piecesOfWoman,
 	10751: wildRobot,
+	14: fantasticBeasts,
+	36: schindlersList,
 };
