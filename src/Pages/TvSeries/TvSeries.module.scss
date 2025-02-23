@@ -1,4 +1,13 @@
 .subheader {
+	&.isTV {
+		padding-top: 0.3rem;
+
+		.select_wrapper {
+			.select {
+				font-size: 1.3rem;
+			}
+		}
+	}
 	.title {
 		font-size: 2.5rem;
 	}

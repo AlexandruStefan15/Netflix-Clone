@@ -7,6 +7,7 @@ import { useFetchGenre } from "../../hooks/useFetchGenre";
 import { useSearchParams } from "react-router-dom";
 import { mapGenres, getFirstSentence } from "../../utils/helpers";
 import { useMovieImages } from "../../hooks/useMovieImages";
+import { isSmartTV } from "../../utils/helpers";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
@@ -16,6 +17,7 @@ import Select, { Option } from "../../Components/Select/Select";
 
 export default function TvSeries() {
 	const [searchParams, setSearchParams] = useSearchParams();
+	const isTV = isSmartTV();
 	const genreId = searchParams.get("gid");
 	const genres = mapGenres(tvGenres);
 	const genresTopTitles = mapGenres(tvGenres, "topTitleId");
@@ -48,7 +50,7 @@ export default function TvSeries() {
 
 	return (
 		<>
-			<Subheader className={styles.subheader}>
+			<Subheader className={styles.subheader + (isTV ? ` ${styles.isTV}` : "")}>
 				<h1 className={styles.title}>Seriale</h1>
 				<Select
 					value={searchParams.get("gid") || ""}
