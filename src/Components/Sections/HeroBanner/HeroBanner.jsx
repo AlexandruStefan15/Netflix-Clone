@@ -56,6 +56,8 @@ export default function HeroBanner({
 	}, [video]);
 
 	useEffect(() => {
+		imageRef.current.classList.remove(styles.hidden);
+
 		const timer = setTimeout(() => {
 			if (videoRef.current && imageRef.current && isImageLoaded && isVideoLoaded) {
 				imageRef.current.classList.add(styles.hidden);
