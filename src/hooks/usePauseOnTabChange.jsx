@@ -1,7 +1,18 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export default function usePauseOnTabChange(videoRef, videoSrc) {
 	const [videoEnded, setVideoEnded] = useState(false);
+	const [searchParams] = useSearchParams();
+
+	useEffect(() => {
+		const video = videoRef.current;
+		if (!video) return;
+
+		if (searchParams.get("mid")) {
+			video.pause();
+		} else video.play();
+	}, [searchParams.get("mid")]);
 
 	useEffect(() => {
 		const video = videoRef.current;
