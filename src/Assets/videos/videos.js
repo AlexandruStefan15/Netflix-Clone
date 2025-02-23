@@ -11,6 +11,7 @@ import lionKing from "./lionKing.mp4";
 import hangover3 from "./hangover3.mp4";
 import island from "./island.mp4";
 import piecesOfWoman from "./piecesOfWoman.mp4";
+import wildRobot from "./wildRobot.mp4";
 
 export default {
 	videoStory1,
@@ -19,13 +20,6 @@ export default {
 	inception,
 	aliceInBorderland,
 	sadGirl,
-	nobody,
-	nosferatu,
-	moana,
-	lionKing,
-	hangover3,
-	island,
-	piecesOfWoman,
 };
 
 export const movieTrailers = {
@@ -36,4 +30,5 @@ export const movieTrailers = {
 	35: hangover3,
 	80: island,
 	18: piecesOfWoman,
+	10751: wildRobot,
 };
