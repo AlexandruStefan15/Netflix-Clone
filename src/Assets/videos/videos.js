@@ -8,10 +8,10 @@ import nosferatu from "./nosferatu.mp4";
 import moana from "./moana.mp4";
 import nobody from "./nobody.mp4";
 import hangover3 from "./hangover3.mp4";
-import island from "./island.mp4";
 import piecesOfWoman from "./piecesOfWoman.mp4";
 import wildRobot from "./wildRobot.mp4";
 import despicableMe from "./despicableMe.mp4";
+import theDrop from "./theDrop.mp4";
 
 export default {
 	videoStory1,
@@ -28,7 +28,7 @@ export const movieTrailers = {
 	12: moana,
 	16: despicableMe,
 	35: hangover3,
-	80: island,
+	80: theDrop,
 	18: piecesOfWoman,
 	10751: wildRobot,
 };
