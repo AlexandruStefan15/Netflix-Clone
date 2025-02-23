@@ -9,6 +9,8 @@ import moana from "./moana.mp4";
 import nobody from "./nobody.mp4";
 import lionKing from "./lionKing.mp4";
 import hangover3 from "./hangover3.mp4";
+import island from "./island.mp4";
+import piecesOfWoman from "./piecesOfWoman.mp4";
 
 export default {
 	videoStory1,
@@ -22,6 +24,8 @@ export default {
 	moana,
 	lionKing,
 	hangover3,
+	island,
+	piecesOfWoman,
 };
 
 export const movieTrailers = {
@@ -30,4 +34,6 @@ export const movieTrailers = {
 	12: moana,
 	16: lionKing,
 	35: hangover3,
+	80: island,
+	18: piecesOfWoman,
 };
