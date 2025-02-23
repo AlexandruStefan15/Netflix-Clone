@@ -15,7 +15,7 @@ export const movieGenres = [
 		id: 16,
 		name: "Filme anime",
 		shortName: "Anime",
-		topTitleId: 762509,
+		topTitleId: 420818,
 	},
 	{
 		id: 35,

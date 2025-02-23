@@ -7,6 +7,7 @@ import sadGirl from "./sadGirl.mp4";
 import nosferatu from "./nosferatu.mp4";
 import moana from "./moana.mp4";
 import nobody from "./nobody.mp4";
+import lionKing from "./lionKing.mp4";
 
 export default {
 	videoStory1,
@@ -18,10 +19,12 @@ export default {
 	nobody,
 	nosferatu,
 	moana,
+	lionKing,
 };
 
 export const movieTrailers = {
 	28: nobody,
 	27: nosferatu,
 	12: moana,
+	16: lionKing,
 };
