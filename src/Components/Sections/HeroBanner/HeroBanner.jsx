@@ -151,7 +151,7 @@ export default function HeroBanner({
 							<div className={styles.icon}>{inline_svgs.right_arrow_thick}</div>
 							<span className={styles.text}>Redare</span>
 						</Button>
-						<Link to={0} data-variant="2">
+						<Link onClick={(e) => e.preventDefault()} data-variant="2">
 							<div className={styles.icon}>{inline_svgs.exclamation_mark}</div>
 							<span className={styles.text}>Mai multe informatii</span>
 						</Link>

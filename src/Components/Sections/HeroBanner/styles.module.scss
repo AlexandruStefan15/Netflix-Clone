@@ -118,17 +118,17 @@
 			max-width: none;
 
 			.subtitle {
-				font-size: clamp(1.3rem, 1.5vw, 1.625rem);
+				font-size: clamp(1.3rem, 1.48vw, 1.625rem);
 			}
 
 			.links_container {
 				button {
-					font-size: clamp(1.3rem, 1.5vw, 1.625rem);
+					font-size: clamp(1.3rem, 1.48vw, 1.625rem);
 					font-weight: 700;
 				}
 
 				a {
-					font-size: clamp(1.3rem, 1.5vw, 1.625rem);
+					font-size: clamp(1.3rem, 1.48vw, 1.625rem);
 					font-weight: 700;
 				}
 			}
@@ -226,12 +226,18 @@
 			a {
 				color: white;
 				background: rgb(110 109 109 / 81%);
-				outline: 1px solid rgb(110 109 109 / 81%);
+				outline: 1px solid rgba(110, 109, 109, 0.964);
 				position: relative;
 				z-index: 1;
+
 				.icon {
 					width: 1.55vw;
 					min-width: 22px;
+				}
+
+				&:hover {
+					background: rgba(110, 109, 109, 0.422);
+					outline: 1px solid rgba(110, 109, 109, 0.422);
 				}
 			}
 		}
