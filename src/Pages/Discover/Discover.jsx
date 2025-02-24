@@ -5,6 +5,7 @@ import { tvGenres } from "../../Data/tvGenres";
 import styles from "./Discover.module.scss";
 import { getBannerData } from "../../Data/heroBannerData";
 import { mapGenres } from "../../utils/helpers";
+import { isSmartTV } from "../../utils/helpers";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
@@ -13,7 +14,7 @@ export default function Discover() {
 	const [movies, setMovies] = useState([]);
 	const [series, setSeries] = useState([]);
 	const [error, setError] = useState(null);
-
+	const isTV = isSmartTV();
 	const moviesGenres = mapGenres(movieGenres);
 	const seriesGenres = mapGenres(tvGenres);
 	const bannerData = getBannerData("set1", "/browse");
@@ -21,7 +22,7 @@ export default function Discover() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const totalPages = 12;
+				const totalPages = isTV ? 4 : 10;
 				const movieRequests = Array.from({ length: totalPages }, (_, i) =>
 					fetchCategory("movies", i + 1)
 				);

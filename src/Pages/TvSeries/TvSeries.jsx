@@ -23,7 +23,7 @@ export default function TvSeries() {
 	const genres = mapGenres(tvGenres);
 	const genresTopTitles = mapGenres(tvGenres, "topTitleId");
 	const startPage = 15;
-	const totalPages = 12;
+	const totalPages = isTV ? 6 : 12;
 	const { data: seriesByCategory, error } = useFetchCategory("tv-series", startPage, totalPages);
 	const { data: moviesByGenre, error: genreError, loading, fetchByGenre } = useFetchGenre();
 	const { logo, backdrop, description } = useMovieImages(genresTopTitles[genreId], "tv");

@@ -22,7 +22,7 @@ export default function Movies() {
 	const genres = mapGenres(movieGenres);
 	const genresTopTitles = mapGenres(movieGenres, "topTitleId");
 	const startPage = 15;
-	const totalPages = 12;
+	const totalPages = isTV ? 4 : 10; //12
 	const { data: moviesByCategory, error: categoryError } = useFetchCategory(
 		"movies",
 		startPage,

@@ -5,7 +5,7 @@ import { inline_svgs } from "../../Assets/svgs/svgs";
 import { usePreventClickAfterDrag } from "../../hooks/usePreventClickAfterDrag";
 import { isSmartTV } from "../../utils/helpers";
 
-const imageURL = `https://image.tmdb.org/t/p/w500`;
+const imageURL = `https://image.tmdb.org/t/p/w400`;
 
 function SamplePrevArrow(props) {
 	const { className, style, onClick } = props;
