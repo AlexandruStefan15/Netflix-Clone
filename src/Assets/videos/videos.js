@@ -18,6 +18,7 @@ import conclave from "./conclave.mp4";
 import myFault from "./myFault.mp4";
 import mickey17 from "./mickey17.mp4";
 import fractured from "./fractured.mp4";
+import avatar from "./avatar.mp4";
 
 export default {
 	videoStory1,
@@ -43,4 +44,8 @@ export const movieTrailers = {
 	10749: myFault,
 	878: mickey17,
 	53: fractured,
+};
+
+export const tvTrailers = {
+	10759: avatar,
 };

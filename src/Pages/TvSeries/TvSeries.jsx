@@ -8,6 +8,7 @@ import { useSearchParams } from "react-router-dom";
 import { mapGenres, getFirstSentence } from "../../utils/helpers";
 import { useMovieImages } from "../../hooks/useMovieImages";
 import { isSmartTV } from "../../utils/helpers";
+import { tvTrailers } from "../../Assets/videos/videos";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
@@ -29,7 +30,7 @@ export default function TvSeries() {
 	const bannerData = genreId
 		? {
 				image: `https://image.tmdb.org/t/p/original/${backdrop}`,
-				video: null,
+				video: tvTrailers[genreId] || null,
 				movieLogo: `https://image.tmdb.org/t/p/original/${logo}`,
 				subtitle: getFirstSentence(description),
 		  }
