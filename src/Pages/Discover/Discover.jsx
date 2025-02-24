@@ -52,7 +52,7 @@ export default function Discover() {
 	if (error) console.error(error);
 
 	return (
-		<main className={styles.discover}>
+		<>
 			<HeroBanner
 				image={bannerData?.image}
 				video={bannerData?.video}
@@ -72,7 +72,7 @@ export default function Discover() {
 					className="movies"
 				/>
 			</section>
-		</main>
+		</>
 	);
 }
 

@@ -48,25 +48,10 @@ export const tvGenres = [
 		topTitleId: 218342,
 	},
 	{
-		id: 10763,
-		name: "Stiri TV",
-		shortName: "Stiri",
-	},
-	{
-		id: 10764,
-		name: "Reality show-uri",
-		shortName: "Reality",
-	},
-	{
 		id: 10765,
 		name: "Seriale Sci-Fi ",
 		shortName: "SF",
 		topTitleId: 108545,
-	},
-	{
-		id: 10767,
-		name: "Talk-show-uri",
-		shortName: "Talk-show",
 	},
 	{
 		id: 10766,

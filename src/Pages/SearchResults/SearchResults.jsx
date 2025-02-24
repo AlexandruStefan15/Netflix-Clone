@@ -18,12 +18,12 @@ export default function SearchResults() {
 	}, [searchParams]);
 
 	return (
-		<main className={styles.subpage}>
+		<>
 			<section className={styles.section}>
 				<div className={styles.container}>
 					<MovieList simpleList={true} />
 				</div>
 			</section>
-		</main>
+		</>
 	);
 }

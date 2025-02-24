@@ -12,13 +12,13 @@ export default function Popular() {
 	if (error) console.error(error);
 
 	return (
-		<main className={styles.subpage}>
+		<>
 			<section className={styles.section}>
 				<div className={styles.container}>
 					<MovieList movies={data} simpleList={true} />
 				</div>
 			</section>
-		</main>
+		</>
 	);
 }
 
