@@ -21,7 +21,7 @@ export const tvGenres = [
 		id: 80,
 		name: "Seriale criminale",
 		shortName: "Crima",
-		topTitleId: 1405,
+		topTitleId: 1396,
 	},
 	{
 		id: 99,

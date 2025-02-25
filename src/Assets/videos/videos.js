@@ -19,6 +19,9 @@ import myFault from "./myFault.mp4";
 import mickey17 from "./mickey17.mp4";
 import fractured from "./fractured.mp4";
 import avatar from "./avatar.mp4";
+import arcane from "./arcane.mp4";
+import brooklyn99 from "./brooklyn99.mp4";
+import breakingBad from "./breakingBad.mp4";
 
 export default {
 	videoStory1,
@@ -48,4 +51,7 @@ export const movieTrailers = {
 
 export const tvTrailers = {
 	10759: avatar,
+	16: arcane,
+	35: brooklyn99,
+	80: breakingBad,
 };
