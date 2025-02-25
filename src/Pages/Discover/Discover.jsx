@@ -22,7 +22,7 @@ export default function Discover() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const totalPages = isTV ? 4 : 10;
+				const totalPages = isTV ? 4 : 9;
 				const movieRequests = Array.from({ length: totalPages }, (_, i) =>
 					fetchCategory("movies", i + 1)
 				);
