@@ -22,6 +22,9 @@ import avatar from "./avatar.mp4";
 import arcane from "./arcane.mp4";
 import brooklyn99 from "./brooklyn99.mp4";
 import breakingBad from "./breakingBad.mp4";
+import airCrashInvestigation from "./airCrashInvestigation.mp4";
+import lastOfUs from "./lastOfUs.mp4";
+import percyJackson from "./percyJackson.mp4";
 
 export default {
 	videoStory1,
@@ -54,4 +57,7 @@ export const tvTrailers = {
 	16: arcane,
 	35: brooklyn99,
 	80: breakingBad,
+	99: airCrashInvestigation,
+	18: lastOfUs,
+	10762: percyJackson,
 };
