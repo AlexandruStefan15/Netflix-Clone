@@ -59,10 +59,15 @@
 
 			.video {
 				position: absolute;
-				width: 61%;
-				top: 11%;
+				width: 62%;
+				will-change: transform;
+				transform: translateZ(0);
+				contain: strict;
+				height: 100%;
+				top: 0;
 				left: 19%;
 				z-index: -1;
+				object-position: 0 29px;
 			}
 		}
 	}
