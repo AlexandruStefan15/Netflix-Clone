@@ -11,7 +11,9 @@ export default function usePauseOnTabChange(videoRef, videoSrc) {
 
 		if (searchParams.get("mid")) {
 			video.pause();
-		} else video.play();
+		} else if (!videoEnded) {
+			video.play();
+		}
 	}, [searchParams.get("mid")]);
 
 	useEffect(() => {
