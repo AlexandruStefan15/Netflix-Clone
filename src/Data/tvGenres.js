@@ -57,6 +57,6 @@ export const tvGenres = [
 		id: 10766,
 		name: "Telenovele",
 		shortName: "Telenovela",
-		topTitleId: 1416,
+		topTitleId: 154165,
 	},
 ];

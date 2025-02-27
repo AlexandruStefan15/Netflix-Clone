@@ -34,8 +34,8 @@ const useMovieImages = (movieId, type = "movie") => {
 				const data = await imagesResponse.json();
 
 				const description = detailsData.overview;
-				const logoPath = data.logos[0].file_path;
-				const backdropPath = data.backdrops[0].file_path;
+				const logoPath = `https://image.tmdb.org/t/p/original/${data.logos[0].file_path}`;
+				const backdropPath = `https://image.tmdb.org/t/p/original/${data.backdrops[0].file_path}`;
 
 				setDescription(description);
 				setLogo(logoPath);

@@ -22,7 +22,7 @@ export default function Movies() {
 	const genres = mapGenres(movieGenres);
 	const genresTopTitles = mapGenres(movieGenres, "topTitleId");
 	const startPage = 15;
-	const totalPages = isTV ? 4 : 10; //12
+	const totalPages = isTV ? 4 : 10;
 	const { data: moviesByCategory, error: categoryError } = useFetchCategory(
 		"movies",
 		startPage,
@@ -32,9 +32,9 @@ export default function Movies() {
 	const { logo, backdrop, description } = useMovieImages(genresTopTitles[genreId]);
 	const bannerData = genreId
 		? {
-				image: `https://image.tmdb.org/t/p/original/${backdrop}`,
-				video: movieTrailers[genreId] || null,
-				movieLogo: `https://image.tmdb.org/t/p/original/${logo}`,
+				image: backdrop,
+				video: movieTrailers[genreId],
+				movieLogo: logo,
 				subtitle: getFirstSentence(description),
 		  }
 		: getBannerData("set1", "/browse/movies");

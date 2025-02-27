@@ -29,9 +29,9 @@ export default function TvSeries() {
 	const { logo, backdrop, description } = useMovieImages(genresTopTitles[genreId], "tv");
 	const bannerData = genreId
 		? {
-				image: `https://image.tmdb.org/t/p/original/${backdrop}`,
-				video: tvTrailers[genreId] || null,
-				movieLogo: `https://image.tmdb.org/t/p/original/${logo}`,
+				image: backdrop,
+				video: tvTrailers[genreId],
+				movieLogo: logo,
 				subtitle: getFirstSentence(description),
 		  }
 		: getBannerData("set1", "/browse/tv-series");
