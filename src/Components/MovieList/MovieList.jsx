@@ -39,6 +39,7 @@ export default function MovieList({
 	seriesGenres = {},
 	simpleList = false,
 	className = "",
+	...props
 }) {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const { loading, results, searchMovies } = useMovieSearch();
@@ -120,8 +121,8 @@ export default function MovieList({
 			<ul className={styles.container + (isTV ? ` ${styles.isTV}` : "")}>
 				{Object.keys(combinedCategory).map((genreId) => {
 					const group = combinedCategory[genreId];
-					const hasEnoughMovies = group.movies.length >= 8;
-					const hasEnoughSeries = group.series.length >= 8;
+					const hasEnoughMovies = group.movies.length >= (props.minMoviesNr || 8);
+					const hasEnoughSeries = group.series.length >= (props.minSeriesNr || 8);
 					const moviesGenre = moviesGenres[genreId];
 					const seriesGenre = seriesGenres[genreId];
 

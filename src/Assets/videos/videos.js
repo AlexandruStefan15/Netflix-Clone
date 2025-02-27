@@ -25,6 +25,7 @@ import breakingBad from "./breakingBad.mp4";
 import airCrashInvestigation from "./airCrashInvestigation.mp4";
 import lastOfUs from "./lastOfUs.mp4";
 import percyJackson from "./percyJackson.mp4";
+import girlsGuideToMurder from "./girlsGuideToMurder.mp4";
 
 export default {
 	videoStory1,
@@ -60,4 +61,5 @@ export const tvTrailers = {
 	99: airCrashInvestigation,
 	18: lastOfUs,
 	10762: percyJackson,
+	9648: girlsGuideToMurder,
 };

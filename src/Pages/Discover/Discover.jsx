@@ -71,6 +71,8 @@ export default function Discover() {
 					moviesGenres={moviesGenres}
 					seriesGenres={seriesGenres}
 					className="movies"
+					minMoviesNr={isTV ? 12 : 15}
+					minSeriesNr={isTV ? 12 : 15}
 				/>
 			</section>
 		</>
