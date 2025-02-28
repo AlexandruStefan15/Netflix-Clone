@@ -1,5 +1,11 @@
+@use "../../styles/breakpoints" as media;
+
 .moviesAndSeries {
 	margin-top: -8.2rem;
 	position: relative;
 	z-index: 999;
+
+	@include media.mobile {
+		margin-top: 0rem;
+	}
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./BrowseLayout.module.scss";
 import { Outlet, useLocation, useSearchParams } from "react-router-dom";
 import { isSmartTV } from "../../utils/helpers";
+import { inline_svgs } from "../../Assets/svgs/svgs";
 
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
@@ -26,6 +27,17 @@ export function BrowseLayout() {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const isMobile = useIsMobile();
 
+	const secondaryNavigation = isMobile
+		? [
+				{ name: inline_svgs.ring_bell, path: "#" },
+				{ name: inline_svgs.account, path: "#" },
+		  ]
+		: [
+				{ name: "Copii", path: "#" },
+				{ name: inline_svgs.ring_bell, path: "#" },
+				{ name: inline_svgs.account, path: "#" },
+		  ];
+
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, [location.pathname, searchParams.get("q"), searchParams.get("gid")]);
@@ -38,9 +50,9 @@ export function BrowseLayout() {
 				ref={headerRef}
 				navbarProps={{
 					variant: "2",
-					primaryNavigation: primaryNavigation,
+					primaryNavigation: isMobile ? false : primaryNavigation,
 					selectLanguage: false,
-					secondaryNavigation: true,
+					secondaryNavigation: secondaryNavigation,
 					classNameLogo: styles.logo,
 				}}
 			/>

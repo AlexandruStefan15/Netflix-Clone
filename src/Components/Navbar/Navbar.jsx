@@ -48,7 +48,14 @@ export default function Navbar({
 				<div className={styles.secondaryNavigation}>
 					<SearchBar />
 					<ul className={styles.secondaryNavigationList}>
-						<li>
+						{props.secondaryNavigation.map((item, index) => (
+							<li className={styles.listItem} key={index}>
+								<NavLink className={styles.link} to={item.path}>
+									{item.name}
+								</NavLink>
+							</li>
+						))}
+						{/* 	<li>
 							<NavLink to={"#"}>Copii</NavLink>
 						</li>
 						<li>
@@ -56,7 +63,7 @@ export default function Navbar({
 						</li>
 						<li>
 							<NavLink to={"#"}>{inline_svgs.account}</NavLink>
-						</li>
+						</li> */}
 					</ul>
 				</div>
 			)}

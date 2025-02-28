@@ -1,7 +1,9 @@
 .section {
+	margin-top: 11rem;
+	margin-bottom: 0rem;
 	.container {
 		.movieCard {
-			margin: 11rem auto 10rem auto;
+			margin-inline: auto;
 		}
 	}
 }
