@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "./SearchResults.module.scss";
 import { useSearchParams } from "react-router-dom";
-import { useMovieSearch } from "../../hooks/useMovieSearch";
 import { useNavigate } from "react-router-dom";
 
 import MovieList from "../../Components/MovieList/MovieList";

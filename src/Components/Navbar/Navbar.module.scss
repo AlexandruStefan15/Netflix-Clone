@@ -23,7 +23,7 @@
 	.logo {
 		padding-top: 1em;
 		line-height: normal;
-		width: 168px;
+		width: 200px;
 		min-width: 89px;
 
 		@include media.tablet {
@@ -38,7 +38,7 @@
 
 		@include media.mobile {
 			padding-top: 0em;
-			width: 89px;
+			width: 100px;
 		}
 	}
 
@@ -52,6 +52,10 @@
 				font-size: 0.78rem;
 				padding-block: 0.55em;
 			}
+		}
+
+		.link {
+			outline: 1px solid var(--primary);
 		}
 
 		@include media.tablet_sm {

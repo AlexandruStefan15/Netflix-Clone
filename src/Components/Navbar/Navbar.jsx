@@ -5,7 +5,6 @@ import { inline_svgs } from "../../Assets/svgs/svgs";
 import { useLocation } from "react-router-dom";
 
 import Link from "../Link/Link";
-import Button from "../Button/Button";
 import { NavLink } from "react-router-dom";
 import Select, { Option } from "../Select/Select";
 import Logo from "../Logo/Logo";
@@ -74,7 +73,7 @@ export default function Navbar({
 					</Select>
 
 					{location.pathname !== "/login" && (
-						<Link to="/login">
+						<Link className={styles.link} to="/login">
 							<Trans i18nKey={loginText.i18nKey}>{{ t: loginText.value }}</Trans>
 						</Link>
 					)}

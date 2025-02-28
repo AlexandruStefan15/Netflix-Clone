@@ -6,6 +6,7 @@ import { useSearchParams } from "react-router-dom";
 import { useMovieSearch } from "../../hooks/useMovieSearch";
 import { isSmartTV } from "../../utils/helpers";
 
+import Loader from "../Loader/Loader";
 import Modal from "../Modal/Modal";
 
 const groupByGenre = (items) =>
@@ -80,7 +81,7 @@ export default function MovieList({
 	};
 
 	if (loading && !searchParams.get("mid") && searchParams.get("q")) {
-		return <div className={styles.loader}></div>;
+		return <Loader />;
 	}
 
 	if (!results.length && !loading && searchParams.get("q")) {

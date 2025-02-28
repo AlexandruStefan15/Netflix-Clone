@@ -1,4 +1,3 @@
-import netflix_logo from "../svgs/Netflix_logo.svg";
 import dropDown_arrow from "./dropDown_arrow.svg";
 import globe from "./globe.svg";
 import right_arrow from "./right_arrow.svg";
@@ -6,7 +5,6 @@ import left_arrow_v2 from "./left_arrow_v2.svg";
 import mask from "./mask.svg";
 
 const svgs = {
-	netflix_logo,
 	dropDown_arrow,
 	globe,
 	right_arrow,

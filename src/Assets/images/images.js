@@ -7,6 +7,7 @@ import kids from "./kids.png";
 import inception from "./inception.webp";
 import queensGambit from "./queensGambit.jpg";
 import aliceInBorderland from "./aliceBorderland.jpg";
+import logo from "./logo.png";
 
 const images = {
 	bannerPicture,
@@ -18,6 +19,7 @@ const images = {
 	inception,
 	queensGambit,
 	aliceInBorderland,
+	logo,
 };
 
 export default images;

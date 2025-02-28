@@ -12,7 +12,7 @@ export default function Footer({ className = "", ...props }) {
 	return (
 		<footer className={styles.section + ` ${className}`} {...props}>
 			<div className={styles.container}>
-				<p className={styles.text}>Ai întrebări? Sună la 0800-672-120</p>
+				<p className={styles.text}>Ai întrebări? Sună la 0731-306-547</p>
 				<div className={styles.navigation}>
 					<ul className={styles.navList}>
 						<li className={styles.listItem}>
