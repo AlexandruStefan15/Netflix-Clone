@@ -21,7 +21,3 @@ export function getFirstSentence(text) {
 	const match = text.match(/[^.!?]+[.!?]/);
 	return match ? match[0].trim() : text;
 }
-
-export function isMobileDevice() {
-	return window.matchMedia("(max-width: 512px)").matches;
-}

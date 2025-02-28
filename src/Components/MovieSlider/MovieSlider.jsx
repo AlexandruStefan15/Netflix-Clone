@@ -1,9 +1,10 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
+import { useOutletContext } from "react-router-dom";
 import Slider from "react-slick";
 import "./MovieSlider.scss";
 import { inline_svgs } from "../../Assets/svgs/svgs";
 import { usePreventClickAfterDrag } from "../../hooks/usePreventClickAfterDrag";
-import { isSmartTV, isMobileDevice } from "../../utils/helpers";
+import { isSmartTV } from "../../utils/helpers";
 
 const imageURL = `https://image.tmdb.org/t/p/w400`;
 
@@ -35,7 +36,7 @@ function SampleNextArrow(props) {
 
 export default function MovieSlider({ movies, ...props }) {
 	const isTV = isSmartTV();
-	const isMobile = isMobileDevice();
+	const isMobile = useOutletContext().isMobile;
 	const settings = {
 		className: "movie-slider" + (isTV ? " isTV" : ""),
 		infinite: isMobile ? false : true,
