@@ -23,7 +23,7 @@
 	.logo {
 		padding-top: 1em;
 		line-height: normal;
-		width: 200px;
+		width: 215px;
 		min-width: 89px;
 
 		@include media.tablet {
@@ -38,7 +38,7 @@
 
 		@include media.mobile {
 			padding-top: 0em;
-			width: 100px;
+			width: 102px;
 		}
 	}
 

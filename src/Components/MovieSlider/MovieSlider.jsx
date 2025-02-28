@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "./MovieSlider.scss";
 import { inline_svgs } from "../../Assets/svgs/svgs";
 import { usePreventClickAfterDrag } from "../../hooks/usePreventClickAfterDrag";
-import { isSmartTV } from "../../utils/helpers";
+import { isSmartTV, isMobileDevice } from "../../utils/helpers";
 
 const imageURL = `https://image.tmdb.org/t/p/w400`;
 
@@ -35,16 +35,17 @@ function SampleNextArrow(props) {
 
 export default function MovieSlider({ movies, ...props }) {
 	const isTV = isSmartTV();
+	const isMobile = isMobileDevice();
 	const settings = {
 		className: "movie-slider" + (isTV ? " isTV" : ""),
-		infinite: true,
-		centerMode: isTV ? false : true,
+		infinite: isMobile ? false : true,
+		centerMode: isTV || isMobile ? false : true,
 		centerPadding: "75px",
-		slidesToShow: 6,
+		slidesToShow: isMobile ? 3.5 : 6,
 		slidesToScroll: isTV ? 6 : 1,
 		swipeToSlide: true,
 		dots: false,
-		arrows: true,
+		arrows: isMobile ? false : true,
 		nextArrow: <SampleNextArrow />,
 		prevArrow: <SamplePrevArrow />,
 	};

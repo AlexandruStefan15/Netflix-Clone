@@ -4,17 +4,19 @@ import { movieGenres } from "../../Data/movieGenres";
 import { tvGenres } from "../../Data/tvGenres";
 import styles from "./Discover.module.scss";
 import { getBannerData } from "../../Data/heroBannerData";
-import { mapGenres } from "../../utils/helpers";
-import { isSmartTV } from "../../utils/helpers";
+import { mapGenres, isSmartTV, isMobileDevice } from "../../utils/helpers";
+import images from "../../Assets/images/images";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
+import MovieCard from "../../Components/MovieCard/MovieCard";
 
 export default function Discover() {
 	const [movies, setMovies] = useState([]);
 	const [series, setSeries] = useState([]);
 	const [error, setError] = useState(null);
 	const isTV = isSmartTV();
+	const isMobile = isMobileDevice();
 	const moviesGenres = mapGenres(movieGenres);
 	const seriesGenres = mapGenres(tvGenres);
 	const bannerData = getBannerData("set1", "/browse");
@@ -54,16 +56,20 @@ export default function Discover() {
 
 	return (
 		<>
-			<HeroBanner
-				image={bannerData?.image}
-				video={bannerData?.video}
-				movieLogo={bannerData?.movieLogo}
-				subtitle={bannerData?.subtitle}
-				movieLinks={true}
-				className={styles.heroBanner}
-				variant="2"
-				shouldTranslate={false}
-			/>
+			{isMobile ? (
+				<MovieCard image={images.aliceBorderlandPoster} />
+			) : (
+				<HeroBanner
+					image={bannerData?.image}
+					video={bannerData?.video}
+					movieLogo={bannerData?.movieLogo}
+					subtitle={bannerData?.subtitle}
+					movieLinks={true}
+					className={styles.heroBanner}
+					variant="2"
+					shouldTranslate={false}
+				/>
+			)}
 			<section className={styles.moviesAndSeries}>
 				<MovieList
 					movies={movies}

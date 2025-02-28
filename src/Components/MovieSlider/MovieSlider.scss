@@ -1,3 +1,5 @@
+@use "../../styles/breakpoints" as media;
+
 .movie-slider {
 	&.isTV {
 		.movie-slider_left-arrow,
@@ -88,6 +90,10 @@
 	.slick-track {
 		display: flex;
 		gap: 1rem;
+
+		@include media.mobile {
+			gap: 0.5rem;
+		}
 
 		&::before,
 		&::after {

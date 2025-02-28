@@ -1,0 +1,12 @@
+.card {
+	position: relative;
+	max-width: 88%;
+	border-radius: 10px;
+	overflow: hidden;
+	margin: 10rem auto 10rem auto;
+	border: 1px solid #ffffff57;
+	.footer {
+		position: absolute;
+		bottom: 0;
+	}
+}

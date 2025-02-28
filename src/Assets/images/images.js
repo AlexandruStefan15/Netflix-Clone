@@ -8,6 +8,9 @@ import inception from "./inception.webp";
 import queensGambit from "./queensGambit.jpg";
 import aliceInBorderland from "./aliceBorderland.jpg";
 import logo from "./logo.png";
+import aliceBorderlandPoster from "./aliceBorderlandPoster.jpg";
+import inceptionPoster from "./inceptionPoster.jpg";
+import queensGambitPoster from "./queensGambitPoster.jpg";
 
 const images = {
 	bannerPicture,
@@ -20,6 +23,9 @@ const images = {
 	queensGambit,
 	aliceInBorderland,
 	logo,
+	aliceBorderlandPoster,
+	inceptionPoster,
+	queensGambitPoster,
 };
 
 export default images;
