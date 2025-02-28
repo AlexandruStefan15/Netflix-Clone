@@ -10,7 +10,7 @@ import images from "../../Assets/images/images";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
-import MovieCard from "../../Components/MovieCard/MovieCard";
+import FeaturedShow from "../../Components/Sections/FeaturedShow/FeaturedShow";
 
 export default function Discover() {
 	const [movies, setMovies] = useState([]);
@@ -58,7 +58,7 @@ export default function Discover() {
 	return (
 		<>
 			{isMobile ? (
-				<MovieCard className={styles.movieCard} image={images.aliceBorderlandPoster} />
+				<FeaturedShow show={images.aliceBorderlandPoster} />
 			) : (
 				<HeroBanner
 					image={bannerData?.image}

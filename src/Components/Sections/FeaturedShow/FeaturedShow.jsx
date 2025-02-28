@@ -7,7 +7,7 @@ export default function FeaturedShow({ show, className = "" }) {
 	return (
 		<section className={styles.section + ` ${className}`}>
 			<div className={styles.container}>
-				<MovieCard movie={show} />
+				<MovieCard className={styles.movieCard} image={show} />
 			</div>
 		</section>
 	);
