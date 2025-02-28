@@ -41,7 +41,7 @@ export default function MovieSlider({ movies, ...props }) {
 		infinite: isMobile ? false : true,
 		centerMode: isTV || isMobile ? false : true,
 		centerPadding: "75px",
-		slidesToShow: isMobile ? 3.5 : 6,
+		slidesToShow: isMobile ? 3.2 : 6,
 		slidesToScroll: isTV ? 6 : 1,
 		swipeToSlide: true,
 		dots: false,

@@ -109,6 +109,10 @@
 				cursor: pointer;
 				vertical-align: top;
 
+				@include media.mobile {
+					aspect-ratio: 100/150;
+				}
+
 				img {
 					position: absolute;
 					width: 100%;
