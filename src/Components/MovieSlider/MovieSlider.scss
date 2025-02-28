@@ -1,6 +1,10 @@
 @use "../../styles/breakpoints" as media;
 
 .movie-slider {
+	@include media.mobile {
+		margin-left: 0.5rem;
+	}
+
 	&.isTV {
 		.movie-slider_left-arrow,
 		.movie-slider_right-arrow {

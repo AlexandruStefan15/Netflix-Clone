@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 import { fetchCategory } from "../../api/tmdb";
 import { movieGenres } from "../../Data/movieGenres";
 import { tvGenres } from "../../Data/tvGenres";
 import styles from "./Discover.module.scss";
 import { getBannerData } from "../../Data/heroBannerData";
-import { mapGenres, isSmartTV, isMobileDevice } from "../../utils/helpers";
+import { mapGenres, isSmartTV } from "../../utils/helpers";
 import images from "../../Assets/images/images";
 
 import MovieList from "../../Components/MovieList/MovieList";
@@ -16,7 +17,7 @@ export default function Discover() {
 	const [series, setSeries] = useState([]);
 	const [error, setError] = useState(null);
 	const isTV = isSmartTV();
-	const isMobile = isMobileDevice();
+	const { isMobile } = useOutletContext();
 	const moviesGenres = mapGenres(movieGenres);
 	const seriesGenres = mapGenres(tvGenres);
 	const bannerData = getBannerData("set1", "/browse");
@@ -57,7 +58,7 @@ export default function Discover() {
 	return (
 		<>
 			{isMobile ? (
-				<MovieCard image={images.aliceBorderlandPoster} />
+				<MovieCard className={styles.movieCard} image={images.aliceBorderlandPoster} />
 			) : (
 				<HeroBanner
 					image={bannerData?.image}

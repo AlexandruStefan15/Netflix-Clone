@@ -5,6 +5,10 @@
 	flex-direction: column;
 	gap: 3.5rem;
 
+	@include media.mobile {
+		gap: 2rem;
+	}
+
 	&.isTV {
 		.item {
 			.title {

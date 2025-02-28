@@ -7,6 +7,7 @@ import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 
 import { useIsElementAtTop } from "../../hooks/useIsElementAtTop";
+import { useIsMobile } from "../../hooks/useIsMobile";
 
 const primaryNavigation = [
 	{ name: "Pagina Principala", path: "" },
@@ -23,6 +24,7 @@ export function BrowseLayout() {
 	const isTV = isSmartTV();
 	const location = useLocation();
 	const [searchParams, setSearchParams] = useSearchParams();
+	const isMobile = useIsMobile();
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -42,7 +44,7 @@ export function BrowseLayout() {
 					classNameLogo: styles.logo,
 				}}
 			/>
-			<Outlet context={{ topRef, isTop }} />
+			<Outlet context={{ topRef, isTop, isMobile }} />
 			<Footer style={{ background: "inherit" }} />
 		</div>
 	);
