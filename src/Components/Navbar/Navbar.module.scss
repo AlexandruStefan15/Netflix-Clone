@@ -72,6 +72,10 @@
 	.logo {
 		width: 95px;
 		padding-top: 0.4rem;
+
+		@include media.mobile {
+			width: 145px;
+		}
 	}
 
 	.primaryNavigationContainer {
