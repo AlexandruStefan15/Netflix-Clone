@@ -1,10 +1,11 @@
 @use "../../styles/breakpoints" as media;
 
 .main {
-	.featuredShow {
-		margin-top: 7rem;
-		position: relative;
-		/* &::before {
+	@include media.mobile {
+		.featuredShow {
+			margin-top: 7rem;
+			position: relative;
+			/* &::before {
 			content: "";
 			position: absolute;
 			top: 0;
@@ -14,6 +15,7 @@
 			background: radial-gradient(circle, rgb(192 44 31 / 35%) 0%, rgba(0, 0, 0, 0) 70%);
 			transform: translate(-50%, -50%);
 		} */
+		}
 	}
 
 	.moviesAndSeries {
