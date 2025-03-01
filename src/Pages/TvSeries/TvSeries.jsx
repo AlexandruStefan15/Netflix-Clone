@@ -9,6 +9,7 @@ import { useSearchParams, useOutletContext } from "react-router-dom";
 import { useMovieImages } from "../../hooks/useMovieImages";
 import { isSmartTV } from "../../utils/helpers";
 import { tvTrailers } from "../../Assets/videos/videos";
+import images from "../../Assets/images/images";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
@@ -53,36 +54,42 @@ export default function TvSeries() {
 
 	return (
 		<main className={styles.main}>
-			<Subheader className={styles.subheader + (isTV ? ` ${styles.isTV}` : "")}>
-				<h1 className={styles.title}>Seriale</h1>
-				<Select
-					value={searchParams.get("gid") || ""}
-					onChange={(e) => {
-						setSearchParams({ gid: e.target.value });
-					}}
-					className={styles.select}
-					className_wrapper={styles.select_wrapper}
-				>
-					<Option value="" disabled hidden>
-						Genuri
-					</Option>
-					{tvGenres.map(
-						(genre) =>
-							genre.topTitleId && (
-								<Option key={genre.id} value={genre.id}>
-									{genre.shortName}
-								</Option>
-							)
-					)}
-				</Select>
-			</Subheader>
-			<HeroBanner
-				{...bannerData}
-				movieLinks={true}
-				className={styles.heroBanner}
-				variant="2"
-				shouldTranslate={false}
-			/>
+			{isMobile ? (
+				<FeaturedShow className={styles.featuredShow} show={images.aliceBorderlandPoster} />
+			) : (
+				<>
+					<Subheader className={styles.subheader + (isTV ? ` ${styles.isTV}` : "")}>
+						<h1 className={styles.title}>Seriale</h1>
+						<Select
+							value={searchParams.get("gid") || ""}
+							onChange={(e) => {
+								setSearchParams({ gid: e.target.value });
+							}}
+							className={styles.select}
+							className_wrapper={styles.select_wrapper}
+						>
+							<Option value="" disabled hidden>
+								Genuri
+							</Option>
+							{tvGenres.map(
+								(genre) =>
+									genre.topTitleId && (
+										<Option key={genre.id} value={genre.id}>
+											{genre.shortName}
+										</Option>
+									)
+							)}
+						</Select>
+					</Subheader>
+					<HeroBanner
+						{...bannerData}
+						movieLinks={true}
+						className={styles.heroBanner}
+						variant="2"
+						shouldTranslate={false}
+					/>
+				</>
+			)}
 			<section className={styles.section}>
 				<div className={styles.container}>
 					{genreId ? (

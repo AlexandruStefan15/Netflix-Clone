@@ -15,9 +15,10 @@
 
 		.movieList {
 			gap: 1rem;
+
 			@include media.mobile {
 				grid-template-columns: repeat(auto-fit, minmax(106px, 1fr));
-				padding-inline: 1rem;
+				padding-inline: 0.5rem;
 				gap: 0.5rem;
 			}
 		}

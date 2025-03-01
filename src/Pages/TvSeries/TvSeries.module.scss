@@ -1,4 +1,13 @@
+@use "../../styles/breakpoints" as media;
+
 .main {
+	@include media.mobile {
+		.featuredShow {
+			margin-top: 7rem;
+			position: relative;
+		}
+	}
+
 	.subheader {
 		&.isTV {
 			padding-top: 0.3rem;
@@ -35,6 +44,12 @@
 		margin-top: -8.2rem;
 		position: relative;
 		z-index: 999;
+
+		@include media.mobile {
+			margin-top: 0;
+			padding-top: 0;
+		}
+
 		.container {
 			display: flex;
 			flex-direction: column;
