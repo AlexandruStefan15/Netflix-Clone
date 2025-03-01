@@ -15,8 +15,6 @@ function Header({ className = "", navbarClassName = "", navbarProps, ...props },
 }
 
 const Subheader = forwardRef(({ className = "", children, ...props }, ref) => {
-	/* const { isTop } = useOutletContext(); */
-
 	return (
 		<div ref={ref} className={styles.subheader + ` ${className}`} {...props}>
 			{children}

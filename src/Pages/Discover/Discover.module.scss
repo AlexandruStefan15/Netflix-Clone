@@ -1,26 +1,8 @@
 @use "../../styles/breakpoints" as media;
 
-main {
-	/* .subHeader {
-		padding-inline: 1rem;
-		.navigationList {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 0.9rem;
-			font-size: 0.8rem;
-
-			.listItem {
-				.link {
-					border-radius: 15px;
-					border: 1px solid rgba(255, 255, 255, 0.742);
-					padding: 0.5em 1em;
-				}
-			}
-		}
-	} */
-
+.discover {
 	.featuredShow {
-		margin-top: 8rem;
+		margin-top: 7rem;
 	}
 
 	.moviesAndSeries {

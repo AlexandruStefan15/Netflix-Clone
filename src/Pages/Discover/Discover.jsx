@@ -57,22 +57,9 @@ export default function Discover() {
 	if (error) console.error(error);
 
 	return (
-		<main>
+		<main className={styles.discover}>
 			{isMobile ? (
-				<>
-					{/* <Subheader className={styles.subHeader}>
-						<ul className={styles.navigationList}>
-							{primaryNavigation.map((item, index) => (
-								<li className={styles.listItem} key={index}>
-									<NavLink className={styles.link} to={item.path}>
-										{item.name}
-									</NavLink>
-								</li>
-							))}
-						</ul>
-					</Subheader> */}
-					<FeaturedShow className={styles.featuredShow} show={images.aliceBorderlandPoster} />
-				</>
+				<FeaturedShow className={styles.featuredShow} show={images.aliceBorderlandPoster} />
 			) : (
 				<HeroBanner
 					image={bannerData?.image}

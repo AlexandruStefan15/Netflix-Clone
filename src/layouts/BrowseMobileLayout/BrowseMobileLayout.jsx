@@ -28,7 +28,6 @@ export function BrowseMobileLayout() {
 	const isTop = useIsElementAtTop(topRef);
 	const location = useLocation();
 	const [searchParams, setSearchParams] = useSearchParams();
-	const isMobile = true;
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -48,7 +47,7 @@ export function BrowseMobileLayout() {
 					classNameLogo: styles.logo,
 				}}
 			/>
-			<Subheader className={styles.subHeader}>
+			<Subheader className={styles.subHeader + (isTop ? ` ${styles.isTop}` : "")}>
 				<ul className={styles.navigationList}>
 					{primaryNavigation.map((item, index) => (
 						<li className={styles.listItem} key={index}>
@@ -59,7 +58,7 @@ export function BrowseMobileLayout() {
 					))}
 				</ul>
 			</Subheader>
-			<Outlet context={{ topRef, isTop, isMobile, primaryNavigation }} />
+			<Outlet context={{ topRef, isTop, isMobile: true, primaryNavigation }} />
 			<Footer style={{ background: "inherit" }} />
 		</div>
 	);
