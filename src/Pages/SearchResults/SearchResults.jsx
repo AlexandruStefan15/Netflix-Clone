@@ -20,7 +20,7 @@ export default function SearchResults() {
 		<>
 			<section className={styles.section}>
 				<div className={styles.container}>
-					<MovieList simpleList={true} />
+					<MovieList className={styles.movieList} simpleList={true} />
 				</div>
 			</section>
 		</>

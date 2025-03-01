@@ -15,7 +15,7 @@ export default function Popular() {
 		<>
 			<section className={styles.section}>
 				<div className={styles.container}>
-					<MovieList movies={data} simpleList={true} />
+					<MovieList className={styles.movieList} movies={data} simpleList={true} />
 				</div>
 			</section>
 		</>

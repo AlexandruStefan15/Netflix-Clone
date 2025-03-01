@@ -1,3 +1,5 @@
+@use "../../styles/breakpoints" as media;
+
 .section {
 	margin-top: 4rem;
 	position: relative;
@@ -10,5 +12,14 @@
 		margin-inline: auto;
 		min-height: 100vh;
 		margin-top: 3.5rem;
+
+		.movieList {
+			gap: 1rem;
+			@include media.mobile {
+				grid-template-columns: repeat(auto-fit, minmax(106px, 1fr));
+				padding-inline: 1rem;
+				gap: 0.5rem;
+			}
+		}
 	}
 }

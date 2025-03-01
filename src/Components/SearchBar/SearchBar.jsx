@@ -3,6 +3,8 @@ import styles from "./SearchBar.module.scss";
 import { inline_svgs } from "../../Assets/svgs/svgs";
 import { useSearchParams, useLocation, useNavigate } from "react-router-dom";
 
+import { useIsMobile } from "../../hooks/useIsMobile";
+
 const SearchBar = ({ placeholder = "Cauta...", onSearch, className = "", ...props }) => {
 	const [query, setQuery] = useState("");
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -10,11 +12,12 @@ const SearchBar = ({ placeholder = "Cauta...", onSearch, className = "", ...prop
 	const inputRef = useRef(null);
 	const location = useLocation();
 	const navigate = useNavigate();
+	const isMobile = useIsMobile();
 
 	const handleChange = (e) => {
 		const value = e.target.value;
 		setQuery(value);
-		if (e.target.value === "" && location.pathname !== "/browse/search") {
+		if (e.target.value === "" && (isMobile || location.pathname !== "/browse/search")) {
 			setIsFocused(false);
 		}
 		if (onSearch) onSearch(value);
