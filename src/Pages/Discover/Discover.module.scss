@@ -1,8 +1,19 @@
 @use "../../styles/breakpoints" as media;
 
-.discover {
+.main {
 	.featuredShow {
 		margin-top: 7rem;
+		position: relative;
+		/* &::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 50%;
+			width: 200%;
+			height: 200%;
+			background: radial-gradient(circle, rgb(192 44 31 / 35%) 0%, rgba(0, 0, 0, 0) 70%);
+			transform: translate(-50%, -50%);
+		} */
 	}
 
 	.moviesAndSeries {

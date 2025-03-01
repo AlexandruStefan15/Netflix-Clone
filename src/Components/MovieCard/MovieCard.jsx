@@ -7,7 +7,7 @@ export default function MovieCard({ image, className = "" }) {
 			<div className={styles.image}>
 				<img src={image} alt="Movie poster" />
 			</div>
-			<footer className={styles.footer}>links...</footer>
+			<footer className={styles.footer}></footer>
 		</div>
 	);
 }

@@ -57,9 +57,9 @@ export default function Discover() {
 	if (error) console.error(error);
 
 	return (
-		<main className={styles.discover}>
+		<main className={styles.main}>
 			{isMobile ? (
-				<FeaturedShow className={styles.featuredShow} show={images.aliceBorderlandPoster} />
+				<FeaturedShow className={styles.featuredShow} show={images.queensGambitPoster} />
 			) : (
 				<HeroBanner
 					image={bannerData?.image}

@@ -17,10 +17,7 @@ const primaryNavigation = [
 	{ name: "Populare", path: "popular" },
 ];
 
-const secondaryNavigation = [
-	{ name: inline_svgs.ring_bell, path: "#" },
-	{ name: inline_svgs.account, path: "#" },
-];
+const secondaryNavigation = [{ name: inline_svgs.account, path: "#" }];
 
 export function BrowseMobileLayout() {
 	const headerRef = useRef(null);

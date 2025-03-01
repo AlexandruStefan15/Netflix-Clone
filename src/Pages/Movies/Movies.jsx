@@ -9,16 +9,18 @@ import { getBannerData } from "../../Data/heroBannerData";
 import { Subheader } from "../../Components/Header/Header";
 import { mapGenres, getFirstSentence, isSmartTV } from "../../utils/helpers";
 import { useSearchParams, useOutletContext } from "react-router-dom";
+import images from "../../Assets/images/images";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
 import Loader from "../../Components/Loader/Loader";
 import Select, { Option } from "../../Components/Select/Select";
+import FeaturedShow from "../../Components/Sections/FeaturedShow/FeaturedShow";
 
 export default function Movies() {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const isTV = isSmartTV();
-	const { isTop } = useOutletContext();
+	const { isTop, isMobile } = useOutletContext();
 	const genreId = searchParams.get("gid");
 	const genres = mapGenres(movieGenres);
 	const genresTopTitles = mapGenres(movieGenres, "topTitleId");
@@ -56,41 +58,47 @@ export default function Movies() {
 		);
 
 	return (
-		<>
-			<Subheader
-				className={
-					styles.subheader + (isTV ? ` ${styles.isTV}` : "") + (isTop ? ` ${styles.isTop}` : "")
-				}
-			>
-				<h1 className={styles.title}>Filme</h1>
-				<Select
-					value={searchParams.get("gid") || ""}
-					onChange={(e) => {
-						setSearchParams({ gid: e.target.value });
-					}}
-					className={styles.select}
-					className_wrapper={styles.select_wrapper}
-				>
-					<Option value="" disabled hidden>
-						Genuri
-					</Option>
-					{movieGenres.map(
-						(genre) =>
-							genre.topTitleId && (
-								<Option key={genre.id} value={genre.id}>
-									{genre.shortName}
-								</Option>
-							)
-					)}
-				</Select>
-			</Subheader>
-			<HeroBanner
-				{...bannerData}
-				movieLinks={true}
-				className={styles.heroBanner}
-				variant="2"
-				shouldTranslate={false}
-			/>
+		<main className={styles.main}>
+			{isMobile ? (
+				<FeaturedShow className={styles.featuredShow} show={images.inceptionPoster} />
+			) : (
+				<>
+					<Subheader
+						className={
+							styles.subheader + (isTV ? ` ${styles.isTV}` : "") + (isTop ? ` ${styles.isTop}` : "")
+						}
+					>
+						<h1 className={styles.title}>Filme</h1>
+						<Select
+							value={searchParams.get("gid") || ""}
+							onChange={(e) => {
+								setSearchParams({ gid: e.target.value });
+							}}
+							className={styles.select}
+							className_wrapper={styles.select_wrapper}
+						>
+							<Option value="" disabled hidden>
+								Genuri
+							</Option>
+							{movieGenres.map(
+								(genre) =>
+									genre.topTitleId && (
+										<Option key={genre.id} value={genre.id}>
+											{genre.shortName}
+										</Option>
+									)
+							)}
+						</Select>
+					</Subheader>
+					<HeroBanner
+						{...bannerData}
+						movieLinks={true}
+						className={styles.heroBanner}
+						variant="2"
+						shouldTranslate={false}
+					/>
+				</>
+			)}
 			<section className={styles.section}>
 				<div className={styles.container}>
 					{genreId ? (
@@ -100,7 +108,7 @@ export default function Movies() {
 					)}
 				</div>
 			</section>
-		</>
+		</main>
 	);
 }
 
