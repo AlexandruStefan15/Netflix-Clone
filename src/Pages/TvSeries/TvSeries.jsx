@@ -4,8 +4,8 @@ import { tvGenres } from "../../Data/tvGenres";
 import { useFetchCategory } from "../../hooks/useFetchCategory";
 import { getBannerData } from "../../Data/heroBannerData";
 import { useFetchGenre } from "../../hooks/useFetchGenre";
-import { useSearchParams } from "react-router-dom";
 import { mapGenres, getFirstSentence } from "../../utils/helpers";
+import { useSearchParams, useOutletContext } from "react-router-dom";
 import { useMovieImages } from "../../hooks/useMovieImages";
 import { isSmartTV } from "../../utils/helpers";
 import { tvTrailers } from "../../Assets/videos/videos";
@@ -15,10 +15,12 @@ import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
 import Loader from "../../Components/Loader/Loader";
 import { Subheader } from "../../Components/Header/Header";
 import Select, { Option } from "../../Components/Select/Select";
+import FeaturedShow from "../../Components/Sections/FeaturedShow/FeaturedShow";
 
 export default function TvSeries() {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const isTV = isSmartTV();
+	const isMobile = useOutletContext().isMobile;
 	const genreId = searchParams.get("gid");
 	const genres = mapGenres(tvGenres);
 	const genresTopTitles = mapGenres(tvGenres, "topTitleId");
@@ -50,7 +52,7 @@ export default function TvSeries() {
 		);
 
 	return (
-		<>
+		<main className={styles.main}>
 			<Subheader className={styles.subheader + (isTV ? ` ${styles.isTV}` : "")}>
 				<h1 className={styles.title}>Seriale</h1>
 				<Select
@@ -90,7 +92,7 @@ export default function TvSeries() {
 					)}
 				</div>
 			</section>
-		</>
+		</main>
 	);
 }
 
