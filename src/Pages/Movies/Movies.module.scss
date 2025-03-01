@@ -9,6 +9,11 @@
 		}
 	}
 
+	&.isTop {
+		background-color: transparent;
+		transition: background-color 0.3s ease-in-out;
+	}
+
 	.title {
 		font-size: 2.4rem;
 	}
@@ -35,10 +40,6 @@
 	margin-top: -8.2rem;
 	position: relative;
 	z-index: 999;
-
-	/* &:has(.movieList) {
-		margin-top: -4.1rem;
-	} */
 
 	.container {
 		display: flex;

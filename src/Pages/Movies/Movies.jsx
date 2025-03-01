@@ -8,7 +8,7 @@ import { movieGenres } from "../../Data/movieGenres";
 import { getBannerData } from "../../Data/heroBannerData";
 import { Subheader } from "../../Components/Header/Header";
 import { mapGenres, getFirstSentence, isSmartTV } from "../../utils/helpers";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useOutletContext } from "react-router-dom";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
@@ -18,6 +18,7 @@ import Select, { Option } from "../../Components/Select/Select";
 export default function Movies() {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const isTV = isSmartTV();
+	const { isTop } = useOutletContext();
 	const genreId = searchParams.get("gid");
 	const genres = mapGenres(movieGenres);
 	const genresTopTitles = mapGenres(movieGenres, "topTitleId");
@@ -56,7 +57,11 @@ export default function Movies() {
 
 	return (
 		<>
-			<Subheader className={styles.subheader + (isTV ? ` ${styles.isTV}` : "")}>
+			<Subheader
+				className={
+					styles.subheader + (isTV ? ` ${styles.isTV}` : "") + (isTop ? ` ${styles.isTop}` : "")
+				}
+			>
 				<h1 className={styles.title}>Filme</h1>
 				<Select
 					value={searchParams.get("gid") || ""}

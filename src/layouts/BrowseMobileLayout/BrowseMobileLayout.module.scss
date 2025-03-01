@@ -5,14 +5,6 @@
 	position: relative;
 	background-color: var(--secondary-light);
 
-	&.isTV {
-		.header {
-			padding-top: 0.3rem;
-			font-size: 1.2rem;
-			background-image: linear-gradient(180deg, rgb(0, 0, 0) 10%, transparent);
-		}
-	}
-
 	.header {
 		z-index: 9999;
 		background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, transparent);
@@ -32,7 +24,7 @@
 		}
 	}
 
-	.subheader {
+	.subHeader {
 		position: fixed;
 		background-color: #141414;
 		z-index: 9999;
@@ -43,30 +35,24 @@
 		gap: 3.5rem;
 		padding-left: 5rem;
 		top: 70px;
+		padding-inline: 1rem;
 
 		&.isTop {
 			background-color: transparent;
 			transition: background-color 0.3s ease-in-out;
 		}
 
-		.title {
-			font-size: 2.5rem;
-		}
+		.navigationList {
+			display: flex;
+			gap: 0.85rem;
+			font-size: 0.8rem;
 
-		.select_wrapper {
-			background-color: var(--secondary);
-
-			&::before {
-				content: none;
-			}
-
-			.select {
-				font-size: 1rem;
-				font-weight: 700;
-				padding-left: 0.7rem;
-				padding-right: 2.5rem;
-				padding-block: 0.5rem;
-				border-radius: 0px;
+			.listItem {
+				.link {
+					border-radius: 15px;
+					border: 1px solid rgba(255, 255, 255, 0.742);
+					padding: 0.5em 1em;
+				}
 			}
 		}
 	}

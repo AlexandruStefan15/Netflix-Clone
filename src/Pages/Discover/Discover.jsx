@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, NavLink } from "react-router-dom";
 import { fetchCategory } from "../../api/tmdb";
 import { movieGenres } from "../../Data/movieGenres";
 import { tvGenres } from "../../Data/tvGenres";
@@ -11,6 +11,7 @@ import images from "../../Assets/images/images";
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
 import FeaturedShow from "../../Components/Sections/FeaturedShow/FeaturedShow";
+import { Subheader } from "../../Components/Header/Header";
 
 export default function Discover() {
 	const [movies, setMovies] = useState([]);
@@ -56,9 +57,22 @@ export default function Discover() {
 	if (error) console.error(error);
 
 	return (
-		<>
+		<main>
 			{isMobile ? (
-				<FeaturedShow show={images.aliceBorderlandPoster} />
+				<>
+					{/* <Subheader className={styles.subHeader}>
+						<ul className={styles.navigationList}>
+							{primaryNavigation.map((item, index) => (
+								<li className={styles.listItem} key={index}>
+									<NavLink className={styles.link} to={item.path}>
+										{item.name}
+									</NavLink>
+								</li>
+							))}
+						</ul>
+					</Subheader> */}
+					<FeaturedShow className={styles.featuredShow} show={images.aliceBorderlandPoster} />
+				</>
 			) : (
 				<HeroBanner
 					image={bannerData?.image}
@@ -82,7 +96,7 @@ export default function Discover() {
 					minSeriesNr={isTV && 16}
 				/>
 			</section>
-		</>
+		</main>
 	);
 }
 

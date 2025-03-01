@@ -1,11 +1,35 @@
 @use "../../styles/breakpoints" as media;
 
-.moviesAndSeries {
-	margin-top: -8.2rem;
-	position: relative;
-	z-index: 999;
+main {
+	/* .subHeader {
+		padding-inline: 1rem;
+		.navigationList {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.9rem;
+			font-size: 0.8rem;
 
-	@include media.mobile {
-		margin-top: 0rem;
+			.listItem {
+				.link {
+					border-radius: 15px;
+					border: 1px solid rgba(255, 255, 255, 0.742);
+					padding: 0.5em 1em;
+				}
+			}
+		}
+	} */
+
+	.featuredShow {
+		margin-top: 8rem;
+	}
+
+	.moviesAndSeries {
+		margin-top: -8.2rem;
+		position: relative;
+		z-index: 999;
+
+		@include media.mobile {
+			margin-top: 0rem;
+		}
 	}
 }
