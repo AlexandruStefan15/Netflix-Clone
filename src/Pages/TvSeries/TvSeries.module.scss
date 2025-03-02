@@ -18,6 +18,12 @@
 				}
 			}
 		}
+
+		&.isTop {
+			background-color: transparent;
+			transition: background-color 0.3s ease-in-out;
+		}
+
 		.title {
 			font-size: 2.4rem;
 		}

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "./Login.module.scss";
 import { UserContext } from "../../Context/UserContext";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,10 @@ export default function Login() {
 		event.preventDefault();
 		navigate("/browse");
 	}
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<div className={styles.wrapper}>

@@ -21,7 +21,7 @@ import FeaturedShow from "../../Components/Sections/FeaturedShow/FeaturedShow";
 export default function TvSeries() {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const isTV = isSmartTV();
-	const isMobile = useOutletContext().isMobile;
+	const { isMobile, isTop } = useOutletContext();
 	const genreId = searchParams.get("gid");
 	const genres = mapGenres(tvGenres);
 	const genresTopTitles = mapGenres(tvGenres, "topTitleId");
@@ -58,7 +58,11 @@ export default function TvSeries() {
 				<FeaturedShow className={styles.featuredShow} show={images.aliceBorderlandPoster} />
 			) : (
 				<>
-					<Subheader className={styles.subheader + (isTV ? ` ${styles.isTV}` : "")}>
+					<Subheader
+						className={
+							styles.subheader + (isTV ? ` ${styles.isTV}` : "") + (isTop ? ` ${styles.isTop}` : "")
+						}
+					>
 						<h1 className={styles.title}>Seriale</h1>
 						<Select
 							value={searchParams.get("gid") || ""}
