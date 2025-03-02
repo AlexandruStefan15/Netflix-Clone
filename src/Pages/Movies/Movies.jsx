@@ -9,7 +9,7 @@ import { getBannerData } from "../../Data/heroBannerData";
 import { Subheader } from "../../Components/Header/Header";
 import { mapGenres, getFirstSentence, isSmartTV } from "../../utils/helpers";
 import { useSearchParams, useOutletContext } from "react-router-dom";
-import images from "../../Assets/images/images";
+import images, { moviePosters } from "../../Assets/images/images";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
@@ -84,7 +84,10 @@ export default function Movies() {
 							)}
 						</Select>
 					</div>
-					<FeaturedShow className={styles.featuredShow} show={images.inceptionPoster} />
+					<FeaturedShow
+						className={styles.featuredShow}
+						show={genreId ? moviePosters[genreId] : images.inceptionPoster}
+					/>
 				</>
 			) : (
 				<>
