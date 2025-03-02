@@ -51,6 +51,12 @@
 		padding-inline: 0.5rem;
 		gap: 0.5rem;
 		border-radius: 5px;
+
+		.listItem {
+			img {
+				border-radius: 5px;
+			}
+		}
 	}
 
 	.listItem {
@@ -59,6 +65,7 @@
 		img {
 			height: 100%;
 			width: 100%;
+			border-radius: 5px;
 		}
 	}
 }
