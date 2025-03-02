@@ -1,4 +1,27 @@
+@use "../../styles/breakpoints" as media;
+
+body:has(dialog[open]) {
+	@include media.mobile {
+		overflow: hidden;
+	}
+}
+
 .dialog {
+	background-color: #181818;
+	color: white;
+	width: clamp(700px, 45%, 1300px);
+	position: fixed;
+	border: none;
+	border-radius: 7px;
+	max-height: 90%;
+	left: 50%;
+	top: 50%;
+
+	@include media.mobile {
+		width: 92%;
+		max-width: none;
+	}
+
 	&::-webkit-scrollbar {
 		width: 4px;
 	}
@@ -15,16 +38,6 @@
 		border-radius: 10px;
 	}
 
-	background-color: #181818;
-	color: white;
-	width: clamp(700px, 45%, 1300px);
-	position: fixed;
-	left: 50%;
-	top: 10%;
-	border: none;
-	border-radius: 7px;
-	max-height: 90%;
-
 	&::backdrop {
 		background-color: black;
 		opacity: 0.6;
@@ -37,11 +50,11 @@
 
 	&[open] {
 		transition: transform 0.4s ease, opacity 0.5s ease;
-		transform: translateX(-50%) scale(1);
+		transform: translate(-50%, -50%) scale(1);
 		opacity: 1;
 
 		@starting-style {
-			transform: translateX(-50%) scale(0);
+			transform: translate(-50%, -50%) scale(0);
 			opacity: 0;
 		}
 	}
@@ -63,6 +76,11 @@
 			font-size: 1.2rem;
 			outline: none;
 			z-index: 999;
+
+			@include media.mobile {
+				font-size: 1.3rem;
+				padding-inline: 0.8rem;
+			}
 		}
 
 		.details {
@@ -70,6 +88,17 @@
 			flex-direction: column;
 			gap: 1.5rem;
 			padding: 2rem;
+
+			@include media.mobile {
+				.title {
+					font-size: 1.9rem;
+				}
+
+				.overview {
+					max-height: 6lh;
+					overflow: scroll;
+				}
+			}
 
 			.footer {
 				display: flex;

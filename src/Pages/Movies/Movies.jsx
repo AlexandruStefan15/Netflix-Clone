@@ -60,7 +60,32 @@ export default function Movies() {
 	return (
 		<main className={styles.main}>
 			{isMobile ? (
-				<FeaturedShow className={styles.featuredShow} show={images.inceptionPoster} />
+				<>
+					<div className={styles.categoryWrapper}>
+						<h1 className={styles.title}>Filme</h1>
+						<Select
+							value={searchParams.get("gid") || ""}
+							onChange={(e) => {
+								setSearchParams({ gid: e.target.value });
+							}}
+							className={styles.select}
+							className_wrapper={styles.select_wrapper}
+						>
+							<Option value="" disabled hidden>
+								Genuri
+							</Option>
+							{movieGenres.map(
+								(genre) =>
+									genre.topTitleId && (
+										<Option key={genre.id} value={genre.id}>
+											{genre.shortName}
+										</Option>
+									)
+							)}
+						</Select>
+					</div>
+					<FeaturedShow className={styles.featuredShow} show={images.inceptionPoster} />
+				</>
 			) : (
 				<>
 					<Subheader

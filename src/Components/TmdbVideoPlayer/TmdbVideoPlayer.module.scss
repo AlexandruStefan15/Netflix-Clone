@@ -1,7 +1,13 @@
+@use "../../styles/breakpoints" as media;
+
 .playerContainer {
 	position: relative;
 	width: 100%;
 	aspect-ratio: 200 / 115;
+
+	@include media.mobile {
+		aspect-ratio: 150 / 110;
+	}
 }
 
 .image {

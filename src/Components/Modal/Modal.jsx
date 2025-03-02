@@ -50,8 +50,8 @@ export default function Modal({ movie, onClose }) {
 					}
 				/>
 				<div className={styles.details}>
-					<h1>{movie.title || movie.name}</h1>
-					<p>{movie.overview ? movie.overview : "No description"}</p>
+					<h1 className={styles.title}>{movie.title || movie.name}</h1>
+					<p className={styles.overview}>{movie.overview ? movie.overview : "No description"}</p>
 					<footer className={styles.footer}>
 						<StarRating rating={movie.vote_average} />
 						<p> {movie.release_date || movie.first_air_date}</p>

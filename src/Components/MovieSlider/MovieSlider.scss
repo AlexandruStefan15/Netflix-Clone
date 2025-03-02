@@ -106,6 +106,7 @@
 
 		.slick-slide {
 			.movie-slider_movie {
+				-webkit-tap-highlight-color: initial;
 				position: relative;
 				text-align: center;
 				aspect-ratio: 100/123;

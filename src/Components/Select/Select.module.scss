@@ -36,9 +36,8 @@
 		}
 
 		@include media.tablet_sm {
-			transform: scale(0.85);
+			transform: translateY(-50%) scale(0.85);
 			top: 50%;
-			transform: translateY(-50%);
 			left: 5%;
 		}
 	}
