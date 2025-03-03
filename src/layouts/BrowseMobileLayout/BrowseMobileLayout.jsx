@@ -8,7 +8,6 @@ import Footer from "../../Components/Footer/Footer";
 import { Subheader } from "../../Components/Header/Header";
 
 import { useIsElementAtTop } from "../../hooks/useIsElementAtTop";
-import { useIsMobile } from "../../hooks/useIsMobile";
 
 const primaryNavigation = [
 	{ name: "Descopera", path: "" },

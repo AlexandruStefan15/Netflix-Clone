@@ -34,7 +34,7 @@ export const tvGenres = [
 		topTitleId: 48891,
 		featured: {
 			title: "Brooklyn Nine-Nine",
-			poster: images.brooklynNineNinePoster,
+			poster: images.brooklyn99Poster,
 			logo: "",
 			backdrop: "",
 			trailer: "",

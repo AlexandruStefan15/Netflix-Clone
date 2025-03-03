@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export const useIsElementAtTop = (ref, threshold = 1.0) => {
-	const [isAtTop, setIsAtTop] = useState(false);
+	const [isAtTop, setIsAtTop] = useState(true);
 
 	useEffect(() => {
 		const element = ref.current;
