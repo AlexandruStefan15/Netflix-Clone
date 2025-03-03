@@ -11,7 +11,6 @@ import images from "../../Assets/images/images";
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
 import FeaturedShow from "../../Components/Sections/FeaturedShow/FeaturedShow";
-import { Subheader } from "../../Components/Header/Header";
 
 export default function Discover() {
 	const [movies, setMovies] = useState([]);

@@ -51,7 +51,6 @@ const images = {
 	aliceBorderlandPoster,
 	inceptionPoster,
 	queensGambitPoster,
-	inceptionPoster,
 	nobodyPoster,
 	nosferatuPoster,
 	moana2Poster,
