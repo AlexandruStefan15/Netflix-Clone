@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./Movies.module.scss";
 import { movieTrailers } from "../../Assets/videos/videos";
 import { useFetchCategory } from "../../hooks/useFetchCategory";
@@ -9,7 +9,7 @@ import { getBannerData } from "../../Data/heroBannerData";
 import { Subheader } from "../../Components/Header/Header";
 import { mapGenres, getFirstSentence, isSmartTV } from "../../utils/helpers";
 import { useSearchParams, useOutletContext } from "react-router-dom";
-import images, { moviePosters } from "../../Assets/images/images";
+import images from "../../Assets/images/images";
 
 import MovieList from "../../Components/MovieList/MovieList";
 import HeroBanner from "../../Components/Sections/HeroBanner/HeroBanner";
@@ -19,6 +19,7 @@ import FeaturedShow from "../../Components/Sections/FeaturedShow/FeaturedShow";
 
 export default function Movies() {
 	const [searchParams, setSearchParams] = useSearchParams();
+	const mainRef = useRef(null);
 	const isTV = isSmartTV();
 	const { isTop, isMobile } = useOutletContext();
 	const genreId = searchParams.get("gid");
@@ -49,6 +50,13 @@ export default function Movies() {
 		}
 	}, [genreId]);
 
+	useEffect(() => {
+		if (!mainRef.current) return;
+		if (genreId)
+			mainRef.current.style.setProperty("--featured-color", `${featuredShows[genreId].color}`);
+		else mainRef.current.style.setProperty("--featured-color", `#053e59`);
+	}, [genreId, featuredShows]);
+
 	if (categoryError || genreError) console.error(categoryError || genreError);
 
 	if (loading)
@@ -59,7 +67,7 @@ export default function Movies() {
 		);
 
 	return (
-		<main className={styles.main}>
+		<main ref={mainRef} className={styles.main}>
 			{isMobile ? (
 				<>
 					<div className={styles.categoryWrapper}>

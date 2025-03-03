@@ -40,7 +40,12 @@
 			top: 50%;
 			left: 5%;
 		}
+
+		@include media.mobile {
+			content: none;
+		}
 	}
+
 	.select {
 		-webkit-appearance: none;
 		-moz-appearance: none;
@@ -53,6 +58,17 @@
 		border-radius: 3px;
 		border-color: white;
 		color: white;
+
+		@include media.mobile {
+			font-size: 1rem;
+			font-weight: 700;
+			padding-left: 0.7rem;
+			padding-right: 2.5rem;
+			padding-block: 0.5rem;
+			border-radius: 0px;
+			border-color: rgba(255, 255, 255, 0.742);
+			outline: none;
+		}
 
 		.option {
 			appearance: none; /* Removes default styles */

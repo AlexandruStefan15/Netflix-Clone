@@ -6,7 +6,14 @@ export const movieGenres = [
 		name: "Filme de actiune",
 		shortName: "Actiune",
 		topTitleId: 615457,
-		featured: { title: "Nobody", poster: images.nobodyPoster, logo: "", backdrop: "", trailer: "" },
+		featured: {
+			title: "Nobody",
+			poster: images.nobodyPoster,
+			logo: "",
+			backdrop: "",
+			trailer: "",
+			color: "rgb(27 37 54)",
+		},
 	},
 	{
 		id: 12,
@@ -19,6 +26,7 @@ export const movieGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#414a92",
 		},
 	},
 	{
@@ -32,6 +40,7 @@ export const movieGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#2f00cc",
 		},
 	},
 	{
@@ -45,6 +54,7 @@ export const movieGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#144449",
 		},
 	},
 	{

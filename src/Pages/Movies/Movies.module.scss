@@ -7,9 +7,9 @@ main.main {
 		&::before {
 			content: "";
 			position: absolute;
-			background-image: linear-gradient(180deg, rgb(177 67 39 / 39%), transparent);
+			background-image: linear-gradient(180deg, var(--featured-color), transparent);
 			width: 100%;
-			height: 100vh;
+			height: 120vh;
 			top: 0;
 		}
 
@@ -26,23 +26,6 @@ main.main {
 		.featuredShow {
 			margin-top: 0rem;
 			position: relative;
-		}
-
-		.select_wrapper {
-			background-color: var(--secondary);
-
-			&::before {
-				content: none;
-			}
-
-			.select {
-				font-size: 1rem;
-				font-weight: 700;
-				padding-left: 0.7rem;
-				padding-right: 2.5rem;
-				padding-block: 0.5rem;
-				border-radius: 0px;
-			}
 		}
 	}
 
