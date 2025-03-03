@@ -31,43 +31,4 @@
 			padding-top: 0.2rem;
 		}
 	}
-
-	.subheader {
-		position: fixed;
-		background-color: #141414;
-		z-index: 9999;
-		min-height: 65px;
-		width: 100%;
-		display: flex;
-		align-items: center;
-		gap: 3.5rem;
-		padding-left: 5rem;
-		top: 70px;
-
-		&.isTop {
-			background-color: transparent;
-			transition: background-color 0.3s ease-in-out;
-		}
-
-		.title {
-			font-size: 2.5rem;
-		}
-
-		.select_wrapper {
-			background-color: var(--secondary);
-
-			&::before {
-				content: none;
-			}
-
-			.select {
-				font-size: 1rem;
-				font-weight: 700;
-				padding-left: 0.7rem;
-				padding-right: 2.5rem;
-				padding-block: 0.5rem;
-				border-radius: 0px;
-			}
-		}
-	}
 }
