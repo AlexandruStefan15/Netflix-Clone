@@ -26,6 +26,17 @@ import myFaultLondonPoster from "./myFaultLondonPoster.jpg";
 import mickey17Poster from "./mickey17Poster.jpg";
 import fracturedPoster from "./fracturedPoster.jpg";
 
+import avatarLastAirbenderPoster from "./avatarLastAirbenderPoster.jpg";
+import arcanePoster from "./arcanePoster.jpg";
+import brooklyn99Poster from "./brooklyn99Poster.jpg";
+import breakingBadPoster from "./breakingBadPoster.jpg";
+import airCrashInvestigationPoster from "./airCrashInvestigationPoster.jpg";
+import theLastOfUsPoster from "./theLastOfUsPoster.jpg";
+import goodGirlsGuidePoster from "./goodGirlsGuidePoster.jpg";
+import threeBodyProblemPoster from "./threeBodyProblemPoster.jpg";
+import kingsOfNapaPoster from "./kingsOfNapaPoster.jpg";
+import percyJacksonPoster from "./percyJacksonPoster.jpg";
+
 const images = {
 	bannerPicture,
 	mobile1,
@@ -55,23 +66,16 @@ const images = {
 	myFaultLondonPoster,
 	mickey17Poster,
 	fracturedPoster,
+	avatarLastAirbenderPoster,
+	arcanePoster,
+	brooklyn99Poster,
+	breakingBadPoster,
+	airCrashInvestigationPoster,
+	theLastOfUsPoster,
+	goodGirlsGuidePoster,
+	threeBodyProblemPoster,
+	kingsOfNapaPoster,
+	percyJacksonPoster,
 };
 
 export default images;
-
-export const moviePosters = {
-	28: nobodyPoster,
-	27: nosferatuPoster,
-	12: moana2Poster,
-	16: despicableMePoster,
-	35: hangover3Poster,
-	80: jokerPoster,
-	18: piecesOfWomanPoster,
-	10751: wildRobotPoster,
-	14: fantasticBeastsPoster,
-	36: schindlerListPoster,
-	9648: conclavePoster,
-	10749: myFaultLondonPoster,
-	878: mickey17Poster,
-	53: fracturedPoster,
-};

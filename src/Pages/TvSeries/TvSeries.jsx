@@ -23,7 +23,8 @@ export default function TvSeries() {
 	const isTV = isSmartTV();
 	const { isMobile, isTop } = useOutletContext();
 	const genreId = searchParams.get("gid");
-	const genres = mapGenres(tvGenres);
+	const genres = mapGenres(tvGenres, "name");
+	const featuredShows = mapGenres(tvGenres, "featured");
 	const genresTopTitles = mapGenres(tvGenres, "topTitleId");
 	const startPage = 15;
 	const totalPages = isTV ? 6 : 12;
@@ -79,7 +80,10 @@ export default function TvSeries() {
 							)}
 						</Select>
 					</div>
-					<FeaturedShow className={styles.featuredShow} show={images.aliceBorderlandPoster} />
+					<FeaturedShow
+						className={styles.featuredShow}
+						poster={genreId ? featuredShows[genreId].poster : images.aliceBorderlandPoster}
+					/>
 				</>
 			) : (
 				<>

@@ -22,7 +22,8 @@ export default function Movies() {
 	const isTV = isSmartTV();
 	const { isTop, isMobile } = useOutletContext();
 	const genreId = searchParams.get("gid");
-	const genres = mapGenres(movieGenres);
+	const genres = mapGenres(movieGenres, "name");
+	const featuredShows = mapGenres(movieGenres, "featured");
 	const genresTopTitles = mapGenres(movieGenres, "topTitleId");
 	const startPage = 15;
 	const totalPages = isTV ? 4 : 10;
@@ -86,7 +87,7 @@ export default function Movies() {
 					</div>
 					<FeaturedShow
 						className={styles.featuredShow}
-						show={genreId ? moviePosters[genreId] : images.inceptionPoster}
+						poster={genreId ? featuredShows[genreId].poster : images.inceptionPoster}
 					/>
 				</>
 			) : (

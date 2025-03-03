@@ -59,7 +59,7 @@ export default function Discover() {
 	return (
 		<main className={styles.main}>
 			{isMobile ? (
-				<FeaturedShow className={styles.featuredShow} show={images.queensGambitPoster} />
+				<FeaturedShow className={styles.featuredShow} poster={images.queensGambitPoster} />
 			) : (
 				<HeroBanner
 					image={bannerData?.image}
