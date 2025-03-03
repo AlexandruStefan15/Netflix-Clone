@@ -68,6 +68,7 @@ export const movieGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#4f6036",
 		},
 	},
 	{
@@ -81,6 +82,7 @@ export const movieGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#a88951",
 		},
 	},
 	{
@@ -94,6 +96,7 @@ export const movieGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#0c2745",
 		},
 	},
 	{
@@ -107,6 +110,7 @@ export const movieGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#08232f",
 		},
 	},
 	{
@@ -120,6 +124,7 @@ export const movieGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#2f2f2f",
 		},
 	},
 	{
@@ -133,6 +138,7 @@ export const movieGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#3e4a56",
 		},
 	},
 
@@ -147,6 +153,7 @@ export const movieGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#2f2f2f",
 		},
 	},
 	{
