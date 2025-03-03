@@ -40,6 +40,21 @@ const images = {
 	aliceBorderlandPoster,
 	inceptionPoster,
 	queensGambitPoster,
+	inceptionPoster,
+	nobodyPoster,
+	nosferatuPoster,
+	moana2Poster,
+	hangover3Poster,
+	piecesOfWomanPoster,
+	wildRobotPoster,
+	despicableMePoster,
+	jokerPoster,
+	fantasticBeastsPoster,
+	schindlerListPoster,
+	conclavePoster,
+	myFaultLondonPoster,
+	mickey17Poster,
+	fracturedPoster,
 };
 
 export default images;
