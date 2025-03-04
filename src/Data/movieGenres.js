@@ -153,7 +153,7 @@ export const movieGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
-			color: "#2f2f2f",
+			color: "#8d00018c",
 		},
 	},
 	{
@@ -167,6 +167,7 @@ export const movieGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#89a7cf",
 		},
 	},
 	{
@@ -180,6 +181,7 @@ export const movieGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#276367",
 		},
 	},
 	{
@@ -193,6 +195,7 @@ export const movieGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#2a3d39",
 		},
 	},
 ];
