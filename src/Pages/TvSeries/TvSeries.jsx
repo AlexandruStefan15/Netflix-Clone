@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import styles from "./TvSeries.module.scss";
 import { tvGenres } from "../../Data/tvGenres";
 import { useFetchCategory } from "../../hooks/useFetchCategory";
@@ -20,6 +20,7 @@ import FeaturedShow from "../../Components/Sections/FeaturedShow/FeaturedShow";
 
 export default function TvSeries() {
 	const [searchParams, setSearchParams] = useSearchParams();
+	const mainRef = useRef(null);
 	const isTV = isSmartTV();
 	const { isMobile, isTop } = useOutletContext();
 	const genreId = searchParams.get("gid");
@@ -44,6 +45,13 @@ export default function TvSeries() {
 		if (genreId) fetchByGenre(genreId, 4, "tv"); // fetch 4 pages
 	}, [genreId]);
 
+	useEffect(() => {
+		if (!mainRef.current) return;
+		if (genreId)
+			mainRef.current.style.setProperty("--featured-color", `${featuredShows[genreId].color}`);
+		else mainRef.current.style.setProperty("--featured-color", `#3c5043`);
+	}, [genreId, featuredShows]);
+
 	if (error) console.error(error);
 
 	if (loading)
@@ -54,7 +62,7 @@ export default function TvSeries() {
 		);
 
 	return (
-		<main className={styles.main}>
+		<main ref={mainRef} className={styles.main}>
 			{isMobile ? (
 				<>
 					<div className={styles.categoryWrapper}>

@@ -12,7 +12,7 @@ export const tvGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
-			color: "rgb(177 67 39 / 39%)",
+			color: "#051c3b",
 		},
 	},
 	{
@@ -26,7 +26,7 @@ export const tvGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
-			color: "rgb(177 67 39 / 39%)",
+			color: "#442a4d",
 		},
 	},
 	{
