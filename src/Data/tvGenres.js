@@ -40,6 +40,7 @@ export const tvGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#187593e0",
 		},
 	},
 	{
@@ -53,6 +54,7 @@ export const tvGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#191919",
 		},
 	},
 	{
@@ -66,6 +68,7 @@ export const tvGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#282f43",
 		},
 	},
 	{
@@ -79,6 +82,7 @@ export const tvGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#3a4032",
 		},
 	},
 	{
@@ -92,6 +96,7 @@ export const tvGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#30465d",
 		},
 	},
 	{
@@ -105,6 +110,7 @@ export const tvGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#6282b5",
 		},
 	},
 	{
@@ -118,6 +124,7 @@ export const tvGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#05112e",
 		},
 	},
 	{
@@ -131,6 +138,7 @@ export const tvGenres = [
 			logo: "",
 			backdrop: "",
 			trailer: "",
+			color: "#8e2246",
 		},
 	},
 ];
