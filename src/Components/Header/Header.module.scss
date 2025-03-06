@@ -1,3 +1,5 @@
+@use "../../styles/breakpoints" as media;
+
 .header {
 	background: linear-gradient(#0000003d, transparent);
 }
@@ -13,4 +15,11 @@
 	gap: 3.5rem;
 	padding-left: 5rem;
 	top: 70px;
+
+	@include media.mobile {
+		top: 69px;
+		min-height: 50px;
+		padding-inline: 1rem;
+		justify-content: center;
+	}
 }
