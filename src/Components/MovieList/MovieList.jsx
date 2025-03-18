@@ -130,16 +130,16 @@ export default function MovieList({
 					return hasEnoughMovies || hasEnoughSeries ? (
 						<React.Fragment key={genreId}>
 							{hasEnoughMovies && moviesGenre && (
-								<div className={styles.item}>
+								<li className={styles.item}>
 									<h2 className={styles.title}>{moviesGenre}</h2>
 									<MovieSlider handleMovieClick={handleMovieClick} movies={group.movies} />
-								</div>
+								</li>
 							)}
 							{hasEnoughSeries && seriesGenre && (
-								<div className={styles.item}>
+								<li className={styles.item}>
 									<h2 className={styles.title}>{seriesGenre}</h2>
 									<MovieSlider handleMovieClick={handleMovieClick} movies={group.series} />
-								</div>
+								</li>
 							)}
 						</React.Fragment>
 					) : null;
