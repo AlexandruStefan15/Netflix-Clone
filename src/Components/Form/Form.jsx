@@ -37,7 +37,13 @@ export default function Form({ className = "", data, setUserEmail, children, onS
 
 	if (children)
 		return (
-			<form ref={formRef} action="" className={styles.form + ` ${className}`} {...props}>
+			<form
+				ref={formRef}
+				action=""
+				className={styles.form + ` ${className}`}
+				onSubmit={handleSubmit}
+				{...props}
+			>
 				{children}
 			</form>
 		);
