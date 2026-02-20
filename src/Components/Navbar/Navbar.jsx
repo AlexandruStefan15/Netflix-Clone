@@ -55,15 +55,6 @@ export default function Navbar({
 								</NavLink>
 							</li>
 						))}
-						{/* 	<li>
-							<NavLink to={"#"}>Copii</NavLink>
-						</li>
-						<li>
-							<NavLink to={"#"}>{inline_svgs.ring_bell}</NavLink>
-						</li>
-						<li>
-							<NavLink to={"#"}>{inline_svgs.account}</NavLink>
-						</li> */}
 					</ul>
 				</div>
 			)}
