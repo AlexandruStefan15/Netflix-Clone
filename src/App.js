@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { UserContext, DeviceContext } from "./Context/UserContext";
+import { UserContext } from "./Context/UserContext";
+import { DeviceContext } from "./Context/DeviceContext";
 import "./styles/App.scss";
 import { useIsMobile } from "./hooks/useIsMobile";
 import {
@@ -35,8 +36,8 @@ function App() {
 					<Route path="popular" element={<Popular />} />
 					<Route path="search" element={<SearchResults />} />
 				</Route>
-			</>
-		)
+			</>,
+		),
 	);
 
 	return (
