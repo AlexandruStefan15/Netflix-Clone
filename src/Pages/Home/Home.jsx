@@ -8,7 +8,6 @@ import StoryPanel3 from "../../Components/Sections/StoryPanel3/StoryPanel3";
 import StoryPanel4 from "../../Components/Sections/StoryPanel4/StoryPanel4";
 import Faq from "../../Components/Sections/Faq/Faq";
 import Footer from "../../Components/Footer/Footer";
-import Input from "../../Components/FormInput/FormInput";
 
 export default function Home() {
 	useEffect(() => {
@@ -22,11 +21,7 @@ export default function Home() {
 	return (
 		<>
 			<Header />
-			<HeroBanner
-				title="HeroBanner.set1.title"
-				subtitle="HeroBanner.set1.subtitle"
-				showRegisterForm={true}
-			/>
+			<HeroBanner title="HeroBanner.set1.title" subtitle="HeroBanner.set1.subtitle" showRegisterForm={true} />
 			<StoryPanel />
 			<StoryPanel2 />
 			<StoryPanel3 />
