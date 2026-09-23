@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./Navbar.module.scss";
 import { Trans, useTranslation } from "react-i18next";
-import { inline_svgs } from "../../Assets/svgs/svgs";
 import { useLocation } from "react-router-dom";
 
 import Link from "../Link/Link";
@@ -60,12 +59,7 @@ export default function Navbar({
 			)}
 			{selectLanguage && (
 				<div className={styles.selectLanguageWrapper}>
-					<Select
-						className={styles.select}
-						name="languages"
-						onChange={languageChange}
-						value={i18n.language}
-					>
+					<Select className={styles.select} name="languages" onChange={languageChange} value={i18n.language}>
 						<Option value="ro">Romana</Option>
 						<Option value="en">English</Option>
 					</Select>

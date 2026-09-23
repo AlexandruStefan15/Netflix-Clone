@@ -1,8 +1,6 @@
 import React, { forwardRef, useState, useEffect } from "react";
-import svgs from "../../Assets/svgs/svgs";
 import images from "../../Assets/images/images";
 import styles from "./Header.module.scss";
-import { useOutletContext } from "react-router-dom";
 
 import Navbar from "../Navbar/Navbar";
 
