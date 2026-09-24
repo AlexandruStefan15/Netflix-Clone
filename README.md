@@ -19,5 +19,7 @@ npm start
 
 ![Overview photo1](src/design/nastiflix.jpg)
 
+![Overview photo1](src/design/nastiflix2.png)
+
 
 
